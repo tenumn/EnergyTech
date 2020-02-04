@@ -1,0 +1,15 @@
+header.js
+core/tool.js
+core/recipe.js
+core/tooltip.js
+core/machine.js
+tools.js
+materials.js
+resources.js
+machines/battery.js
+machines/macerator.js
+machines/compressor.js
+machines/blast_furnace.js
+generators/fire_generator.js
+generators/nuclear_reactor.js
+generators/solar_generator.js
