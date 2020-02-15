@@ -8,6 +8,9 @@ TileRenderer.registerRotationModel(BlockID.centrifuge,0,[["machine_bottom",0],["
 TileRenderer.registerRotationModel(BlockID.centrifuge,4,[["machine_bottom",0],["centrifuge_top",1],["machine_side",0],["centrifuge",1],["machine_side",0],["machine_side",0]]);
 
 ETMachine.setDrop("centrifuge",BlockID.machineCasing,1);
+Callback.addCallback("PreLoaded",function(){
+	Recipes.addShaped({id:BlockID.centrifuge,count:1,data:0},["cec","cdc","aba"],["a",ItemID.coilCopper,0,"b",ItemID.electricMotor,0,"c",ItemID.plateIron,0,"d",BlockID.machineCasing,1,"e",ItemID.circuit,0]);
+});
 
 var GuiCentrifuge = new UI.StandartWindow({
     standart:{
@@ -26,7 +29,8 @@ var GuiCentrifuge = new UI.StandartWindow({
         "scaleArrow":{type:"scale",x:600,y:175 + GUI_SCALE,direction:0,value:0.5,bitmap:"arrow_1",scale:GUI_SCALE},
         "slotOutput1":{type:"slot",x:720,y:175,bitmap:"blank_slot",scale:GUI_SCALE,isValid:function(){return false;}},
         "slotOutput2":{type:"slot",x:780,y:175,bitmap:"blank_slot",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput3":{type:"slot",x:840,y:175,bitmap:"blank_slot",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput3":{type:"slot",x:720,y:235,bitmap:"blank_slot",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput4":{type:"slot",x:780,y:235,bitmap:"blank_slot",scale:GUI_SCALE,isValid:function(){return false;}},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:75 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale_1",scale:GUI_SCALE}
     }
@@ -43,7 +47,7 @@ ETMachine.registerMachine(BlockID.centrifuge,{
     },
 
     tick:function(){
-        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getMachineRecipeOutput("Centrifuge",input.id,input.data);
+        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Centrifuge",input.id,input.data);
 
         if(recipe && this.data.energy >= this.data.energy_consumption){
             this.data.energy -= this.data.energy_consumption;
@@ -53,6 +57,7 @@ ETMachine.registerMachine(BlockID.centrifuge,{
                 if(recipe[0]){this.setOutput("slotOutput1",recipe[0].id,recipe[0].count,recipe[0].data);}
                 if(recipe[1]){this.setOutput("slotOutput2",recipe[1].id,recipe[1].count,recipe[1].data);}
                 if(recipe[2]){this.setOutput("slotOutput3",recipe[2].id,recipe[2].count,recipe[2].data);}
+                if(recipe[3]){this.setOutput("slotOutput3",recipe[3].id,recipe[3].count,recipe[3].data);}
                 input.count--;
                 this.container.validateAll();
                 this.data.progress = 0;

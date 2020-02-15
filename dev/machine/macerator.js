@@ -45,7 +45,7 @@ ETMachine.registerMachine(BlockID.macerator,{
 
     tick:function(){
         var input = this.container.getSlot("slotInput"),
-            recipe = ETRecipe.getMachineRecipeOutput("Macerator",input.id,input.data);
+            recipe = ETRecipe.getRecipeResult("Macerator",input.id,input.data);
 
         if(recipe && this.data.energy >= this.data.energy_consumption){
             this.data.energy -= this.data.energy_consumption;

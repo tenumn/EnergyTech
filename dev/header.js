@@ -19,4 +19,5 @@ function random(min,max){
 
 var directions = [[-1,0,0],[1,0,0],[0,-1,0],[0,1,0],[0,0,-1],[0,0,1]];
 
+LiquidRegistry.registerLiquid("lithium","Lithium","liquid_lithium");
 LiquidRegistry.registerLiquid("uranium","Uranium","liquid_uranium");

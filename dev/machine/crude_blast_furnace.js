@@ -49,7 +49,7 @@ ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
     },
     
     tick:function(){
-        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getMachineRecipeOutput("BlastFurnace",input.id,input.data);
+        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("BlastFurnace",input.id,input.data);
         
         if(this.data.burn > 0){this.data.burn -= 1;}
 		if(this.data.burn == 0 && recipe){this.data.burn = this.data.burnMax = this.getFuel("slotFuel");}

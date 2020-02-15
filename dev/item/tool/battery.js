@@ -13,6 +13,5 @@ Item.registerIconOverrideFunction(ItemID.lithiumBattery,function(item,name){
 });
 
 Callback.addCallback("PreLoaded",function(){
-	var LithiumBattery = Item.getMaxDamage(ItemID.lithiumBattery);
-    Recipes.addShaped({id:ItemID.lithiumBattery,count:1,data:LithiumBattery},[" a ","bcb","bcb"],["a",ItemID.coilTin,0,"b",ItemID.plateLeadAntimony,0,"c",ItemID.dustLithium,0]);
+    Recipes.addShaped({id:ItemID.lithiumBattery,count:1,data:Item.getMaxDamage(ItemID.lithiumBattery)},[" a ","bcb","bcb"],["a",ItemID.coilTin,0,"b",ItemID.plateLeadAntimony,0,"c",ItemID.dustLithium,0]);
 });

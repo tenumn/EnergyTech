@@ -13,3 +13,7 @@ LiquidRegistry.registerItem("lava",{id:ItemID.cellEmpty,data:0},{id:ItemID.cellL
 IDRegistry.genItemID("cellUranium");
 Item.createItem("cellUranium","Liquid Cell(Uranium)",{name:"uranium_cell"});
 LiquidRegistry.registerItem("uranium",{id:ItemID.cellEmpty,data:0},{id:ItemID.cellUranium,data:0});
+
+IDRegistry.genItemID("cellLithium");
+Item.createItem("cellLithium","Liquid Cell(Lithium)",{name:"lithium_cell"});
+LiquidRegistry.registerItem("lithium",{id:ItemID.cellEmpty,data:0},{id:ItemID.cellLithium,data:0});

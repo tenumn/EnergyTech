@@ -57,7 +57,7 @@ ETMachine.registerMachine(BlockID.crusher,{
 
     tick:function(){
         var input = this.container.getSlot("slotInput"),
-            recipe = ETRecipe.getMachineRecipeOutput("Crusher",input.id,input.data);
+            recipe = ETRecipe.getRecipeResult("Crusher",input.id,input.data);
 
         if(recipe && this.data.energy >= this.data.energy_consumption){
             this.data.energy -= this.data.energy_consumption;

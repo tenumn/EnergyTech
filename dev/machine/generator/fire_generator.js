@@ -10,7 +10,7 @@ TileRenderer.registerRotationModel(BlockID.fireGenerator,4,[["machine_bottom",0]
 
 ETMachine.setDrop("fireGenerator",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},["a","b","c"],["a",ItemID.plateIron,0,"b",BlockID.machineCasing,0,"c",61,0]);
+	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},["a","b","c"],["a",ItemID.lithiumBattery,0,"b",BlockID.machineCasing,0,"c",61,0]);
 });
 
 var GuiFireGenerator = new UI.StandartWindow({

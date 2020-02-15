@@ -24,8 +24,14 @@ Item.createItem("plateCarbon","Carbon Plate",{name:"carbon_plate"});
 IDRegistry.genItemID("plateTungsten");
 Item.createItem("plateTungsten","Tungsten Plate",{name:"tungsten_plate"});
 
+IDRegistry.genItemID("plateLapis");
+Item.createItem("plateLapis","Lapis Plate",{name:"lapis_plate"});
+
+IDRegistry.genItemID("plateLead");
+Item.createItem("plateLead","Lead Plate",{name:"lead_plate"});
+
 IDRegistry.genItemID("plateLeadAntimony");
-Item.createItem("plateLeadAntimony","Lead-Antimony Plate",{name:"lead_antimony_plate"});
+Item.createItem("plateLeadAntimony","Lead-Antimony Alloy Plate",{name:"lead_antimony_plate"});
 
 Callback.addCallback("PreLoaded",function(){
     ETRecipe.addPlateRecipe({id:ItemID.plateCopper      ,count:1,data:0},[{id:ItemID.ingotCopper      ,data:0},{id:ItemID.ingotCopper      ,data:0}]);
@@ -35,5 +41,7 @@ Callback.addCallback("PreLoaded",function(){
     ETRecipe.addPlateRecipe({id:ItemID.plateGold        ,count:1,data:0},[{id:266                     ,data:0},{id:266                     ,data:0}]);
     ETRecipe.addPlateRecipe({id:ItemID.plateCarbon      ,count:1,data:0},[{id:ItemID.dustCarbon       ,data:0},{id:ItemID.dustCarbon       ,data:0}]);
     ETRecipe.addPlateRecipe({id:ItemID.plateTungsten    ,count:1,data:0},[{id:ItemID.ingotTungsten    ,data:0},{id:ItemID.ingotTungsten    ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateLapis       ,count:1,data:0},[{id:351                     ,data:4},{id:351                     ,data:4}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateLead        ,count:1,data:0},[{id:ItemID.ingotLead        ,data:0},{id:ItemID.ingotLead        ,data:0}]);
     ETRecipe.addPlateRecipe({id:ItemID.plateLeadAntimony,count:1,data:0},[{id:ItemID.ingotLeadAntimony,data:0},{id:ItemID.ingotLeadAntimony,data:0}]);
 });

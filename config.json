@@ -51,12 +51,12 @@
             "minHeight":0,
             "maxHeight":16
         },
-        "tungstate":{
+        "tungsten":{
             "enabled":true,
-            "count":16,
-            "size":8,
+            "count":4,
+            "size":2,
             "minHeight":0,
-            "maxHeight":64
+            "maxHeight":32
         },
         "antimony":{
             "enabled":false,
@@ -71,6 +71,13 @@
             "size":2,
             "minHeight":0,
             "maxHeight":64
+        },
+        "silver":{
+            "enabled":true,
+            "count":4,
+            "size":2,
+            "minHeight":0,
+            "maxHeight":64 
         }
     }
 }

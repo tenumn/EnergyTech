@@ -25,10 +25,19 @@ Item.createItem("ingotTungsten","Tungsten Ingot",{name:"tungsten_ingot"});
 IDRegistry.genItemID("ingotUranium");
 Item.createItem("ingotUranium","Uranium Ingot",{name:"uranium_ingot"});
 
+IDRegistry.genItemID("ingotSilver");
+Item.createItem("ingotSilver","Silver Ingot",{name:"silver_ingot"});
+
 IDRegistry.genItemID("ingotLeadAntimony");
 Item.createItem("ingotLeadAntimony","Lead-Antimony Alloy Ingot",{name:"lead_antimony_ingot"});
 
 Callback.addCallback("PreLoaded",function(){
+    Recipes.addShapeless({id:ItemID.ingotLithium,count:1,data:0},[{id:ItemID.lithium6  ,data:0},{id:ItemID.lithium7  ,data:0}]);
+    Recipes.addShapeless({id:ItemID.ingotUranium,count:1,data:0},[{id:ItemID.uranium235,data:0},{id:ItemID.uranium238,data:0}]);
+
     ETRecipe.addBlastFurnaceRecipe({id:ItemID.ingotWroughtIron,count:1,data:0},{id:265                    ,count:1,data:0});
     ETRecipe.addBlastFurnaceRecipe({id:ItemID.ingotSteel      ,count:1,data:0},{id:ItemID.ingotWroughtIron,count:1,data:0});
+
+    ETRecipe.addCentrifugeRecipe([{id:ItemID.lithium7  ,count:1,data:0},{id:ItemID.smallLithium6  ,count:1,data:0}],{id:ItemID.ingotLithium,data:0});
+    ETRecipe.addCentrifugeRecipe([{id:ItemID.uranium238,count:1,data:0},{id:ItemID.smallUranium235,count:1,data:0}],{id:ItemID.ingotUranium,data:0});
 });

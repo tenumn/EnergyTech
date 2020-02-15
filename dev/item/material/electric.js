@@ -1,5 +1,5 @@
-IDRegistry.genItemID("electricMotor" );
-Item.createItem("electricMotor" ,"Electric Motor" ,{name:"electric_motor" });
+IDRegistry.genItemID("electricMotor");
+Item.createItem("electricMotor","Electric Motor",{name:"electric_motor"});
 
 IDRegistry.genItemID("electricPiston");
 Item.createItem("electricPiston","Electric Piston",{name:"electric_piston"});

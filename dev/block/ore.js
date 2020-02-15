@@ -33,6 +33,7 @@ CreateOre("oreGraphite"    ,"Graphite Ore"    ,[["graphite_ore",0]]    ,2,"graph
 CreateOre("oreTungsten"    ,"Tungsten Ore"    ,[["tungsten_ore",0]]    ,2,"tungsten"    );
 CreateOre("oreAntimony"    ,"Antimony Ore"    ,[["antimony_ore",0]]    ,2,"antimony"    );
 CreateOre("oreUranium"     ,"Uranium Ore"     ,[["uranium_ore",0]]     ,2,"uranium"     );
+CreateOre("oreSilver"      ,"Silver Ore"      ,[["silver_ore",0]]      ,2,"silver"      );
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreCopper      ,ItemID.ingotCopper  );
@@ -41,9 +42,10 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreLead        ,ItemID.ingotLead    );
     Recipes.addFurnace(BlockID.oreLithium     ,ItemID.ingotLithium );
     Recipes.addFurnace(BlockID.oreGraphite    ,ItemID.dustCarbon   );
-    Recipes.addFurnace(BlockID.oreTungsten    ,ItemID.ingotTungsten);
     Recipes.addFurnace(BlockID.oreAntimony    ,ItemID.ingotAntimony);
     Recipes.addFurnace(BlockID.oreUranium     ,ItemID.ingotUranium );
+
+    ETRecipe.addBlastFurnaceRecipe({id:ItemID.ingotTungsten,count:1,data:0},{id:BlockID.oreTungsten,count:1,data:0});
 });
 
 Block.registerDropFunction("oreGraphite",function(coords,id,data,level,enchant){

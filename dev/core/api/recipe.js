@@ -57,13 +57,13 @@ var ETRecipe = {
 
     recipes:{},
 
-    getMachineRecipe:function(name){
-		this.recipes[name] = this.recipes[name] || {}
+    getRecipe:function(name){
+		if(!this.recipes[name]){this.recipes[name] = {}}
 		return this.recipes[name];
 	},
 
-    getMachineRecipeOutput:function(name,id,data){
-		var data = this.getMachineRecipe(name);
+    getRecipeResult:function(name,id,data){
+		var data = this.getRecipe(name);
 		if(data){
 			return data[id] || data[id + ":" + data];
 		}
@@ -71,33 +71,41 @@ var ETRecipe = {
 
 	addMaceratorRecipe:function(output,input){
 		if(!input.data){
-			this.getMachineRecipe("Macerator")[input.id] = output;
+			this.getRecipe("Macerator")[input.id] = output;
 		} else {
-			this.getMachineRecipe("Macerator")[input.id + ":" + input.data] = output;
+			this.getRecipe("Macerator")[input.id + ":" + input.data] = output;
 		}
 	},
 
 	addCompressorRecipe:function(output,input){
 		if(!input.data){
-			this.getMachineRecipe("Compressor")[input.id] = output;
+			this.getRecipe("Compressor")[input.id] = output;
 		} else {
-			this.getMachineRecipe("Compressor")[input.id + ":" + input.data] = output;
+			this.getRecipe("Compressor")[input.id + ":" + input.data] = output;
 		}
 	},
 
 	addBlastFurnaceRecipe:function(output,input){
 		if(!input.data){
-			this.getMachineRecipe("BlastFurnace")[input.id] = output;
+			this.getRecipe("BlastFurnace")[input.id] = output;
 		} else {
-			this.getMachineRecipe("BlastFurnace")[input.id + ":" + input.data] = output;
+			this.getRecipe("BlastFurnace")[input.id + ":" + input.data] = output;
 		}
 	},
 
 	addCrusherRecipe:function(output,input){
 		if(!input.data){
-			this.getMachineRecipe("Crusher")[input.id] = output;
+			this.getRecipe("Crusher")[input.id] = output;
 		} else {
-			this.getMachineRecipe("Crusher")[input.id + ":" + input.data] = output;
+			this.getRecipe("Crusher")[input.id + ":" + input.data] = output;
+		}
+	},
+
+	addCentrifugeRecipe:function(output,input){
+		if(!input.data){
+			this.getRecipe("Centrifuge")[input.id] = output;
+		} else {
+			this.getRecipe("Centrifuge")[input.id + ":" + input.data] = output;
 		}
 	}
 }

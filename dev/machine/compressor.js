@@ -46,7 +46,7 @@ ETMachine.registerMachine(BlockID.compressor,{
     },
     
     tick:function(){
-        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getMachineRecipeOutput("Compressor",input.id,input.data);
+        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Compressor",input.id,input.data);
         
         if(recipe && this.data.energy >= this.data.energy_consumption){
             this.data.energy -= this.data.energy_consumption;

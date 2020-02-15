@@ -5,6 +5,19 @@ Block.createBlock("nuclearReactor",[
 ],"opaque");
 
 ETMachine.setDrop("nuclearReactor",BlockID.machineCasing,1);
+Callback.addCallback("PreLoaded",function(){
+	Recipes.addShaped({id:BlockID.nuclearReactor,count:1,data:0},[
+        "aba",
+        "cdc",
+        "aea"
+    ],[
+        "a",ItemID.plateLead,0,
+        "b",ItemID.electricPiston,0,
+        "c",ItemID.circuit,0,
+        "d",BlockID.fireGenerator,0,
+        "e",ItemID.plateLapis,0
+    ]);
+});
 
 var GuiNuclearReactor = new UI.StandartWindow({
     standart:{
