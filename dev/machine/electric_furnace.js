@@ -8,6 +8,11 @@ TileRenderer.registerRotationModel(BlockID.electricFurnace,0,[["machine_bottom",
 TileRenderer.registerRotationModel(BlockID.electricFurnace,4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electric_furnace",1],["machine_side",0],["machine_side",0]]);
 ETMachine.setDrop("electricFurnace",BlockID.machineCasing);
 
+ETMachine.setDrop("electricFurnace",BlockID.machineCasing);
+Callback.addCallback("PreLoaded",function(){
+	Recipes.addShaped({id:BlockID.electricFurnace,count:1,data:0},["bcb","cac","cdc"],["a",ItemID.circuit,0,"b",ItemID.stickIron,0,"c",ItemID.plateIron,0,"d",61,0]);
+});
+
 var GuiElectricFurnace = new UI.StandartWindow({
     standart:{
         header:{text:{text:Translation.translate("Electric Furnace")}},

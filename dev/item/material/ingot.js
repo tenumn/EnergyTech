@@ -22,6 +22,9 @@ Item.createItem("ingotLithium","Lithium Ingot",{name:"lithium_ingot"});
 IDRegistry.genItemID("ingotTungsten");
 Item.createItem("ingotTungsten","Tungsten Ingot",{name:"tungsten_ingot"});
 
+IDRegistry.genItemID("ingotUranium");
+Item.createItem("ingotUranium","Uranium Ingot",{name:"uranium_ingot"});
+
 IDRegistry.genItemID("ingotLeadAntimony");
 Item.createItem("ingotLeadAntimony","Lead-Antimony Alloy Ingot",{name:"lead_antimony_ingot"});
 

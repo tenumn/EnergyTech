@@ -8,8 +8,8 @@ CreateBlock = function(id,name,texture){
 }
 
 ETRecipe.addBlockRecipe = function(output,input){
-    Recipes.addShaped(output,["aaa","aaa","aaa"],["a",input[0].id,input[0].data]);
-    Recipes.addShapeless({id:input[0].id,count:9,data:input[0].data},[{id:output.id,data:output.data}]);
+    Recipes.addShaped({id:output.id,count:1,data:output.data},["aaa","aaa","aaa"],["a",input.id,input.data]);
+    Recipes.addShapeless({id:input.id,count:9,data:input.data},[{id:output.id,data:output.data}]);
 }
 
 CreateBlock("blockCopper"      ,"Copper Block"       ,[["copper_block"       ,0]]);
@@ -24,14 +24,14 @@ CreateBlock("blockTungsten"    ,"Tungsten Block"     ,[["tungsten_block"     ,0]
 CreateBlock("blockLeadAntimony","Lead-Antimony Block",[["lead_antimony_block",0]]);
 
 Callback.addCallback("PreLoaded",function(){
-    ETRecipe.addBlockRecipe({id:BlockID.blockCopper      ,count:1,data:0},[{id:ItemID.ingotCopper      ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockTin         ,count:1,data:0},[{id:ItemID.ingotTin         ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockLead        ,count:1,data:0},[{id:ItemID.ingotLead        ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockWroughtIron ,count:1,data:0},[{id:ItemID.ingotWroughtIron ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockSteel       ,count:1,data:0},[{id:ItemID.ingotSteel       ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockAntimony    ,count:1,data:0},[{id:ItemID.ingotAntimony    ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockLithium     ,count:1,data:0},[{id:ItemID.ingotLithium     ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockCarbon      ,count:1,data:0},[{id:ItemID.dustCarbon       ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockTungsten    ,count:1,data:0},[{id:ItemID.dustTungsten     ,data:0}]);
-    ETRecipe.addBlockRecipe({id:BlockID.blockLeadAntimony,count:1,data:0},[{id:ItemID.ingotLeadAntimony,data:0}]);
+    ETRecipe.addBlockRecipe({id:BlockID.blockCopper      ,data:0},{id:ItemID.ingotCopper      ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockTin         ,data:0},{id:ItemID.ingotTin         ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockLead        ,data:0},{id:ItemID.ingotLead        ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockWroughtIron ,data:0},{id:ItemID.ingotWroughtIron ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockSteel       ,data:0},{id:ItemID.ingotSteel       ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockAntimony    ,data:0},{id:ItemID.ingotAntimony    ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockLithium     ,data:0},{id:ItemID.ingotLithium     ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockCarbon      ,data:0},{id:ItemID.dustCarbon       ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockTungsten    ,data:0},{id:ItemID.ingotTungsten    ,data:0});
+    ETRecipe.addBlockRecipe({id:BlockID.blockLeadAntimony,data:0},{id:ItemID.ingotLeadAntimony,data:0});
 });

@@ -47,6 +47,13 @@ var ETRecipe = {
 			this.addShapeless(output,material,[cutter[i],damage?damage:1]);
 		}
 	},
+	
+	addMortarRecipe:function(output,material,damage){
+		var cutter = ETTool.getAllTool("Mortar");
+		for(let i = 0;i < cutter.length;i++){
+			this.addShapeless(output,material,[cutter[i],damage?damage:1]);
+		}
+	},
 
     recipes:{},
 
@@ -55,7 +62,7 @@ var ETRecipe = {
 		return this.recipes[name];
 	},
 
-    getMachineRecipeOutput:function(name,id,count,data){
+    getMachineRecipeOutput:function(name,id,data){
 		var data = this.getMachineRecipe(name);
 		if(data){
 			return data[id] || data[id + ":" + data];
@@ -64,25 +71,33 @@ var ETRecipe = {
 
 	addMaceratorRecipe:function(output,input){
 		if(!input.data){
-			this.getMachineRecipe("Macerator")[input.id] = {id:output.id,count:output.count,data:output.data};
+			this.getMachineRecipe("Macerator")[input.id] = output;
 		} else {
-			this.getMachineRecipe("Macerator")[input.id + ":" + input.data] = {id:output.id,count:output.count,data:output.data};
+			this.getMachineRecipe("Macerator")[input.id + ":" + input.data] = output;
 		}
 	},
 
 	addCompressorRecipe:function(output,input){
 		if(!input.data){
-			this.getMachineRecipe("Compressor")[input.id] = {id:output.id,count:output.count,data:output.data};
+			this.getMachineRecipe("Compressor")[input.id] = output;
 		} else {
-			this.getMachineRecipe("Compressor")[input.id + ":" + input.data] = {id:output.id,count:output.count,data:output.data};
+			this.getMachineRecipe("Compressor")[input.id + ":" + input.data] = output;
 		}
 	},
 
 	addBlastFurnaceRecipe:function(output,input){
 		if(!input.data){
-			this.getMachineRecipe("BlastFurnace")[input.id] = {id:output.id,count:output.count,data:output.data};
+			this.getMachineRecipe("BlastFurnace")[input.id] = output;
 		} else {
-			this.getMachineRecipe("BlastFurnace")[input.id + ":" + input.data] = {id:output.id,count:output.count,data:output.data};
+			this.getMachineRecipe("BlastFurnace")[input.id + ":" + input.data] = output;
 		}
 	},
+
+	addCrusherRecipe:function(output,input){
+		if(!input.data){
+			this.getMachineRecipe("Crusher")[input.id] = output;
+		} else {
+			this.getMachineRecipe("Crusher")[input.id + ":" + input.data] = output;
+		}
+	}
 }

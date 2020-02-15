@@ -10,15 +10,7 @@ for(let i = 0;i < 9;i++){
 
 ETMachine.setDrop("lithiumBatteryBox",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.lithiumBatteryBox,count:1,data:0},[
-        "aba",
-        "bcb",
-        "aba"
-    ],[
-        "a",ItemID.plateIron     ,0,
-        "b",ItemID.lithiumBattery,0,
-        "c",ItemID.coilTin       ,0
-    ]);
+	Recipes.addShaped({id:BlockID.lithiumBatteryBox,count:1,data:0},["aba","bcb","aba"],["a",ItemID.plateIron,0,"b",ItemID.lithiumBattery,0,"c",ItemID.coilTin,0]);
 });
 
 var GuiBattery = new UI.StandartWindow({
@@ -45,7 +37,7 @@ ETMachine.registerEnergyStorage(BlockID.lithiumBatteryBox,{
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
     
-    defaultValues:{energyStorage:65536},
+    defaultValues:{energy_storage:65536},
     getGuiScreen:function(){return GuiBattery;},
     canReceiveEnergy:function(side){return side == BlockSide.UP;},
     canExtractEnergy:function(side){return side == BlockSide.DOWN;},

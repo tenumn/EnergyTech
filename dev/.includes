@@ -2,6 +2,7 @@ header.js
 translation.js
 
 core/api/machine.js
+core/api/reactor.js
 core/api/recipe.js
 core/api/tool.js
 
@@ -9,11 +10,8 @@ block/block.js
 block/machine_casing.js
 block/ore.js
 
-generator/fire_generator.js
-generator/nuclear_reactor.js
-generator/solar_generator.js
-
 item/material/circuit.js
+item/material/crushed_ore.js
 item/material/dust_impure.js
 item/material/dust.js
 item/material/electric.js
@@ -24,13 +22,22 @@ item/material/stick.js
 
 item/tool/battery.js
 item/tool/cell.js
+item/tool/copper.js
 item/tool/iron.js
+item/tool/lead.js
+item/tool/tin.js
 item/tool/wire.js
 
 machine/battery.js
-machine/blast_furnace.js
+machine/centrifuge.js
 machine/compressor.js
+machine/crude_blast_furnace.js
+machine/crusher.js
 machine/electric_furnace.js
 machine/macerator.js
+
+machine/generator/fire_generator.js
+machine/generator/nuclear_reactor.js
+machine/generator/solar_generator.js
 
 core/modapi.js

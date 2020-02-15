@@ -12,8 +12,8 @@ CreateWire = function(id,name,texture,volt,size){
     }));
 
     EU.registerWire(BlockID[id],volt);
-
     ETMachine.wireIDs[BlockID[id]] = true;
+    ETTool.addTooltip(ItemID[id],Translation.translate("Max Voltage: ") + volt + " EU/t");
     
     TileRenderer.setupWireModel(BlockID[id],0,0.0625 *  size     ,"et-wire");
     TileRenderer.setupWireModel(BlockID[id],1,0.0625 * (size + 1),"et-wire");

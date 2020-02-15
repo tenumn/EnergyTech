@@ -31,11 +31,26 @@ CreateOre("oreLead"        ,"Lead Ore"        ,[["lead_ore",0]]        ,2,"lead"
 CreateOre("oreLithium"     ,"Lithium Ore"     ,[["lithium_ore",0]]     ,2,"lithium"     );
 CreateOre("oreGraphite"    ,"Graphite Ore"    ,[["graphite_ore",0]]    ,2,"graphite"    );
 CreateOre("oreTungsten"    ,"Tungsten Ore"    ,[["tungsten_ore",0]]    ,2,"tungsten"    );
+CreateOre("oreAntimony"    ,"Antimony Ore"    ,[["antimony_ore",0]]    ,2,"antimony"    );
+CreateOre("oreUranium"     ,"Uranium Ore"     ,[["uranium_ore",0]]     ,2,"uranium"     );
+
+Callback.addCallback("PreLoaded",function(){
+    Recipes.addFurnace(BlockID.oreCopper      ,ItemID.ingotCopper  );
+    Recipes.addFurnace(BlockID.oreTetrahedrite,ItemID.ingotCopper  );
+    Recipes.addFurnace(BlockID.oreTin         ,ItemID.ingotTin     );
+    Recipes.addFurnace(BlockID.oreLead        ,ItemID.ingotLead    );
+    Recipes.addFurnace(BlockID.oreLithium     ,ItemID.ingotLithium );
+    Recipes.addFurnace(BlockID.oreGraphite    ,ItemID.dustCarbon   );
+    Recipes.addFurnace(BlockID.oreTungsten    ,ItemID.ingotTungsten);
+    Recipes.addFurnace(BlockID.oreAntimony    ,ItemID.ingotAntimony);
+    Recipes.addFurnace(BlockID.oreUranium     ,ItemID.ingotUranium );
+});
 
 Block.registerDropFunction("oreGraphite",function(coords,id,data,level,enchant){
-	var count = random(1 * (enchant.fortune + 1),4 * (enchant.fortune + 1));
-	if(enchant.silk){
-		return [[BlockID.oreGraphite,1,0]];
-	}
-	return [[ItemID.dustCarbon,count,0]];
-});
+	if(level >= 2){
+        if(enchant.silk){
+            return [[id,1,data]];
+        }
+        return [[ItemID.dustCarbon,random(1 * (enchant.fortune + 1),4 * (enchant.fortune + 1)),0]];
+    }
+},2);

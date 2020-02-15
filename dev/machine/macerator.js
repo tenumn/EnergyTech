@@ -5,23 +5,12 @@ Block.createBlock("macerator",[
 ],"opaque");
 TileRenderer.setStandartModel(BlockID.macerator,[["machine_bottom",0],["macerator_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.macerator,0,[["machine_bottom",0],["macerator_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,4,[["machine_bottom",0],["macerator_top",1],["machine_side",0],["macerator",1],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,4,[["machine_bottom",0],["macerator_top",1],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
 
+ETMachine.setDrop("macerator",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.macerator,count:1,data:0},[
-        "aba",
-        "aca",
-        "ded"
-    ],[
-        "a",ItemID.stickIron,     0,
-        "b",ItemID.electricMotor, 0,
-        "c",ItemID.circuit,       0,
-        "d",ItemID.plateIron,     0,
-        "e",BlockID.machineCasing,0
-    ]);
+	Recipes.addShaped({id:BlockID.macerator,count:1,data:0},["aba","cdc","efe"],["a",ItemID.electricMotor,0,"b",ItemID.electricPiston,0,"c",ItemID.plateIron,0,"d",BlockID.crusher,0,"e",ItemID.stickIron,0,"f",ItemID.circuit,0]);
 });
-
-ETMachine.setDrop("macerator",BlockID.machineCasing);
 
 var GuiMacerator = new UI.StandartWindow({
     standart:{
@@ -55,8 +44,8 @@ ETMachine.registerMachine(BlockID.macerator,{
     },
 
     tick:function(){
-        var input = this.container.getSlot("slotInput");
-        var recipe = ETRecipe.getMachineRecipeOutput("Macerator",input.id,input.count,input.data);
+        var input = this.container.getSlot("slotInput"),
+            recipe = ETRecipe.getMachineRecipeOutput("Macerator",input.id,input.data);
 
         if(recipe && this.data.energy >= this.data.energy_consumption){
             this.data.energy -= this.data.energy_consumption;

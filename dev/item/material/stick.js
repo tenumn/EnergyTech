@@ -1,24 +1,22 @@
-CreateStick = function(id,name,texture){
-    IDRegistry.genItemID(id);
-    Item.createItem(id,name,texture);
-}
+IDRegistry.genItemID("stickCopper");
+Item.createItem("stickCopper","Copper Stick",{name:"copper_stick"});
 
-CreateStick("stickCopper","Copper Stick",{name:"copper_stick",meta:0});
-CreateStick("stickTin"   ,"Tin Stick"   ,{name:"tin_stick"   ,meta:0});
-CreateStick("stickIron"  ,"Iron Stick"  ,{name:"iron_stick"  ,meta:0});
-CreateStick("stickSteel" ,"Steel Stick" ,{name:"steel_stick" ,meta:0});
-CreateStick("stickGold"  ,"Gold Stick"  ,{name:"gold_stick"  ,meta:0});
+IDRegistry.genItemID("stickTin");
+Item.createItem("stickTin","Tin Stick",{name:"tin_stick"});
+
+IDRegistry.genItemID("stickIron");
+Item.createItem("stickIron","Iron Stick",{name:"iron_stick"});
+
+IDRegistry.genItemID("stickSteel");
+Item.createItem("stickSteel","Steel Stick",{name:"steel_stick"});
+
+IDRegistry.genItemID("stickGold");
+Item.createItem("stickGold","Gold Stick",{name:"gold_stick"});
 
 Callback.addCallback("PreLoaded",function(){
-    ETRecipe.addCutterRecipe({id:ItemID.stickCopper,count:2,data:0},[{id:ItemID.plateCopper,data:0}]);
-    ETRecipe.addCutterRecipe({id:ItemID.stickTin   ,count:2,data:0},[{id:ItemID.plateTin   ,data:0}]);
-    ETRecipe.addCutterRecipe({id:ItemID.stickIron  ,count:2,data:0},[{id:ItemID.plateIron  ,data:0}]);
-    ETRecipe.addCutterRecipe({id:ItemID.stickSteel ,count:2,data:0},[{id:ItemID.plateSteel ,data:0}]);
-    ETRecipe.addCutterRecipe({id:ItemID.stickGold  ,count:2,data:0},[{id:ItemID.plateGold  ,data:0}]);
+    ETRecipe.addCutterRecipe({id:ItemID.stickCopper,count:8,data:0},[{id:ItemID.plateCopper,data:0},{id:ItemID.plateCopper,data:0}]);
+    ETRecipe.addCutterRecipe({id:ItemID.stickTin   ,count:8,data:0},[{id:ItemID.plateTin   ,data:0},{id:ItemID.plateTin   ,data:0}]);
+    ETRecipe.addCutterRecipe({id:ItemID.stickIron  ,count:8,data:0},[{id:ItemID.plateIron  ,data:0},{id:ItemID.plateIron  ,data:0}]);
+    ETRecipe.addCutterRecipe({id:ItemID.stickSteel ,count:8,data:0},[{id:ItemID.plateSteel ,data:0},{id:ItemID.plateSteel ,data:0}]);
+    ETRecipe.addCutterRecipe({id:ItemID.stickGold  ,count:8,data:0},[{id:ItemID.plateGold  ,data:0},{id:ItemID.plateGold  ,data:0}]);
 });
-
-Translation.addTranslation("Copper Stick",{zh_CN:"铜棍"});
-Translation.addTranslation("Tin Stick"   ,{zh_CN:"锡棍"});
-Translation.addTranslation("Iron Stick"  ,{zh_CN:"铁棍"});
-Translation.addTranslation("Gold Stick"  ,{zh_CN:"金棍"});
-Translation.addTranslation("Steel Stick" ,{zh_CN:"钢棍"});

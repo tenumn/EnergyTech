@@ -11,16 +11,7 @@ TileRenderer.registerRotationModel(BlockID.compressor,12,[["machine_bottom",0],[
 
 ETMachine.setDrop("compressor",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.compressor,count:1,data:0},[
-        "a a",
-        "bcb",
-        "ada"
-    ],[
-        "a",ItemID.plateIron     ,0,
-        "b",ItemID.electricPiston,0,
-        "c",ItemID.circuit       ,0,
-        "d",BlockID.machineCasing,0
-    ]);
+	Recipes.addShaped({id:BlockID.compressor,count:1,data:0},["a a","bdb","aca"],["a",ItemID.plateIron,0,"b",ItemID.electricPiston,0,"c",ItemID.circuit,0,"d",BlockID.machineCasing,0]);
 });
 
 var GuiCompressor = new UI.StandartWindow({
@@ -55,8 +46,7 @@ ETMachine.registerMachine(BlockID.compressor,{
     },
     
     tick:function(){
-        var input = this.container.getSlot("slotInput");
-        var recipe = ETRecipe.getMachineRecipeOutput("Compressor",input.id,input.count,input.data);
+        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getMachineRecipeOutput("Compressor",input.id,input.data);
         
         if(recipe && this.data.energy >= this.data.energy_consumption){
             this.data.energy -= this.data.energy_consumption;

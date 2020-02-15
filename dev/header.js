@@ -17,8 +17,6 @@ function random(min,max){
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-Player.getSneaking = function(){
-    return Entity.getSneaking(Player.get());
-}
-
 var directions = [[-1,0,0],[1,0,0],[0,-1,0],[0,1,0],[0,0,-1],[0,0,1]];
+
+LiquidRegistry.registerLiquid("uranium","Uranium","liquid_uranium");

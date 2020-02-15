@@ -72,47 +72,39 @@ var ETMachine = {
         ICRender.getGroup("et-wire").add(id,-1);
 
         if(state.defaultValues){
+            state.defaultValues.tier = state.defaultValues.tier || 1;
             state.defaultValues.energy = 0;
             state.defaultValues.voltage = 0;
-            state.defaultValues.voltageLast = 0;
+            state.defaultValues.last_voltage = 0;
+            state.defaultValues.energy_storage = state.defaultValues.energy_storage || 16384;
 		} else {
 			state.defaultValues = {
+                tier:1,
                 energy:0,
                 voltage:0,
-                voltageLast:0
+                last_voltage:0,
+                energy_storage:16384
 			}
         }
         
-        state.getMaxVoltage = function(){
-            return 8 << this.getTier() * 2;
-        }
-
-        state.getTier = function(){
-            return this.data.tier?this.data.tier:1;
-        }
-
-        state.getEnergyStorage = function(){
-            return this.data.energyStorage?this.data.energyStorage:16384;
-        }
+        state.getTier = function(){return this.data.tier;}
+        state.getMaxVoltage = function(){return 8 << this.getTier() * 2;}
+        state.getEnergyStorage = function(){return this.data.energy_storage;}
 
         state.energyTick = state.energyTick || function(){
-            this.data.voltageLast = this.data.voltage;
+            this.data.last_voltage = this.data.voltage;
             this.data.voltage = 0;
         }
 
+        ETTool.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
         this.registerPrototype(id,state);
 
         EnergyTileRegistry.addEnergyTypeForId(id,EU);
     },
 
     registerGenerator:function(id,state){
-        state.isEnergySource = function(){
-            return true;
-        }
-
-        state.canReceiveEnergy = function(){
-            return false;
-        }
+        state.isEnergySource = function(){return true;}
+        state.canReceiveEnergy = function(){return false;}
 
         state.energyTick = state.energyTick || this.energyOutput;
 
@@ -120,13 +112,10 @@ var ETMachine = {
     },
 
     registerEnergyStorage:function(id,state){
-        state.isEnergySource = function(){
-			return true;
-        }
-        
-        state.energyReceive = state.energyReceive || this.energyReceive;
+        state.isEnergySource = function(){return true;}
         
         state.energyTick = state.energyTick || this.energyOutput;
+        state.energyReceive = state.energyReceive || this.energyReceive;
         
         this.registerMachine(id,state,EU);
     },
@@ -151,7 +140,7 @@ var ETMachine = {
     },
 
     energyOutput:function(type,src){
-        this.data.voltageLast = this.data.voltage;
+        this.data.last_voltage = this.data.voltage;
         this.data.voltage = 0;
 
 		var output = this.getMaxVoltage();
@@ -164,22 +153,20 @@ var ETMachine = {
         Block.registerDropFunction(name,function(coords,id,data,level){
             BlockRenderer.unmapAtCoords(coords.x,coords.y,coords.z);
             var item = Player.getCarriedItem();
-            if(Player.getSneaking()){
+            if(getPlayerSneaking){
                 if(ETTool.isTool(item.id,"Wrench")){
                     ToolAPI.breakCarriedTool(8);
                     World.setBlock(coords.x,coords.y,coords.z,0);
                     return [[id,1,data]];
                 }
             }
-            if(level >= ToolAPI.getBlockDestroyLevel(id)){
-                return [[dropID,1,dropData?dropData:0]];
-            }
+            if(level >= ToolAPI.getBlockDestroyLevel(id)){return [[dropID,1,dropData || 0]];}
             return [];
         });
 
         Callback.addCallback("DestroyBlockStart",function(coords,block){
             var item = Player.getCarriedItem();
-            if(Player.getSneaking() && block.id == BlockID[name] && ETTool.isTool(item.id,"Wrench")){
+            if(getPlayerSneaking && block.id == BlockID[name] && ETTool.isTool(item.id,"Wrench")){
                 Block.setTempDestroyTime(block.id,0);
             }
         });

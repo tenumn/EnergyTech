@@ -1,0 +1,1 @@
+CreateTool("Tin",ItemID.ingotTin,{durability:192,level:2,efficiency:6,damage:2,enchantability:8});

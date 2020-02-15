@@ -1,5 +1,5 @@
 ETRecipe.addPlateRecipe = function(output,input){
-    ETRecipe.addHammerRecipe(output,[{id:input[0].id,data:input[0].data}]);
+    ETRecipe.addHammerRecipe(output,input);
     ETRecipe.addCompressorRecipe(output,{id:input[0].id,count:1,data:input[0].data});
 }
 
@@ -28,12 +28,12 @@ IDRegistry.genItemID("plateLeadAntimony");
 Item.createItem("plateLeadAntimony","Lead-Antimony Plate",{name:"lead_antimony_plate"});
 
 Callback.addCallback("PreLoaded",function(){
-    ETRecipe.addPlateRecipe({id:ItemID.plateCopper      ,count:1,data:0},[{id:ItemID.ingotCopper      ,data:0}]);
-    ETRecipe.addPlateRecipe({id:ItemID.plateTin         ,count:1,data:0},[{id:ItemID.ingotTin         ,data:0}]);
-    ETRecipe.addPlateRecipe({id:ItemID.plateIron        ,count:1,data:0},[{id:265                     ,data:0}]);
-    ETRecipe.addPlateRecipe({id:ItemID.plateSteel       ,count:1,data:0},[{id:ItemID.ingotSteel       ,data:0}]);
-    ETRecipe.addPlateRecipe({id:ItemID.plateGold        ,count:1,data:0},[{id:266                     ,data:0}]);
-    ETRecipe.addPlateRecipe({id:ItemID.plateCarbon      ,count:1,data:0},[{id:BlockID.blockCarbon     ,data:0}]);
-    ETRecipe.addPlateRecipe({id:ItemID.plateTungsten    ,count:1,data:0},[{id:BlockID.blockTungsten   ,data:0}]);
-    ETRecipe.addPlateRecipe({id:ItemID.plateLeadAntimony,count:1,data:0},[{id:ItemID.ingotLeadAntimony,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateCopper      ,count:1,data:0},[{id:ItemID.ingotCopper      ,data:0},{id:ItemID.ingotCopper      ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateTin         ,count:1,data:0},[{id:ItemID.ingotTin         ,data:0},{id:ItemID.ingotTin         ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateIron        ,count:1,data:0},[{id:265                     ,data:0},{id:265                     ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateSteel       ,count:1,data:0},[{id:ItemID.ingotSteel       ,data:0},{id:ItemID.ingotSteel       ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateGold        ,count:1,data:0},[{id:266                     ,data:0},{id:266                     ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateCarbon      ,count:1,data:0},[{id:ItemID.dustCarbon       ,data:0},{id:ItemID.dustCarbon       ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateTungsten    ,count:1,data:0},[{id:ItemID.ingotTungsten    ,data:0},{id:ItemID.ingotTungsten    ,data:0}]);
+    ETRecipe.addPlateRecipe({id:ItemID.plateLeadAntimony,count:1,data:0},[{id:ItemID.ingotLeadAntimony,data:0},{id:ItemID.ingotLeadAntimony,data:0}]);
 });

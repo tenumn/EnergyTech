@@ -13,3 +13,5 @@ ModAPI.registerAPI("ETech",{
 		return eval(command);
 	}
 });
+
+Logger.Log("ETech Shared","API");

@@ -18,8 +18,8 @@
         },
         "tetrahedrite":{
             "enabled":true,
-            "count":16,
-            "size":8,
+            "count":8,
+            "size":4,
             "minHeight":0,
             "maxHeight":64
         },
@@ -35,7 +35,7 @@
             "count":16,
             "size":8,
             "minHeight":0,
-            "maxHeight":64
+            "maxHeight":32
         },
         "lithium":{
             "enabled":true,
@@ -55,6 +55,20 @@
             "enabled":true,
             "count":16,
             "size":8,
+            "minHeight":0,
+            "maxHeight":64
+        },
+        "antimony":{
+            "enabled":false,
+            "count":4,
+            "size":2,
+            "minHeight":0,
+            "maxHeight":16
+        },
+        "uranium":{
+            "enabled":false,
+            "count":4,
+            "size":2,
             "minHeight":0,
             "maxHeight":64
         }
