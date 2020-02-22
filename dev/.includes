@@ -9,7 +9,8 @@ core/api/upgrade.js
 
 block/block.js
 block/cover.js
-block/drawer.js
+block/crude_blast_furnace.js
+block/glass_tank.js
 block/machine_casing.js
 block/ore.js
 
@@ -39,7 +40,6 @@ item/tool/wire.js
 machine/battery.js
 machine/centrifuge.js
 machine/compressor.js
-machine/crude_blast_furnace.js
 machine/crusher.js
 machine/cutting.js
 machine/electric_furnace.js
