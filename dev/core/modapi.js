@@ -4,6 +4,7 @@ ModAPI.registerAPI("ETech",{
     Renderer:TileRenderer,
 
     // api
+    Upgrade:ETUpgrade,
     Machine:ETMachine,
     Reactor:ETReactor,
     Recipe:ETRecipe,

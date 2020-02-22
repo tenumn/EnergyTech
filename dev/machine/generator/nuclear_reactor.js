@@ -6,17 +6,7 @@ Block.createBlock("nuclearReactor",[
 
 ETMachine.setDrop("nuclearReactor",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.nuclearReactor,count:1,data:0},[
-        "aba",
-        "cdc",
-        "aea"
-    ],[
-        "a",ItemID.plateLead,0,
-        "b",ItemID.electricPiston,0,
-        "c",ItemID.circuit,0,
-        "d",BlockID.fireGenerator,0,
-        "e",ItemID.plateLapis,0
-    ]);
+	Recipes.addShaped({id:BlockID.nuclearReactor,count:1,data:0},["aba","cdc","aea"],["a",ItemID.plateLead,0,"b",ItemID.electricPiston,0,"c",ItemID.circuit,0,"d",BlockID.fireGenerator,0,"e",ItemID.plateLapis,0]);
 });
 
 var GuiNuclearReactor = new UI.StandartWindow({
@@ -152,6 +142,10 @@ Block.createBlock("heatSink",[
     {name:"Heat Sink",texture:[["heat_sink",0]],inCreative:true}
 ],"opaque");
 
+Callback.addCallback("PreLoaded",function(){
+	Recipes.addShaped({id:BlockID.heatSink,count:1,data:0},["aba","bcb","aba"],["a",ItemID.stickIron,0,"b",ItemID.plateIron,0,"c",ItemID.electricMotor,0]);
+});
+
 ETReactor.registerModule(BlockID.heatSink,function(id,data,coords){
     let heat = 3,coolant = 3;
     for(let index in directions){
@@ -198,6 +192,10 @@ IDRegistry.genBlockID("neutronReflector");
 Block.createBlock("neutronReflector",[
     {name:"Neutron Reflector",texture:[["neutron_reflector",0]],inCreative:true}
 ],"opaque");
+
+Callback.addCallback("PreLoaded",function(){
+	Recipes.addShaped({id:BlockID.neutronReflector,count:1,data:0},["aba","bcb","aba"],["a",ItemID.dustTin,0,"b",ItemID.dustCarbon,0,"c",ItemID.plateCopper,0]);
+});
 
 ETReactor.registerModule(BlockID.neutronReflector,function(id,data,coords){
     let fuel = 0;

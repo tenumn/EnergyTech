@@ -97,8 +97,8 @@ var ETMachine = {
         }
 
         ETTool.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
+        
         this.registerPrototype(id,state);
-
         EnergyTileRegistry.addEnergyTypeForId(id,EU);
     },
 

@@ -47,4 +47,4 @@ ETMachine.registerGenerator(BlockID.solarGenerator,{
 	},
 	
 	getGuiScreen:function(){return GuiSolarGenerator;}
-});
+});	

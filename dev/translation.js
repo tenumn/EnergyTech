@@ -8,7 +8,12 @@ Translation.addTranslation("Lithium Block",{zh_CN:"锂块"});
 Translation.addTranslation("Carbon Block",{zh_CN:"碳块"});
 Translation.addTranslation("Tungsten Block",{zh_CN:"钨块"});
 Translation.addTranslation("Uranium Block",{zh_CN:"铀块"});
+Translation.addTranslation("Silver Block",{zh_CN:"银块"});
+Translation.addTranslation("Tetrahedrite Block",{zh_CN:"黝铜块"});
 Translation.addTranslation("Lead-Antimony Alloy Block",{zh_CN:"铅锑合金块"});
+
+Translation.addTranslation("Energy Display Cover",{zh_CN:"能量显示面板"});
+Translation.addTranslation("Progress Display Cover",{zh_CN:"进度显示面板"});
 
 Translation.addTranslation("Basic Machine Casing",{zh_CN:"基础机器外壳"});
 Translation.addTranslation("Advanced Machine Casing",{zh_CN:"高级机器外壳"});
@@ -47,6 +52,7 @@ Translation.addTranslation("Crushed Carbon Ore",{zh_CN:"粉碎碳矿石"});
 Translation.addTranslation("Crushed Tungsten Ore",{zh_CN:"粉碎钨矿石"});
 Translation.addTranslation("Crushed Uranium Ore",{zh_CN:"粉碎铀矿石"});
 Translation.addTranslation("Crushed Silver Ore",{zh_CN:"粉碎银矿石"});
+Translation.addTranslation("Crushed Tetrahedrite Ore",{zh_CN:"粉碎黝铜矿石"});
 
 Translation.addTranslation("Purified Crushed Copper Ore",{zh_CN:"纯净的粉碎铜矿石"});
 Translation.addTranslation("Purified Crushed Tin Ore",{zh_CN:"纯净的粉碎锡矿石"});
@@ -59,6 +65,7 @@ Translation.addTranslation("Purified Crushed Carbon Ore",{zh_CN:"纯净的粉碎
 Translation.addTranslation("Purified Crushed Tungsten Ore",{zh_CN:"纯净的粉碎钨矿石"});
 Translation.addTranslation("Purified Crushed Uranium Ore",{zh_CN:"纯净的粉碎铀矿石"});
 Translation.addTranslation("Purified Crushed Silver Ore",{zh_CN:"纯净的粉碎银矿石"});
+Translation.addTranslation("Purified Crushed Tetrahedrite Ore",{zh_CN:"纯净的粉碎黝铜矿石"});
 
 Translation.addTranslation("Impure Copper Dust",{zh_CN:"含杂铜粉"});
 Translation.addTranslation("Impure Tin Dust",{zh_CN:"含杂锡粉"});
@@ -71,6 +78,7 @@ Translation.addTranslation("Impure Carbon Dust",{zh_CN:"含杂碳粉"});
 Translation.addTranslation("Impure Tungsten Dust",{zh_CN:"含杂钨粉"});
 Translation.addTranslation("Impure Uranium Dust",{zh_CN:"含杂铀粉"});
 Translation.addTranslation("Impure Silver Dust",{zh_CN:"含杂银粉"});
+Translation.addTranslation("Impure Tetrahedrite Dust",{zh_CN:"含杂黝铜粉"});
 
 Translation.addTranslation("Stone Dust",{zh_CN:"石粉"});
 Translation.addTranslation("Copper Dust",{zh_CN:"铜粉"});
@@ -85,6 +93,7 @@ Translation.addTranslation("Carbon Dust",{zh_CN:"碳粉"});
 Translation.addTranslation("Tungsten Dust",{zh_CN:"钨粉"});
 Translation.addTranslation("Uranium Dust",{zh_CN:"铀粉"});
 Translation.addTranslation("Silver Dust",{zh_CN:"银粉"});
+Translation.addTranslation("Tetrahedrite Dust",{zh_CN:"黝铜粉"});
 Translation.addTranslation("Lead-Antimony Alloy Dust",{zh_CN:"铅锑合金粉"});
 
 Translation.addTranslation("Small Pile of Stone Dust",{zh_CN:"小堆石粉"});
@@ -100,10 +109,12 @@ Translation.addTranslation("Small Pile of Carbon Dust",{zh_CN:"小堆碳粉"});
 Translation.addTranslation("Small Pile of Tungsten Dust",{zh_CN:"小堆钨粉"});
 Translation.addTranslation("Small Pile of Uranium Dust",{zh_CN:"小堆铀粉"});
 Translation.addTranslation("Small Pile of Silver Dust",{zh_CN:"小堆银粉"});
+Translation.addTranslation("Small Pile of Tetrahedrite Dust",{zh_CN:"小堆黝铜粉"});
 Translation.addTranslation("Small Pile of Lead-Antimony Alloy Dust",{zh_CN:"小堆铅锑合金粉"});
 
 Translation.addTranslation("Electric Motor" ,{zh_CN:"电动马达"});
 Translation.addTranslation("Electric Piston",{zh_CN:"电动活塞"});
+Translation.addTranslation("Vacuum Tube",{zh_CN:"真空管"});
 
 Translation.addTranslation("Iron Gear",{zh_CN:"铁齿轮"});
 Translation.addTranslation("Steel Gear",{zh_CN:"钢齿轮"});
@@ -118,6 +129,7 @@ Translation.addTranslation("Lithium Ingot",{zh_CN:"锂锭"});
 Translation.addTranslation("Tungsten Ingot",{zh_CN:"钨锭"});
 Translation.addTranslation("Uranium Ingot",{zh_CN:"铀锭"});
 Translation.addTranslation("Silver Ingot",{zh_CN:"银锭"});
+Translation.addTranslation("Tetrahedrite Ingot",{zh_CN:"黝铜锭"});
 Translation.addTranslation("Lead-Antimony Alloy Ingot",{zh_CN:"铅锑合金锭"});
 
 Translation.addTranslation("Lithium-6",{zh_CN:"锂-6"});
@@ -125,15 +137,29 @@ Translation.addTranslation("Lithium-7",{zh_CN:"锂-7"});
 Translation.addTranslation("Uranium-235",{zh_CN:"铀-235"});
 Translation.addTranslation("Uranium-238",{zh_CN:"铀-238"});
 
+Translation.addTranslation("Small Pile of Lithium-6",{zh_CN:"小堆锂-6"});
+Translation.addTranslation("Small Pile of Lithium-7",{zh_CN:"小堆锂-7"});
+Translation.addTranslation("Small Pile of Uranium-235",{zh_CN:"小堆铀-235"});
+Translation.addTranslation("Small Pile of Uranium-238",{zh_CN:"小堆铀-238"});
+
+Translation.addTranslation("Iron Part",{zh_CN:"铁制零件"});
+Translation.addTranslation("Tin Part",{zh_CN:"锡制零件"});
+Translation.addTranslation("Copper Part",{zh_CN:"铜制零件"});
+Translation.addTranslation("Gold Part",{zh_CN:"金制零件"});
+Translation.addTranslation("Steel Part",{zh_CN:"钢制零件"});
+
 Translation.addTranslation("Tin Plate",{zh_CN:"锡板"});
 Translation.addTranslation("Iron Plate",{zh_CN:"铁板"});
 Translation.addTranslation("Gold Plate",{zh_CN:"金板"});
+Translation.addTranslation("Carbon Plate",{zh_CN:"碳板"});
 Translation.addTranslation("Steel Plate",{zh_CN:"钢板"});
 Translation.addTranslation("Copper Plate",{zh_CN:"铜板"});
 Translation.addTranslation("Tungsten Plate",{zh_CN:"钨板"});
 Translation.addTranslation("Lapis Plate",{zh_CN:"青金石板"});
 Translation.addTranslation("Lead Plate",{zh_CN:"铅板"});
 Translation.addTranslation("Lead-Antimony Alloy Plate",{zh_CN:"铅锑合金板"});
+
+Translation.addTranslation("Iron Ring",{zh_CN:"铁环"});
 
 Translation.addTranslation("Copper Stick",{zh_CN:"铜棍"});
 Translation.addTranslation("Tin Stick",{zh_CN:"锡棍"});
@@ -159,6 +185,7 @@ Translation.addTranslation("Iron Wrench",{zh_CN:"铁扳手"});
 Translation.addTranslation("Iron Hammer",{zh_CN:"铁锤"});
 Translation.addTranslation("Iron Cutter",{zh_CN:"铁剪线钳"});
 Translation.addTranslation("Iron Mortar",{zh_CN:"铁研钵"});
+Translation.addTranslation("Iron File",{zh_CN:"铁锉刀"});
 
 Translation.addTranslation("Lead Sword",{zh_CN:"铅剑"});
 Translation.addTranslation("Lead Shovel",{zh_CN:"铅铲"});
@@ -166,11 +193,23 @@ Translation.addTranslation("Lead Pickaxe",{zh_CN:"铅镐"});
 Translation.addTranslation("Lead Axe",{zh_CN:"铅斧"});
 Translation.addTranslation("Lead Hoe",{zh_CN:"铅锄"});
 
+Translation.addTranslation("Steel Sword",{zh_CN:"钢剑"});
+Translation.addTranslation("Steel Shovel",{zh_CN:"钢铲"});
+Translation.addTranslation("Steel Pickaxe",{zh_CN:"钢镐"});
+Translation.addTranslation("Steel Axe",{zh_CN:"钢斧"});
+Translation.addTranslation("Steel Hoe",{zh_CN:"钢锄"});
+
 Translation.addTranslation("Tin Sword",{zh_CN:"锡剑"});
 Translation.addTranslation("Tin Shovel",{zh_CN:"锡铲"});
 Translation.addTranslation("Tin Pickaxe",{zh_CN:"锡镐"});
 Translation.addTranslation("Tin Axe",{zh_CN:"锡斧"});
 Translation.addTranslation("Tin Hoe",{zh_CN:"锡锄"});
+
+Translation.addTranslation("Tungsten Sword",{zh_CN:"钨剑"});
+Translation.addTranslation("Tungsten Shovel",{zh_CN:"钨铲"});
+Translation.addTranslation("Tungsten Pickaxe",{zh_CN:"钨镐"});
+Translation.addTranslation("Tungsten Axe",{zh_CN:"钨斧"});
+Translation.addTranslation("Tungsten Hoe",{zh_CN:"钨锄"});
 
 Translation.addTranslation("Tin Coil",{zh_CN:"锡线圈"});
 Translation.addTranslation("Copper Coil",{zh_CN:"铜线圈"});
@@ -182,8 +221,15 @@ Translation.addTranslation("Crude Blast Furnace",{zh_CN:"粗制高炉"});
 Translation.addTranslation("Centrifuge",{zh_CN:"离心机"});
 Translation.addTranslation("Compressor",{zh_CN:"压缩机"});
 Translation.addTranslation("Crusher",{zh_CN:"破碎机"});
+Translation.addTranslation("Cutting",{zh_CN:"切割机"});
 Translation.addTranslation("Electric Furnace",{zh_CN:"电炉"});
+Translation.addTranslation("Farming Station",{zh_CN:"种植站"});
 Translation.addTranslation("Macerator",{zh_CN:"打粉机"});
+Translation.addTranslation("Ore Washer",{zh_CN:"洗矿机"});
+Translation.addTranslation("LV Transformer",{zh_CN:"低压变压器"});
+Translation.addTranslation("MV Transformer",{zh_CN:"中压变压器"});
+Translation.addTranslation("HV Transformer",{zh_CN:"高压变压器"});
+Translation.addTranslation("EV Transformer",{zh_CN:"超高压变压器"});
 
 Translation.addTranslation("Heat: ",{zh_CN:"热量: "});
 Translation.addTranslation("Fuel: ",{zh_CN:"燃料: "});

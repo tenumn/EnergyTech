@@ -41,6 +41,13 @@ var ETRecipe = {
 		}
 	},
 
+	addFileRecipe:function(output,material,damage){
+		var file = ETTool.getAllTool("File");
+		for(let i = 0;i < file.length;i++){
+			this.addShapeless(output,material,[file[i],damage?damage:1]);
+		}
+	},
+
 	addCutterRecipe:function(output,material,damage){
 		var cutter = ETTool.getAllTool("Cutter");
 		for(let i = 0;i < cutter.length;i++){
@@ -107,5 +114,42 @@ var ETRecipe = {
 		} else {
 			this.getRecipe("Centrifuge")[input.id + ":" + input.data] = output;
 		}
+	},
+
+	addCuttingRecipe:function(output,input){
+		if(!input.data){
+			this.getRecipe("Cutting")[input.id] = output;
+		} else {
+			this.getRecipe("Cutting")[input.id + ":" + input.data] = output;
+		}
+	},
+
+	addOreWasherRecipe:function(output,input){
+		if(!input.data){
+			this.getRecipe("OreWasher")[input.id] = output;
+		} else {
+			this.getRecipe("OreWasher")[input.id + ":" + input.data] = output;
+		}
+	},
+
+	addFarmingStationRecipe:function(output,input){
+		if(!input.data){
+			this.getRecipe("FarmingStation")[input.id] = output;
+		} else {
+			this.getRecipe("FarmingStation")[input.id + ":" + input.data] = output;
+		}
 	}
 }
+
+// 小麦
+ETRecipe.addFarmingStationRecipe([{id:296,count:1,data:0},{id:295,count:1,data:0}],{id:295,data:0});
+// 南瓜
+ETRecipe.addFarmingStationRecipe([{id:86,count:1,data:0}],{id:361,data:0});
+// 西瓜
+ETRecipe.addFarmingStationRecipe([{id:103,count:1,data:0}],{id:362,data:0});
+// 胡萝卜
+ETRecipe.addFarmingStationRecipe([{id:391,count:1,data:0}],{id:391,data:0});
+// 马铃薯
+ETRecipe.addFarmingStationRecipe([{id:392,count:1,data:0},{id:394,count:1,data:0}],{id:392,data:0});
+// 甜菜
+ETRecipe.addFarmingStationRecipe([{id:434,count:1,data:0},{id:435,count:1,data:0}],{id:435,data:0});

@@ -2,8 +2,9 @@ IDRegistry.genItemID("lithiumBattery");
 Item.createItem("lithiumBattery","Lithium Battery",{name:"lithium_battery"},{stack:1,isTech:true});
 ChargeItemRegistry.registerItem(ItemID.lithiumBattery,"Eu",16384,16,"storage",true,true);
 
+ETTool.addTooltip(ItemID.lithiumBattery,Translation.translate("Power Tier: ") + 1);
 Item.registerNameOverrideFunction(ItemID.lithiumBattery,function(item,name){
-    return name + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
+    return name + ETTool.getTooltip(item.id) + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
 });
 
 Item.registerIconOverrideFunction(ItemID.lithiumBattery,function(item,name){

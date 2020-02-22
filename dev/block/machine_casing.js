@@ -7,9 +7,6 @@ ToolAPI.registerBlockMaterial(BlockID.machineCasing,"stone",1);
 Block.setDestroyTime(BlockID.machineCasing,3);
 
 Callback.addCallback("PreLoaded",function(){
-    var hammer = ETTool.getAllTool("Hammer");
-    for(let i = 0;i < hammer.length;i++){
-        ETRecipe.addShapedRecipe({id:BlockID.machineCasing,count:1,data:0},["abb","bcb","bba"],["a",ItemID.stickIron ,0,"b",ItemID.plateIron ,0,"c",hammer[i],-1],{4:1});
-        ETRecipe.addShapedRecipe({id:BlockID.machineCasing,count:1,data:1},["abb","bcb","bba"],["a",ItemID.stickSteel,0,"b",ItemID.plateSteel,0,"c",hammer[i],-1],{4:1});
-    }
+    Recipes.addShaped({id:BlockID.machineCasing,count:1,data:0},["abb","bcb","bba"],["a",ItemID.stickIron ,0,"b",ItemID.plateIron ,0,"c",ItemID.gearIron ,0]);
+    Recipes.addShaped({id:BlockID.machineCasing,count:1,data:1},["abb","bcb","bba"],["a",ItemID.stickSteel,0,"b",ItemID.plateSteel,0,"c",ItemID.gearSteel,0]);
 });

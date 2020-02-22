@@ -27,7 +27,7 @@ var ETTool = {
     getTooltip:function(id){
         return this.tooltips[id];
     },
-
+    
     addTooltip:function(id,tooltip,colour){
         if(!colour){colour = "§7";}
         if(!this.getTooltip(id)){
@@ -53,6 +53,13 @@ CreateHammer = function(id,name,texture,damage){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
     ETTool.registerTool(ItemID[id],"Hammer");
+    Item.setMaxDamage(ItemID[id],damage);
+}
+
+CreateFile = function(id,name,texture,damage){
+    IDRegistry.genItemID(id);
+    Item.createItem(id,name,texture,{stack:1});
+    ETTool.registerTool(ItemID[id],"File");
     Item.setMaxDamage(ItemID[id],damage);
 }
 

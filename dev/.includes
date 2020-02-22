@@ -5,8 +5,11 @@ core/api/machine.js
 core/api/reactor.js
 core/api/recipe.js
 core/api/tool.js
+core/api/upgrade.js
 
 block/block.js
+block/cover.js
+block/drawer.js
 block/machine_casing.js
 block/ore.js
 
@@ -17,15 +20,20 @@ item/material/dust.js
 item/material/electric.js
 item/material/gear.js
 item/material/ingot.js
+item/material/part.js
 item/material/plate.js
+item/material/ring.js
 item/material/stick.js
 
+item/tool/antimony.js
 item/tool/battery.js
 item/tool/cell.js
 item/tool/copper.js
 item/tool/iron.js
 item/tool/lead.js
+item/tool/steel.js
 item/tool/tin.js
+item/tool/tungsten.js
 item/tool/wire.js
 
 machine/battery.js
@@ -33,8 +41,12 @@ machine/centrifuge.js
 machine/compressor.js
 machine/crude_blast_furnace.js
 machine/crusher.js
+machine/cutting.js
 machine/electric_furnace.js
+machine/farming_station.js
 machine/macerator.js
+machine/ore_washer.js
+machine/transformer.js
 
 machine/generator/fire_generator.js
 machine/generator/nuclear_reactor.js

@@ -8,9 +8,11 @@ for(let i = 0;i < 9;i++){
     TileRenderer.registerRenderModel(BlockID.lithiumBatteryBox,i,[["battery_bottom",0],["battery_top",0],["lithium_battery",i],["lithium_battery",i],["lithium_battery",i],["lithium_battery",i]]);
 }
 
+ETTool.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy: ") + 65536 + "Eu");
+
 ETMachine.setDrop("lithiumBatteryBox",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.lithiumBatteryBox,count:1,data:0},["aba","bcb","aba"],["a",ItemID.plateIron,0,"b",ItemID.lithiumBattery,0,"c",ItemID.coilTin,0]);
+	Recipes.addShaped({id:BlockID.lithiumBatteryBox,count:1,data:0},["aba","bcb","aba"],["a",ItemID.partIron,0,"b",ItemID.lithiumBattery,0,"c",ItemID.coilTin,0]);
 });
 
 var GuiBattery = new UI.StandartWindow({

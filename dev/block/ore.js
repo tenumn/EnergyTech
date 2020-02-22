@@ -24,16 +24,16 @@ CreateOre = function(id,name,texture,level,data){
     }
 }
 
-CreateOre("oreCopper"      ,"Copper Ore"      ,[["copper_ore",0]]      ,2,"copper"      );
+CreateOre("oreCopper"      ,"Copper Ore"      ,[["copper_ore"      ,0]],2,"copper"      );
 CreateOre("oreTetrahedrite","Tetrahedrite Ore",[["tetrahedrite_ore",0]],2,"tetrahedrite");
-CreateOre("oreTin"         ,"Tin Ore"         ,[["tin_ore",0]]         ,2,"tin"         );
-CreateOre("oreLead"        ,"Lead Ore"        ,[["lead_ore",0]]        ,2,"lead"        );
-CreateOre("oreLithium"     ,"Lithium Ore"     ,[["lithium_ore",0]]     ,2,"lithium"     );
-CreateOre("oreGraphite"    ,"Graphite Ore"    ,[["graphite_ore",0]]    ,2,"graphite"    );
-CreateOre("oreTungsten"    ,"Tungsten Ore"    ,[["tungsten_ore",0]]    ,2,"tungsten"    );
-CreateOre("oreAntimony"    ,"Antimony Ore"    ,[["antimony_ore",0]]    ,2,"antimony"    );
-CreateOre("oreUranium"     ,"Uranium Ore"     ,[["uranium_ore",0]]     ,2,"uranium"     );
-CreateOre("oreSilver"      ,"Silver Ore"      ,[["silver_ore",0]]      ,2,"silver"      );
+CreateOre("oreTin"         ,"Tin Ore"         ,[["tin_ore"         ,0]],2,"tin"         );
+CreateOre("oreLead"        ,"Lead Ore"        ,[["lead_ore"        ,0]],2,"lead"        );
+CreateOre("oreLithium"     ,"Lithium Ore"     ,[["lithium_ore"     ,0]],2,"lithium"     );
+CreateOre("oreGraphite"    ,"Graphite Ore"    ,[["graphite_ore"    ,0]],2,"graphite"    );
+CreateOre("oreTungsten"    ,"Tungsten Ore"    ,[["tungsten_ore"    ,0]],2,"tungsten"    );
+CreateOre("oreAntimony"    ,"Antimony Ore"    ,[["antimony_ore"    ,0]],2,"antimony"    );
+CreateOre("oreUranium"     ,"Uranium Ore"     ,[["uranium_ore"     ,0]],2,"uranium"     );
+CreateOre("oreSilver"      ,"Silver Ore"      ,[["silver_ore"      ,0]],2,"silver"      );
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreCopper      ,ItemID.ingotCopper  );

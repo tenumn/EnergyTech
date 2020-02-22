@@ -3,6 +3,7 @@ IMPORT("ToolLib");
 IMPORT("EnergyNet");
 IMPORT("ChargeItem");
 IMPORT("TileRender");
+IMPORT("StorageInterface");
 
 // API
 var GUI_SCALE = 3.25;
@@ -17,7 +18,7 @@ function random(min,max){
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var directions = [[-1,0,0],[1,0,0],[0,-1,0],[0,1,0],[0,0,-1],[0,0,1]];
+var directions = [[0,1,0],[0,-1,0],[0,0,1],[0,0,-1],[1,0,0],[-1,0,0]];
 
 LiquidRegistry.registerLiquid("lithium","Lithium","liquid_lithium");
 LiquidRegistry.registerLiquid("uranium","Uranium","liquid_uranium");

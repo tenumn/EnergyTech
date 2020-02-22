@@ -10,7 +10,7 @@ TileRenderer.registerRotationModel(BlockID.fireGenerator,4,[["machine_bottom",0]
 
 ETMachine.setDrop("fireGenerator",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},["a","b","c"],["a",ItemID.lithiumBattery,0,"b",BlockID.machineCasing,0,"c",61,0]);
+	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},["dad","dbd","ece"],["a",ItemID.lithiumBattery,0,"b",BlockID.machineCasing,0,"c",61,0,"d",ItemID.stickIron,0,"e",ItemID.partIron,0]);
 });
 
 var GuiFireGenerator = new UI.StandartWindow({
@@ -26,6 +26,10 @@ var GuiFireGenerator = new UI.StandartWindow({
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info_scale_small",scale:GUI_SCALE}
     ],
 	elements:{
+		"slotUpgrade1":{type:"slot",x:370,y:400,bitmap:"circuit_slot",isValid:ETUpgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:400,bitmap:"circuit_slot",isValid:ETUpgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:400,bitmap:"circuit_slot",isValid:ETUpgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:400,bitmap:"circuit_slot",isValid:ETUpgrade.isValidUpgrade},
 		"textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
 		"scaleBurn":{type:"scale",x:450 + GUI_SCALE * 3,y:225 + GUI_SCALE * 2,direction:1,value:0.5,bitmap:"fire_scale_1",scale:GUI_SCALE},
 		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Energy Output: ") + "0Eu"},
@@ -42,7 +46,15 @@ ETMachine.registerGenerator(BlockID.fireGenerator,{
 		isActive:false
 	},
 
-	tick:function(){
+	setDefaultValues: function(){
+		this.data.tier = this.defaultValues.tier;
+		this.data.energy_storage = this.defaultValues.energy_storage;
+	},
+	
+	tick: function(){
+		this.setDefaultValues();
+		ETUpgrade.executeUpgrades(this);
+		StorageInterface.checkHoppers(this);
 		EnergyOutput = Math.min((this.data.isActive?random(1,this.data.burn / 20):0),this.getMaxVoltage());
 
 		if(this.data.burn <= 0 && this.data.energy + EnergyOutput < this.getEnergyStorage()){
@@ -72,3 +84,11 @@ ETMachine.registerGenerator(BlockID.fireGenerator,{
 	getTransportSlots:function(){return {input:["slotFuel"]};}
 });
 TileRenderer.setRotationPlaceFunction(BlockID.fireGenerator);
+StorageInterface.createInterface(BlockID.fireGenerator,{
+	slots:{
+		"slotFuel":{input:true}
+	},
+	isValidInput:function(item){
+		return Recipes.getFuelBurnDuration(item.id,item.data) > 0;
+	}
+});

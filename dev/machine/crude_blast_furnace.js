@@ -49,21 +49,26 @@ ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
     },
     
     tick:function(){
+        StorageInterface.checkHoppers(this);
         var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("BlastFurnace",input.id,input.data);
         
         if(this.data.burn > 0){this.data.burn -= 1;}
 		if(this.data.burn == 0 && recipe){this.data.burn = this.data.burnMax = this.getFuel("slotFuel");}
 		
-		if(this.data.burn > 0 && recipe){
-            this.data.progress += 1 / 640;
-            this.setActive(true);
-            if(this.data.progress.toFixed(3) >= 1){
-                this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
-                this.container.validateAll();
-                this.data.progress = 0;
+        if(recipe){
+            if(this.data.burn > 0){
+                this.data.progress += 1 / 640;
+                this.setActive(true);
+                if(this.data.progress.toFixed(3) >= 1){
+                    this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
+                    this.container.validateAll();
+                    this.data.progress = 0;
+                }
+            } else {
+                this.setActive(false);
             }
-		} else if(this.data.progress > 0){
-            this.data.progress -= 1 / 640;
+        } else {
+            this.data.progress = 0;
             this.setActive(false);
         }
         
@@ -75,3 +80,12 @@ ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
     getTransportSlots:function(){return {input:["slotInput"],output:["slotOutput"]};}
 });
 TileRenderer.setRotationPlaceFunction(BlockID.crudeBlastFurnace);
+StorageInterface.createInterface(BlockID.crudeBlastFurnace,{
+	slots:{
+		"slotInput":{input:true},
+        "slotOutput":{output:true}
+	},
+	isValidInput:function(item){
+		return ETRecipe.getRecipeResult("BlastFurnace",item.id,item.data)?true:false;
+	}
+});

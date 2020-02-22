@@ -1,15 +1,17 @@
 ETMachine.wireIDs = {}
 
+Block.createSpecialType({
+    opaque:false,
+    destroytime:0.05
+},"wire");
+
 CreateWire = function(id,name,texture,volt,size){
     // Block
 	IDRegistry.genBlockID(id);
 	Block.createBlock(id, [
         {name:name,texture:[[texture.name,0]],inCreative:false},
         {name:name,texture:[[texture.name,1]],inCreative:false}
-	],Block.createSpecialType({
-        opaque:false,
-        destroytime:0.05
-    }));
+	],"wire");
 
     EU.registerWire(BlockID[id],volt);
     ETMachine.wireIDs[BlockID[id]] = true;
@@ -33,16 +35,17 @@ CreateWire = function(id,name,texture,volt,size){
     Item.registerUseFunction(id,function(coords,item,block){
         var place = coords;
         if(!isCanTileReplaced(block.id,block.data)){
-            place = coords.relative;
-            block = World.getBlock(place.x,place.y,place.z);
+            place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
             if(!isCanTileReplaced(block.id,block.data)){
                 return;
             }
         }
         World.setBlock(place.x,place.y,place.z,BlockID[id],0);
-        Player.setCarriedItem(item.id,item.count - 1,item.data);
         EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
+        Player.decreaseCarriedItem(1);
     });
+
+    
 
     Item.registerUseFunctionForID(171,function(coords,item,block){
         if(item.data == 15 && ETMachine.wireIDs[block.id] && block.data == 0){
@@ -64,7 +67,7 @@ ETRecipe.addWireRecipe = function(output,input){
     Recipes.addShaped(output,[" a ","aba"," a "],["a",input[0].id,input[0].data,"b",input[1].id,input[1].data]);
 }
 
-CreateWire("coilTin"   ,"Tin Coil"   ,{name:"tin_coil"   ,meta:0},power(1),2);
+CreateWire("coilTin"   ,"Tin Coil"   ,{name:"tin_coil"   ,meta:0},power(1),4);
 CreateWire("coilCopper","Copper Coil",{name:"copper_coil",meta:0},power(2),4);
 CreateWire("coilGold"  ,"Gold Coil"  ,{name:"gold_coil"  ,meta:0},power(3),6);
 CreateWire("coilSteel" ,"Steel Coil" ,{name:"steel_coil" ,meta:0},power(4),8);

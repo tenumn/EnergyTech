@@ -1,0 +1,1 @@
+CreateTool("Steel",ItemID.ingotSteel,{durability:512,level:3,efficiency:12,damage:2,enchantability:20});
