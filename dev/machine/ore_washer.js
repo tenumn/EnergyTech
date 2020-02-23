@@ -78,7 +78,7 @@ ETMachine.registerMachine(BlockID.oreWasher,{
 		this.renderer();
     },
     
-	tick: function(){
+	tick:function(){
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);

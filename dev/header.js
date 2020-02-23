@@ -1,5 +1,6 @@
 // lib
 IMPORT("ToolLib");
+IMPORT("SoundAPI");
 IMPORT("EnergyNet");
 IMPORT("ChargeItem");
 IMPORT("TileRender");

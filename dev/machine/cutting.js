@@ -69,7 +69,7 @@ ETMachine.registerMachine(BlockID.cutting,{
             if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
-                this.setActive(true);
+                this.setActive(true),this.playSound("machine/cutting.ogg");
                 this.renderer();
                 if(this.data.progress.toFixed(3) >= 1){
                     this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
@@ -77,11 +77,11 @@ ETMachine.registerMachine(BlockID.cutting,{
                     this.data.progress = 0;
                 }
             } else {
-                this.setActive(false);
+                this.setActive(false),this.stopSound();
             }
         } else {
             this.data.progress = 0;
-            this.setActive(false);
+            this.setActive(false),this.stopSound();
         }
 
         this.renderer();

@@ -29,6 +29,7 @@ var GuiFarmingStation = new UI.StandartWindow({
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info_scale_small",scale:GUI_SCALE}
     ],
     elements:{
+        "slotDirt":{type:"slot",x:350 + GUI_SCALE * 43,y:290,bitmap:"blank_slot",scale:GUI_SCALE},
         "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:200,bitmap:"blank_slot",scale:GUI_SCALE},
         "slotUpgrade1":{type:"slot",x:370,y:400,bitmap:"circuit_slot",isValid:ETUpgrade.isValidUpgrade},
 		"slotUpgrade2":{type:"slot",x:430,y:400,bitmap:"circuit_slot",isValid:ETUpgrade.isValidUpgrade},
@@ -66,17 +67,19 @@ ETMachine.registerMachine(BlockID.farmingStation,{
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
         var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("FarmingStation",input.id,input.data);
+        var dirt = this.container.getSlot("slotDirt")
         
-        if(recipe){
+        if(recipe && (recipe.dirt.id == -1 || recipe.dirt.id == dirt.id) && (recipe.dirt.data == -1 || recipe.dirt.data == dirt.data)){
             if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
                 this.setActive(true);
                 if(this.data.progress.toFixed(3) >= 1){
-                    if(recipe[0] && Math.random() > 1.00){this.setOutput("slotOutput1",recipe[0].id,random(recipe[0].count,recipe[0].count * 2),recipe[0].data);}
-                    if(recipe[1] && Math.random() > 0.75){this.setOutput("slotOutput2",recipe[1].id,random(recipe[1].count,recipe[1].count * 2),recipe[1].data);}
-                    if(recipe[2] && Math.random() > 0.50){this.setOutput("slotOutput3",recipe[2].id,random(recipe[2].count,recipe[2].count * 2),recipe[2].data);}
-                    if(recipe[3] && Math.random() > 0.25){this.setOutput("slotOutput3",recipe[3].id,random(recipe[3].count,recipe[3].count * 2),recipe[3].data);}
+                    if(recipe.output[0] && Math.random() <= 1.00){this.setOutput("slotOutput1",recipe.output[0].id,random(recipe.output[0].count,recipe.output[0].count * 2),recipe.output[0].data);}
+                    if(recipe.output[1] && Math.random() <= 0.75){this.setOutput("slotOutput2",recipe.output[1].id,random(recipe.output[1].count,recipe.output[1].count * 2),recipe.output[1].data);}
+                    if(recipe.output[2] && Math.random() <= 0.50){this.setOutput("slotOutput3",recipe.output[2].id,random(recipe.output[2].count,recipe.output[2].count * 2),recipe.output[2].data);}
+                    if(recipe.output[3] && Math.random() <= 0.25){this.setOutput("slotOutput3",recipe.output[3].id,random(recipe.output[3].count,recipe.output[3].count * 2),recipe.output[3].data);}
+                    if(Math.random() <= 0.25){dirt.count--;}
                     input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;
@@ -96,7 +99,7 @@ ETMachine.registerMachine(BlockID.farmingStation,{
     },
 
     renderer:function(){
-        var count = 2;
+        var count = 5;
         TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (Math.round(this.data.progress / 1 * count * 10) % count) + 4:0));
     },
 

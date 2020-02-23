@@ -64,18 +64,18 @@ ETMachine.registerMachine(BlockID.electricFurnace,{
             if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
-                this.setActive(true);
+                this.setActive(true),this.playSound("machine/electro_furnace.ogg");
                 if(this.data.progress.toFixed(3) >= 1){
                     this.setOutput("slotOutput",recipe.id,1,recipe.data),input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;
                 }
             } else {
-                this.setActive(false);
+                this.setActive(false),this.stopSound();
             }
         } else {
             this.data.progress = 0;
-            this.setActive(false);
+            this.setActive(false),this.stopSound();
         }
 
         if(this.data.progress < 0){this.data.progress = 0;}

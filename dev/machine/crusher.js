@@ -12,17 +12,7 @@ TileRenderer.registerRotationModel(BlockID.crusher,16,[["machine_bottom",0],["cr
 
 ETMachine.setDrop("crusher",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.crusher,count:1,data:0},[
-        "aba",
-        "aca",
-        "ded"
-    ],[
-        "a",ItemID.stickIron     ,0,
-        "b",ItemID.electricMotor ,0,
-        "c",ItemID.circuit       ,0,
-        "d",ItemID.plateIron     ,0,
-        "e",BlockID.machineCasing,0
-    ]);
+	Recipes.addShaped({id:BlockID.crusher,count:1,data:0},["aba","aca","ded"],["a",ItemID.stickIron,0,"b",ItemID.electricMotor,0,"c",ItemID.circuit,0,"d",ItemID.plateIron,0,"e",BlockID.machineCasing,0]);
 });
 
 var GuiCrusher = new UI.StandartWindow({

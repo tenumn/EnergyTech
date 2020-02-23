@@ -10,6 +10,19 @@ var ETMachine = {
 
         state.id = id;
 
+        state.playSound = state.playSound || function(name){
+            if((!this.__sound || !this.__sound.isPlaying()) && this.dimension == Player.getDimension()){
+                this.__sound = SoundAPI.playSoundAt(this,name,true,16);
+            }
+        }
+
+        state.stopSound = state.stopSound || function(){
+            if(this.__sound && this.__sound.isPlaying()){
+                this.__sound.stop();
+                this.__sound = null;
+            }
+        }
+
         if(state.defaultValues && state.defaultValues.isActive !== undefined){
 			state.renderer = state.renderer || function(){
 				TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4:0));
@@ -19,7 +32,7 @@ var ETMachine = {
 				if(this.data.isActive != isActive){
 					this.data.isActive = isActive;
 					this.renderer();
-				}
+                }
 			}
 
 			state.destroy = state.destroy || function(){
@@ -153,22 +166,22 @@ var ETMachine = {
         Block.registerDropFunction(name,function(coords,id,data,level){
             BlockRenderer.unmapAtCoords(coords.x,coords.y,coords.z);
             var item = Player.getCarriedItem();
-            if(getPlayerSneaking){
-                if(ETTool.isTool(item.id,"Wrench")){
-                    ToolAPI.breakCarriedTool(8);
-                    World.setBlock(coords.x,coords.y,coords.z,0);
-                    return [[id,1,data]];
-                }
+            if(ETTool.isTool(item.id,"Wrench")){
+                ToolAPI.breakCarriedTool(8);
+                World.setBlock(coords.x,coords.y,coords.z,0);
+                return [[id,1,data]];
             }
             if(level >= ToolAPI.getBlockDestroyLevel(id)){return [[dropID,1,dropData || 0]];}
             return [];
         });
-
-        Callback.addCallback("DestroyBlockStart",function(coords,block){
-            var item = Player.getCarriedItem();
-            if(getPlayerSneaking && block.id == BlockID[name] && ETTool.isTool(item.id,"Wrench")){
-                Block.setTempDestroyTime(block.id,0);
-            }
-        });
     }
 }
+
+Callback.addCallback("DestroyBlockStart",function(coords,block){
+    var item = Player.getCarriedItem();
+    if(ETMachine.isMachine(block.id) && ETTool.isTool(item.id,"Wrench")){
+        Block.setTempDestroyTime(block.id,0);
+        SoundAPI.playSound("tool/wrench.ogg");
+        ToolAPI.breakCarriedTool(2);
+    }
+});

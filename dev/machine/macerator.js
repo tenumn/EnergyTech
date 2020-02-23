@@ -1,4 +1,3 @@
-// [打粉机]Macerator
 IDRegistry.genBlockID("macerator");
 Block.createBlock("macerator",[
     {name:"Macerator",texture:[["machine_bottom",0],["macerator_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]],inCreative:true}
@@ -68,18 +67,18 @@ ETMachine.registerMachine(BlockID.macerator,{
             if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
-                this.setActive(true);
+                this.setActive(true),this.playSound("machine/macerator.ogg");
                 if(this.data.progress.toFixed(3) >= 1){
                     this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;
                 }
             } else {
-                this.setActive(false);
+                this.setActive(false),this.stopSound();
             }
         } else {
             this.data.progress = 0;
-            this.setActive(false);
+            this.setActive(false),this.stopSound();
         }
 
         this.renderer();

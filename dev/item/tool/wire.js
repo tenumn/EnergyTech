@@ -1,8 +1,12 @@
 ETMachine.wireIDs = {}
 
+ETMachine.isWire = function(id){
+    return ETMachine.wireIDs[id];
+}
+
 Block.createSpecialType({
     opaque:false,
-    destroytime:0.05
+    destroytime:1
 },"wire");
 
 CreateWire = function(id,name,texture,volt,size){
@@ -45,8 +49,6 @@ CreateWire = function(id,name,texture,volt,size){
         Player.decreaseCarriedItem(1);
     });
 
-    
-
     Item.registerUseFunctionForID(171,function(coords,item,block){
         if(item.data == 15 && ETMachine.wireIDs[block.id] && block.data == 0){
             Game.prevent();
@@ -54,14 +56,16 @@ CreateWire = function(id,name,texture,volt,size){
             Player.setCarriedItem(item.id,item.count - 1,item.data);
         }
     });
-
-    Callback.addCallback("DestroyBlockStart",function(coords,block){
-        var item = Player.getCarriedItem();
-        if(block.id == BlockID[id] && ETTool.isTool(item.id,"Wrench")){
-            Block.setTempDestroyTime(block.id,0);
-        }
-    });
 }
+
+Callback.addCallback("DestroyBlockStart",function(coords,block){
+    var item = Player.getCarriedItem();
+    if(ETMachine.isWire(block.id) && ETTool.isTool(item.id,"Cutter")){
+        Block.setTempDestroyTime(block.id,0);
+        SoundAPI.playSound("tool/wrench.ogg");
+        ToolAPI.breakCarriedTool(2);
+    }
+});
 
 ETRecipe.addWireRecipe = function(output,input){
     Recipes.addShaped(output,[" a ","aba"," a "],["a",input[0].id,input[0].data,"b",input[1].id,input[1].data]);

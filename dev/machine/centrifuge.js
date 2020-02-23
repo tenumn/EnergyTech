@@ -58,10 +58,11 @@ ETMachine.registerMachine(BlockID.centrifuge,{
 		this.data.work_time = this.defaultValues.work_time;
 	},
 	
-	tick: function(){
+	tick:function(){
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
+        
         var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Centrifuge",input.id,input.data);
         
         if(recipe){

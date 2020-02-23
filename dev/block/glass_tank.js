@@ -1,8 +1,12 @@
 var glass_tank = [];
 for(var i = 0;i < 16;i++){glass_tank.push({name:(i + 1) + "x Glass Tank",texture:[["glass",0]],inCreative:true});}
 
+Block.createSpecialType({
+    opaque:false
+},"glass_tank");
+
 IDRegistry.genBlockID("glassTank");
-Block.createBlock("glassTank",glass_tank);
+Block.createBlock("glassTank",glass_tank,"glass_tank");
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:BlockID.glassTank,count:1,data:0},["ABA","B B","ABA"],["A",102,0,"B",20,0]);

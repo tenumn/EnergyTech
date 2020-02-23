@@ -64,9 +64,9 @@ ETMachine.registerGenerator(BlockID.fireGenerator,{
 		if(this.data.burn > 0 && this.data.energy + EnergyOutput < this.getEnergyStorage()){
 			this.data.energy += EnergyOutput;
 			this.data.burn -= 1;
-			this.setActive(true);
+			this.setActive(true),this.playSound("generator/fire_generator.ogg");
 		} else {
-			this.setActive(false);
+			this.setActive(false),this.stopSound();
 		}
 
 		this.container.setScale("scaleBurn",Math.round(this.data.burn / this.data.burnMax * 14) / 14 || 0);

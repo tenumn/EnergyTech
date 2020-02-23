@@ -50,24 +50,25 @@ ETMachine.registerMachine(BlockID.compressor,{
         energy_consumption:4
     },
     
-	setDefaultValues: function(){
+	setDefaultValues:function(){
 		this.data.tier = this.defaultValues.tier;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;
 		this.data.work_time = this.defaultValues.work_time;
 	},
-	
-	tick: function(){
+
+	tick:function(){        
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
+
         var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Compressor",input.id,input.data);
         
         if(recipe){
             if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
-                this.setActive(true);
+                this.setActive(true),this.playSound("machine/compressor.ogg");
                 this.renderer();
                 if(this.data.progress.toFixed(3) >= 1){
                     this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
@@ -75,11 +76,11 @@ ETMachine.registerMachine(BlockID.compressor,{
                     this.data.progress = 0;
                 }
             } else {
-                this.setActive(false);
+                this.setActive(false),this.stopSound();
             }
         } else {
             this.data.progress = 0;
-            this.setActive(false);
+            this.setActive(false),this.stopSound();
         }
         
         this.renderer();

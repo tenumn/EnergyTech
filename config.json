@@ -1,5 +1,8 @@
 {
     "enabled":true,
+    "sounds":{
+        "enabled":true
+    },
     "machine":{
         "voltage":{
             "enabled":true
