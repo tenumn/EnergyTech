@@ -24,16 +24,26 @@ CreateOre = function(id,name,texture,level,data){
     }
 }
 
-CreateOre("oreCopper"      ,"Copper Ore"      ,[["copper_ore"      ,0]],2,"copper"      );
-CreateOre("oreTetrahedrite","Tetrahedrite Ore",[["tetrahedrite_ore",0]],2,"tetrahedrite");
-CreateOre("oreTin"         ,"Tin Ore"         ,[["tin_ore"         ,0]],2,"tin"         );
-CreateOre("oreLead"        ,"Lead Ore"        ,[["lead_ore"        ,0]],2,"lead"        );
-CreateOre("oreLithium"     ,"Lithium Ore"     ,[["lithium_ore"     ,0]],2,"lithium"     );
-CreateOre("oreGraphite"    ,"Graphite Ore"    ,[["graphite_ore"    ,0]],2,"graphite"    );
-CreateOre("oreTungsten"    ,"Tungsten Ore"    ,[["tungsten_ore"    ,0]],2,"tungsten"    );
-CreateOre("oreAntimony"    ,"Antimony Ore"    ,[["antimony_ore"    ,0]],2,"antimony"    );
-CreateOre("oreUranium"     ,"Uranium Ore"     ,[["uranium_ore"     ,0]],2,"uranium"     );
-CreateOre("oreSilver"      ,"Silver Ore"      ,[["silver_ore"      ,0]],2,"silver"      );
+CreateOre("oreCopper"      ,"Copper Ore"      ,[["oreCopper"      ,0]],2,"copper"      );
+CreateOre("oreTetrahedrite","Tetrahedrite Ore",[["oreTetrahedrite",0]],2,"tetrahedrite");
+CreateOre("oreTin"         ,"Tin Ore"         ,[["oreTin"         ,0]],2,"tin"         );
+CreateOre("oreLead"        ,"Lead Ore"        ,[["oreLead"        ,0]],2,"lead"        );
+CreateOre("oreLithium"     ,"Lithium Ore"     ,[["oreLithium"     ,0]],2,"lithium"     );
+CreateOre("oreGraphite"    ,"Graphite Ore"    ,[["oreGraphite"    ,0]],2,"graphite"    );
+CreateOre("oreTungsten"    ,"Tungsten Ore"    ,[["oreTungsten"    ,0]],2,"tungsten"    );
+CreateOre("oreAntimony"    ,"Antimony Ore"    ,[["oreAntimony"    ,0]],2,"antimony"    );
+CreateOre("oreUranium"     ,"Uranium Ore"     ,[["oreUranium"     ,0]],2,"uranium"     );
+CreateOre("oreSilver"      ,"Silver Ore"      ,[["oreSilver"      ,0]],2,"silver"      );
+
+ETTool.setHammerDestroyOreDrop(BlockID.oreCopper      ,ItemID.oreChunkCopper      ,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreTetrahedrite,ItemID.oreChunkTetrahedrite,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreTin         ,ItemID.oreChunkTin         ,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreLead        ,ItemID.oreChunkLead        ,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreLithium     ,ItemID.oreChunkLithium     ,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreTungsten    ,ItemID.oreChunkTungsten    ,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreAntimony    ,ItemID.oreChunkAntimony    ,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreUranium     ,ItemID.oreChunkUranium     ,4,0,true);
+ETTool.setHammerDestroyOreDrop(BlockID.oreSilver      ,ItemID.oreChunkSilver      ,4,0,true);
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreCopper      ,ItemID.ingotCopper  );
@@ -44,6 +54,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreGraphite    ,ItemID.dustCarbon   );
     Recipes.addFurnace(BlockID.oreAntimony    ,ItemID.ingotAntimony);
     Recipes.addFurnace(BlockID.oreUranium     ,ItemID.ingotUranium );
+    Recipes.addFurnace(BlockID.oreSilver      ,ItemID.ingotSilver  );
 
     ETRecipe.addBlastFurnaceRecipe({id:ItemID.ingotTungsten,count:1,data:0},{id:BlockID.oreTungsten,count:1,data:0});
 });

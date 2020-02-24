@@ -1,5 +1,5 @@
 CreateWrench("ironWrench","Iron Wrench",{name:"iron_wrench"},128);
-CreateHammer("ironHammer","Iron Hammer",{name:"iron_hammer"},128);
+CreateHammer("ironHammer","Iron Hammer",{name:"iron_hammer"},"Iron");
 CreateCutter("ironCutter","Iron Cutter",{name:"iron_cutter"},128);
 CreateMortar("ironMortar","Iron Mortar",{name:"iron_mortar"},128);
 CreateFile("ironFile","Iron File",{name:"iron_file"},128);

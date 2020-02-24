@@ -14,6 +14,11 @@ block/glass_tank.js
 block/machine_casing.js
 block/ore.js
 
+generator/fire_generator.js
+generator/nuclear_reactor.js
+generator/solar_generator.js
+
+item/material/broken_ore.js
 item/material/circuit.js
 item/material/crushed_ore.js
 item/material/dust_impure.js
@@ -48,8 +53,8 @@ machine/macerator.js
 machine/ore_washer.js
 machine/transformer.js
 
-machine/generator/fire_generator.js
-machine/generator/nuclear_reactor.js
-machine/generator/solar_generator.js
+support/ex_nihilo.js
+support/minecraft.js
+support/recipe_viewer.js
 
 core/modapi.js

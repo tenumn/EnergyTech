@@ -49,6 +49,7 @@ Item.registerUseFunction("cellLava",function(coords,item,block){
 });
 
 Callback.addCallback("PreLoaded",function(){
+	Recipes.addShaped({id:ItemID.cellEmpty,count:4,data:0},[" a ","aba"," a "],["a",ItemID.partTin,0,"b",102,0]);
     Recipes.addShaped({id:ItemID.cellUranium,count:1,data:0},["aaa","bcb","aaa"],["a",ItemID.uranium238,0,"b",ItemID.smallUranium235,0,"c",ItemID.cellEmpty,0]);
     Recipes.addShaped({id:ItemID.cellLithium,count:1,data:0},["aaa","bcb","aaa"],["a",ItemID.lithium7,0,"b",ItemID.smallLithium6,0,"c",ItemID.cellEmpty,0]);
 });

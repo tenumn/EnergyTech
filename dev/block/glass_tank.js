@@ -1,5 +1,5 @@
 var glass_tank = [];
-for(var i = 0;i < 16;i++){glass_tank.push({name:(i + 1) + "x Glass Tank",texture:[["glass",0]],inCreative:true});}
+for(var i = 0;i < 16;i++){glass_tank.push({name:(i + 1) + "x " + Translation.translate("Glass Tank"),texture:[["glass_tank",i]],inCreative:true});}
 
 Block.createSpecialType({
     opaque:false

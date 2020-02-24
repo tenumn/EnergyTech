@@ -21,11 +21,13 @@ var GuiBattery = new UI.StandartWindow({
 		inventory:{standart:true},
 		background:{standart:true}
     },
+
     drawing:[
 		{type:"bitmap",x:350,y:75,bitmap:"energy_scale_0",scale:GUI_SCALE},
 		{type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info_scale_small",scale:GUI_SCALE}
     ],
+    
 	elements:{
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
 		"scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:75 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale_1",scale:GUI_SCALE}

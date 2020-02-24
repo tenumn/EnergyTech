@@ -12,18 +12,18 @@ ETRecipe.addBlockRecipe = function(output,input){
     Recipes.addShapeless({id:input.id,count:9,data:input.data},[{id:output.id,data:output.data}]);
 }
 
-CreateBlock("blockCopper"      ,"Copper Block"             ,[["copper_block"       ,0]]);
-CreateBlock("blockTin"         ,"Tin Block"                ,[["tin_block"          ,0]]);
-CreateBlock("blockLead"        ,"Lead Block"               ,[["lead_block"         ,0]]);
-CreateBlock("blockWroughtIron" ,"Wrought Iron Block"       ,[["wrought_iron_block" ,0]]);
-CreateBlock("blockSteel"       ,"Steel Block"              ,[["steel_block"        ,0]]);
-CreateBlock("blockAntimony"    ,"Antimony Block"           ,[["antimony_block"     ,0]]);
-CreateBlock("blockLithium"     ,"Lithium Block"            ,[["lithium_block"      ,0]]);
-CreateBlock("blockCarbon"      ,"Carbon Block"             ,[["carbon_block"       ,0]]);
-CreateBlock("blockTungsten"    ,"Tungsten Block"           ,[["tungsten_block"     ,0]]);
-CreateBlock("blockSilver"      ,"Silver Block"             ,[["silver_block"       ,0]]);
-CreateBlock("blockTetrahedrite","Tetrahedrite Block"       ,[["tetrahedrite_block" ,0]]);
-CreateBlock("blockLeadAntimony","Lead-Antimony Alloy Block",[["lead_antimony_block",0]]);
+CreateBlock("blockCopper"      ,"Copper Block"             ,[["blockCopper"       ,0]]);
+CreateBlock("blockTin"         ,"Tin Block"                ,[["blockTin"          ,0]]);
+CreateBlock("blockLead"        ,"Lead Block"               ,[["blockLead"         ,0]]);
+CreateBlock("blockWroughtIron" ,"Wrought Iron Block"       ,[["blockWroughtIron"  ,0]]);
+CreateBlock("blockSteel"       ,"Steel Block"              ,[["blockAntimony"     ,0]]);
+CreateBlock("blockAntimony"    ,"Antimony Block"           ,[["blockAntimony"     ,0]]);
+CreateBlock("blockLithium"     ,"Lithium Block"            ,[["blockLithium"      ,0]]);
+CreateBlock("blockCarbon"      ,"Carbon Block"             ,[["blockCarbon"       ,0]]);
+CreateBlock("blockTungsten"    ,"Tungsten Block"           ,[["blockTungsten"     ,0]]);
+CreateBlock("blockSilver"      ,"Silver Block"             ,[["blockSilver"       ,0]]);
+CreateBlock("blockTetrahedrite","Tetrahedrite Block"       ,[["blockTetrahedrite" ,0]]);
+CreateBlock("blockLeadAntimony","Lead-Antimony Alloy Block",[["blockLeadAntimony" ,0]]);
 
 Callback.addCallback("PreLoaded",function(){
     ETRecipe.addBlockRecipe({id:BlockID.blockCopper      ,data:0},{id:ItemID.ingotCopper      ,data:0});

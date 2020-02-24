@@ -1,38 +1,38 @@
 IDRegistry.genItemID("dustImpureCopper");
-Item.createItem("dustImpureCopper","Impure Copper Dust",{name:"impure_copper_dust"});
+Item.createItem("dustImpureCopper","Impure Copper Dust",{name:"dustImpureCopper"});
 
 IDRegistry.genItemID("dustImpureTin");
-Item.createItem("dustImpureTin","Impure Tin Dust",{name:"impure_tin_dust"});
+Item.createItem("dustImpureTin","Impure Tin Dust",{name:"dustImpureTin"});
 
 IDRegistry.genItemID("dustImpureLead");
-Item.createItem("dustImpureLead","Impure Lead Dust",{name:"impure_lead_dust"});
+Item.createItem("dustImpureLead","Impure Lead Dust",{name:"dustImpureLead"});
 
 IDRegistry.genItemID("dustImpureIron");
-Item.createItem("dustImpureIron","Impure Iron Dust",{name:"impure_iron_dust"});
+Item.createItem("dustImpureIron","Impure Iron Dust",{name:"dustImpureIron"});
 
 IDRegistry.genItemID("dustImpureGold");
-Item.createItem("dustImpureGold","Impure Gold Dust",{name:"impure_gold_dust"});
+Item.createItem("dustImpureGold","Impure Gold Dust",{name:"dustImpureGold"});
 
 IDRegistry.genItemID("dustImpureAntimony");
-Item.createItem("dustImpureAntimony","Impure Antimony Dust",{name:"impure_antimony_dust"});
+Item.createItem("dustImpureAntimony","Impure Antimony Dust",{name:"dustImpureAntimony"});
 
 IDRegistry.genItemID("dustImpureLithium");
-Item.createItem("dustImpureLithium","Impure Lithium Dust",{name:"impure_lithium_dust"});
+Item.createItem("dustImpureLithium","Impure Lithium Dust",{name:"dustImpureLithium"});
 
 IDRegistry.genItemID("dustImpureCarbon");
-Item.createItem("dustImpureCarbon","Impure Carbon Dust",{name:"impure_carbon_dust"});
+Item.createItem("dustImpureCarbon","Impure Carbon Dust",{name:"dustImpureCarbon"});
 
 IDRegistry.genItemID("dustImpureTungsten");
-Item.createItem("dustImpureTungsten","Impure Tungsten Dust",{name:"impure_tungsten_dust"});
+Item.createItem("dustImpureTungsten","Impure Tungsten Dust",{name:"dustImpureTungsten"});
 
 IDRegistry.genItemID("dustImpureUranium");
-Item.createItem("dustImpureUranium","Impure Uranium Dust",{name:"impure_uranium_dust"});
+Item.createItem("dustImpureUranium","Impure Uranium Dust",{name:"dustImpureUranium"});
 
 IDRegistry.genItemID("dustImpureSilver");
-Item.createItem("dustImpureSilver","Impure Silver Dust",{name:"impure_silver_dust"});
+Item.createItem("dustImpureSilver","Impure Silver Dust",{name:"dustImpureSilver"});
 
 IDRegistry.genItemID("dustImpureTetrahedrite");
-Item.createItem("dustImpureTetrahedrite","Impure Tetrahedrite Dust",{name:"impure_tetrahedrite_dust"});
+Item.createItem("dustImpureTetrahedrite","Impure Tetrahedrite Dust",{name:"dustImpureTetrahedrite"});
 
 Callback.addCallback("PreLoaded",function(){
     // 熔炉
@@ -77,31 +77,34 @@ Callback.addCallback("PreLoaded",function(){
     ETRecipe.addCentrifugeRecipe([{id:ItemID.dustTetrahedrite,count:1,data:0},{id:ItemID.dustSmallTetrahedrite,count:1,data:0},{id:ItemID.dustSmallStone,count:1,data:0}],{id:ItemID.dustImpureTetrahedrite,data:0});
     
     // 研钵
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureCopper      ,count:1,data:0},[{id:ItemID.crushedCopper      ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureTin         ,count:1,data:0},[{id:ItemID.crushedTin         ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureLead        ,count:1,data:0},[{id:ItemID.crushedLead        ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureIron        ,count:1,data:0},[{id:ItemID.crushedIron        ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureGold        ,count:1,data:0},[{id:ItemID.crushedGold        ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureAntimony    ,count:1,data:0},[{id:ItemID.crushedAntimony    ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureLithium     ,count:1,data:0},[{id:ItemID.crushedLithium     ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureCarbon      ,count:1,data:0},[{id:ItemID.crushedCarbon      ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureTungsten    ,count:1,data:0},[{id:ItemID.crushedTungsten    ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureUranium     ,count:1,data:0},[{id:ItemID.crushedUranium     ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureSilver      ,count:1,data:0},[{id:ItemID.crushedSilver      ,count:1,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureTetrahedrite,count:1,data:0},[{id:ItemID.crushedTetrahedrite,count:1,data:0}]);
-
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureCopper      ,count:1,data:0},[{id:BlockID.oreCopper      ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureTin         ,count:1,data:0},[{id:BlockID.oreTin         ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureLead        ,count:1,data:0},[{id:BlockID.oreLead        ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureIron        ,count:1,data:0},[{id:15                     ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureGold        ,count:1,data:0},[{id:14                     ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureAntimony    ,count:1,data:0},[{id:BlockID.oreAntimony    ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureLithium     ,count:1,data:0},[{id:BlockID.oreLithium     ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureCarbon      ,count:1,data:0},[{id:BlockID.oreGraphite    ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureTungsten    ,count:1,data:0},[{id:BlockID.oreTungsten    ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureUranium     ,count:1,data:0},[{id:BlockID.oreUranium     ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureSilver      ,count:1,data:0},[{id:BlockID.oreSilver      ,data:0}]);
-    ETRecipe.addMortarRecipe({id:ItemID.dustImpureTetrahedrite,count:1,data:0},[{id:BlockID.oreTetrahedrite,data:0}]);
+    var mortar = ETTool.getAllTool("Mortar");
+    for(var i in mortar){
+        ETRecipe.addShapeless({id:ItemID.dustImpureCopper      ,count:1,data:0},[{id:BlockID.oreCopper      ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureTin         ,count:1,data:0},[{id:BlockID.oreTin         ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureLead        ,count:1,data:0},[{id:BlockID.oreLead        ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureIron        ,count:1,data:0},[{id:15                     ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureGold        ,count:1,data:0},[{id:14                     ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureAntimony    ,count:1,data:0},[{id:BlockID.oreAntimony    ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureLithium     ,count:1,data:0},[{id:BlockID.oreLithium     ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureCarbon      ,count:1,data:0},[{id:BlockID.oreGraphite    ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureTungsten    ,count:1,data:0},[{id:BlockID.oreTungsten    ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureUranium     ,count:1,data:0},[{id:BlockID.oreUranium     ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureSilver      ,count:1,data:0},[{id:BlockID.oreSilver      ,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureTetrahedrite,count:1,data:0},[{id:BlockID.oreTetrahedrite,data:0}],mortar[i]);
+        
+        ETRecipe.addShapeless({id:ItemID.dustImpureCopper      ,count:1,data:0},[{id:ItemID.crushedCopper      ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureTin         ,count:1,data:0},[{id:ItemID.crushedTin         ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureLead        ,count:1,data:0},[{id:ItemID.crushedLead        ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureIron        ,count:1,data:0},[{id:ItemID.crushedIron        ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureGold        ,count:1,data:0},[{id:ItemID.crushedGold        ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureAntimony    ,count:1,data:0},[{id:ItemID.crushedAntimony    ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureLithium     ,count:1,data:0},[{id:ItemID.crushedLithium     ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureCarbon      ,count:1,data:0},[{id:ItemID.crushedCarbon      ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureTungsten    ,count:1,data:0},[{id:ItemID.crushedTungsten    ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureUranium     ,count:1,data:0},[{id:ItemID.crushedUranium     ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureSilver      ,count:1,data:0},[{id:ItemID.crushedSilver      ,count:1,data:0}],mortar[i]);
+        ETRecipe.addShapeless({id:ItemID.dustImpureTetrahedrite,count:1,data:0},[{id:ItemID.crushedTetrahedrite,count:1,data:0}],mortar[i]);
+    }
     
     // 打粉机
     ETRecipe.addMaceratorRecipe({id:ItemID.dustImpureCopper      ,count:2,data:0},{id:BlockID.oreCopper      ,data:0});

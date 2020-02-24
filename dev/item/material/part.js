@@ -1,17 +1,17 @@
 IDRegistry.genItemID("partIron");
-Item.createItem("partIron","Iron Part",{name:"iron_part"});
+Item.createItem("partIron","Iron Part",{name:"partIron"});
 
 IDRegistry.genItemID("partTin");
-Item.createItem("partTin","Tin Part",{name:"tin_part"});
+Item.createItem("partTin","Tin Part",{name:"partTin"});
 
 IDRegistry.genItemID("partCopper");
-Item.createItem("partCopper","Copper Part",{name:"copper_part"});
+Item.createItem("partCopper","Copper Part",{name:"partCopper"});
 
 IDRegistry.genItemID("partGold");
-Item.createItem("partGold","Gold Part",{name:"gold_part"});
+Item.createItem("partGold","Gold Part",{name:"partGold"});
 
 IDRegistry.genItemID("partSteel");
-Item.createItem("partSteel","Steel Part",{name:"steel_part"});
+Item.createItem("partSteel","Steel Part",{name:"partSteel"});
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:ItemID.partIron  ,count:1,data:0},["ab","ba"],["a",ItemID.plateIron  ,0,"b",ItemID.stickIron  ,0]);

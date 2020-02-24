@@ -15,52 +15,20 @@ var ETRecipe = {
     },
     
     addShapeless:function(output,data,tool){
-		for(let i = 0;i < tool.length;i += 2){
-			data.push({id:tool[i],data:-1});
-		}
-		Recipes.addShapeless(output,data,function(api,field,result){
-			for(var slot in field){
-				for(let i = 0;i < tool.length;i += 2){
-					if(field[slot].id == tool[i]){
-						field[slot].data += (tool[i + 1]?tool[i + 1]:1);
-						if(field[slot].data >= Item.getMaxDamage(tool[i])){
-							field[slot].id = field[slot].count = field[slot].data = 0;
-						}
-					} else {
-						api.decreaseFieldSlot(slot);
+		data.push({id:tool,data:-1});
+		Recipes.addShapeless(output,data,function(api,field,output){
+			for (var i in field){
+				if (field[i].id == tool){
+					field[i].data++;
+					if (field[i].data >= Item.getMaxDamage(tool)){
+						field[i].id = field[i].count = field[i].data = 0;
 					}
+				} else {
+					api.decreaseFieldSlot(i);
 				}
 			}
 		});
     },
-	
-	addHammerRecipe:function(output,material,damage){
-		var hammer = ETTool.getAllTool("Hammer");
-		for(let i = 0;i < hammer.length;i++){
-			this.addShapeless(output,material,[hammer[i],damage?damage:1]);
-		}
-	},
-
-	addFileRecipe:function(output,material,damage){
-		var file = ETTool.getAllTool("File");
-		for(let i = 0;i < file.length;i++){
-			this.addShapeless(output,material,[file[i],damage?damage:1]);
-		}
-	},
-
-	addCutterRecipe:function(output,material,damage){
-		var cutter = ETTool.getAllTool("Cutter");
-		for(let i = 0;i < cutter.length;i++){
-			this.addShapeless(output,material,[cutter[i],damage?damage:1]);
-		}
-	},
-	
-	addMortarRecipe:function(output,material,damage){
-		var cutter = ETTool.getAllTool("Mortar");
-		for(let i = 0;i < cutter.length;i++){
-			this.addShapeless(output,material,[cutter[i],damage?damage:1]);
-		}
-	},
 
     recipes:{},
 
@@ -140,19 +108,3 @@ var ETRecipe = {
 		}
 	}
 }
-
-ETRecipe.addFarmingStationRecipe({id:6,data:0},[{id:17,count:4,data:0},{id:6,count:1,data:0},{id:260,count:1,data:0}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:6,data:1},[{id:17,count:4,data:1},{id:6,count:1,data:1}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:6,data:2},[{id:17,count:4,data:2},{id:6,count:1,data:2}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:6,data:3},[{id:17,count:4,data:3},{id:6,count:1,data:3}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:6,data:4},[{id:162,count:4,data:0},{id:6,count:1,data:4}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:6,data:5},[{id:162,count:4,data:1},{id:6,count:1,data:5}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:81,data:0},[{id:81,count:2,data:0}],{id:12,data:-1});
-ETRecipe.addFarmingStationRecipe({id:83,data:0},[{id:83,count:2,data:0}],{id:12,data:-1});
-ETRecipe.addFarmingStationRecipe({id:295,data:0},[{id:296,count:1,data:0},{id:295,count:1,data:0}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:361,data:0},[{id:86,count:1,data:0}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:362,data:0},[{id:103,count:1,data:0}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:372,data:0},[{id:372,count:2,data:0}],{id:88,data:0});
-ETRecipe.addFarmingStationRecipe({id:391,data:0},[{id:391,count:1,data:0}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:392,data:0},[{id:392,count:1,data:0},{id:394,count:1,data:0}],{id:3,data:0});
-ETRecipe.addFarmingStationRecipe({id:435,data:0},[{id:434,count:1,data:0},{id:435,count:1,data:0}],{id:3,data:0});

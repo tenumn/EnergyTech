@@ -18,12 +18,14 @@ var GuiElectricFurnace = new UI.StandartWindow({
         inventory:{standart:true},
         background:{standart:true}
     },
+    
     drawing:[
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:75,bitmap:"energy_scale_0",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:175 + GUI_SCALE,bitmap:"arrow_0",scale:GUI_SCALE},
         {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info_scale_small",scale:GUI_SCALE}
     ],
+
     elements:{
         "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"blank_slot",scale:GUI_SCALE},
         "slotUpgrade1":{type:"slot",x:370,y:400,bitmap:"circuit_slot",isValid:ETUpgrade.isValidUpgrade},
@@ -53,7 +55,7 @@ ETMachine.registerMachine(BlockID.electricFurnace,{
 		this.data.work_time = this.defaultValues.work_time;
 	},
 	
-	tick: function(){
+	tick:function(){
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);

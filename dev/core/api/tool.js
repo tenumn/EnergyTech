@@ -6,7 +6,7 @@ var ETTool = {
         if(!this.tool[type]){this.tool[type] = []}
         this.tool[type].push(id);
     },
-
+    
     getAllTool:function(type){
         if(!this.tool[type]){this.tool[type] = []}
         return this.tool[type];
@@ -14,7 +14,7 @@ var ETTool = {
 
     isTool:function(id,type){
         var tool = this.getAllTool(type);
-        for(let count = 0;count < tool.length;count++){
+        for(let count in tool){
             if(tool[count] == id){
                 return true;
             }
@@ -39,6 +39,26 @@ var ETTool = {
         Item.registerNameOverrideFunction(id,function(item,name){
             return name + ETTool.getTooltip(item.id);
         });
+    },
+
+    setHammerDestroyOreDrop:function(blockID,dropID,dropCount,dropData,random){
+        Block.registerDropFunctionForID(blockID,function(coords,id,data){
+            var item = Player.getCarriedItem();
+            if(ETTool.isTool(item.id,"Hammer")){
+                return [[dropID,dropCount + (random?Math.round(Math.random()):0),dropData]];
+            }
+            return [[id,1,data]];
+        });
+    },
+
+    setHammerDestroyDrop:function(blockID,dropID,dropCount,dropData,random){
+        Block.registerDropFunctionForID(blockID,function(coords,id,data){
+            var item = Player.getCarriedItem();
+			if(block.id == blockID && ETTool.isTool(item.id,"Hammer")){
+                return [[dropID,dropCount + (random?Math.round(Math.random()):0),dropData]];
+            };
+            return [[id,1,data]];
+        });
     }
 }
 
@@ -49,11 +69,11 @@ CreateWrench = function(id,name,texture,damage){
     Item.setMaxDamage(ItemID[id],damage);
 }
 
-CreateHammer = function(id,name,texture,damage){
+CreateHammer = function(id,name,texture,material){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
     ETTool.registerTool(ItemID[id],"Hammer");
-    Item.setMaxDamage(ItemID[id],damage);
+    ToolAPI.setTool(ItemID[id],material.toLowerCase(),ToolType.pickaxe);
 }
 
 CreateFile = function(id,name,texture,damage){

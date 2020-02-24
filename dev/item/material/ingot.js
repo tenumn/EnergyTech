@@ -1,38 +1,38 @@
 IDRegistry.genItemID("ingotCopper");
-Item.createItem("ingotCopper","Copper Ingot",{name:"copper_ingot"});
+Item.createItem("ingotCopper","Copper Ingot",{name:"ingotCopper"});
 
 IDRegistry.genItemID("ingotTin");
-Item.createItem("ingotTin","Tin Ingot",{name:"tin_ingot"});
+Item.createItem("ingotTin","Tin Ingot",{name:"ingotTin"});
 
 IDRegistry.genItemID("ingotLead");
-Item.createItem("ingotLead","Lead Ingot",{name:"lead_ingot"});
+Item.createItem("ingotLead","Lead Ingot",{name:"ingotLead"});
 
 IDRegistry.genItemID("ingotWroughtIron");
-Item.createItem("ingotWroughtIron","Wrought Iron Ingot",{name:"wrought_iron_ingot"});
+Item.createItem("ingotWroughtIron","Wrought Iron Ingot",{name:"ingotWroughtIron"});
 
 IDRegistry.genItemID("ingotSteel");
-Item.createItem("ingotSteel","Steel Ingot",{name:"steel_ingot"});
+Item.createItem("ingotSteel","Steel Ingot",{name:"ingotSteel"});
 
 IDRegistry.genItemID("ingotAntimony");
-Item.createItem("ingotAntimony","Antimony Ingot",{name:"antimony_ingot"});
+Item.createItem("ingotAntimony","Antimony Ingot",{name:"ingotAntimony"});
 
 IDRegistry.genItemID("ingotLithium");
-Item.createItem("ingotLithium","Lithium Ingot",{name:"lithium_ingot"});
+Item.createItem("ingotLithium","Lithium Ingot",{name:"ingotLithium"});
 
 IDRegistry.genItemID("ingotTungsten");
-Item.createItem("ingotTungsten","Tungsten Ingot",{name:"tungsten_ingot"});
+Item.createItem("ingotTungsten","Tungsten Ingot",{name:"ingotTungsten"});
 
 IDRegistry.genItemID("ingotUranium");
-Item.createItem("ingotUranium","Uranium Ingot",{name:"uranium_ingot"});
+Item.createItem("ingotUranium","Uranium Ingot",{name:"ingotUranium"});
 
 IDRegistry.genItemID("ingotSilver");
-Item.createItem("ingotSilver","Silver Ingot",{name:"silver_ingot"});
+Item.createItem("ingotSilver","Silver Ingot",{name:"ingotSilver"});
 
 IDRegistry.genItemID("ingotTetrahedrite");
-Item.createItem("ingotTetrahedrite","Tetrahedrite Ingot",{name:"tetrahedrite_ingot"});
+Item.createItem("ingotTetrahedrite","Tetrahedrite Ingot",{name:"ingotTetrahedrite"});
 
 IDRegistry.genItemID("ingotLeadAntimony");
-Item.createItem("ingotLeadAntimony","Lead-Antimony Alloy Ingot",{name:"lead_antimony_ingot"});
+Item.createItem("ingotLeadAntimony","Lead-Antimony Alloy Ingot",{name:"ingotLeadAntimony"});
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShapeless({id:ItemID.ingotLithium,count:1,data:0},[{id:ItemID.lithium6  ,data:0},{id:ItemID.lithium7  ,data:0}]);

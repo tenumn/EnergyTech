@@ -6,10 +6,10 @@ ETRecipe.addGearRecipe = function(output,input){
 }
 
 IDRegistry.genItemID("gearIron");
-Item.createItem("gearIron","Iron Gear",{name:"iron_gear"});
+Item.createItem("gearIron","Iron Gear",{name:"gearIron"});
 
 IDRegistry.genItemID("gearSteel");
-Item.createItem("gearSteel","Steel Gear",{name:"steel_gear"});
+Item.createItem("gearSteel","Steel Gear",{name:"gearSteel"});
 
 Callback.addCallback("PreLoaded",function(){
     ETRecipe.addGearRecipe({id:ItemID.gearIron ,count:1,data:0},[{id:ItemID.stickIron ,data:0},{id:ItemID.plateIron ,data:0}]);

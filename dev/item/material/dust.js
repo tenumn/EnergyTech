@@ -6,8 +6,8 @@ ETRecipe.addDustRecipe = function(output,input){
 CreateDust = function(name){
     IDRegistry.genItemID("dust" + name);
     IDRegistry.genItemID("dustSmall" + name);
-    Item.createItem("dust" + name,name + " Dust",{name:name.toLowerCase() + "_dust"});    
-    Item.createItem("dustSmall" + name,"Small Pile of " + name + " Dust",{name:"small_" + name.toLowerCase() + "_dust"});
+    Item.createItem("dust" + name,name + " Dust",{name:"dust" + name});    
+    Item.createItem("dustSmall" + name,"Small Pile of " + name + " Dust",{name:"dustSmall" + name});
 
     Callback.addCallback("PreLoaded",function(){
         ETRecipe.addDustRecipe({id:ItemID["dust" + name],data:0},{id:ItemID["dustSmall" + name],data:0});
@@ -30,10 +30,10 @@ CreateDust("Silver"      );
 CreateDust("Tetrahedrite");
 
 IDRegistry.genItemID("dustLeadAntimony");
-Item.createItem("dustLeadAntimony","Lead-Antimony Alloy Dust",{name:"lead_antimony_dust"});
+Item.createItem("dustLeadAntimony","Lead-Antimony Alloy Dust",{name:"dustLeadAntimony"});
 
 IDRegistry.genItemID("dustSmallLeadAntimony");
-Item.createItem("dustSmallLeadAntimony","Small Lead-Antimony Alloy Dust",{name:"small_lead_antimony_dust"});
+Item.createItem("dustSmallLeadAntimony","Small Lead-Antimony Alloy Dust",{name:"dustSmallLeadAntimony"});
 
 IDRegistry.genItemID("lithium6");
 IDRegistry.genItemID("smallLithium6");

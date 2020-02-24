@@ -22,12 +22,14 @@ var GuiFarmingStation = new UI.StandartWindow({
         inventory:{standart:true},
         background:{standart:true}
     },
+    
     drawing:[
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:75,bitmap:"energy_scale_0",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:200 + GUI_SCALE,bitmap:"arrow_0",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info_scale_small",scale:GUI_SCALE}
     ],
+
     elements:{
         "slotDirt":{type:"slot",x:350 + GUI_SCALE * 43,y:290,bitmap:"blank_slot",scale:GUI_SCALE},
         "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:200,bitmap:"blank_slot",scale:GUI_SCALE},
@@ -62,7 +64,7 @@ ETMachine.registerMachine(BlockID.farmingStation,{
 		this.data.energy_consumption = this.defaultValues.energy_consumption;
 	},
 	
-	tick: function(){
+	tick:function(){
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);

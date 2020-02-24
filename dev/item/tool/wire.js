@@ -71,10 +71,10 @@ ETRecipe.addWireRecipe = function(output,input){
     Recipes.addShaped(output,[" a ","aba"," a "],["a",input[0].id,input[0].data,"b",input[1].id,input[1].data]);
 }
 
-CreateWire("coilTin"   ,"Tin Coil"   ,{name:"tin_coil"   ,meta:0},power(1),4);
-CreateWire("coilCopper","Copper Coil",{name:"copper_coil",meta:0},power(2),4);
-CreateWire("coilGold"  ,"Gold Coil"  ,{name:"gold_coil"  ,meta:0},power(3),6);
-CreateWire("coilSteel" ,"Steel Coil" ,{name:"steel_coil" ,meta:0},power(4),8);
+CreateWire("coilTin"   ,"Tin Coil"   ,{name:"coilTin"   ,meta:0},power(1),4);
+CreateWire("coilCopper","Copper Coil",{name:"coilCopper",meta:0},power(2),4);
+CreateWire("coilGold"  ,"Gold Coil"  ,{name:"coilGold"  ,meta:0},power(3),6);
+CreateWire("coilSteel" ,"Steel Coil" ,{name:"coilSteel" ,meta:0},power(4),8);
 
 Callback.addCallback("PreLoaded",function(){
     ETRecipe.addWireRecipe({id:ItemID.coilTin   ,count:1,data:0},[{id:ItemID.stickTin   ,data:0},{id:5,data:-1}]);
