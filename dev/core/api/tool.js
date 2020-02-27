@@ -40,21 +40,14 @@ var ETTool = {
             return name + ETTool.getTooltip(item.id);
         });
     },
-
-    setHammerDestroyOreDrop:function(blockID,dropID,dropCount,dropData,random){
-        Block.registerDropFunctionForID(blockID,function(coords,id,data){
-            var item = Player.getCarriedItem();
-            if(ETTool.isTool(item.id,"Hammer")){
-                return [[dropID,dropCount + (random?Math.round(Math.random()):0),dropData]];
-            }
-            return [[id,1,data]];
-        });
-    },
-
+    
+    HAMMER_RECIOE:{},
+    
     setHammerDestroyDrop:function(blockID,dropID,dropCount,dropData,random){
+        this.HAMMER_RECIOE[blockID] = {id:dropID,count:dropCount,data:dropData}
         Block.registerDropFunctionForID(blockID,function(coords,id,data){
             var item = Player.getCarriedItem();
-			if(block.id == blockID && ETTool.isTool(item.id,"Hammer")){
+			if(ETTool.isTool(item.id,"Hammer")){
                 return [[dropID,dropCount + (random?Math.round(Math.random()):0),dropData]];
             };
             return [[id,1,data]];
@@ -135,17 +128,17 @@ CreateHoe = function(id,name,texture,material){
 CreateTool = function(name,material,data){
     ToolAPI.addToolMaterial(name.toLowerCase(),data);
 
-    CreateSword(  name.toLowerCase() + "Sword"  ,name + " Sword"  ,{name:name.toLowerCase() + "_sword"  },name.toLowerCase());
-    CreateShovel( name.toLowerCase() + "Shovel" ,name + " Shovel" ,{name:name.toLowerCase() + "_shovel" },name.toLowerCase());
-    CreatePickaxe(name.toLowerCase() + "Pickaxe",name + " Pickaxe",{name:name.toLowerCase() + "_pickaxe"},name.toLowerCase());
-    CreateAxe(    name.toLowerCase() + "Axe"    ,name + " Axe"    ,{name:name.toLowerCase() + "_axe"    },name.toLowerCase());
-    CreateHoe(    name.toLowerCase() + "Hoe"    ,name + " Hoe"    ,{name:name.toLowerCase() + "_hoe"    },name.toLowerCase());
+    CreateSword  ("sword"   + name,name + " Sword"  ,{name:"sword"   + name},name.toLowerCase());
+    CreateShovel ("shovel"  + name,name + " Shovel" ,{name:"shovel"  + name},name.toLowerCase());
+    CreatePickaxe("pickaxe" + name,name + " Pickaxe",{name:"pickaxe" + name},name.toLowerCase());
+    CreateAxe    ("axe"     + name,name + " Axe"    ,{name:"axe"     + name},name.toLowerCase());
+    CreateHoe    ("hoe"     + name,name + " Hoe"    ,{name:"hoe"     + name},name.toLowerCase());
 
     Callback.addCallback("PreLoaded",function(){
-        Recipes.addShaped({id:ItemID[name.toLowerCase() + "Sword"  ],count:1,data:0},[ "a" , "a" , "b" ],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID[name.toLowerCase() + "Shovel" ],count:1,data:0},[ "a" , "b" , "b" ],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID[name.toLowerCase() + "Pickaxe"],count:1,data:0},["aaa"," b "," b "],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID[name.toLowerCase() + "Axe"    ],count:1,data:0},["aa" ,"ab" ," b" ],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID[name.toLowerCase() + "Hoe"    ],count:1,data:0},["aa" ," b" ," b" ],["a",material,0,"b",280,0]);
+        Recipes.addShaped({id:ItemID["sword"   + name],count:1,data:0},[ "a" , "a" , "b" ],["a",material,0,"b",280,0]);
+        Recipes.addShaped({id:ItemID["shovel"  + name],count:1,data:0},[ "a" , "b" , "b" ],["a",material,0,"b",280,0]);
+        Recipes.addShaped({id:ItemID["pickaxe" + name],count:1,data:0},["aaa"," b "," b "],["a",material,0,"b",280,0]);
+        Recipes.addShaped({id:ItemID["axe"     + name],count:1,data:0},["aa" ,"ab" ," b" ],["a",material,0,"b",280,0]);
+        Recipes.addShaped({id:ItemID["hoe"     + name],count:1,data:0},["aa" ," b" ," b" ],["a",material,0,"b",280,0]);
     });
 }

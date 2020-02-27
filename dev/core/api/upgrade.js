@@ -5,14 +5,9 @@ var ETUpgrade = {
 		return this.data[id];
 	},
 	
-	isUpgrade:function(id){
-		return ETUpgrade.data[id]?true:false;
-	},
-	
 	isValidUpgrade:function(id,count,data,container){
-		var upgrades = container.tileEntity.upgrades;
-		var upgradeData = ETUpgrade.getUpgradeData(id);
-		if(upgradeData && (!upgrades || upgrades.indexOf(upgradeData.type) != -1)){
+		var upgrades = container.tileEntity.upgrades,upgradeData = ETUpgrade.getUpgradeData(id);
+		if(upgradeData && (!upgrades || upgrades.indexOf(upgradeData.type) != true)){
 			return true;
 		}
 		return false;
@@ -25,7 +20,7 @@ var ETUpgrade = {
 	callUpgrade:function(item,machine,container,data,coords){
 		var upgrades = container.tileEntity.upgrades;
 		var upgrade = this.getUpgradeData(item.id);
-		if(upgrade && (!upgrades || upgrades.indexOf(upgrade.type) != -1)){
+		if(upgrade && (!upgrades || upgrades.indexOf(upgrade.type) != true)){
 			upgrade.func(item,machine,container,data,coords);
 		}
 	},
@@ -55,10 +50,7 @@ var ETUpgrade = {
 	},
 
 	executeUpgrades:function(machine){
-		var container = machine.container;
-		var data = machine.data;
-		var coords = {x:machine.x,y:machine.y,z:machine.z};
-		var upgrades = this.getUpgrades(machine,container);
+		var container = machine.container,data = machine.data,coords = {x:machine.x,y:machine.y,z:machine.z},upgrades = this.getUpgrades(machine,container);
 		for(var i in upgrades){
 			this.callUpgrade(upgrades[i],machine,container,data,coords);
 		}

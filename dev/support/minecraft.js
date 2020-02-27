@@ -14,5 +14,5 @@ ETRecipe.addFarmingStationRecipe({id:391,data:0},[{id:391,count:1,data:0}],{id:3
 ETRecipe.addFarmingStationRecipe({id:392,data:0},[{id:392,count:1,data:0},{id:394,count:1,data:0}],{id:3,data:0});
 ETRecipe.addFarmingStationRecipe({id:435,data:0},[{id:434,count:1,data:0},{id:435,count:1,data:0}],{id:3,data:0});
 
-ETTool.setHammerDestroyOreDrop(15,BlockID.gravelIron,1,0);
-ETTool.setHammerDestroyOreDrop(14,BlockID.gravelGold,1,0);
+ETTool.setHammerDestroyDrop(15,BlockID.gravelIron,1,0);
+ETTool.setHammerDestroyDrop(14,BlockID.gravelGold,1,0);

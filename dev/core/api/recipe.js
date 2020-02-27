@@ -44,7 +44,7 @@ var ETRecipe = {
 		}
 	},
 
-	addMaceratorRecipe:function(output,input){
+	addMaceratorRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("Macerator")[input.id] = output;
 		} else {
@@ -52,7 +52,7 @@ var ETRecipe = {
 		}
 	},
 
-	addCompressorRecipe:function(output,input){
+	addCompressorRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("Compressor")[input.id] = output;
 		} else {
@@ -60,7 +60,7 @@ var ETRecipe = {
 		}
 	},
 
-	addBlastFurnaceRecipe:function(output,input){
+	addBlastFurnaceRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("BlastFurnace")[input.id] = output;
 		} else {
@@ -68,7 +68,7 @@ var ETRecipe = {
 		}
 	},
 
-	addCrusherRecipe:function(output,input){
+	addCrusherRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("Crusher")[input.id] = output;
 		} else {
@@ -76,7 +76,7 @@ var ETRecipe = {
 		}
 	},
 
-	addCentrifugeRecipe:function(output,input){
+	addCentrifugeRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("Centrifuge")[input.id] = output;
 		} else {
@@ -84,7 +84,7 @@ var ETRecipe = {
 		}
 	},
 
-	addCuttingRecipe:function(output,input){
+	addCuttingRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("Cutting")[input.id] = output;
 		} else {
@@ -92,7 +92,7 @@ var ETRecipe = {
 		}
 	},
 
-	addOreWasherRecipe:function(output,input){
+	addOreWasherRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("OreWasher")[input.id] = output;
 		} else {

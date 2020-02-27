@@ -38,10 +38,6 @@ TileRenderer.setCoverRotationPlace = function(id){
     });
 }
 
-Block.createSpecialType({
-    opaque:false
-},"cover");
-
 IDRegistry.genItemID("coverEnergyDisplay");
 Item.createItem("coverEnergyDisplay","Energy Display Cover",{name:"cover_energy_display",meta:0});
 
@@ -63,7 +59,7 @@ for(let i = 0;i <= 10;i++){
 Callback.addCallback("PreLoaded",function(){
     var wrench = ETTool.getAllTool("Wrench");
     for(let i = 0;i < wrench.length;i++){
-        ETRecipe.addShapedRecipe({id:ItemID.coverEnergyDisplay,count:1,data:0},["ea ","dbd"," c "],["a",ItemID.stickIron,0,"b",ItemID.plateIron,0,"c",ItemID.circuitEnergyStorage,0,"d",ItemID.coilTin,0,"e",wrench[i],-1],{0:1});
+        ETRecipe.addShapedRecipe({id:ItemID.coverEnergyDisplay,count:1,data:0},["ea ","dbd"," c "],["a",ItemID.stickIron,0,"b",ItemID.plateAluminium,0,"c",ItemID.circuitEnergyStorage,0,"d",ItemID.coilTin,0,"e",wrench[i],-1],{0:1});
     }
 });
 
@@ -111,7 +107,7 @@ for(let i = 0;i <= 11;i++){
 Callback.addCallback("PreLoaded",function(){
     var wrench = ETTool.getAllTool("Wrench");
     for(let i = 0;i < wrench.length;i++){
-        ETRecipe.addShapedRecipe({id:ItemID.coverProgressDisplay,count:1,data:0},["ea ","dbd"," c "],["a",ItemID.stickIron,0,"b",ItemID.plateIron,0,"c",ItemID.circuitOverclocker,0,"d",ItemID.coilTin,0,"e",wrench[i],-1],{0:1});
+        ETRecipe.addShapedRecipe({id:ItemID.coverProgressDisplay,count:1,data:0},["ea ","dbd"," c "],["a",ItemID.stickIron,0,"b",ItemID.plateAluminium,0,"c",ItemID.circuitOverclocker,0,"d",ItemID.coilTin,0,"e",wrench[i],-1],{0:1});
     }
 });
 

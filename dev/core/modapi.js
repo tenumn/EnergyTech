@@ -1,6 +1,6 @@
 ModAPI.registerAPI("ETech",{
     // lib
-    Charge:ChargeItemRegistry,
+    ChargeItem:ChargeItemRegistry,
     Renderer:TileRenderer,
 
     // api
@@ -8,6 +8,7 @@ ModAPI.registerAPI("ETech",{
     Machine:ETMachine,
     Reactor:ETReactor,
     Recipe:ETRecipe,
+    Model:ETModel,
     Tool:ETTool,
 
 	requireGlobal:function(command){
