@@ -28,7 +28,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.crushedGold        ,266                     );
     Recipes.addFurnace(ItemID.crushedAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(ItemID.crushedLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(ItemID.crushedTungsten    ,ItemID.ingotTungsten    );
     Recipes.addFurnace(ItemID.crushedUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(ItemID.crushedSilver      ,ItemID.ingotSilver      );
     Recipes.addFurnace(ItemID.crushedTetrahedrite,ItemID.ingotTetrahedrite);
@@ -42,12 +41,15 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.crushedPurifiedGold        ,266                     );
     Recipes.addFurnace(ItemID.crushedPurifiedAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(ItemID.crushedPurifiedLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(ItemID.crushedPurifiedTungsten    ,ItemID.ingotTungsten    );
     Recipes.addFurnace(ItemID.crushedPurifiedUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(ItemID.crushedPurifiedSilver      ,ItemID.ingotSilver      );
     Recipes.addFurnace(ItemID.crushedPurifiedTetrahedrite,ItemID.ingotTetrahedrite);
     Recipes.addFurnace(ItemID.crushedPurifiedAluminium   ,ItemID.ingotAluminium   );
 
+    // 高炉
+    ETRecipe.addBlastFurnaceRecipe({id:BlockID.crushedTungsten        ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    ETRecipe.addBlastFurnaceRecipe({id:BlockID.crushedPurifiedTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    
     // 洗矿机
     ETRecipe.addOreWasherRecipe({id:ItemID.crushedCopper      ,data:0},[{id:ItemID.crushedPurifiedCopper      ,count:1,data:0},{id:ItemID.dustSmallTin     ,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     ETRecipe.addOreWasherRecipe({id:ItemID.crushedTin         ,data:0},[{id:ItemID.crushedPurifiedTin         ,count:1,data:0},{id:ItemID.dustSmallIron    ,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
@@ -108,6 +110,34 @@ Callback.addCallback("PreLoaded",function(){
         ETRecipe.addShapeless({id:ItemID.crushedSilver      ,count:1,data:0},[{id:BlockID.oreSilver      ,data:0}],hammer[i]);
         ETRecipe.addShapeless({id:ItemID.crushedTetrahedrite,count:1,data:0},[{id:BlockID.oreTetrahedrite,data:0}],hammer[i]);
         ETRecipe.addShapeless({id:ItemID.crushedAluminium   ,count:1,data:0},[{id:BlockID.oreAluminium   ,data:0}],hammer[i]);
+
+        ETRecipe.addShapeless({id:ItemID.crushedCopper      ,count:1,data:0},[{id:BlockID.oreNetherCopper      ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedTin         ,count:1,data:0},[{id:BlockID.oreNetherTin         ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedLead        ,count:1,data:0},[{id:BlockID.oreNetherLead        ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedIron        ,count:1,data:0},[{id:BlockID.oreNetherIron        ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedGold        ,count:1,data:0},[{id:BlockID.oreNetherGold        ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedAntimony    ,count:1,data:0},[{id:BlockID.oreNetherAntimony    ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedLithium     ,count:1,data:0},[{id:BlockID.oreNetherLithium     ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedCarbon      ,count:1,data:0},[{id:BlockID.oreNetherGraphite    ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedTungsten    ,count:1,data:0},[{id:BlockID.oreNetherTungsten    ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedUranium     ,count:1,data:0},[{id:BlockID.oreNetherUranium     ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedSilver      ,count:1,data:0},[{id:BlockID.oreNetherSilver      ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedTetrahedrite,count:1,data:0},[{id:BlockID.oreNetherTetrahedrite,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedAluminium   ,count:1,data:0},[{id:BlockID.oreNetherAluminium   ,data:0}],hammer[i]);
+
+        ETRecipe.addShapeless({id:ItemID.crushedCopper      ,count:1,data:0},[{id:BlockID.oreEnderCopper      ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedTin         ,count:1,data:0},[{id:BlockID.oreEnderTin         ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedLead        ,count:1,data:0},[{id:BlockID.oreEnderLead        ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedIron        ,count:1,data:0},[{id:BlockID.oreEnderIron        ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedGold        ,count:1,data:0},[{id:BlockID.oreEnderGold        ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedAntimony    ,count:1,data:0},[{id:BlockID.oreEnderAntimony    ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedLithium     ,count:1,data:0},[{id:BlockID.oreEnderLithium     ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedCarbon      ,count:1,data:0},[{id:BlockID.oreEnderGraphite    ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedTungsten    ,count:1,data:0},[{id:BlockID.oreEnderTungsten    ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedUranium     ,count:1,data:0},[{id:BlockID.oreEnderUranium     ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedSilver      ,count:1,data:0},[{id:BlockID.oreEnderSilver      ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedTetrahedrite,count:1,data:0},[{id:BlockID.oreEnderTetrahedrite,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.crushedAluminium   ,count:1,data:0},[{id:BlockID.oreEnderAluminium   ,data:0}],hammer[i]);
     }
 
     // 打粉机
@@ -124,4 +154,32 @@ Callback.addCallback("PreLoaded",function(){
     ETRecipe.addMaceratorRecipe({id:BlockID.oreSilver      ,data:0},{id:ItemID.crushedSilver      ,count:2,data:0});
     ETRecipe.addMaceratorRecipe({id:BlockID.oreTetrahedrite,data:0},{id:ItemID.crushedTetrahedrite,count:2,data:0});
     ETRecipe.addMaceratorRecipe({id:BlockID.oreAluminium   ,data:0},{id:ItemID.crushedAluminium   ,count:2,data:0});
+
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherCopper      ,data:0},{id:ItemID.crushedCopper      ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherTin         ,data:0},{id:ItemID.crushedTin         ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherLead        ,data:0},{id:ItemID.crushedLead        ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherIron        ,data:0},{id:ItemID.crushedIron        ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherGold        ,data:0},{id:ItemID.crushedGold        ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherAntimony    ,data:0},{id:ItemID.crushedAntimony    ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherLithium     ,data:0},{id:ItemID.crushedLithium     ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherGraphite    ,data:0},{id:ItemID.crushedCarbon      ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherTungsten    ,data:0},{id:ItemID.crushedTungsten    ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherUranium     ,data:0},{id:ItemID.crushedUranium     ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherSilver      ,data:0},{id:ItemID.crushedSilver      ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherTetrahedrite,data:0},{id:ItemID.crushedTetrahedrite,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreNetherAluminium   ,data:0},{id:ItemID.crushedAluminium   ,count:2,data:0});
+
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderCopper      ,data:0},{id:ItemID.crushedCopper      ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderTin         ,data:0},{id:ItemID.crushedTin         ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderLead        ,data:0},{id:ItemID.crushedLead        ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderIron        ,data:0},{id:ItemID.crushedIron        ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderGold        ,data:0},{id:ItemID.crushedGold        ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderAntimony    ,data:0},{id:ItemID.crushedAntimony    ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderLithium     ,data:0},{id:ItemID.crushedLithium     ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderGraphite    ,data:0},{id:ItemID.crushedCarbon      ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderTungsten    ,data:0},{id:ItemID.crushedTungsten    ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderUranium     ,data:0},{id:ItemID.crushedUranium     ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderSilver      ,data:0},{id:ItemID.crushedSilver      ,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderTetrahedrite,data:0},{id:ItemID.crushedTetrahedrite,count:2,data:0});
+    ETRecipe.addMaceratorRecipe({id:BlockID.oreEnderAluminium   ,data:0},{id:ItemID.crushedAluminium   ,count:2,data:0});
 });

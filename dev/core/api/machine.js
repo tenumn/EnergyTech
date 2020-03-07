@@ -35,7 +35,18 @@ var ETMachine = {
                 }
 			}
 
+            state.activate = state.activate || function(sound){
+                this.setActive(true);
+                this.playSound(sound);
+            }
+
+            state.deactive = state.deactive || function(){
+                this.stopSound();
+                this.setActive(false);
+            }
+
 			state.destroy = state.destroy || function(){
+                this.stopSound();
 				BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
 			}
 		}
@@ -109,7 +120,7 @@ var ETMachine = {
             this.data.voltage = 0;
         }
 
-        ETTool.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
+        wheat.item.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
         
         this.registerPrototype(id,state);
         EnergyTileRegistry.addEnergyTypeForId(id,EU);

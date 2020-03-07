@@ -28,6 +28,9 @@ Item.createItem("plateLead","Lead Plate",{name:"plateLead"});
 IDRegistry.genItemID("plateAluminium");
 Item.createItem("plateAluminium","Aluminium Plate",{name:"plateAluminium"});
 
+IDRegistry.genItemID("plateSherlock");
+Item.createItem("plateSherlock","Sherlock Alloy Plate",{name:"plateSherlock"});
+
 IDRegistry.genItemID("plateLeadAntimony");
 Item.createItem("plateLeadAntimony","Lead-Antimony Alloy Plate",{name:"plateLeadAntimony"});
 

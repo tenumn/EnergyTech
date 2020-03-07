@@ -3,9 +3,9 @@ IDRegistry.genItemID("lithiumBattery");
 Item.createItem("lithiumBattery","Lithium Battery",{name:"lithium_battery"},{stack:1,isTech:true});
 ChargeItemRegistry.registerItem(ItemID.lithiumBattery,"Eu",16384,16,"storage",true,true);
 
-ETTool.addTooltip(ItemID.lithiumBattery,Translation.translate("Power Tier: ") + 1);
+wheat.item.addTooltip(ItemID.lithiumBattery,Translation.translate("Power Tier: ") + 1);
 Item.registerNameOverrideFunction(ItemID.lithiumBattery,function(item,name){
-    return name + ETTool.getTooltip(item.id) + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
+    return name + wheat.item.getTooltip(item.id) + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
 });
 
 Item.registerIconOverrideFunction(ItemID.lithiumBattery,function(item,name){
@@ -22,9 +22,9 @@ IDRegistry.genItemID("sherlockBattery");
 Item.createItem("sherlockBattery","Sherlock Battery",{name:"sherlock_battery"},{stack:1,isTech:true});
 ChargeItemRegistry.registerItem(ItemID.sherlockBattery,"Eu",147456,64,"storage",true,true);
 
-ETTool.addTooltip(ItemID.sherlockBattery,Translation.translate("Power Tier: ") + 2);
+wheat.item.addTooltip(ItemID.sherlockBattery,Translation.translate("Power Tier: ") + 2);
 Item.registerNameOverrideFunction(ItemID.sherlockBattery,function(item,name){
-    return name + ETTool.getTooltip(item.id) + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
+    return name + wheat.item.getTooltip(item.id) + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
 });
 
 Item.registerIconOverrideFunction(ItemID.sherlockBattery,function(item,name){
@@ -33,5 +33,5 @@ Item.registerIconOverrideFunction(ItemID.sherlockBattery,function(item,name){
 });
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:ItemID.sherlockBattery,count:1,data:Item.getMaxDamage(ItemID.sherlockBattery)},["aba","bcb","aba"],["a",ItemID.partLeadAntimony,0,"b",ItemID.circuitEnergyStorage,0,"c",ItemID.lithiumBattery,-1]);
+    Recipes.addShaped({id:ItemID.sherlockBattery,count:1,data:Item.getMaxDamage(ItemID.sherlockBattery)},["ada","bcb","ada"],["a",ItemID.stickIron,0,"b",ItemID.partSherlock,0,"c",ItemID.lithiumBattery,-1,"d",ItemID.plateIron,0]);
 });

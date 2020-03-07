@@ -24,7 +24,7 @@ var GuiFireGenerator = new UI.StandartWindow({
 		{type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
 		{type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
 		{type:"bitmap",x:450 + GUI_SCALE * 3,y:225 + GUI_SCALE * 2,bitmap:"fireBackground",scale:GUI_SCALE},
-		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
 	],
 	
 	elements:{
@@ -53,23 +53,19 @@ ETMachine.registerGenerator(BlockID.fireGenerator,{
 		this.data.energy_storage = this.defaultValues.energy_storage;
 	},
 	
-	tick: function(){
+	tick:function(){
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
 		StorageInterface.checkHoppers(this);
 		EnergyOutput = Math.min((this.data.isActive?random(1,this.data.burn / 20):0),this.getMaxVoltage());
 
-		if(this.data.burn <= 0 && this.data.energy + EnergyOutput < this.getEnergyStorage()){
-			this.data.burn = this.data.burnMax = this.getFuel("slotFuel");
-		}
+		if(this.data.burn <= 0 && this.data.energy + EnergyOutput < this.getEnergyStorage()){this.data.burn = this.data.burnMax = this.getFuel("slotFuel");}
 
 		if(this.data.burn > 0 && this.data.energy + EnergyOutput < this.getEnergyStorage()){
 			this.data.energy += EnergyOutput;
 			this.data.burn -= 1;
-			this.setActive(true),this.playSound("generator/fire_generator.ogg");
-		} else {
-			this.setActive(false),this.stopSound();
-		}
+			this.activate("generator/fire_generator.ogg");
+		} else {this.deactive();}
 
 		this.container.setScale("scaleBurn",Math.round(this.data.burn / this.data.burnMax * 14) / 14 || 0);
 		this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());

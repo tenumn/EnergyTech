@@ -1,7 +1,5 @@
 var ETTool = {
     tool:{},
-    type:ToolType,
-
     registerTool:function(id,type){
         if(!this.tool[type]){this.tool[type] = []}
         this.tool[type].push(id);
@@ -20,25 +18,6 @@ var ETTool = {
             }
         }
         return false;
-    },
-
-    tooltips:{},
-
-    getTooltip:function(id){
-        return this.tooltips[id];
-    },
-    
-    addTooltip:function(id,tooltip,colour){
-        if(!colour){colour = "§7";}
-        if(!this.getTooltip(id)){
-            this.tooltips[id] = "\n" + colour + tooltip + "§n"
-        } else {
-            this.tooltips[id] += "\n" + colour + tooltip + "§n";
-        }
-        
-        Item.registerNameOverrideFunction(id,function(item,name){
-            return name + ETTool.getTooltip(item.id);
-        });
     },
     
     HAMMER_RECIOE:{},
@@ -142,3 +121,10 @@ CreateTool = function(name,material,data){
         Recipes.addShaped({id:ItemID["hoe"     + name],count:1,data:0},["aa" ," b" ," b" ],["a",material,0,"b",280,0]);
     });
 }
+
+Callback.addCallback("DestroyBlock",function(coords,block,player){
+    var item = Player.getCarriedItem(),material = ToolAPI.getBlockMaterial(block.id);
+    if(ETTool.isTool(item.id,"Shovel") && material.dirt){
+        Block.setTempDestroyTime(block.id,0.5);
+    }
+});

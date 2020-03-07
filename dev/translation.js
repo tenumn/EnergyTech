@@ -38,6 +38,30 @@ Translation.addTranslation("Uranium Ore",{zh_CN:"铀矿石"});
 Translation.addTranslation("Silver Ore",{zh_CN:"银矿石"});
 Translation.addTranslation("Aluminium Ore",{zh_CN:"铝矿石"});
 
+Translation.addTranslation("Nether Copper Ore",{zh_CN:"下界铜矿石"});
+Translation.addTranslation("Nether Tetrahedrite Ore",{zh_CN:"下界黝铜矿石"});
+Translation.addTranslation("Nether Tin Ore",{zh_CN:"下界锡矿石"});
+Translation.addTranslation("Nether Lead Ore",{zh_CN:"下界铅矿石"});
+Translation.addTranslation("Nether Lithium Ore",{zh_CN:"下界锂矿石"});
+Translation.addTranslation("Nether Graphite Ore",{zh_CN:"下界石墨矿石"});
+Translation.addTranslation("Nether Tungsten Ore",{zh_CN:"下界钨矿石"});
+Translation.addTranslation("Nether Antimony Ore",{zh_CN:"下界锑矿石"});
+Translation.addTranslation("Nether Uranium Ore",{zh_CN:"下界铀矿石"});
+Translation.addTranslation("Nether Silver Ore",{zh_CN:"下界银矿石"});
+Translation.addTranslation("Nether Aluminium Ore",{zh_CN:"下界铝矿石"});
+
+Translation.addTranslation("Ender Copper Ore",{zh_CN:"末地铜矿石"});
+Translation.addTranslation("Ender Tetrahedrite Ore",{zh_CN:"末地黝铜矿石"});
+Translation.addTranslation("Ender Tin Ore",{zh_CN:"末地锡矿石"});
+Translation.addTranslation("Ender Lead Ore",{zh_CN:"末地铅矿石"});
+Translation.addTranslation("Ender Lithium Ore",{zh_CN:"末地锂矿石"});
+Translation.addTranslation("Ender Graphite Ore",{zh_CN:"末地石墨矿石"});
+Translation.addTranslation("Ender Tungsten Ore",{zh_CN:"末地钨矿石"});
+Translation.addTranslation("Ender Antimony Ore",{zh_CN:"末地锑矿石"});
+Translation.addTranslation("Ender Uranium Ore",{zh_CN:"末地铀矿石"});
+Translation.addTranslation("Ender Silver Ore",{zh_CN:"末地银矿石"});
+Translation.addTranslation("Ender Aluminium Ore",{zh_CN:"末地铝矿石"});
+
 Translation.addTranslation("Fire Generator",{zh_CN:"火力发电机"});
 Translation.addTranslation("Nuclear Reactor",{zh_CN:"核反应堆"});
 Translation.addTranslation("Heat Sink",{zh_CN:"散热片"});
@@ -228,6 +252,9 @@ Translation.addTranslation("Uranium Dust",{zh_CN:"铀粉"});
 Translation.addTranslation("Silver Dust",{zh_CN:"银粉"});
 Translation.addTranslation("Aluminium Dust",{zh_CN:"铝粉"});
 Translation.addTranslation("Tetrahedrite Dust",{zh_CN:"黝铜粉"});
+Translation.addTranslation("Ender Dust",{zh_CN:"末影粉"});
+Translation.addTranslation("Diamond Dust",{zh_CN:"钻石粉"});
+Translation.addTranslation("Sherlock Alloy Dust",{zh_CN:"夏洛克合金粉"});
 Translation.addTranslation("Lead-Antimony Alloy Dust",{zh_CN:"铅锑合金粉"});
 
 Translation.addTranslation("Small Pile of Stone Dust",{zh_CN:"小堆石粉"});
@@ -245,6 +272,9 @@ Translation.addTranslation("Small Pile of Uranium Dust",{zh_CN:"小堆铀粉"});
 Translation.addTranslation("Small Pile of Silver Dust",{zh_CN:"小堆银粉"});
 Translation.addTranslation("Small Pile of Aluminium Dust",{zh_CN:"小堆铝粉"});
 Translation.addTranslation("Small Pile of Tetrahedrite Dust",{zh_CN:"小堆黝铜粉"});
+Translation.addTranslation("Small Pile of Ender Dust",{zh_CN:"小堆末影粉"});
+Translation.addTranslation("Small Pile of Diamond Dust",{zh_CN:"小堆钻石粉"});
+Translation.addTranslation("Small Pile of Sherlock Alloy Dust",{zh_CN:"小堆夏洛克合金粉"});
 Translation.addTranslation("Small Pile of Lead-Antimony Alloy Dust",{zh_CN:"小堆铅锑合金粉"});
 
 Translation.addTranslation("Electric Motor" ,{zh_CN:"电动马达"});
@@ -266,6 +296,7 @@ Translation.addTranslation("Uranium Ingot",{zh_CN:"铀锭"});
 Translation.addTranslation("Silver Ingot",{zh_CN:"银锭"});
 Translation.addTranslation("Aluminium Ingot",{zh_CN:"铝锭"});
 Translation.addTranslation("Tetrahedrite Ingot",{zh_CN:"黝铜锭"});
+Translation.addTranslation("Sherlock Alloy Ingot",{zh_CN:"夏洛克合金锭"});
 Translation.addTranslation("Lead-Antimony Alloy Ingot",{zh_CN:"铅锑合金锭"});
 
 Translation.addTranslation("Lithium-6",{zh_CN:"锂-6"});
@@ -283,7 +314,8 @@ Translation.addTranslation("Tin Part",{zh_CN:"锡制零件"});
 Translation.addTranslation("Copper Part",{zh_CN:"铜制零件"});
 Translation.addTranslation("Gold Part",{zh_CN:"金制零件"});
 Translation.addTranslation("Steel Part",{zh_CN:"钢制零件"});
-Translation.addTranslation("Lead-Antimony Alloy Part",{zh_CN:"铅锑制零件"});
+Translation.addTranslation("Sherlock Alloy Part",{zh_CN:"夏洛克特制零件"});
+Translation.addTranslation("Lead-Antimony Alloy Part",{zh_CN:"铅锑特制零件"});
 
 Translation.addTranslation("Tin Plate",{zh_CN:"锡板"});
 Translation.addTranslation("Iron Plate",{zh_CN:"铁板"});
@@ -295,6 +327,7 @@ Translation.addTranslation("Tungsten Plate",{zh_CN:"钨板"});
 Translation.addTranslation("Lapis Plate",{zh_CN:"青金石板"});
 Translation.addTranslation("Lead Plate",{zh_CN:"铅板"});
 Translation.addTranslation("Aluminium Plate",{zh_CN:"铝板"});
+Translation.addTranslation("Sherlock Alloy Plate",{zh_CN:"夏洛克合金板"});
 Translation.addTranslation("Lead-Antimony Alloy Plate",{zh_CN:"铅锑合金板"});
 
 Translation.addTranslation("Iron Ring",{zh_CN:"铁环"});
@@ -305,6 +338,8 @@ Translation.addTranslation("Tin Stick",{zh_CN:"锡棍"});
 Translation.addTranslation("Iron Stick",{zh_CN:"铁棍"});
 Translation.addTranslation("Gold Stick",{zh_CN:"金棍"});
 Translation.addTranslation("Steel Stick",{zh_CN:"钢棍"});
+Translation.addTranslation("Tungsten Stick",{zh_CN:"钨棍"});
+Translation.addTranslation("Sherlock Alloy Stick",{zh_CN:"夏洛克合金棍"});
 Translation.addTranslation("Lead-Antimony Alloy Stick",{zh_CN:"铅锑合金棍"});
 
 Translation.addTranslation("Lithium Battery",{zh_CN:"锂电池"});
@@ -315,6 +350,12 @@ Translation.addTranslation("Liquid Cell(Water)",{zh_CN:"液体单元(水)"});
 Translation.addTranslation("Liquid Cell(Lava)",{zh_CN:"液体单元(岩浆)"});
 Translation.addTranslation("Liquid Cell(Uranium)",{zh_CN:"液体单元(铀)"});
 Translation.addTranslation("Liquid Cell(Lithium)",{zh_CN:"液体单元(锂)"});
+
+Translation.addTranslation("Antimony Sword",{zh_CN:"锑剑"});
+Translation.addTranslation("Antimony Shovel",{zh_CN:"锑铲"});
+Translation.addTranslation("Antimony Pickaxe",{zh_CN:"锑镐"});
+Translation.addTranslation("Antimony Axe",{zh_CN:"锑斧"});
+Translation.addTranslation("Antimony Hoe",{zh_CN:"锑锄"});
 
 Translation.addTranslation("Copper Sword",{zh_CN:"铜剑"});
 Translation.addTranslation("Copper Shovel",{zh_CN:"铜铲"});
@@ -366,7 +407,9 @@ Translation.addTranslation("Tin Coil",{zh_CN:"锡线圈"});
 Translation.addTranslation("Copper Coil",{zh_CN:"铜线圈"});
 Translation.addTranslation("Gold Coil",{zh_CN:"金线圈"});
 Translation.addTranslation("Steel Coil",{zh_CN:"钢线圈"});
+Translation.addTranslation("Tungsten Coil",{zh_CN:"钨线圈"});
 
+Translation.addTranslation("Autoclave",{zh_CN:"高压釜"});
 Translation.addTranslation("Centrifuge",{zh_CN:"离心机"});
 Translation.addTranslation("Compressor",{zh_CN:"压缩机"});
 Translation.addTranslation("Crusher",{zh_CN:"破碎机"});
@@ -379,6 +422,7 @@ Translation.addTranslation("LV Transformer",{zh_CN:"低压变压器"});
 Translation.addTranslation("MV Transformer",{zh_CN:"中压变压器"});
 Translation.addTranslation("HV Transformer",{zh_CN:"高压变压器"});
 Translation.addTranslation("EV Transformer",{zh_CN:"超高压变压器"});
+Translation.addTranslation("Wiremill",{zh_CN:"线缆轧制机"});
 
 Translation.addTranslation("Lithium Battery Box",{zh_CN:"锂电池盒"});
 Translation.addTranslation("Sherlock Battery Box",{zh_CN:"夏洛克电池盒"});
@@ -397,3 +441,39 @@ Translation.addTranslation("Max Voltage: ",{zh_CN:"最大电压: "});
 Translation.addTranslation("Energy Input: ",{zh_CN:"能量输入: "});
 Translation.addTranslation("Energy Output: ",{zh_CN:"能量输出: "});
 Translation.addTranslation("Energy Storage: ",{zh_CN:"储能: "});
+
+Translation.addTranslation("Renewable Energy",{zh_CN:"可再生能源"});
+Translation.addTranslation("Make Solar Generator",{zh_CN:"制作太阳能发电机"});
+
+Translation.addTranslation("Centrifugal Tech",{zh_CN:"离心科技"});
+Translation.addTranslation("Make Centrifuge",{zh_CN:"制作离心机"});
+
+Translation.addTranslation("Energy Storage",{zh_CN:"能量储存"});
+Translation.addTranslation("Make Lithium Battery",{zh_CN:"制作锂电池"});
+
+Translation.addTranslation("A Study in Scarlet",{zh_CN:"血字研究"});
+Translation.addTranslation("Make Sherlock Battery",{zh_CN:"制作夏洛克电池"});
+
+Translation.addTranslation("Heat Unit Transform",{zh_CN:"热能转换"});
+Translation.addTranslation("Make Fire Generator",{zh_CN:"制作火力发电机"});
+
+Translation.addTranslation("Better Energy Storage",{zh_CN:"更好的能量储存"});
+Translation.addTranslation("Make Lithium Battery Box",{zh_CN:"制作锂电池盒"});
+
+Translation.addTranslation("Signature: Sherlock·Holmes",{zh_CN:"署名: 夏洛克·福尔摩斯"});
+Translation.addTranslation("Make Sherlock Battery Box",{zh_CN:"制作夏洛克电池盒"});
+
+Translation.addTranslation("Energy Transform",{zh_CN:"能量转换"});
+Translation.addTranslation("Make LV Transformer",{zh_CN:"制作低压变压器"});
+Translation.addTranslation("Energy Transform+",{zh_CN:"能量转换+"});
+Translation.addTranslation("Make MV Transformer",{zh_CN:"制作中压变压器"});
+Translation.addTranslation("Energy Transform++",{zh_CN:"能量转换++"});
+Translation.addTranslation("Make HV Transformer",{zh_CN:"制作高压变压器"});
+Translation.addTranslation("Energy Transform+++",{zh_CN:"能量转换+++"});
+Translation.addTranslation("Make EV Transformer",{zh_CN:"制作超高压变压器"});
+Translation.addTranslation("Ancient Steelmaking Technology",{zh_CN:"古老的炼钢工艺"});
+Translation.addTranslation("Make Crude Blast Furnace",{zh_CN:"制作粗制高炉"});
+Translation.addTranslation("They are all chips!",{zh_CN:"都是渣渣!"});
+Translation.addTranslation("Make Crusher",{zh_CN:"制作破碎机"});
+Translation.addTranslation("Smash strike!",{zh_CN:"重击!"});
+Translation.addTranslation("Make Macerator",{zh_CN:"制作打粉机"});

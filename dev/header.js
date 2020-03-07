@@ -1,6 +1,7 @@
 // lib
 IMPORT("ToolLib");
 IMPORT("SoundAPI");
+IMPORT("WheatAPI");
 IMPORT("EnergyNet");
 IMPORT("ChargeItem");
 IMPORT("TileRender");
@@ -18,19 +19,4 @@ function power(tier){
 
 function random(min,max){
 	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-Player.getSneaking = function(){
-    return Entity.getSneaking(Player.get());
-};
-
-Player.getInventoryItemCount = function(id,data){
-	var count = 0;
-	for (var slot = 8;slot <= 48;slot++){
-        var inventory = Player.getInventorySlot(slot);
-		if (inventory.id == id && (data == -1 || inventory.data == (data || 0))){
-			count += inventory.count;
-		}
-	}
-	return count;
 }

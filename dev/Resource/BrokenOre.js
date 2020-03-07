@@ -8,7 +8,7 @@ function CreateBrokenOre(name){
         {name:name + " Ore Gravel",texture:[["gravel" + name,0]],inCreative:true}
     ],"gravel");
     ToolAPI.registerBlockMaterial(BlockID["gravel" + name],"dirt");
-    Block.setDestroyTime(BlockID["gravel" + name],3);
+    Block.setDestroyTime(BlockID["gravel" + name],1);
 
     // oreChunkNether
     IDRegistry.genItemID("oreChunkNether" + name);
@@ -19,7 +19,7 @@ function CreateBrokenOre(name){
         {name:"Nether " + name + " Ore Gravel",texture:[["gravelNether" + name,0]],inCreative:true}
     ],"gravel");
     ToolAPI.registerBlockMaterial(BlockID["gravelNether" + name],"dirt");
-    Block.setDestroyTime(BlockID["gravelNether" + name],3);
+    Block.setDestroyTime(BlockID["gravelNether" + name],1);
 
     // oreChunkEnder
     IDRegistry.genItemID("oreChunkEnder" + name);
@@ -30,7 +30,7 @@ function CreateBrokenOre(name){
         {name:"Ender " + name + " Ore Gravel",texture:[["gravelEnder" + name,0]],inCreative:true}
     ],"gravel");
     ToolAPI.registerBlockMaterial(BlockID["gravelEnder" + name],"dirt");
-    Block.setDestroyTime(BlockID["gravelEnder" + name],3);
+    Block.setDestroyTime(BlockID["gravelEnder" + name],1);
     
     // orePiece
     IDRegistry.genItemID("orePiece" + name);
@@ -41,7 +41,7 @@ function CreateBrokenOre(name){
         {name:name + " Ore Sand",texture:[["sand" + name,0]],inCreative:true}
     ],"sand");
     ToolAPI.registerBlockMaterial(BlockID["sand" + name],"dirt");
-    Block.setDestroyTime(BlockID["sand" + name],3);
+    Block.setDestroyTime(BlockID["sand" + name],1);
 
     // oreDust
     IDRegistry.genItemID("oreDust" + name);
@@ -52,7 +52,7 @@ function CreateBrokenOre(name){
         {name:name + " Ore Dust",texture:[["dust" + name,0]],inCreative:true}
     ],"dust");
     ToolAPI.registerBlockMaterial(BlockID["dust" + name],"dirt");
-    Block.setDestroyTime(BlockID["dust" + name],3);
+    Block.setDestroyTime(BlockID["dust" + name],1);
 
     Callback.addCallback("PreLoaded",function(){
         // 破碎机
@@ -98,7 +98,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.gravelIron        ,265                     );
     Recipes.addFurnace(BlockID.gravelGold        ,266                     );
     Recipes.addFurnace(BlockID.gravelLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(BlockID.gravelTungsten    ,ItemID.dustCarbon       );
     Recipes.addFurnace(BlockID.gravelAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(BlockID.gravelUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(BlockID.gravelSilver      ,ItemID.ingotSilver      );
@@ -111,7 +110,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.gravelNetherIron        ,265                     );
     Recipes.addFurnace(BlockID.gravelNetherGold        ,266                     );
     Recipes.addFurnace(BlockID.gravelNetherLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(BlockID.gravelNetherTungsten    ,ItemID.ingotTungsten    );
     Recipes.addFurnace(BlockID.gravelNetherAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(BlockID.gravelNetherUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(BlockID.gravelNetherSilver      ,ItemID.ingotSilver      );
@@ -124,7 +122,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.gravelEnderIron        ,265                     );
     Recipes.addFurnace(BlockID.gravelEnderGold        ,266                     );
     Recipes.addFurnace(BlockID.gravelEnderLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(BlockID.gravelEnderTungsten    ,ItemID.ingotTungsten    );
     Recipes.addFurnace(BlockID.gravelEnderAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(BlockID.gravelEnderUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(BlockID.gravelEnderSilver      ,ItemID.ingotSilver      );
@@ -137,7 +134,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.sandIron        ,265                     );
     Recipes.addFurnace(BlockID.sandGold        ,266                     );
     Recipes.addFurnace(BlockID.sandLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(BlockID.sandTungsten    ,ItemID.ingotTungsten    );
     Recipes.addFurnace(BlockID.sandAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(BlockID.sandUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(BlockID.sandSilver      ,ItemID.ingotSilver      );
@@ -150,11 +146,17 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.dustIron        ,265                     );
     Recipes.addFurnace(BlockID.dustGold        ,266                     );
     Recipes.addFurnace(BlockID.dustLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(BlockID.dustTungsten    ,ItemID.ingotTungsten    );
     Recipes.addFurnace(BlockID.dustAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(BlockID.dustUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(BlockID.dustSilver      ,ItemID.ingotSilver      );
     Recipes.addFurnace(BlockID.dustAluminium   ,ItemID.ingotAluminium   );
+
+    // 高炉
+    ETRecipe.addBlastFurnaceRecipe({id:BlockID.gravelTungsten      ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    ETRecipe.addBlastFurnaceRecipe({id:BlockID.gravelNetherTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    ETRecipe.addBlastFurnaceRecipe({id:BlockID.gravelEnderTungsten ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    ETRecipe.addBlastFurnaceRecipe({id:BlockID.sandTungsten        ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    ETRecipe.addBlastFurnaceRecipe({id:BlockID.dustTungsten        ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
 
     // 破碎机
     ETRecipe.addCrusherRecipe({id:BlockID.oreCopper      ,data:0},{id:ItemID.gravelCopper      ,count:2,data:0});
@@ -169,4 +171,30 @@ Callback.addCallback("PreLoaded",function(){
     ETRecipe.addCrusherRecipe({id:BlockID.oreUranium     ,data:0},{id:ItemID.gravelUranium     ,count:2,data:0});
     ETRecipe.addCrusherRecipe({id:BlockID.oreSilver      ,data:0},{id:ItemID.gravelSilver      ,count:2,data:0});
     ETRecipe.addCrusherRecipe({id:BlockID.oreAluminium   ,data:0},{id:ItemID.gravelAluminium   ,count:2,data:0});
+
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherCopper      ,data:0},{id:ItemID.gravelNetherCopper      ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherTetrahedrite,data:0},{id:ItemID.gravelNetherTetrahedrite,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherTin         ,data:0},{id:ItemID.gravelNetherTin         ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherLead        ,data:0},{id:ItemID.gravelNetherLead        ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherIron        ,data:0},{id:ItemID.gravelNetherIron        ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherGold        ,data:0},{id:ItemID.gravelNetherGold        ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherLithium     ,data:0},{id:ItemID.gravelNetherLithium     ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherTungsten    ,data:0},{id:ItemID.gravelNetherTungsten    ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherAntimony    ,data:0},{id:ItemID.gravelNetherAntimony    ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherUranium     ,data:0},{id:ItemID.gravelNetherUranium     ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherSilver      ,data:0},{id:ItemID.gravelNetherSilver      ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherAluminium   ,data:0},{id:ItemID.gravelNetherAluminium   ,count:2,data:0});
+
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderCopper      ,data:0},{id:ItemID.gravelCopper      ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderTetrahedrite,data:0},{id:ItemID.gravelTetrahedrite,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderTin         ,data:0},{id:ItemID.gravelTin         ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderLead        ,data:0},{id:ItemID.gravelLead        ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderIron        ,data:0},{id:ItemID.gravelIron        ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderGold        ,data:0},{id:ItemID.gravelGold        ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderLithium     ,data:0},{id:ItemID.gravelLithium     ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderTungsten    ,data:0},{id:ItemID.gravelTungsten    ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderAntimony    ,data:0},{id:ItemID.gravelAntimony    ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderUranium     ,data:0},{id:ItemID.gravelUranium     ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderSilver      ,data:0},{id:ItemID.gravelSilver      ,count:2,data:0});
+    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderAluminium   ,data:0},{id:ItemID.gravelAluminium   ,count:2,data:0});
 });

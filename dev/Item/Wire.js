@@ -4,7 +4,7 @@ ETMachine.isWire = function(id){
     return ETMachine.wireIDs[id];
 }
 
-CreateWire = function(id,name,texture,volt,size){
+function CreateWire(id,name,texture,volt,size){
     // Block
 	IDRegistry.genBlockID(id);
 	Block.createBlock(id, [
@@ -14,7 +14,7 @@ CreateWire = function(id,name,texture,volt,size){
 
     EU.registerWire(BlockID[id],volt);
     ETMachine.wireIDs[BlockID[id]] = true;
-    ETTool.addTooltip(ItemID[id],Translation.translate("Max Voltage: ") + volt + "EU/t");
+    wheat.item.addTooltip(ItemID[id],Translation.translate("Max Voltage: ") + volt + "EU/t");
     
     TileRenderer.setupWireModel(BlockID[id],0,0.0625 *  size     ,"et-wire");
     TileRenderer.setupWireModel(BlockID[id],1,0.0625 * (size + 1),"et-wire");
@@ -62,10 +62,6 @@ Callback.addCallback("DestroyBlockStart",function(coords,block){
     }
 });
 
-ETRecipe.addWireRecipe = function(output,input){
-    Recipes.addShaped(output,[" a ","aba"," a "],["a",input[0].id,input[0].data,"b",input[1].id,input[1].data]);
-}
-
 CreateWire("coilTin"      ,"Tin Coil"      ,{name:"coilTin"     ,meta:0},power(1),4);
 CreateWire("coilCopper"   ,"Copper Coil"   ,{name:"coilCopper"  ,meta:0},power(2),4);
 CreateWire("coilGold"     ,"Gold Coil"     ,{name:"coilGold"    ,meta:0},power(3),6);
@@ -73,9 +69,17 @@ CreateWire("coilSteel"    ,"Steel Coil"    ,{name:"coilSteel"   ,meta:0},power(4
 CreateWire("coilTungsten" ,"Tungsten Coil" ,{name:"coilTungsten",meta:0},power(5),8);
 
 Callback.addCallback("PreLoaded",function(){
-    ETRecipe.addWireRecipe({id:ItemID.coilTin      ,count:1,data:0},[{id:ItemID.stickTin      ,data:0},{id:5,data:-1}]);
-    ETRecipe.addWireRecipe({id:ItemID.coilCopper   ,count:1,data:0},[{id:ItemID.stickCopper   ,data:0},{id:5,data:-1}]);
-    ETRecipe.addWireRecipe({id:ItemID.coilGold     ,count:1,data:0},[{id:ItemID.stickGold     ,data:0},{id:5,data:-1}]);
-    ETRecipe.addWireRecipe({id:ItemID.coilSteel    ,count:1,data:0},[{id:ItemID.stickSteel    ,data:0},{id:5,data:-1}]);
-    ETRecipe.addWireRecipe({id:ItemID.coilTungsten ,count:1,data:0},[{id:ItemID.stickTungsten ,data:0},{id:5,data:-1}]);
+    // 合成
+    Recipes.addShaped({id:ItemID.coilTin     ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickTin     ,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.coilCopper  ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickCopper  ,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.coilGold    ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickGold    ,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.coilSteel   ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickSteel   ,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.coilTungsten,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickTungsten,0,"b",5,-1]);
+
+    // 线缆轧制机
+    ETRecipe.addWiremillRecipe({id:ItemID.plateTin     ,count:1,data:0},{id:ItemID.coilTin     ,count:1,data:0});
+    ETRecipe.addWiremillRecipe({id:ItemID.plateCopper  ,count:1,data:0},{id:ItemID.coilCopper  ,count:1,data:0});
+    ETRecipe.addWiremillRecipe({id:ItemID.plateGold    ,count:1,data:0},{id:ItemID.coilGold    ,count:1,data:0});
+    ETRecipe.addWiremillRecipe({id:ItemID.plateSteel   ,count:1,data:0},{id:ItemID.coilSteel   ,count:1,data:0});
+    ETRecipe.addWiremillRecipe({id:ItemID.plateTungsten,count:1,data:0},{id:ItemID.coilTungsten,count:1,data:0});
 });

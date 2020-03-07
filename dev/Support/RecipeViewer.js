@@ -20,15 +20,15 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 		getList:function(id,data,isUsage){
             if(isUsage){
                 let result = ETRecipe.getRecipeResult("BlastFurnace",id,data);
-                return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
+                return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
             }
 
             let item,list = [],recipe = ETRecipe.getRecipe("BlastFurnace");
             for(let key in recipe){
                 result = recipe[key];
-                if(result.id == id && (result.data == data || data == -1)){
+                if(result[0].id == id && (result[0].data == data || data == -1)){
                     item = key.split(":");
-                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:[result]});
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
                 }
             }
 
@@ -333,6 +333,76 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                         input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],
                         output:[result]
                     });
+                }
+            }
+
+            return list;
+		}
+    });
+
+    // [线缆轧制机]Wiremill
+    RVCore.registerRecipeType("ET-Wiremill",{
+		contents:{
+            icon:BlockID.wiremill,
+            
+			drawing:[
+				{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
+				{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+            ],
+            
+			elements:{
+				"input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slotBlank",size:120}
+			}
+        },
+        
+		getList:function(id,data,isUsage){
+            if(isUsage){
+                let result = ETRecipe.getRecipeResult("Wiremill",id,data);
+                return result?[{input:[{id:id,count:result.count,data:data}],output:[result.output]}]:[];
+            }
+
+            let item,list = [],recipe = ETRecipe.getRecipe("Wiremill");
+            for(let key in recipe){
+                result = recipe[key];
+                if(result.id == id && (result.data == data || data == -1)){
+                    item = key.split(":");
+                    list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:[result.output]});
+                }
+            }
+
+            return list;
+		}
+    });
+
+    // [高压釜]Autoclave
+    RVCore.registerRecipeType("ET-Autoclave",{
+		contents:{
+            icon:BlockID.autoclave,
+            
+			drawing:[
+				{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
+				{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+            ],
+            
+			elements:{
+				"input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slotBlank",size:120}
+			}
+        },
+        
+		getList:function(id,data,isUsage){
+            if(isUsage){
+                let result = ETRecipe.getRecipeResult("Autoclave",id,data);
+                return result?[{input:[{id:id,count:result.count,data:data}],output:[result.output]}]:[];
+            }
+
+            let item,list = [],recipe = ETRecipe.getRecipe("Autoclave");
+            for(let key in recipe){
+                result = recipe[key];
+                if(result.id == id && (result.data == data || data == -1)){
+                    item = key.split(":");
+                    list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:[result.output]});
                 }
             }
 

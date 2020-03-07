@@ -24,7 +24,7 @@ var GuiCentrifuge = new UI.StandartWindow({
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:200 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
-		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
     
     elements:{
@@ -67,27 +67,20 @@ ETMachine.registerMachine(BlockID.centrifuge,{
         
         var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Centrifuge",input.id,input.data);
         
-        if(recipe){
-            if(this.data.energy >= this.data.energy_consumption){
-                this.data.energy -= this.data.energy_consumption;
-                this.data.progress += 1 / this.data.work_time;
-                this.setActive(true);
-                if(this.data.progress.toFixed(3) >= 1){
-                    if(recipe[0]){this.setOutput("slotOutput1",recipe[0].id,recipe[0].count,recipe[0].data);}
-                    if(recipe[1]){this.setOutput("slotOutput2",recipe[1].id,recipe[1].count,recipe[1].data);}
-                    if(recipe[2]){this.setOutput("slotOutput3",recipe[2].id,recipe[2].count,recipe[2].data);}
-                    if(recipe[3]){this.setOutput("slotOutput3",recipe[3].id,recipe[3].count,recipe[3].data);}
-                    input.count--;
-                    this.container.validateAll();
-                    this.data.progress = 0;
-                }
-            } else {
-                this.setActive(false);
+        if(recipe){if(this.data.energy >= this.data.energy_consumption){
+            this.data.energy -= this.data.energy_consumption;
+            this.data.progress += 1 / this.data.work_time;
+            this.activate();
+            if(this.data.progress.toFixed(3) >= 1){
+                if(recipe[0]){this.setOutput("slotOutput1",recipe[0].id,recipe[0].count,recipe[0].data);}
+                if(recipe[1]){this.setOutput("slotOutput2",recipe[1].id,recipe[1].count,recipe[1].data);}
+                if(recipe[2]){this.setOutput("slotOutput3",recipe[2].id,recipe[2].count,recipe[2].data);}
+                if(recipe[3]){this.setOutput("slotOutput3",recipe[3].id,recipe[3].count,recipe[3].data);}
+                input.count--;
+                this.container.validateAll();
+                this.data.progress = 0;
             }
-        } else {
-            this.data.progress = 0;
-            this.setActive(false);
-        }
+        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
 
         this.renderer();
         this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());

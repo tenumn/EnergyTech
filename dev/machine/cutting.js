@@ -4,13 +4,8 @@ Block.createBlock("cutting",[
     {name:"Cutting",texture:[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
 TileRenderer.setStandartModel(BlockID.cutting,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,0 ,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,4 ,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,8 ,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",1],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,12,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",2],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,16,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",3],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,20,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",4],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,24,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",5],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.cutting,0,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 6;i++){TileRenderer.registerRotationModel(BlockID.cutting,i * 4,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",i],["machine_side",0],["machine_side",0]]);}
 
 ETMachine.setDrop("cutting",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -28,7 +23,7 @@ var GuiCutting = new UI.StandartWindow({
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
         {type:"bitmap",x:620,y:175 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
-		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
@@ -62,31 +57,23 @@ ETMachine.registerMachine(BlockID.cutting,{
 	},
 	
 	tick:function(){
+        this.renderer();
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
         var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Cutting",input.id,input.data);
 
-        if(recipe){
-            if(this.data.energy >= this.data.energy_consumption){
-                this.data.energy -= this.data.energy_consumption;
-                this.data.progress += 1 / this.data.work_time;
-                this.setActive(true),this.playSound("machine/cutting.ogg");
-                this.renderer();
-                if(this.data.progress.toFixed(3) >= 1){
-                    this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
-                    this.container.validateAll();
-                    this.data.progress = 0;
-                }
-            } else {
-                this.setActive(false),this.stopSound();
+        if(recipe){if(this.data.energy >= this.data.energy_consumption){
+            this.data.energy -= this.data.energy_consumption;
+            this.data.progress += 1 / this.data.work_time;
+            this.activate("machine/cutting.ogg");
+            if(this.data.progress.toFixed(3) >= 1){
+                this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
+                this.container.validateAll();
+                this.data.progress = 0;
             }
-        } else {
-            this.data.progress = 0;
-            this.setActive(false),this.stopSound();
-        }
+        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
 
-        this.renderer();
         this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");

@@ -27,7 +27,7 @@ var GuiFarmingStation = new UI.StandartWindow({
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:200 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
-		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
@@ -65,36 +65,28 @@ ETMachine.registerMachine(BlockID.farmingStation,{
 	},
 	
 	tick:function(){
+        this.renderer();
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
-        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("FarmingStation",input.id,input.data);
-        var dirt = this.container.getSlot("slotDirt")
+        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("FarmingStation",input.id,input.data),dirt = this.container.getSlot("slotDirt")
         
-        if(recipe && (recipe.dirt.id == -1 || recipe.dirt.id == dirt.id) && (recipe.dirt.data == -1 || recipe.dirt.data == dirt.data)){
-            if(this.data.energy >= this.data.energy_consumption){
-                this.data.energy -= this.data.energy_consumption;
-                this.data.progress += 1 / this.data.work_time;
-                this.setActive(true);
-                if(this.data.progress.toFixed(3) >= 1){
-                    if(recipe.output[0] && Math.random() <= 1.00){this.setOutput("slotOutput1",recipe.output[0].id,random(recipe.output[0].count,recipe.output[0].count * 2),recipe.output[0].data);}
-                    if(recipe.output[1] && Math.random() <= 0.75){this.setOutput("slotOutput2",recipe.output[1].id,random(recipe.output[1].count,recipe.output[1].count * 2),recipe.output[1].data);}
-                    if(recipe.output[2] && Math.random() <= 0.50){this.setOutput("slotOutput3",recipe.output[2].id,random(recipe.output[2].count,recipe.output[2].count * 2),recipe.output[2].data);}
-                    if(recipe.output[3] && Math.random() <= 0.25){this.setOutput("slotOutput3",recipe.output[3].id,random(recipe.output[3].count,recipe.output[3].count * 2),recipe.output[3].data);}
-                    if(Math.random() <= 0.25){dirt.count--;}
-                    input.count--;
-                    this.container.validateAll();
-                    this.data.progress = 0;
-                }
-            } else {
-                this.setActive(false);
+        if(recipe && (recipe.dirt.id == -1 || recipe.dirt.id == dirt.id) && (recipe.dirt.data == -1 || recipe.dirt.data == dirt.data)){if(this.data.energy >= this.data.energy_consumption){
+            this.data.energy -= this.data.energy_consumption;
+            this.data.progress += 1 / this.data.work_time;
+            this.activate();
+            if(this.data.progress.toFixed(3) >= 1){
+                if(recipe.output[0] && Math.random() <= 1.00){this.setOutput("slotOutput1",recipe.output[0].id,random(recipe.output[0].count,recipe.output[0].count * 2),recipe.output[0].data);}
+                if(recipe.output[1] && Math.random() <= 0.75){this.setOutput("slotOutput2",recipe.output[1].id,random(recipe.output[1].count,recipe.output[1].count * 2),recipe.output[1].data);}
+                if(recipe.output[2] && Math.random() <= 0.50){this.setOutput("slotOutput3",recipe.output[2].id,random(recipe.output[2].count,recipe.output[2].count * 2),recipe.output[2].data);}
+                if(recipe.output[3] && Math.random() <= 0.25){this.setOutput("slotOutput3",recipe.output[3].id,random(recipe.output[3].count,recipe.output[3].count * 2),recipe.output[3].data);}
+                if(Math.random() <= 0.25){dirt.count--;}
+                input.count--;
+                this.container.validateAll();
+                this.data.progress = 0;
             }
-        } else {
-            this.data.progress = 0;
-            this.setActive(false);
-        }
+        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
 
-        this.renderer();
         this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
@@ -118,7 +110,5 @@ StorageInterface.createInterface(BlockID.farmingStation,{
         "slotOutput3":{output:true},
         "slotOutput4":{output:true}
 	},
-	isValidInput:function(item){
-        return ETRecipe.getRecipeResult("FarmingStation",item.id,item.data)?true:false;
-	}
+	isValidInput:function(item){return ETRecipe.getRecipeResult("FarmingStation",item.id,item.data)?true:false;}
 });

@@ -23,7 +23,7 @@ var GuiElectricFurnace = new UI.StandartWindow({
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:175 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
-        {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+        {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
@@ -62,23 +62,16 @@ ETMachine.registerMachine(BlockID.electricFurnace,{
         var input = this.container.getSlot("slotInput");
         var recipe = Recipes.getFurnaceRecipeResult(input.id,"iron");
         
-        if(recipe){
-            if(this.data.energy >= this.data.energy_consumption){
-                this.data.energy -= this.data.energy_consumption;
-                this.data.progress += 1 / this.data.work_time;
-                this.setActive(true),this.playSound("machine/electro_furnace.ogg");
-                if(this.data.progress.toFixed(3) >= 1){
-                    this.setOutput("slotOutput",recipe.id,1,recipe.data),input.count--;
-                    this.container.validateAll();
-                    this.data.progress = 0;
-                }
-            } else {
-                this.setActive(false),this.stopSound();
+        if(recipe){if(this.data.energy >= this.data.energy_consumption){
+            this.data.energy -= this.data.energy_consumption;
+            this.data.progress += 1 / this.data.work_time;
+            this.activate("machine/electro_furnace.ogg");
+            if(this.data.progress.toFixed(3) >= 1){
+                this.setOutput("slotOutput",recipe.id,1,recipe.data),input.count--;
+                this.container.validateAll();
+                this.data.progress = 0;
             }
-        } else {
-            this.data.progress = 0;
-            this.setActive(false),this.stopSound();
-        }
+        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
 
         if(this.data.progress < 0){this.data.progress = 0;}
         this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
@@ -96,7 +89,5 @@ StorageInterface.createInterface(BlockID.crusher,{
 		"slotInput":{input:true},
         "slotOutput":{output:true}
 	},
-	isValidInput:function(item){
-		return Recipes.getFurnaceRecipeResult(item.id,"iron")?true:false;
-	}
+	isValidInput:function(item){return Recipes.getFurnaceRecipeResult(item.id,"iron")?true:false;}
 });

@@ -8,9 +8,9 @@ for(let i = 0;i < 9;i++){
     TileRenderer.registerRenderModel(BlockID.lithiumBatteryBox,i,[["battery_bottom",0],["battery_top",0],["lithium_battery",i],["lithium_battery",i],["lithium_battery",i],["lithium_battery",i]]);
 }
 
-ETTool.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Input: ") + Translation.translate("Top Side"));
-ETTool.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Output: ") + Translation.translate("Bottom Side"));
-ETTool.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Storage: ") + 65536 + "Eu");
+wheat.item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Input: ") + Translation.translate("Top Side"));
+wheat.item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Output: ") + Translation.translate("Bottom Side"));
+wheat.item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Storage: ") + 65536 + "Eu");
 
 ETMachine.setDrop("lithiumBatteryBox",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -19,7 +19,7 @@ Callback.addCallback("PreLoaded",function(){
 
 var GuiLithiumBatteryBox = new UI.StandartWindow({
 	standart:{
-		header:{text:{text:Translation.translate("Battery")}},
+		header:{text:{text:Translation.translate("Lithium Battery Box")}},
 		inventory:{standart:true},
 		background:{standart:true}
     },

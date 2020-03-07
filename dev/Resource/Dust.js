@@ -5,8 +5,9 @@ ETRecipe.addDustRecipe = function(output,input){
 
 CreateDust = function(name){
     IDRegistry.genItemID("dust" + name);
+    Item.createItem("dust" + name,name + " Dust",{name:"dust" + name});
+    
     IDRegistry.genItemID("dustSmall" + name);
-    Item.createItem("dust" + name,name + " Dust",{name:"dust" + name});    
     Item.createItem("dustSmall" + name,"Small Pile of " + name + " Dust",{name:"dustSmall" + name});
 
     Callback.addCallback("PreLoaded",function(){
@@ -34,7 +35,22 @@ IDRegistry.genItemID("dustLeadAntimony");
 Item.createItem("dustLeadAntimony","Lead-Antimony Alloy Dust",{name:"dustLeadAntimony"});
 
 IDRegistry.genItemID("dustSmallLeadAntimony");
-Item.createItem("dustSmallLeadAntimony","Small Lead-Antimony Alloy Dust",{name:"dustSmallLeadAntimony"});
+Item.createItem("dustSmallLeadAntimony","Small Pile Lead-Antimony Alloy Dust",{name:"dustSmallLeadAntimony"});
+
+IDRegistry.genItemID("dustEnder");
+IDRegistry.genItemID("dustSmallEnder");
+Item.createItem("dustEnder","Ender Dust",{name:"dustEnder"});
+Item.createItem("dustSmallEnder","Small Pile of Ender Dust",{name:"dustSmallEnder"});
+
+IDRegistry.genItemID("dustSherlock");
+IDRegistry.genItemID("dustSmallSherlock");
+Item.createItem("dustSherlock","Sherlock Dust",{name:"dustSherlock"});
+Item.createItem("dustSmallSherlock","Small Pile of Sherlock Dust",{name:"dustSmallSherlock"});
+
+IDRegistry.genItemID("dustDiamond");
+IDRegistry.genItemID("dustSmallDiamond");
+Item.createItem("dustDiamond","Diamond Dust",{name:"dustDiamond"});
+Item.createItem("dustSmallDiamond","Small Pile of Diamond Dust",{name:"dustSmallDiamond"});
 
 IDRegistry.genItemID("lithium6");
 IDRegistry.genItemID("smallLithium6");
@@ -56,14 +72,23 @@ IDRegistry.genItemID("smallUranium238");
 Item.createItem("uranium238","Uranium-238",{name:"uranium238"});
 Item.createItem("smallUranium238","Small Pile of Uranium-238",{name:"small_uranium238"});
 
-Callback.addCallback("PreLoaded",function(){
-    ETRecipe.addBlockRecipe({id:ItemID.dustLeadAntimony,data:0},{id:ItemID.dustSmallLeadAntimony,data:0});
-    Recipes.addShapeless({id:ItemID.dustLeadAntimony,count:2,data:0},[{id:ItemID.dustLead,data:0},{id:ItemID.dustAntimony,data:0}]);
+IDRegistry.genItemID("slag");
+Item.createItem("slag","Slag",{name:"slag"});
 
+Callback.addCallback("PreLoaded",function(){
+    // 合成
     ETRecipe.addDustRecipe({id:ItemID.lithium6  ,data:0},{id:ItemID.smallLithium6  ,data:0});
     ETRecipe.addDustRecipe({id:ItemID.lithium7  ,data:0},{id:ItemID.smallLithium7  ,data:0});
     ETRecipe.addDustRecipe({id:ItemID.uranium235,data:0},{id:ItemID.smallUranium235,data:0});
     ETRecipe.addDustRecipe({id:ItemID.uranium238,data:0},{id:ItemID.smallUranium238,data:0});
+
+    ETRecipe.addDustRecipe({id:ItemID.dustEnder       ,data:0},{id:ItemID.dustSmallEnder       ,data:0});
+    ETRecipe.addDustRecipe({id:ItemID.dustSherlock    ,data:0},{id:ItemID.dustSmallSherlock    ,data:0});
+    ETRecipe.addDustRecipe({id:ItemID.dustDiamond     ,data:0},{id:ItemID.dustSmallDiamond     ,data:0});
+    ETRecipe.addDustRecipe({id:ItemID.dustLeadAntimony,data:0},{id:ItemID.dustSmallLeadAntimony,data:0});
+
+    Recipes.addShapeless({id:ItemID.dustSherlock    ,count:2,data:0},[{id:ItemID.dustEnder,data:0},{id:ItemID.dustIron    ,data:0}]);
+    Recipes.addShapeless({id:ItemID.dustLeadAntimony,count:2,data:0},[{id:ItemID.dustLead ,data:0},{id:ItemID.dustAntimony,data:0}]);
 
     // 离心机
     ETRecipe.addCentrifugeRecipe({id:ItemID.dustLithium,data:0},[{id:ItemID.lithium7,count:1,data:0},{id:ItemID.smallLithium6,count:1,data:0}]);
@@ -78,14 +103,20 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.dustGold        ,266                     );
     Recipes.addFurnace(ItemID.dustAntimony    ,ItemID.ingotAntimony    );
     Recipes.addFurnace(ItemID.dustLithium     ,ItemID.ingotLithium     );
-    Recipes.addFurnace(ItemID.dustTungsten    ,ItemID.ingotTungsten    );
     Recipes.addFurnace(ItemID.dustUranium     ,ItemID.ingotUranium     );
     Recipes.addFurnace(ItemID.dustSilver      ,ItemID.ingotSilver      );
     Recipes.addFurnace(ItemID.dustTetrahedrite,ItemID.ingotTetrahedrite);
     Recipes.addFurnace(ItemID.dustAluminium   ,ItemID.ingotAluminium   );
     Recipes.addFurnace(ItemID.dustLeadAntimony,ItemID.ingotLeadAntimony);
-    
-    // 打粉机    
+    Recipes.addFurnace(ItemID.dustSherlock    ,ItemID.ingotSherlock    );
+
+    // 高炉
+    ETRecipe.addBlastFurnaceRecipe({id:ItemID.dustTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0}]);
+
+    // 打粉机
+    ETRecipe.addMaceratorRecipe({id:368,data:0},{id:ItemID.dustEnder  ,count:1,data:0});
+    ETRecipe.addMaceratorRecipe({id:264,data:0},{id:ItemID.dustDiamond,count:1,data:0});
+
     ETRecipe.addMaceratorRecipe({id:ItemID.crushedPurifiedCopper      ,data:0},{id:ItemID.dustCopper      ,count:2,data:0});
     ETRecipe.addMaceratorRecipe({id:ItemID.crushedPurifiedTin         ,data:0},{id:ItemID.dustTin         ,count:2,data:0});
     ETRecipe.addMaceratorRecipe({id:ItemID.crushedPurifiedLead        ,data:0},{id:ItemID.dustLead        ,count:2,data:0});

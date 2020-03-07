@@ -4,11 +4,8 @@ Block.createBlock("compressor",[
     {name:"Compressor",texture:[["machine_bottom",0],["compressor_top",0],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
 TileRenderer.setStandartModel(BlockID.compressor,[["machine_bottom",0],["compressor_top",0],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.compressor,0 ,[["machine_bottom",0],["compressor_top",0],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.compressor,4 ,[["machine_bottom",0],["compressor_top",1],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.compressor,8 ,[["machine_bottom",0],["compressor_top",1],["machine_side",0],["compressor",1],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.compressor,12,[["machine_bottom",0],["compressor_top",1],["machine_side",0],["compressor",2],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.compressor,16,[["machine_bottom",0],["compressor_top",1],["machine_side",0],["compressor",3],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.compressor,0,[["machine_bottom",0],["compressor_top",0],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 4;i++){TileRenderer.registerRotationModel(BlockID.compressor,i * 4,[["machine_bottom",0],["compressor_top",1],["machine_side",0],["compressor",i],["machine_side",0],["machine_side",0]]);}
 
 ETMachine.setDrop("compressor",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -26,7 +23,7 @@ var GuiCompressor = new UI.StandartWindow({
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
         {type:"bitmap",x:620,y:175 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
-		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
@@ -59,33 +56,25 @@ ETMachine.registerMachine(BlockID.compressor,{
 		this.data.work_time = this.defaultValues.work_time;
 	},
 
-	tick:function(){        
+	tick:function(){
+        this.renderer();
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
 
         var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Compressor",input.id,input.data);
         
-        if(recipe){
-            if(this.data.energy >= this.data.energy_consumption){
-                this.data.energy -= this.data.energy_consumption;
-                this.data.progress += 1 / this.data.work_time;
-                this.setActive(true),this.playSound("machine/compressor.ogg");
-                this.renderer();
-                if(this.data.progress.toFixed(3) >= 1){
-                    this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
-                    this.container.validateAll();
-                    this.data.progress = 0;
-                }
-            } else {
-                this.setActive(false),this.stopSound();
+        if(recipe){if(this.data.energy >= this.data.energy_consumption){
+            this.data.energy -= this.data.energy_consumption;
+            this.data.progress += 1 / this.data.work_time;
+            this.activate("machine/compressor.ogg");
+            if(this.data.progress.toFixed(3) >= 1){
+                this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
+                this.container.validateAll();
+                this.data.progress = 0;
             }
-        } else {
-            this.data.progress = 0;
-            this.setActive(false),this.stopSound();
-        }
+        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
         
-        this.renderer();
         this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");

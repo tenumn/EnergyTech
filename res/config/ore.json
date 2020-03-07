@@ -75,5 +75,19 @@
         "size":8,
         "minHeight":0,
         "maxHeight":64
+    },
+    "iron":{
+        "enabled":true,
+        "count":16,
+        "size":8,
+        "minHeight":0,
+        "maxHeight":64
+    },
+    "gold":{
+        "enabled":true,
+        "count":16,
+        "size":8,
+        "minHeight":0,
+        "maxHeight":64
     }
 }

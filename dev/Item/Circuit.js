@@ -1,14 +1,8 @@
 IDRegistry.genItemID("circuit");
-Item.createItem("circuit","Circuit",{name:"circuit"});
+Item.createItem("circuit","Circuit",{name:"circuit"},{stack:16});
 
 IDRegistry.genItemID("circuitOverclocker");
-Item.createItem("circuitOverclocker","Circuit(Overclocker Upgrade)",{name:"circuit_overclocker"});
-
-IDRegistry.genItemID("circuitEnergyStorage");
-Item.createItem("circuitEnergyStorage","Circuit(Energy Storage Upgrade)",{name:"circuit_energy_storage"});
-
-IDRegistry.genItemID("circuitTransformer");
-Item.createItem("circuitTransformer","Circuit(Transformer Upgrade)",{name:"circuit_transformer"});
+Item.createItem("circuitOverclocker","Circuit(Overclocker Upgrade)",{name:"circuit_overclocker"},{stack:16});
 
 ETUpgrade.registerUpgrade(ItemID.circuitOverclocker,"overclocker",function(item,machine,container,data,coords){
     if(data.work_time){
@@ -17,9 +11,15 @@ ETUpgrade.registerUpgrade(ItemID.circuitOverclocker,"overclocker",function(item,
     }
 });
 
+IDRegistry.genItemID("circuitEnergyStorage");
+Item.createItem("circuitEnergyStorage","Circuit(Energy Storage Upgrade)",{name:"circuit_energy_storage"},{stack:16});
+
 ETUpgrade.registerUpgrade(ItemID.circuitEnergyStorage,"energyStorage",function(item,machine,container,data,coords){
     data.energy_storage += 16384 * item.count;
 });
+
+IDRegistry.genItemID("circuitTransformer");
+Item.createItem("circuitTransformer","Circuit(Transformer Upgrade)",{name:"circuit_transformer"},{stack:16});
 
 ETUpgrade.registerUpgrade(ItemID.circuitTransformer,"transformer",function(item,machine,container,data,coords){
     data.tier += item.count;

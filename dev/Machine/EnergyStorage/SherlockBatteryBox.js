@@ -4,12 +4,12 @@ Block.createBlock("sherlockBatteryBox",[
     {name:"Sherlock Battery Box",texture:[["machine_bottom",0],["machine_top",0],["sherlock_battery_box",0]],inCreative:true}
 ],"opaque");
 
-ETTool.addTooltip(BlockID.sherlockBatteryBox,Translation.translate("Energy Storage: ") + 589824 + "Eu");
+wheat.item.addTooltip(BlockID.sherlockBatteryBox,Translation.translate("Energy Storage: ") + 589824 + "Eu");
 ETMachine.setDrop("sherlockBatteryBox",BlockID.machineCasing,2);
 ETModel.SherlockBatteryBox(BlockID.sherlockBatteryBox,0);
 
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.sherlockBatteryBox,count:1,data:0},["aba","bcb","aba"],["a",ItemID.partLeadAntimony,0,"b",ItemID.sherlockBattery,-1,"c",ItemID.coilCopper,0]);
+	Recipes.addShaped({id:BlockID.sherlockBatteryBox,count:1,data:0},["aba","bcb","aba"],["a",ItemID.partIron,0,"b",ItemID.sherlockBattery,-1,"c",ItemID.coilCopper,0]);
 });
 
 var GuiSherlockBatteryBox = new UI.StandartWindow({

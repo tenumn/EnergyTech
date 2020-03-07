@@ -1,15 +1,15 @@
 {
-    "enabled":true,
-    "debug":false,
-    "sounds":{
-        "enabled":true
+  "enabled":true,
+  "debug":false,
+  "sounds":{
+    "enabled":true
+  },
+  "machine":{
+    "voltage":{
+      "enabled":true
     },
-    "machine":{
-        "voltage":{
-            "enabled":true
-        },
-        "reactor":{
-            "radius":2
-        }
+    "reactor":{
+      "radius":2
     }
+  }
 }

@@ -106,5 +106,21 @@ var ETRecipe = {
 		} else {
 			this.getRecipe("FarmingStation")[input.id + ":" + input.data] = {output:output,dirt:dirt};
 		}
+	},
+
+	addWiremillRecipe:function(input,output){
+		if(!input.data){
+			this.getRecipe("Wiremill")[input.id] = {output:output,count:input.count};
+		} else {
+			this.getRecipe("Wiremill")[input.id + ":" + input.data] = {output:output,count:input.count};
+		}
+	},
+
+	addAutoclaveRecipe:function(input,output){
+		if(!input.data){
+			this.getRecipe("Autoclave")[input.id] = {output:output,count:input.count};
+		} else {
+			this.getRecipe("Autoclave")[input.id + ":" + input.data] = {output:output,count:input.count};
+		}
 	}
 }

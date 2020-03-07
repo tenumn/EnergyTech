@@ -16,6 +16,9 @@ Item.createItem("stickGold","Gold Stick",{name:"stickGold"});
 IDRegistry.genItemID("stickTungsten");
 Item.createItem("stickTungsten","Tungsten Stick",{name:"stickTungsten"});
 
+IDRegistry.genItemID("stickSherlock");
+Item.createItem("stickSherlock","Sherlock Alloy Stick",{name:"stickSherlock"});
+
 IDRegistry.genItemID("stickLeadAntimony");
 Item.createItem("stickLeadAntimony","Lead-Antimony Alloy Stick",{name:"stickLeadAntimony"});
 

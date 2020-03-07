@@ -46,8 +46,11 @@ Block/Scaffold.js
 Block/GlassTank.js
 Block/CrudeBlastFurnace.js
 
+
 Machine/Crusher.js
 Machine/Cutting.js
+Machine/Wiremill.js
+Machine/Autoclave.js
 Machine/Macerator.js
 Machine/OreWasher.js
 Machine/Centrifuge.js

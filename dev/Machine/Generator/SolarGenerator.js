@@ -19,7 +19,7 @@ var GuiSolarGenerator = new UI.StandartWindow({
     drawing:[
 		{type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
 		{type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
-		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
 	],
 	
 	elements:{

@@ -35,7 +35,7 @@ var GuiOreWasher = new UI.StandartWindow({
         {type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:200 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
         {type:"bitmap",x:900 - GUI_SCALE * 3,y:175 - GUI_SCALE * 6,bitmap:"liquidBackground",scale:GUI_SCALE},
-		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infosmall",scale:GUI_SCALE}
+		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
@@ -51,7 +51,7 @@ var GuiOreWasher = new UI.StandartWindow({
         "slotOutput4":{type:"slot",x:780,y:235,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:75 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "scaleLiquid":{type:"scale",x:900 + GUI_SCALE * 3,y:175,direction:1,value:0.5,bitmap:"liquid_scale_water",overlay:"liquid_scale_water_overlay",scale:GUI_SCALE},
+        "scaleLiquid":{type:"scale",x:900 + GUI_SCALE * 3,y:175,direction:1,value:0.5,bitmap:"liquidScaleWater",overlay:"liquidScaleWaterOverlay",scale:GUI_SCALE},
 
         "slotLiquid1":{type:"slot",x:720,y:400,bitmap:"slotCell",isValid:function(id,count,data){return LiquidRegistry.getItemLiquid(id,data) == "water";}},
 		"slotLiquid2":{type:"slot",x:780,y:400,bitmap:"slotCell",isValid:function(){return false;}}
@@ -81,6 +81,7 @@ ETMachine.registerMachine(BlockID.oreWasher,{
     },
     
 	tick:function(){
+        this.renderer();
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
@@ -100,30 +101,22 @@ ETMachine.registerMachine(BlockID.oreWasher,{
 			}
 		}
 
-        if(recipe && this.liquidStorage.getAmount("water") >= 1){
-            if(this.data.energy >= this.data.energy_consumption){
-                this.data.energy -= this.data.energy_consumption;
-                this.data.progress += 1 / this.data.work_time;
-                this.setActive(true);
-                if(this.data.progress.toFixed(3) >= 1){
-                    this.liquidStorage.getLiquid("water",1);
-                    if(recipe[0]){this.setOutput("slotOutput1",recipe[0].id,recipe[0].count,recipe[0].data);}
-                    if(recipe[1]){this.setOutput("slotOutput2",recipe[1].id,recipe[1].count,recipe[1].data);}
-                    if(recipe[2]){this.setOutput("slotOutput3",recipe[2].id,recipe[2].count,recipe[2].data);}
-                    if(recipe[3]){this.setOutput("slotOutput3",recipe[3].id,recipe[3].count,recipe[3].data);}
-                    input.count--;
-                    this.container.validateAll();
-                    this.data.progress = 0;
-                }
-            } else {
-                this.setActive(false);
+        if(recipe && this.liquidStorage.getAmount("water") >= 1){if(this.data.energy >= this.data.energy_consumption){
+            this.data.energy -= this.data.energy_consumption;
+            this.data.progress += 1 / this.data.work_time;
+            this.activate();
+            if(this.data.progress.toFixed(3) >= 1){
+                this.liquidStorage.getLiquid("water",1);
+                if(recipe[0]){this.setOutput("slotOutput1",recipe[0].id,recipe[0].count,recipe[0].data);}
+                if(recipe[1]){this.setOutput("slotOutput2",recipe[1].id,recipe[1].count,recipe[1].data);}
+                if(recipe[2]){this.setOutput("slotOutput3",recipe[2].id,recipe[2].count,recipe[2].data);}
+                if(recipe[3]){this.setOutput("slotOutput3",recipe[3].id,recipe[3].count,recipe[3].data);}
+                input.count--;
+                this.container.validateAll();
+                this.data.progress = 0;
             }
-        } else {
-            this.data.progress = 0;
-            this.setActive(false);
-        }
+        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
 
-        this.renderer();
         this.liquidStorage.updateUiScale("scaleLiquid","water");
         this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
@@ -132,7 +125,7 @@ ETMachine.registerMachine(BlockID.oreWasher,{
 
     renderer:function(){
         var count = 12;
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (count - Math.round(this.data.progress / 1 * count)) + 4:0));
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (count - Math.round(this.data.progress / 1 * count * 10) % count) + 4:0));
     },
 
     energyReceive:ETMachine.energyReceive,
@@ -148,7 +141,5 @@ StorageInterface.createInterface(BlockID.oreWasher,{
         "slotOutput3":{output:true},
         "slotOutput4":{output:true}
 	},
-	isValidInput:function(item){
-        return ETRecipe.getRecipeResult("OreWasher",item.id,item.data)?true:false;
-	}
+	isValidInput:function(item){return ETRecipe.getRecipeResult("OreWasher",item.id,item.data)?true:false;}
 });
