@@ -11,24 +11,26 @@ Callback.addCallback("PreLoaded",function(){
 	Recipes.addShaped({id:BlockID.crudeBlastFurnace,count:1,data:0},["aba","bcb","aba"],["a",ItemID.plateIron,0,"b",45,0,"c",61,0]);
 });
 
-var GuiBlastFurnace = new UI.StandartWindow({
-    standart:{
-        header:{text:{text:Translation.translate("Blast Furnace")}},
-        inventory:{standart:true},
-        background:{standart:true}
+var GuiCrudeBlastFurnace = new UI.StandartWindow({
+	standart:{
+		header:{text:{text:Translation.translate("Blast Furnace")}},
+		inventory:{standart:true},
+		background:{standart:true}
     },
+
     drawing:[
         {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:525,y:225 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
         {type:"bitmap",x:425 + GUI_SCALE * 4,y:225 + GUI_SCALE * 2,bitmap:"fireBackground",scale:GUI_SCALE}
     ],
-    elements:{
+    
+	elements:{
         "slotInput":{type:"slot",x:425,y:150,bitmap:"slotBlank",scale:GUI_SCALE},
         "scaleArrow":{type:"scale",x:525,y:225 + GUI_SCALE,direction:0,value:0.5,bitmap:"arrowScale",scale:GUI_SCALE},
         "slotOutput":{type:"slot",x:625,y:225,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
 		"scaleBurn":{type:"scale",x:425 + GUI_SCALE * 3,y:225 + GUI_SCALE * 2,direction:1,value:0.5,bitmap:"fireScale",scale:GUI_SCALE},
         "slotFuel":{type:"slot",x:425,y:300,bitmap:"slotFuel",isValid:function(id,count,data){return Recipes.getFuelBurnDuration(id,data) > 0;}}
-    }
+	}
 });
 
 ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
@@ -52,7 +54,8 @@ ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
                 this.data.progress += 1 / 640;
                 this.setActive(true);
                 if(this.data.progress.toFixed(3) >= 1){
-                    this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
+                    if(recipe[0]){this.setOutput("slotOutput",recipe[0].id,recipe[0].count,recipe[0].data);}
+                    input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;
                 }
@@ -68,7 +71,7 @@ ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
         this.container.setScale("scaleBurn",Math.round(this.data.burn / this.data.burnMax * 14) / 14 || 0);
     },
 
-    getGuiScreen:function(){return GuiBlastFurnace;},
+    getGuiScreen:function(){return GuiCrudeBlastFurnace;},
     getTransportSlots:function(){return {input:["slotInput"],output:["slotOutput"]};}
 });
 TileRenderer.setRotationPlaceFunction(BlockID.crudeBlastFurnace);

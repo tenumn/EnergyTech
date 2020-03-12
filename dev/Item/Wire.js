@@ -7,7 +7,7 @@ ETMachine.isWire = function(id){
 function CreateWire(id,name,texture,volt,size){
     // Block
 	IDRegistry.genBlockID(id);
-	Block.createBlock(id, [
+	Block.createBlock(id,[
         {name:name,texture:[[texture.name,0]],inCreative:false},
         {name:name,texture:[[texture.name,1]],inCreative:false}
 	],"wire");
@@ -58,14 +58,14 @@ Callback.addCallback("DestroyBlockStart",function(coords,block){
     if(ETMachine.isWire(block.id) && ETTool.isTool(item.id,"Cutter")){
         Block.setTempDestroyTime(block.id,0);
         SoundAPI.playSound("tool/wrench.ogg");
-        ToolAPI.breakCarriedTool(2);
+        ToolAPI.breakCarriedTool(4);
     }
 });
 
 CreateWire("coilTin"      ,"Tin Coil"      ,{name:"coilTin"     ,meta:0},power(1),4);
 CreateWire("coilCopper"   ,"Copper Coil"   ,{name:"coilCopper"  ,meta:0},power(2),4);
 CreateWire("coilGold"     ,"Gold Coil"     ,{name:"coilGold"    ,meta:0},power(3),6);
-CreateWire("coilSteel"    ,"Steel Coil"    ,{name:"coilSteel"   ,meta:0},power(4),8);
+CreateWire("coilSteel"    ,"Steel Coil"    ,{name:"coilSteel"   ,meta:0},power(4),6);
 CreateWire("coilTungsten" ,"Tungsten Coil" ,{name:"coilTungsten",meta:0},power(5),8);
 
 Callback.addCallback("PreLoaded",function(){

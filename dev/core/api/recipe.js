@@ -83,7 +83,7 @@ var ETRecipe = {
 			this.getRecipe("Centrifuge")[input.id + ":" + input.data] = output;
 		}
 	},
-
+	
 	addCuttingRecipe:function(input,output){
 		if(!input.data){
 			this.getRecipe("Cutting")[input.id] = output;

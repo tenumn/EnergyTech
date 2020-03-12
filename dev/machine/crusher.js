@@ -4,8 +4,11 @@ Block.createBlock("crusher",[
     {name:"Crusher",texture:[["machine_bottom",0],["crusher_top",0],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
 TileRenderer.setStandartModel(BlockID.crusher,[["machine_bottom",0],["crusher_top",0],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.crusher,0,[["machine_bottom",0],["crusher_top",0],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]]);
-for(var i = 1;i < 4;i++){TileRenderer.registerRotationModel(BlockID.crusher,i * 4,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",i],["machine_side",0],["machine_side",0]]);}
+TileRenderer.registerRotationModel(BlockID.crusher,0 ,[["machine_bottom",0],["crusher_top",0],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,4 ,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,8 ,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",1],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,12,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",2],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,16,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",3],["machine_side",0],["machine_side",0]]);
 
 ETMachine.setDrop("crusher",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){

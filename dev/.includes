@@ -29,9 +29,12 @@ Material/Electric.js
 Material/MachineCasing.js
 
 Item/Cell.js
+Item/Crop.js
 Item/Wire.js
 Item/Battery.js
 Item/Circuit.js
+Item/EnergyCard.js
+Item/WireSuperconductor.js
 
 Item/Tool/Tin.js
 Item/Tool/Iron.js
@@ -46,7 +49,6 @@ Block/Scaffold.js
 Block/GlassTank.js
 Block/CrudeBlastFurnace.js
 
-
 Machine/Crusher.js
 Machine/Cutting.js
 Machine/Wiremill.js
@@ -56,8 +58,10 @@ Machine/OreWasher.js
 Machine/Centrifuge.js
 Machine/Compressor.js
 Machine/Transformer.js
+Machine/BlastFurnace.js
 Machine/FarmingStation.js
 Machine/ElectricFurnace.js
+Machine/NetworkTerminal.js
 
 Machine/Generator/FireGenerator.js
 Machine/Generator/NuclearReactor.js

@@ -6,8 +6,6 @@ var ETMachine = {
     },
 
     registerPrototype:function(id,state){
-        this.machineIDs[id] = true;
-
         state.id = id;
 
         state.playSound = state.playSound || function(name){
@@ -37,7 +35,9 @@ var ETMachine = {
 
             state.activate = state.activate || function(sound){
                 this.setActive(true);
-                this.playSound(sound);
+                if(sound){
+                    this.playSound(sound);
+                }
             }
 
             state.deactive = state.deactive || function(){
@@ -93,8 +93,11 @@ var ETMachine = {
     },
     
     registerMachine:function(id,state){
-        ICRender.getGroup("et-wire").add(id,-1);
+        this.machineIDs[id] = true;
 
+        ICRender.getGroup("et-wire").add(id,-1);
+        ICRender.getGroup("superconductor").add(id,-1);
+        
         if(state.defaultValues){
             state.defaultValues.tier = state.defaultValues.tier || 1;
             state.defaultValues.energy = 0;
@@ -121,7 +124,8 @@ var ETMachine = {
         }
 
         wheat.item.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
-        
+        wheat.item.addTooltip(id,Translation.translate("Destroy Tool Type: ") + Translation.translate("Wrench"));
+
         this.registerPrototype(id,state);
         EnergyTileRegistry.addEnergyTypeForId(id,EU);
     },
@@ -132,7 +136,7 @@ var ETMachine = {
 
         state.energyTick = state.energyTick || this.energyOutput;
 
-        this.registerMachine(id,state,EU);
+        this.registerMachine(id,state);
     },
 
     registerEnergyStorage:function(id,state){
@@ -141,7 +145,7 @@ var ETMachine = {
         state.energyTick = state.energyTick || this.energyOutput;
         state.energyReceive = state.energyReceive || this.energyReceive;
         
-        this.registerMachine(id,state,EU);
+        this.registerMachine(id,state);
     },
 
     energyReceive:function(type,amount,voltage){
@@ -178,7 +182,6 @@ var ETMachine = {
             BlockRenderer.unmapAtCoords(coords.x,coords.y,coords.z);
             var item = Player.getCarriedItem();
             if(ETTool.isTool(item.id,"Wrench")){
-                ToolAPI.breakCarriedTool(8);
                 World.setBlock(coords.x,coords.y,coords.z,0);
                 return [[id,1,data]];
             }
@@ -193,6 +196,6 @@ Callback.addCallback("DestroyBlockStart",function(coords,block){
     if(ETMachine.isMachine(block.id) && ETTool.isTool(item.id,"Wrench")){
         Block.setTempDestroyTime(block.id,0);
         SoundAPI.playSound("tool/wrench.ogg");
-        ToolAPI.breakCarriedTool(2);
+        ToolAPI.breakCarriedTool(8);
     }
 });

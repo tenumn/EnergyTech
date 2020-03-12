@@ -48,7 +48,7 @@ ETMachine.registerMachine(BlockID.electricFurnace,{
         energy_consumption:3,
     },
     
-	setDefaultValues: function(){
+	setDefaultValues:function(){
 		this.data.tier = this.defaultValues.tier;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;
@@ -84,7 +84,7 @@ ETMachine.registerMachine(BlockID.electricFurnace,{
     getTransportSlots:function(){return {input:["slotInput"],output:["slotOutput"]};}
 });
 TileRenderer.setRotationPlaceFunction(BlockID.electricFurnace);
-StorageInterface.createInterface(BlockID.crusher,{
+StorageInterface.createInterface(BlockID.electricFurnace,{
 	slots:{
 		"slotInput":{input:true},
         "slotOutput":{output:true}

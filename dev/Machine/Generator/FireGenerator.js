@@ -57,7 +57,7 @@ ETMachine.registerGenerator(BlockID.fireGenerator,{
 		this.setDefaultValues();
 		ETUpgrade.executeUpgrades(this);
 		StorageInterface.checkHoppers(this);
-		EnergyOutput = Math.min((this.data.isActive?random(1,this.data.burn / 20):0),this.getMaxVoltage());
+		var EnergyOutput = Math.min((this.data.isActive?random(1,this.data.burn / 20):0),this.getMaxVoltage());
 
 		if(this.data.burn <= 0 && this.data.energy + EnergyOutput < this.getEnergyStorage()){this.data.burn = this.data.burnMax = this.getFuel("slotFuel");}
 

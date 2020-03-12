@@ -5,11 +5,7 @@ Block.createBlock("farmingStation",[
 ],"opaque");
 TileRenderer.setStandartModel(BlockID.farmingStation,[["machine_bottom",0],["farming_station_top",0],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.farmingStation,0 ,[["machine_bottom",0],["farming_station_top",0],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.farmingStation,4 ,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.farmingStation,8 ,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",1],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.farmingStation,12,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",2],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.farmingStation,16,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",3],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.farmingStation,20,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",4],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 9;i++){TileRenderer.registerRotationModel(BlockID.farmingStation,i * 4,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",i],["machine_side",0],["machine_side",0]]);}
 
 ETMachine.setDrop("farmingStation",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -93,8 +89,8 @@ ETMachine.registerMachine(BlockID.farmingStation,{
     },
 
     renderer:function(){
-        var count = 5;
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (Math.round(this.data.progress / 1 * count * 10) % count) + 4:0));
+        var count = 9;
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta+(this.data.isActive?4*Math.round(this.data.progress/1*count)+4:0));
     },
 
     energyReceive:ETMachine.energyReceive,

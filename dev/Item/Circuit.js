@@ -30,6 +30,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:ItemID.circuitOverclocker  ,count:1,data:0},[" a ","bcb"      ],["a",BlockID.coolantWater ,0 ,"b",ItemID.coilCopper,0,"c",ItemID.circuit    ,0]);
     Recipes.addShaped({id:ItemID.circuitEnergyStorage,count:1,data:0},[" a ","bcb"      ],["a",ItemID.lithiumBattery,-1,"b",ItemID.coilCopper,0,"c",ItemID.circuit    ,0]);
     for(var i = 0;i < 4;i++){
-        Recipes.addShaped({id:ItemID.circuitTransformer,count:1 + i,data:0},[" a ","bcb"      ],["a",BlockID.transformer,i,"b",ItemID.coilCopper,0,"c",ItemID.circuit    ,0]);
+        Recipes.addShaped({id:ItemID.circuitTransformer,count:1 + i,data:0},[" a ","bcb"      ],["a",BlockID.transformer,i,"b",ItemID.coilCopper,0,"c",ItemID.circuit,0]);
     }
 });

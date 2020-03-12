@@ -28,6 +28,15 @@ Item.createItem("plateLead","Lead Plate",{name:"plateLead"});
 IDRegistry.genItemID("plateAluminium");
 Item.createItem("plateAluminium","Aluminium Plate",{name:"plateAluminium"});
 
+IDRegistry.genItemID("plateAntimony");
+Item.createItem("plateAntimony","Antimony Plate",{name:"plateAntimony"});
+
+IDRegistry.genItemID("plateDiamond");
+Item.createItem("plateDiamond","Diamond Plate",{name:"plateDiamond"});
+
+IDRegistry.genItemID("plateRedstone");
+Item.createItem("plateRedstone","Redstone Plate",{name:"plateRedstone"});
+
 IDRegistry.genItemID("plateSherlock");
 Item.createItem("plateSherlock","Sherlock Alloy Plate",{name:"plateSherlock"});
 
@@ -48,6 +57,9 @@ Callback.addCallback("PreLoaded",function(){
         ETRecipe.addShapeless({id:ItemID.plateLead        ,count:1,data:0},[{id:ItemID.ingotLead        ,data:0},{id:ItemID.ingotLead        ,data:0}],hammer[i]);
         ETRecipe.addShapeless({id:ItemID.plateAluminium   ,count:1,data:0},[{id:ItemID.ingotAluminium   ,data:0},{id:ItemID.ingotAluminium   ,data:0}],hammer[i]);
         ETRecipe.addShapeless({id:ItemID.plateLeadAntimony,count:1,data:0},[{id:ItemID.ingotLeadAntimony,data:0},{id:ItemID.ingotLeadAntimony,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.plateAntimony    ,count:1,data:0},[{id:ItemID.ingotAntimony    ,data:0},{id:ItemID.plateAntimony    ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.plateDiamond     ,count:1,data:0},[{id:264                     ,data:0},{id:264                     ,data:0}],hammer[i]);
+        ETRecipe.addShapeless({id:ItemID.plateRedstone    ,count:1,data:0},[{id:331                     ,data:0},{id:264                     ,data:0}],hammer[i]);
     }
 
     ETRecipe.addCompressorRecipe({id:ItemID.ingotCopper      ,data:0},{id:ItemID.plateCopper      ,count:1,data:0});
@@ -61,5 +73,8 @@ Callback.addCallback("PreLoaded",function(){
     ETRecipe.addCompressorRecipe({id:ItemID.ingotLead        ,data:0},{id:ItemID.plateLead        ,count:1,data:0});
     ETRecipe.addCompressorRecipe({id:ItemID.ingotAluminium   ,data:0},{id:ItemID.plateAluminium   ,count:1,data:0});
     ETRecipe.addCompressorRecipe({id:ItemID.ingotLeadAntimony,data:0},{id:ItemID.plateLeadAntimony,count:1,data:0});
+    ETRecipe.addCompressorRecipe({id:ItemID.ingotAntimony    ,data:0},{id:ItemID.plateAntimony    ,count:1,data:0});
+    ETRecipe.addCompressorRecipe({id:264                     ,data:0},{id:ItemID.plateDiamond     ,count:1,data:0});
+    ETRecipe.addCompressorRecipe({id:331                     ,data:0},{id:ItemID.plateRedstone    ,count:1,data:0});
 });
 

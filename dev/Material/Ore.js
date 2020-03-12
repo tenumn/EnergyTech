@@ -1,3 +1,4 @@
+
 CreateOre = function(name,data){
     var json = FileTools.ReadJSON(__dir__ + "res/config/ore.json"),ore = json[name.toLowerCase()],config = {enabled:ore.enabled,count:ore.count,size:ore.size,minHeight:ore.minHeight,maxHeight:ore.maxHeight}
     if(!data.ore){

@@ -39,21 +39,21 @@ TileRenderer.setCoverRotationPlace = function(id){
 }
 
 IDRegistry.genItemID("coverEnergyDisplay");
-Item.createItem("coverEnergyDisplay","Energy Display Cover",{name:"cover_energy_display",meta:0});
+Item.createItem("coverEnergyDisplay","Energy Display Cover",{name:"coverEnergyDisplay",meta:0});
 
 IDRegistry.genBlockID("coverEnergyDisplay");
 Block.createBlock("coverEnergyDisplay",[
-    {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false},
-    {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false},
-    {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false},
-    {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false},
-    {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false},
-    {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false}
+    {name:"Energy Display Cover",texture:[["coverEnergyDisplay",0]],inCreative:false},
+    {name:"Energy Display Cover",texture:[["coverEnergyDisplay",0]],inCreative:false},
+    {name:"Energy Display Cover",texture:[["coverEnergyDisplay",0]],inCreative:false},
+    {name:"Energy Display Cover",texture:[["coverEnergyDisplay",0]],inCreative:false},
+    {name:"Energy Display Cover",texture:[["coverEnergyDisplay",0]],inCreative:false},
+    {name:"Energy Display Cover",texture:[["coverEnergyDisplay",0]],inCreative:false}
 ],"cover");
 
-TileRenderer.setCoverModel(BlockID.coverEnergyDisplay,[["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0]]);
+TileRenderer.setCoverModel(BlockID.coverEnergyDisplay,[["coverEnergyDisplay",0],["coverEnergyDisplay",0],["coverEnergyDisplay",0],["coverEnergyDisplay",0],["coverEnergyDisplay",0],["coverEnergyDisplay",0]]);
 for(let i = 0;i <= 10;i++){
-    TileRenderer.registerCoverModel(BlockID.coverEnergyDisplay,i * 6,[["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i]]);
+    TileRenderer.registerCoverModel(BlockID.coverEnergyDisplay,i * 6,[["coverEnergyDisplay",i],["coverEnergyDisplay",i],["coverEnergyDisplay",i],["coverEnergyDisplay",i],["coverEnergyDisplay",i],["coverEnergyDisplay",i]]);
 }
 
 Callback.addCallback("PreLoaded",function(){
@@ -72,36 +72,26 @@ ETMachine.registerPrototype(BlockID.coverEnergyDisplay,{
         if(tile && tile.data.energy && tile.getEnergyStorage()){
             TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (Math.round(tile.data.energy / tile.getEnergyStorage() * 10) * 6));
         }
-    },
-
-    getGuiScreen:function(){
-        var dirs = directions[this.data.meta],block = World.getBlock(this.x + dirs[0],this.y + dirs[1],this.z + dirs[2]),tile = World.getTileEntity(this.x + dirs[0],this.y + dirs[1],this.z + dirs[2]);
-        if(!CoverIDs[block.id]){
-            if(tile && tile.getGuiScreen()){
-                return tile.getGuiScreen();
-            }
-        }
-        return null;
     }
 });
 TileRenderer.setCoverRotationPlace("coverEnergyDisplay");
 
 IDRegistry.genItemID("coverProgressDisplay");
-Item.createItem("coverProgressDisplay","Progress Display Cover",{name:"cover_progress_display",meta:0});
+Item.createItem("coverProgressDisplay","Progress Display Cover",{name:"coverProgressDisplay",meta:0});
 
 IDRegistry.genBlockID("coverProgressDisplay");
 Block.createBlock("coverProgressDisplay",[
-    {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false},
-    {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false},
-    {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false},
-    {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false},
-    {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false},
-    {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false}
+    {name:"Progress Display Cover",texture:[["coverProgressDisplay",0]],inCreative:false},
+    {name:"Progress Display Cover",texture:[["coverProgressDisplay",0]],inCreative:false},
+    {name:"Progress Display Cover",texture:[["coverProgressDisplay",0]],inCreative:false},
+    {name:"Progress Display Cover",texture:[["coverProgressDisplay",0]],inCreative:false},
+    {name:"Progress Display Cover",texture:[["coverProgressDisplay",0]],inCreative:false},
+    {name:"Progress Display Cover",texture:[["coverProgressDisplay",0]],inCreative:false}
 ],"cover");
 
-TileRenderer.setCoverModel(BlockID.coverProgressDisplay,[["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0]]);
+TileRenderer.setCoverModel(BlockID.coverProgressDisplay,[["coverProgressDisplay",0],["coverProgressDisplay",0],["coverProgressDisplay",0],["coverProgressDisplay",0],["coverProgressDisplay",0],["coverProgressDisplay",0]]);
 for(let i = 0;i <= 11;i++){
-    TileRenderer.registerCoverModel(BlockID.coverProgressDisplay,i * 6,[["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i]]);
+    TileRenderer.registerCoverModel(BlockID.coverProgressDisplay,i * 6,[["coverProgressDisplay",i],["coverProgressDisplay",i],["coverProgressDisplay",i],["coverProgressDisplay",i],["coverProgressDisplay",i],["coverProgressDisplay",i]]);
 }
 
 Callback.addCallback("PreLoaded",function(){
@@ -120,16 +110,6 @@ ETMachine.registerPrototype(BlockID.coverProgressDisplay,{
         if(tile && tile.data.progress){
             TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (tile.data.isActive?(Math.round(tile.data.progress / 1 * 11) * 6):0));
         }
-    },
-
-    getGuiScreen:function(){
-        var dirs = directions[this.data.meta],block = World.getBlock(this.x + dirs[0],this.y + dirs[1],this.z + dirs[2]),tile = World.getTileEntity(this.x + dirs[0],this.y + dirs[1],this.z + dirs[2]);
-        if(!CoverIDs[block.id]){
-            if(tile && tile.getGuiScreen()){
-                return tile.getGuiScreen();
-            }
-        }
-        return null;
     }
 });
 TileRenderer.setCoverRotationPlace("coverProgressDisplay");

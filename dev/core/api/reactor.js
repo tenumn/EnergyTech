@@ -54,8 +54,8 @@ var ETReactor = {
                     }
                 }
 
-                prototype.$tick = prototype.tick || function() {};
-                prototype.$destroyBlock = prototype.destroyBlock || function() {};
+                prototype.$tick = prototype.tick || function(){};
+                prototype.$destroyBlock = prototype.destroyBlock || function(){};
 
                 prototype.tick = function(){
                     this.$tick();

@@ -1,7 +1,7 @@
 ModAPI.addAPICallback("RecipeViewer",function(api){
     let RVCore = api.Core;
 
-    // [粗制高炉]]Crude Blast Furnace
+    // [粗制高炉]Crude Blast Furnace
     RVCore.registerRecipeType("ET-CrudeBlastFurnace",{
 		contents:{
             icon:BlockID.crudeBlastFurnace,
@@ -35,7 +35,42 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             return list;
 		}
     });
-    
+
+    // [高炉]Blast Furnace
+    RVCore.registerRecipeType("ET-BlastFurnace",{
+		contents:{
+            icon:BlockID.crudeBlastFurnace,
+            
+			drawing:[
+				{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
+				{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+            ],
+            
+			elements:{
+				"input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slotBlank",size:120}
+			}
+        },
+        
+		getList:function(id,data,isUsage){
+            if(isUsage){
+                let result = ETRecipe.getRecipeResult("BlastFurnace",id,data);
+                return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
+            }
+
+            let item,list = [],recipe = ETRecipe.getRecipe("BlastFurnace");
+            for(let key in recipe){
+                result = recipe[key];
+                if(result[0].id == id && (result[0].data == data || data == -1)){
+                    item = key.split(":");
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
+                }
+            }
+
+            return list;
+		}
+    });
+
     // [压缩机]Compressor
     RVCore.registerRecipeType("ET-Compressor",{
 		contents:{
@@ -284,12 +319,12 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 		getList:function(id,data,isUsage){
             if(isUsage){
                 let result = ETRecipe.getRecipeResult("FarmingStation",id,data);
-                return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
+                return result?[{input:[{id:id,count:1,data:data}],output:result.output}]:[];
             }
 
             let item,list = [],recipe = ETRecipe.getRecipe("FarmingStation");
-            for(let key in recipe){
-                result = recipe[key];
+            for(let key in recipe.output){
+                result = recipe.output[key];
                 for(var i = 0;i <= 4;i++){
                     if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
@@ -363,8 +398,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             }
 
             let item,list = [],recipe = ETRecipe.getRecipe("Wiremill");
-            for(let key in recipe){
-                result = recipe[key];
+            for(let key in recipe.output){
+                result = recipe.output[key];
                 if(result.id == id && (result.data == data || data == -1)){
                     item = key.split(":");
                     list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:[result.output]});
@@ -398,8 +433,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             }
 
             let item,list = [],recipe = ETRecipe.getRecipe("Autoclave");
-            for(let key in recipe){
-                result = recipe[key];
+            for(let key in recipe.output){
+                result = recipe.output[key];
                 if(result.id == id && (result.data == data || data == -1)){
                     item = key.split(":");
                     list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:[result.output]});

@@ -8,6 +8,7 @@ IMPORT("TileRender");
 IMPORT("StorageInterface");
 
 // API
+var network = {}
 var GUI_SCALE = 3.25;
 var EU = EnergyTypeRegistry.assureEnergyType("Eu",1);
 var directions = [[0,1,0],[0,-1,0],[0,0,1],[0,0,-1],[1,0,0],[-1,0,0]];
@@ -20,3 +21,14 @@ function power(tier){
 function random(min,max){
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+Saver.addSavesScope("EnergyTech",
+    function read(scope){
+    	network = scope.network || {};
+    },
+    function save(){
+        return {
+            network:network
+        }
+    }
+);

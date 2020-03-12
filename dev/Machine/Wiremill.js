@@ -68,7 +68,7 @@ ETMachine.registerMachine(BlockID.wiremill,{
             this.data.progress += 1 / this.data.work_time;
             this.activate("machine/wiremill.ogg");
             if(this.data.progress.toFixed(3) >= 1){
-                this.setOutput("slotOutput",recipe.id,recipe.count,recipe.data),input.count -= recipe.count;
+                this.setOutput("slotOutput",recipe.output.id,recipe.output.count,recipe.output.data),input.count -= recipe.count;
                 this.container.validateAll();
                 this.data.progress = 0;
             }
@@ -94,5 +94,7 @@ StorageInterface.createInterface(BlockID.wiremill,{
 		"slotInput":{input:true},
         "slotOutput":{output:true}
 	},
-	isValidInput:function(item){return ETRecipe.getRecipeResult("Wiremill",item.id,item.data)?true:false;}
+	isValidInput:function(item){
+        return ETRecipe.getRecipeResult("Wiremill",item.id,item.data)?true:false;
+    }
 });

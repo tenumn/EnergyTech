@@ -52,13 +52,11 @@ ETMachine.registerGenerator(BlockID.nuclearReactor,{
     tick:function(){
         this.setDefaultValues();
 
-        var radius = __config__.getNumber("machine.reactor.radius");
-        var range = radius * 2 + 1;
+        var reactor_radius = __config__.getNumber("machine.reactor.radius"),range = reactor_radius * 2 + 1;
         for(let x = 0;x <= range;x++){for(let y = 0;y <= range;y++){for(let z = 0;z <= range;z++){
-            var coords = {x:this.x - radius + x,y:this.y - radius + y,z:this.z - radius + z},
+            var coords = {x:this.x - reactor_radius + x,y:this.y - reactor_radius + y,z:this.z - reactor_radius + z},
                 tile = World.getTileEntity(coords.x,coords.y,coords.z),
                 block = World.getBlock(coords.x,coords.y,coords.z),
-                data = ETReactor.getData(block.id),
                 reactor = ETReactor.getModule(block.id);
                 if(reactor && tile){tile.data.durability -= reactor(this.id,this.data,coords);}
         }}}
@@ -66,9 +64,7 @@ ETMachine.registerGenerator(BlockID.nuclearReactor,{
         if(this.data.coolant < this.data.heat){
             this.data.progress += 1 / 160;
             if(this.data.progress.toFixed(3) >= 1){
-                var radius = Math.max(0,Math.floor(this.data.heat * this.data.fuel)),
-                    height = radius / 2,
-                    coords = {x:this.x,y:this.y,z:this.z};
+                var radius = Math.max(0,Math.floor(this.data.fuel - this.data.hard)),height = radius / 2,coords = {x:this.x,y:this.y,z:this.z};
                 runOnMainThread(function(){
                     if(radius > 0){
                         for(let x = - radius;x <= radius;x++){for(let y = - height;y <= height;y++){for(let z = - radius;z <= radius;z++){
@@ -103,6 +99,7 @@ ETMachine.registerGenerator(BlockID.nuclearReactor,{
 		var output = Math.min(this.getMaxVoltage(),this.data.energy);
 		this.data.energy += src.add(output) - output;
     },
+
     getGuiScreen:function(){return GuiNuclearReactor;}
 });
 

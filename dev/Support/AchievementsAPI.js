@@ -15,6 +15,36 @@ ModAPI.addAPICallback("AchievementsAPI",function(api){
         icon:{id:ItemID.ETICON}
     });
 
+    // 工业高炉
+    AchievementAPI.register("ET-Main",{
+        unique:"BlastFurnace",parent:{unique:"CrudeBlastFurnace"},
+        name:_text_("Modern Steelmaking Technology"),description:_text_("Make Blast Furnace"),
+        column:0,row:1,item:{id:BlockID.blastFurnace}
+    });
+
+    Callback.addCallback("tick",function(){
+        var item = {id:BlockID.blastFurnace,data:0},data = AchievementAPI.getData("ET-Main","BlastFurnace");
+        if(!data[item.id] && wheat.player.getInventoryItemCount(item.id,item.data)){
+            data[item.id] = true;
+            AchievementAPI.give("ET-Main","BlastFurnace");
+        }
+    });
+
+    // 粗制高炉
+    AchievementAPI.register("ET-Main",{
+        unique:"CrudeBlastFurnace",
+        name:_text_("Ancient Steelmaking Technology"),description:_text_("Make Crude Blast Furnace"),
+        column:0,row:2,item:{id:BlockID.crudeBlastFurnace}
+    });
+
+    Callback.addCallback("tick",function(){
+        var item = {id:BlockID.crudeBlastFurnace,data:0},data = AchievementAPI.getData("ET-Main","CrudeBlastFurnace");
+        if(!data[item.id] && wheat.player.getInventoryItemCount(item.id,item.data)){
+            data[item.id] = true;
+            AchievementAPI.give("ET-Main","CrudeBlastFurnace");
+        }
+    });
+
     // 火力发电机
     AchievementAPI.register("ET-Main",{
         unique:"FireGenerator",parent:{unique:"LithiumBattery"},
@@ -32,7 +62,7 @@ ModAPI.addAPICallback("AchievementsAPI",function(api){
 
     // 太阳能发电机
     AchievementAPI.register("ET-Main",{
-        unique:"SolarGenerator",
+        unique:"SolarGenerator",parent:{unique:"CrudeBlastFurnace"},
         name:_text_("Renewable Energy"),description:_text_("Make Solar Generator"),
         column:1,row:2,item:{id:BlockID.solarGenerator}
     });
@@ -132,21 +162,6 @@ ModAPI.addAPICallback("AchievementsAPI",function(api){
         if(!data[item.id] && wheat.player.getInventoryItemCount(item.id,item.data)){
             data[item.id] = true;
             AchievementAPI.give("ET-Main","LithiumBatteryBox");
-        }
-    });
-
-    // 粗制高炉
-    AchievementAPI.register("ET-Main",{
-        unique:"CrudeBlastFurnace",
-        name:_text_("Ancient Steelmaking Technology"),description:_text_("Make Crude Blast Furnace"),
-        column:3,row:2,item:{id:BlockID.crudeBlastFurnace}
-    });
-
-    Callback.addCallback("tick",function(){
-        var item = {id:BlockID.crudeBlastFurnace,data:0},data = AchievementAPI.getData("ET-Main","CrudeBlastFurnace");
-        if(!data[item.id] && wheat.player.getInventoryItemCount(item.id,item.data)){
-            data[item.id] = true;
-            AchievementAPI.give("ET-Main","CrudeBlastFurnace");
         }
     });
 

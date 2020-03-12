@@ -1,4 +1,5 @@
 Block.createSpecialType({
+    base:35,
     opaque:false,
     destroytime:1
 },"wire");
@@ -37,3 +38,9 @@ Block.createSpecialType({
     opaque:false,
     destroytime:1
 },"scaffold");
+
+Block.createSpecialType({
+    base:20,
+    opaque:false,
+    destroytime:0.5
+},"glass");

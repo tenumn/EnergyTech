@@ -41,3 +41,36 @@ Callback.addCallback("PreLoaded",function(){
     ETRecipe.addBlockRecipe({id:BlockID.blockAluminium   ,data:0},{id:ItemID.ingotAluminium   ,data:0});
     ETRecipe.addBlockRecipe({id:BlockID.blockLeadAntimony,data:0},{id:ItemID.ingotLeadAntimony,data:0});
 });
+
+// [尘土]Dust
+IDRegistry.genBlockID("dust");
+Block.createBlock("dust",[
+    {name:"Dust",texture:[["dust",0]],inCreative:true}
+],"dust");
+ToolAPI.registerBlockMaterial(BlockID.dust,"dirt");
+Block.setDestroyTime(BlockID.dust,1);
+
+Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
+    for(var i = 0;i < 6;i++){
+        var coords = GenerationUtils.randomCoords(chunkX,chunkZ,0,255);
+        GenerationUtils.generateOre(coords.x,coords.y,coords.z,BlockID.dust,0,32);
+    }
+});
+
+Callback.addCallback("PreLoaded",function(){
+    Recipes.addFurnace(BlockID.dust,BlockID.clearGlass);
+});
+
+// [通透玻璃]Clear Glass
+IDRegistry.genBlockID("clearGlass");
+Block.createBlock("clearGlass",[
+    {name:"Clear Glass",texture:[["clearGlass",0]],inCreative:true}
+],"glass");
+Block.setDestroyTime(BlockID.clearGlass,0.5);
+
+Block.registerDropFunction("clearGlass",function(coords,id,data,level,enchant){
+    if(enchant.silk){
+        return [[id,1,data]];
+    }
+    return [];
+});

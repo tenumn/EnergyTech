@@ -1,8 +1,11 @@
 var ETTool = {
     tool:{},
+    
     registerTool:function(id,type){
         if(!this.tool[type]){this.tool[type] = []}
         this.tool[type].push(id);
+        
+        wheat.item.addTooltip(id,Translation.translate("Tool Type: ") + Translation.translate(type));
     },
     
     getAllTool:function(type){
@@ -104,7 +107,7 @@ CreateHoe = function(id,name,texture,material){
     ToolAPI.setTool(ItemID[id],material,ToolType.hoe);
 }
 
-CreateTool = function(name,material,data){
+CreateTool = function(name,data){
     ToolAPI.addToolMaterial(name.toLowerCase(),data);
 
     CreateSword  ("sword"   + name,name + " Sword"  ,{name:"sword"   + name},name.toLowerCase());
@@ -112,14 +115,6 @@ CreateTool = function(name,material,data){
     CreatePickaxe("pickaxe" + name,name + " Pickaxe",{name:"pickaxe" + name},name.toLowerCase());
     CreateAxe    ("axe"     + name,name + " Axe"    ,{name:"axe"     + name},name.toLowerCase());
     CreateHoe    ("hoe"     + name,name + " Hoe"    ,{name:"hoe"     + name},name.toLowerCase());
-
-    Callback.addCallback("PreLoaded",function(){
-        Recipes.addShaped({id:ItemID["sword"   + name],count:1,data:0},[ "a" , "a" , "b" ],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID["shovel"  + name],count:1,data:0},[ "a" , "b" , "b" ],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID["pickaxe" + name],count:1,data:0},["aaa"," b "," b "],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID["axe"     + name],count:1,data:0},["aa" ,"ab" ," b" ],["a",material,0,"b",280,0]);
-        Recipes.addShaped({id:ItemID["hoe"     + name],count:1,data:0},["aa" ," b" ," b" ],["a",material,0,"b",280,0]);
-    });
 }
 
 Callback.addCallback("DestroyBlock",function(coords,block,player){
