@@ -5,10 +5,10 @@ Block.createSpecialType({
 },"wire");
 
 Block.createSpecialType({
-    base:20,
+    base:1,
     opaque:false,
-    destroytime:1
-},"glass_tank");
+    destroytime:3
+},"transparent");
 
 Block.createSpecialType({
     opaque:false,
@@ -17,24 +17,24 @@ Block.createSpecialType({
 
 Block.createSpecialType({
     base:13,
-    opaque:false,
+    opaque:true,
     destroytime:1
 },"gravel");
 
 Block.createSpecialType({
     base:12,
-    opaque:false,
+    opaque:true,
     destroytime:1
 },"sand");
 
 Block.createSpecialType({
     base:12,
-    opaque:false,
+    opaque:true,
     destroytime:1
 },"dust");
 
 Block.createSpecialType({
-    base:65,
+    base:5,
     opaque:false,
     destroytime:1
 },"scaffold");

@@ -1,77 +1,90 @@
 Header.js
 Translation.js
 
+Core/BlockType.js
 Core/Debug.js
 Core/Liquid.js
-Core/BlockType.js
 
-Core/API/Tool.js
-Core/API/Model.js
-Core/API/Recipe.js
+Core/API/Chemistry.js
+Core/API/Decomposer.js
 Core/API/Machine.js
+Core/API/Model.js
+Core/API/Synthesizer.js
 Core/API/Reactor.js
+Core/API/Recipe.js
+Core/API/Tool.js
 Core/API/Upgrade.js
 
-Resource/Dust.js
-Resource/Gear.js
-Resource/Part.js
-Resource/Ring.js
 Resource/Block.js
-Resource/Ingot.js
-Resource/Plate.js
-Resource/Stick.js
 Resource/BrokenOre.js
 Resource/CrushedOre.js
+Resource/Dust.js
 Resource/DustImpure.js
+Resource/Element.js
+Resource/Gear.js
+Resource/Ingot.js
+Resource/Item.js
+Resource/Ore.js
+Resource/Part.js
+Resource/Plate.js
+Resource/Ring.js
+Resource/Stick.js
+Resource/Stone.js
 
-Material/Ore.js
-Material/Electric.js
-Material/MachineCasing.js
-
-Item/Cell.js
-Item/Crop.js
-Item/Wire.js
 Item/Battery.js
+Item/Cell.js
 Item/Circuit.js
+Item/Crop.js
+Item/Drill.js
 Item/EnergyCard.js
-Item/WireSuperconductor.js
+Item/Powered.js
+Item/Wire.js
 
-Item/Tool/Tin.js
+Item/Tool/Antimony.js
+Item/Tool/Copper.js
 Item/Tool/Iron.js
 Item/Tool/Lead.js
 Item/Tool/Steel.js
-Item/Tool/Copper.js
-Item/Tool/Antimony.js
+Item/Tool/Tin.js
 Item/Tool/Tungsten.js
 
 Block/Cover.js
-Block/Scaffold.js
-Block/GlassTank.js
 Block/CrudeBlastFurnace.js
+Block/GlassTank.js
+Block/Module.js
+Block/Scaffold.js
 
-Machine/Crusher.js
-Machine/Cutting.js
-Machine/Wiremill.js
 Machine/Autoclave.js
-Machine/Macerator.js
-Machine/OreWasher.js
+Machine/AutoSaieve.js
+Machine/BlastFurnace.js
+Machine/CanningMachine.js
 Machine/Centrifuge.js
 Machine/Compressor.js
-Machine/Transformer.js
-Machine/BlastFurnace.js
-Machine/FarmingStation.js
+Machine/Crusher.js
+Machine/Cutting.js
+Machine/Decomposer.js
+Machine/Distillery.js
 Machine/ElectricFurnace.js
+Machine/Electrolyzer.js
+Machine/FarmingStation.js
+Machine/Macerator.js
 Machine/NetworkTerminal.js
+Machine/OreWasher.js
+Machine/Superconductor.js
+Machine/Synthesizer.js
+Machine/Transformer.js
+Machine/Wiremill.js
 
 Machine/Generator/FireGenerator.js
+Machine/Generator/FusionReactor.js
 Machine/Generator/NuclearReactor.js
 Machine/Generator/SolarGenerator.js
 
 Machine/EnergyStorage/LithiumBatteryBox.js
 Machine/EnergyStorage/SherlockBatteryBox.js
 
+Support/AchievementsAPI.js
 Support/Minecraft.js
 Support/RecipeViewer.js
-Support/AchievementsAPI.js
 
 Core/ModAPI.js

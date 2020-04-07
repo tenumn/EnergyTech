@@ -1,4 +1,4 @@
-function CreateBrokenOre(name){
+function CreateBrokenOre(name,random){
     // oreChunk
     IDRegistry.genItemID("oreChunk" + name);
     Item.createItem("oreChunk" + name,name + " Ore Chunk",{name:"oreChunk" + name,meta:0});
@@ -55,11 +55,19 @@ function CreateBrokenOre(name){
     Block.setDestroyTime(BlockID["dust" + name],1);
 
     Callback.addCallback("PreLoaded",function(){
+        // 自动筛子
+        if(random){
+            Recipe.addAutoSaieveRecipe({id:13          ,data:0},[{id:ItemID["oreChunk" + name],minCount:2,maxCount:4,data:0,random:random}]);
+            Recipe.addAutoSaieveRecipe({id:12          ,data:0},[{id:ItemID["orePiece" + name],minCount:2,maxCount:4,data:0,random:random}]);
+            Recipe.addAutoSaieveRecipe({id:12          ,data:1},[{id:ItemID["orePiece" + name],minCount:2,maxCount:4,data:0,random:random}]);
+            Recipe.addAutoSaieveRecipe({id:BlockID.dust,data:0},[{id:ItemID["oreDust"  + name],minCount:2,maxCount:4,data:0,random:random}]);
+        }
+        
         // 破碎机
-        ETRecipe.addCrusherRecipe({id:BlockID["gravel"       + name],data:0},{id:ItemID["orePiece" + name],count:6,data:0});
-        ETRecipe.addCrusherRecipe({id:BlockID["gravelNether" + name],data:0},{id:ItemID["orePiece" + name],count:6,data:0});
-        ETRecipe.addCrusherRecipe({id:BlockID["gravelEnder"  + name],data:0},{id:ItemID["orePiece" + name],count:6,data:0});
-        ETRecipe.addCrusherRecipe({id:BlockID["sand"         + name],data:0},{id:ItemID["oreDust"  + name],count:6,data:0});
+        Recipe.addCrusherRecipe({id:BlockID["gravel"       + name],data:0},{id:ItemID["orePiece" + name],count:6,data:0});
+        Recipe.addCrusherRecipe({id:BlockID["gravelNether" + name],data:0},{id:ItemID["orePiece" + name],count:6,data:0});
+        Recipe.addCrusherRecipe({id:BlockID["gravelEnder"  + name],data:0},{id:ItemID["orePiece" + name],count:6,data:0});
+        Recipe.addCrusherRecipe({id:BlockID["sand"         + name],data:0},{id:ItemID["oreDust"  + name],count:6,data:0});
         
         // 合成
         Recipes.addShaped({id:BlockID["gravel"       + name],count:1,data:0},["aa","aa"],["a",ItemID["oreChunk"       + name],0]);
@@ -69,27 +77,178 @@ function CreateBrokenOre(name){
         Recipes.addShaped({id:BlockID["dust"         + name],count:1,data:0},["aa","aa"],["a",ItemID["oreDust"        + name],0]);
         
         // 锤子
-        ETTool.setHammerDestroyDrop(BlockID["gravel"       + name],ItemID["orePiece" + name],4,0,true);
-        ETTool.setHammerDestroyDrop(BlockID["gravelNether" + name],ItemID["orePiece" + name],4,0,true);
-        ETTool.setHammerDestroyDrop(BlockID["gravelEnder"  + name],ItemID["orePiece" + name],4,0,true);
-        ETTool.setHammerDestroyDrop(BlockID["sand"         + name],ItemID["oreDust"  + name],4,0,true);
+        Tool.setHammerDestroyDrop(BlockID["gravel"       + name],ItemID["orePiece" + name],4,0,true);
+        Tool.setHammerDestroyDrop(BlockID["gravelNether" + name],ItemID["orePiece" + name],4,0,true);
+        Tool.setHammerDestroyDrop(BlockID["gravelEnder"  + name],ItemID["orePiece" + name],4,0,true);
+        Tool.setHammerDestroyDrop(BlockID["sand"         + name],ItemID["oreDust"  + name],4,0,true);
     });
 }
 
-CreateBrokenOre("Copper"      );
-CreateBrokenOre("Tetrahedrite");
-CreateBrokenOre("Tin"         );
-CreateBrokenOre("Lead"        );
-CreateBrokenOre("Iron"        );
-CreateBrokenOre("Gold"        );
-CreateBrokenOre("Lithium"     );
-CreateBrokenOre("Tungsten"    );
-CreateBrokenOre("Antimony"    );
-CreateBrokenOre("Uranium"     );
-CreateBrokenOre("Silver"      );
-CreateBrokenOre("Aluminium"   );
+CreateBrokenOre("Copper"      ,16);
+CreateBrokenOre("Tetrahedrite",16);
+CreateBrokenOre("Tin"         ,16);
+CreateBrokenOre("Lead"        ,16);
+CreateBrokenOre("Iron"        ,16);
+CreateBrokenOre("Gold"        ,16);
+CreateBrokenOre("Lithium"     ,16);
+CreateBrokenOre("Tungsten"    ,16);
+CreateBrokenOre("Antimony"    ,16);
+CreateBrokenOre("Uranium"     ,16);
+CreateBrokenOre("Silver"      ,16);
+CreateBrokenOre("Aluminium"   ,16);
 
 Callback.addCallback("PreLoaded",function(){
+    // 组
+    Item.addCreativeGroup("ET-OreChunk-1",Translation.translate("Ore Chunk"),[
+        BlockID.gravelCopper      ,
+        BlockID.gravelTetrahedrite,
+        BlockID.gravelTin         ,
+        BlockID.gravelLead        ,
+        BlockID.gravelIron        ,
+        BlockID.gravelGold        ,
+        BlockID.gravelLithium     ,
+        BlockID.gravelTungsten    ,
+        BlockID.gravelAntimony    ,
+        BlockID.gravelUranium     ,
+        BlockID.gravelSilver      ,
+        BlockID.gravelAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-OreChunk-2",Translation.translate("Ore Chunk"),[
+        ItemID.oreChunkCopper      ,
+        ItemID.oreChunkTetrahedrite,
+        ItemID.oreChunkTin         ,
+        ItemID.oreChunkLead        ,
+        ItemID.oreChunkIron        ,
+        ItemID.oreChunkGold        ,
+        ItemID.oreChunkLithium     ,
+        ItemID.oreChunkTungsten    ,
+        ItemID.oreChunkAntimony    ,
+        ItemID.oreChunkUranium     ,
+        ItemID.oreChunkSilver      ,
+        ItemID.oreChunkAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-NetherOreChunk-1",Translation.translate("Nether Ore Chunk"),[
+        BlockID.gravelNetherCopper      ,
+        BlockID.gravelNetherTetrahedrite,
+        BlockID.gravelNetherTin         ,
+        BlockID.gravelNetherLead        ,
+        BlockID.gravelNetherIron        ,
+        BlockID.gravelNetherGold        ,
+        BlockID.gravelNetherLithium     ,
+        BlockID.gravelNetherTungsten    ,
+        BlockID.gravelNetherAntimony    ,
+        BlockID.gravelNetherUranium     ,
+        BlockID.gravelNetherSilver      ,
+        BlockID.gravelNetherAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-NetherOreChunk-2",Translation.translate("Nether Ore Chunk"),[
+        ItemID.oreChunkNetherCopper      ,
+        ItemID.oreChunkNetherTetrahedrite,
+        ItemID.oreChunkNetherTin         ,
+        ItemID.oreChunkNetherLead        ,
+        ItemID.oreChunkNetherIron        ,
+        ItemID.oreChunkNetherGold        ,
+        ItemID.oreChunkNetherLithium     ,
+        ItemID.oreChunkNetherTungsten    ,
+        ItemID.oreChunkNetherAntimony    ,
+        ItemID.oreChunkNetherUranium     ,
+        ItemID.oreChunkNetherSilver      ,
+        ItemID.oreChunkNetherAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-EnderOreChunk-1",Translation.translate("Ender Ore Chunk"),[
+        BlockID.gravelEnderCopper      ,
+        BlockID.gravelEnderTetrahedrite,
+        BlockID.gravelEnderTin         ,
+        BlockID.gravelEnderLead        ,
+        BlockID.gravelEnderIron        ,
+        BlockID.gravelEnderGold        ,
+        BlockID.gravelEnderLithium     ,
+        BlockID.gravelEnderTungsten    ,
+        BlockID.gravelEnderAntimony    ,
+        BlockID.gravelEnderUranium     ,
+        BlockID.gravelEnderSilver      ,
+        BlockID.gravelEnderAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-EnderOreChunk-2",Translation.translate("Ender Ore Chunk"),[
+        ItemID.oreChunkEnderCopper      ,
+        ItemID.oreChunkEnderTetrahedrite,
+        ItemID.oreChunkEnderTin         ,
+        ItemID.oreChunkEnderLead        ,
+        ItemID.oreChunkEnderIron        ,
+        ItemID.oreChunkEnderGold        ,
+        ItemID.oreChunkEnderLithium     ,
+        ItemID.oreChunkEnderTungsten    ,
+        ItemID.oreChunkEnderAntimony    ,
+        ItemID.oreChunkEnderUranium     ,
+        ItemID.oreChunkEnderSilver      ,
+        ItemID.oreChunkEnderAluminium   ,
+    ]);
+
+    Item.addCreativeGroup("ET-OrePiece-1",Translation.translate("Ore Piece"),[
+        BlockID.sandCopper      ,
+        BlockID.sandTetrahedrite,
+        BlockID.sandTin         ,
+        BlockID.sandLead        ,
+        BlockID.sandIron        ,
+        BlockID.sandGold        ,
+        BlockID.sandLithium     ,
+        BlockID.sandTungsten    ,
+        BlockID.sandAntimony    ,
+        BlockID.sandUranium     ,
+        BlockID.sandSilver      ,
+        BlockID.sandAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-OrePiece-2",Translation.translate("Ore Piece"),[
+        ItemID.orePieceCopper      ,
+        ItemID.orePieceTetrahedrite,
+        ItemID.orePieceTin         ,
+        ItemID.orePieceLead        ,
+        ItemID.orePieceIron        ,
+        ItemID.orePieceGold        ,
+        ItemID.orePieceLithium     ,
+        ItemID.orePieceTungsten    ,
+        ItemID.orePieceAntimony    ,
+        ItemID.orePieceUranium     ,
+        ItemID.orePieceSilver      ,
+        ItemID.orePieceAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-OreDust-1",Translation.translate("Ore Dust"),[
+        BlockID.dustCopper      ,
+        BlockID.dustTetrahedrite,
+        BlockID.dustTin         ,
+        BlockID.dustLead        ,
+        BlockID.dustIron        ,
+        BlockID.dustGold        ,
+        BlockID.dustLithium     ,
+        BlockID.dustTungsten    ,
+        BlockID.dustAntimony    ,
+        BlockID.dustUranium     ,
+        BlockID.dustSilver      ,
+        BlockID.dustAluminium   
+    ]);
+
+    Item.addCreativeGroup("ET-OreDust-2",Translation.translate("Ore Dust"),[
+        ItemID.oreDustCopper      ,
+        ItemID.oreDustTetrahedrite,
+        ItemID.oreDustTin         ,
+        ItemID.oreDustLead        ,
+        ItemID.oreDustIron        ,
+        ItemID.oreDustGold        ,
+        ItemID.oreDustLithium     ,
+        ItemID.oreDustTungsten    ,
+        ItemID.oreDustAntimony    ,
+        ItemID.oreDustUranium     ,
+        ItemID.oreDustSilver      ,
+        ItemID.oreDustAluminium   
+    ]);
+
     // 熔炉
     Recipes.addFurnace(BlockID.gravelCopper      ,ItemID.ingotCopper      );
     Recipes.addFurnace(BlockID.gravelTetrahedrite,ItemID.ingotTetrahedrite);
@@ -152,49 +311,49 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.dustAluminium   ,ItemID.ingotAluminium   );
 
     // 高炉
-    ETRecipe.addBlastFurnaceRecipe({id:BlockID.gravelTungsten      ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
-    ETRecipe.addBlastFurnaceRecipe({id:BlockID.gravelNetherTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
-    ETRecipe.addBlastFurnaceRecipe({id:BlockID.gravelEnderTungsten ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
-    ETRecipe.addBlastFurnaceRecipe({id:BlockID.sandTungsten        ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
-    ETRecipe.addBlastFurnaceRecipe({id:BlockID.dustTungsten        ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    Recipe.addBlastFurnaceRecipe({id:BlockID.gravelTungsten      ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    Recipe.addBlastFurnaceRecipe({id:BlockID.gravelNetherTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    Recipe.addBlastFurnaceRecipe({id:BlockID.gravelEnderTungsten ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    Recipe.addBlastFurnaceRecipe({id:BlockID.sandTungsten        ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    Recipe.addBlastFurnaceRecipe({id:BlockID.dustTungsten        ,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
 
     // 破碎机
-    ETRecipe.addCrusherRecipe({id:BlockID.oreCopper      ,data:0},{id:ItemID.gravelCopper      ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreTetrahedrite,data:0},{id:ItemID.gravelTetrahedrite,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreTin         ,data:0},{id:ItemID.gravelTin         ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreLead        ,data:0},{id:ItemID.gravelLead        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:15                     ,data:0},{id:ItemID.gravelIron        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:14                     ,data:0},{id:ItemID.gravelGold        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreLithium     ,data:0},{id:ItemID.gravelLithium     ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreTungsten    ,data:0},{id:ItemID.gravelTungsten    ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreAntimony    ,data:0},{id:ItemID.gravelAntimony    ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreUranium     ,data:0},{id:ItemID.gravelUranium     ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreSilver      ,data:0},{id:ItemID.gravelSilver      ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreAluminium   ,data:0},{id:ItemID.gravelAluminium   ,count:2,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreCopper      ,data:0},{id:ItemID.oreChunkCopper      ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreTetrahedrite,data:0},{id:ItemID.oreChunkTetrahedrite,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreTin         ,data:0},{id:ItemID.oreChunkTin         ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreLead        ,data:0},{id:ItemID.oreChunkLead        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:15                     ,data:0},{id:ItemID.oreChunkIron        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:14                     ,data:0},{id:ItemID.oreChunkGold        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreLithium     ,data:0},{id:ItemID.oreChunkLithium     ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreTungsten    ,data:0},{id:ItemID.oreChunkTungsten    ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreAntimony    ,data:0},{id:ItemID.oreChunkAntimony    ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreUranium     ,data:0},{id:ItemID.oreChunkUranium     ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreSilver      ,data:0},{id:ItemID.oreChunkSilver      ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreAluminium   ,data:0},{id:ItemID.oreChunkAluminium   ,count:6,data:0});
 
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherCopper      ,data:0},{id:ItemID.gravelNetherCopper      ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherTetrahedrite,data:0},{id:ItemID.gravelNetherTetrahedrite,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherTin         ,data:0},{id:ItemID.gravelNetherTin         ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherLead        ,data:0},{id:ItemID.gravelNetherLead        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherIron        ,data:0},{id:ItemID.gravelNetherIron        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherGold        ,data:0},{id:ItemID.gravelNetherGold        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherLithium     ,data:0},{id:ItemID.gravelNetherLithium     ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherTungsten    ,data:0},{id:ItemID.gravelNetherTungsten    ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherAntimony    ,data:0},{id:ItemID.gravelNetherAntimony    ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherUranium     ,data:0},{id:ItemID.gravelNetherUranium     ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherSilver      ,data:0},{id:ItemID.gravelNetherSilver      ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreNetherAluminium   ,data:0},{id:ItemID.gravelNetherAluminium   ,count:2,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherCopper      ,data:0},{id:ItemID.oreChunkNetherCopper      ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherTetrahedrite,data:0},{id:ItemID.oreChunkNetherTetrahedrite,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherTin         ,data:0},{id:ItemID.oreChunkNetherTin         ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherLead        ,data:0},{id:ItemID.oreChunkNetherLead        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherIron        ,data:0},{id:ItemID.oreChunkNetherIron        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherGold        ,data:0},{id:ItemID.oreChunkNetherGold        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherLithium     ,data:0},{id:ItemID.oreChunkNetherLithium     ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherTungsten    ,data:0},{id:ItemID.oreChunkNetherTungsten    ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherAntimony    ,data:0},{id:ItemID.oreChunkNetherAntimony    ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherUranium     ,data:0},{id:ItemID.oreChunkNetherUranium     ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherSilver      ,data:0},{id:ItemID.oreChunkNetherSilver      ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreNetherAluminium   ,data:0},{id:ItemID.oreChunkNetherAluminium   ,count:6,data:0});
 
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderCopper      ,data:0},{id:ItemID.gravelCopper      ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderTetrahedrite,data:0},{id:ItemID.gravelTetrahedrite,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderTin         ,data:0},{id:ItemID.gravelTin         ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderLead        ,data:0},{id:ItemID.gravelLead        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderIron        ,data:0},{id:ItemID.gravelIron        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderGold        ,data:0},{id:ItemID.gravelGold        ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderLithium     ,data:0},{id:ItemID.gravelLithium     ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderTungsten    ,data:0},{id:ItemID.gravelTungsten    ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderAntimony    ,data:0},{id:ItemID.gravelAntimony    ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderUranium     ,data:0},{id:ItemID.gravelUranium     ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderSilver      ,data:0},{id:ItemID.gravelSilver      ,count:2,data:0});
-    ETRecipe.addCrusherRecipe({id:BlockID.oreEnderAluminium   ,data:0},{id:ItemID.gravelAluminium   ,count:2,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderCopper      ,data:0},{id:ItemID.oreChunkCopper      ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderTetrahedrite,data:0},{id:ItemID.oreChunkTetrahedrite,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderTin         ,data:0},{id:ItemID.oreChunkTin         ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderLead        ,data:0},{id:ItemID.oreChunkLead        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderIron        ,data:0},{id:ItemID.oreChunkIron        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderGold        ,data:0},{id:ItemID.oreChunkGold        ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderLithium     ,data:0},{id:ItemID.oreChunkLithium     ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderTungsten    ,data:0},{id:ItemID.oreChunkTungsten    ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderAntimony    ,data:0},{id:ItemID.oreChunkAntimony    ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderUranium     ,data:0},{id:ItemID.oreChunkUranium     ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderSilver      ,data:0},{id:ItemID.oreChunkSilver      ,count:6,data:0});
+    Recipe.addCrusherRecipe({id:BlockID.oreEnderAluminium   ,data:0},{id:ItemID.oreChunkAluminium   ,count:6,data:0});
 });

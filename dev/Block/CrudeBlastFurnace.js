@@ -1,4 +1,4 @@
-// [粗制高炉]Crude Blast Furnace
+// 粗制高炉
 IDRegistry.genBlockID("crudeBlastFurnace");
 Block.createBlock("crudeBlastFurnace",[
     {name:"Crude Blast Furnace",texture:[["crudeBlastFurnaceBottom",0],["crudeBlastFurnaceTop",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnace",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnaceSide",0]],inCreative:true}
@@ -19,7 +19,7 @@ var GuiCrudeBlastFurnace = new UI.StandartWindow({
     },
 
     drawing:[
-        {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
+        {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:525,y:225 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
         {type:"bitmap",x:425 + GUI_SCALE * 4,y:225 + GUI_SCALE * 2,bitmap:"fireBackground",scale:GUI_SCALE}
     ],
@@ -33,18 +33,18 @@ var GuiCrudeBlastFurnace = new UI.StandartWindow({
 	}
 });
 
-ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
+Machine.registerPrototype(BlockID.crudeBlastFurnace,{
     defaultValues:{
         meta:0,
         burn:0,
         burnMax:0,
         progress:0,
-        isActive:false,
+        isActive:false
     },
     
     tick:function(){
         StorageInterface.checkHoppers(this);
-        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("BlastFurnace",input.id,input.data);
+        var input = this.container.getSlot("slotInput"),recipe = Recipe.getRecipeResult("BlastFurnace",[input.id,input.data]);
         
         if(this.data.burn > 0){this.data.burn -= 1;}
 		if(this.data.burn == 0 && recipe){this.data.burn = this.data.burnMax = this.getFuel("slotFuel");}
@@ -71,8 +71,7 @@ ETMachine.registerPrototype(BlockID.crudeBlastFurnace,{
         this.container.setScale("scaleBurn",Math.round(this.data.burn / this.data.burnMax * 14) / 14 || 0);
     },
 
-    getGuiScreen:function(){return GuiCrudeBlastFurnace;},
-    getTransportSlots:function(){return {input:["slotInput"],output:["slotOutput"]};}
+    getGuiScreen:function(){return GuiCrudeBlastFurnace;}
 });
 TileRenderer.setRotationPlaceFunction(BlockID.crudeBlastFurnace);
 StorageInterface.createInterface(BlockID.crudeBlastFurnace,{
@@ -81,6 +80,6 @@ StorageInterface.createInterface(BlockID.crudeBlastFurnace,{
         "slotOutput":{output:true}
 	},
 	isValidInput:function(item){
-		return ETRecipe.getRecipeResult("BlastFurnace",item.id,item.data)?true:false;
+		return Recipe.getRecipeResult("BlastFurnace",[item.id,item.data])?true:false;
 	}
 });

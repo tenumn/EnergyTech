@@ -1,17 +1,15 @@
 // [网络终端]Network Terminal
 IDRegistry.genBlockID("networkTerminal");
 Block.createBlock("networkTerminal",[
-    {name:"Network Terminal",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]],inCreative:true}
+    {name:"Network Terminal",texture:[["machineBottom",1],["machineTop",1],["machineSide",1],["network_terminal",0],["machineSide",1],["machineSide",1]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.networkTerminal,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.networkTerminal,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.setStandartModel(BlockID.networkTerminal,[["machineBottom",1],["machineTop",1],["machineSide",1],["network_terminal",0],["machineSide",1],["machineSide",1]]);
+TileRenderer.registerRotationModel(BlockID.networkTerminal,0,[["machineBottom",1],["machineTop",1],["machineSide",1],["network_terminal",0],["machineSide",1],["machineSide",1]]);
 
-ETMachine.setDrop("networkTerminal",BlockID.machineCasing,1);
-Recipes.addShaped({id:BlockID.networkTerminal,count:1,data:0},[
-    "aab",
-    "cdb",
-    "aab"
-],["a",ItemID.plateIron,0,"b",BlockID.clearGlass,0,"c",ItemID.coilGold,0,"d",BlockID.machineCasing,1]);
+Machine.setDrop("networkTerminal",BlockID.machineCasing,1);
+Callback.addCallback("PreLoaded",function(){
+	Recipes.addShaped({id:BlockID.networkTerminal,count:1,data:0},["aab","cdb","aab"],["a",ItemID.plateIron,0,"b",BlockID.clearGlass,0,"c",ItemID.wireGold,0,"d",BlockID.machineCasing,1]);
+});
 
 var GuiNetworkTerminal = new UI.StandartWindow({
     standart:{
@@ -19,11 +17,12 @@ var GuiNetworkTerminal = new UI.StandartWindow({
         inventory:{standart:true},
         background:{standart:true}
     },
+    
     drawing:[
-		{type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
-		{type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
+		{type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info",scale:GUI_SCALE}
     ],
+
     elements:{
         "textNetwork":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Network IP: ") + "0.0.0"},
         "textLoad":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Load: ") + "0/0"},
@@ -31,12 +30,12 @@ var GuiNetworkTerminal = new UI.StandartWindow({
         "textRange":{type:"text",font:GUI_TEXT,x:700,y:165,width:300,height:30,text:Translation.translate("Range: ") + "0"},
         "textVoltage":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Voltage: ") + "0"},
 
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:75 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slotCard",scale:GUI_SCALE,isValid:function(id){return ETTool.isTool(id,"EnergyCard");}}
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slotCard",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}}
     }
 });
 
-ETMachine.registerMachine(BlockID.networkTerminal,{
+Machine.registerMachine(BlockID.networkTerminal,{
     defaultValues:{
         load:0,
         tier:3,
@@ -65,7 +64,7 @@ ETMachine.registerMachine(BlockID.networkTerminal,{
 
     tick:function(){
         var card = this.container.getSlot("slotCard");
-        if(ETTool.isTool(card.id,"EnergyCard")){
+        if(Tool.isTool(card.id,"EnergyCard")){
             if(!card.extra){card.extra = new ItemExtraData();}
             card.extra.putInt("network_x",this.x);
             card.extra.putInt("network_y",this.y);
@@ -126,7 +125,7 @@ ETMachine.registerMachine(BlockID.networkTerminal,{
         }
     },
 
-    energyReceive:ETMachine.energyReceive,
+    energyReceive:Machine.energyReceive,
     getGuiScreen:function(){return GuiNetworkTerminal;}
 });
 TileRenderer.setRotationPlaceFunction(BlockID.networkTerminal);

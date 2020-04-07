@@ -1,16 +1,16 @@
 // [打粉机]Macerator
 IDRegistry.genBlockID("macerator");
 Block.createBlock("macerator",[
-    {name:"Macerator",texture:[["machine_bottom",0],["macerator_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]],inCreative:true}
+    {name:"Macerator",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.macerator,[["machine_bottom",0],["macerator_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,0 ,[["machine_bottom",0],["macerator_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,4 ,[["machine_bottom",0],["macerator_top",1],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,8 ,[["machine_bottom",0],["macerator_top",1],["machine_side",0],["macerator",1],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,12,[["machine_bottom",0],["macerator_top",1],["machine_side",0],["macerator",2],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,16,[["machine_bottom",0],["macerator_top",1],["machine_side",0],["macerator",3],["machine_side",0],["machine_side",0]]);
+TileRenderer.setStandartModel(BlockID.macerator,[["machineBottom",0],["machineTop",0],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,0 ,[["machineBottom",0],["machineTop",0],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,4 ,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,8 ,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",1],["machineSide",0],["machineSide",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,12,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",2],["machineSide",0],["machineSide",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,16,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",3],["machineSide",0],["machineSide",0]]);
 
-ETMachine.setDrop("macerator",BlockID.machineCasing,1);
+Machine.setDrop("macerator",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
 	Recipes.addShaped({id:BlockID.macerator,count:1,data:0},["aba","cdc","efe"],["a",ItemID.electricMotor,0,"b",ItemID.electricPiston,0,"c",ItemID.plateIron,0,"d",BlockID.crusher,0,"e",ItemID.stickIron,0,"f",ItemID.circuit,0]);
 });
@@ -23,26 +23,27 @@ var GuiMacerator = new UI.StandartWindow({
     },
     
     drawing:[
-        {type:"bitmap",x:900,y:400,bitmap:"logo",scale:GUI_SCALE},
-        {type:"bitmap",x:350,y:75,bitmap:"energyBackground",scale:GUI_SCALE},
-        {type:"bitmap",x:620,y:175 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:600,y:175 + GUI_SCALE * 2,bitmap:"arrowBackground",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
         "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"slotBlank",scale:GUI_SCALE},
-        "slotUpgrade1":{type:"slot",x:370,y:400,bitmap:"slotCircuit",isValid:ETUpgrade.isValidUpgrade},
-		"slotUpgrade2":{type:"slot",x:430,y:400,bitmap:"slotCircuit",isValid:ETUpgrade.isValidUpgrade},
-		"slotUpgrade3":{type:"slot",x:490,y:400,bitmap:"slotCircuit",isValid:ETUpgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:400,bitmap:"slotCircuit",isValid:ETUpgrade.isValidUpgrade},
-        "scaleArrow":{type:"scale",x:620,y:175 + GUI_SCALE,direction:0,value:0.5,bitmap:"arrowScale",scale:GUI_SCALE},
+        "scaleArrow":{type:"scale",x:600,y:175 + GUI_SCALE * 2,direction:0,value:0.5,bitmap:"arrowScale",scale:GUI_SCALE},
         "slotOutput":{type:"slot",x:720,y:175,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:75 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE}
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade}
     }
 });
 
-ETMachine.registerMachine(BlockID.macerator,{
+Machine.registerMachine(BlockID.macerator,{
     defaultValues:{
         meta:0,
         tier:2,
@@ -61,10 +62,9 @@ ETMachine.registerMachine(BlockID.macerator,{
 	
 	tick: function(){
         this.renderer();
-		this.setDefaultValues();
-		ETUpgrade.executeUpgrades(this);
+		Upgrade.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
-        var input = this.container.getSlot("slotInput"),recipe = ETRecipe.getRecipeResult("Macerator",input.id,input.data);
+        var input = this.container.getSlot("slotInput"),recipe = Recipe.getRecipeResult("Macerator",[input.id,input.data]);
 
         if(recipe){if(this.data.energy >= this.data.energy_consumption){
             this.data.energy -= this.data.energy_consumption;
@@ -87,9 +87,8 @@ ETMachine.registerMachine(BlockID.macerator,{
         TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (Math.round(this.data.progress / 1 * count * 10) % count) + 4:0));
     },
 
-    energyReceive:ETMachine.energyReceive,
-    getGuiScreen:function(){return GuiMacerator;},
-    getTransportSlots:function(){return {input:["slotInput"],output:["slotOutput"]};}
+    energyReceive:Machine.energyReceive,
+    getGuiScreen:function(){return GuiMacerator;}
 });
 TileRenderer.setRotationPlaceFunction(BlockID.macerator);
 StorageInterface.createInterface(BlockID.macerator,{
@@ -97,5 +96,5 @@ StorageInterface.createInterface(BlockID.macerator,{
 		"slotInput":{input:true},
         "slotOutput":{output:true}
 	},
-	isValidInput:function(item){return ETRecipe.getRecipeResult("Macerator",item.id,item.data)?true:false;}
+	isValidInput:function(item){return Recipe.getRecipeResult("Macerator",[item.id,item.data])?true:false;}
 });

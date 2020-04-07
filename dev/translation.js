@@ -1,3 +1,4 @@
+// Block
 Translation.addTranslation("Copper Block",{zh:"铜块",ru:"Медный блок"});
 Translation.addTranslation("Tin Block",{zh:"锡块",ru:"Оловянный блок"});
 Translation.addTranslation("Lead Block",{zh:"铅块",ru:"Свинцовый блок"});
@@ -12,22 +13,49 @@ Translation.addTranslation("Silver Block",{zh:"银块",ru:"Серебряный 
 Translation.addTranslation("Aluminium Block",{zh:"铝块",ru:"Алюминиевый блок"});
 Translation.addTranslation("Tetrahedrite Block",{zh:"黝铜块",ru:"Тетраэдритовый блок"});
 Translation.addTranslation("Lead-Antimony Alloy Block",{zh:"铅锑合金块",ru:"Блок стибий-свинцового сплава"});
+
 Translation.addTranslation("Energy Display Cover",{zh:"能量显示面板",ru:"Крышка энергетического дисплея"});
 Translation.addTranslation("Progress Display Cover",{zh:"进度显示面板",ru:"Крышка дисплея процесса"});
 
 Translation.addTranslation("Crude Blast Furnace",{zh:"粗制高炉",ru:"Доменная печь"});
 
-Translation.addTranslation("Glass Tank",{zh:"玻璃储罐",ru:"Стеклянный бак"});
+// Glass Tank
+Translation.addTranslation("1x Glass Tank",{zh:"1x 玻璃储罐",ru:"1x Стеклянный бак"});
+Translation.addTranslation("2x Glass Tank",{zh:"2x 玻璃储罐",ru:"2x Стеклянный бак"});
+Translation.addTranslation("3x Glass Tank",{zh:"3x 玻璃储罐",ru:"3x Стеклянный бак"});
+Translation.addTranslation("4x Glass Tank",{zh:"4x 玻璃储罐",ru:"4x Стеклянный бак"});
+Translation.addTranslation("5x Glass Tank",{zh:"5x 玻璃储罐",ru:"5x Стеклянный бак"});
+Translation.addTranslation("6x Glass Tank",{zh:"6x 玻璃储罐",ru:"6x Стеклянный бак"});
+Translation.addTranslation("7x Glass Tank",{zh:"7x 玻璃储罐",ru:"7x Стеклянный бак"});
+Translation.addTranslation("8x Glass Tank",{zh:"8x 玻璃储罐",ru:"8x Стеклянный бак"});
+Translation.addTranslation("9x Glass Tank",{zh:"9x 玻璃储罐",ru:"9x Стеклянный бак"});
+Translation.addTranslation("10x Glass Tank",{zh:"10x 玻璃储罐",ru:"10x Стеклянный бак"});
+Translation.addTranslation("11x Glass Tank",{zh:"11x 玻璃储罐",ru:"11x Стеклянный бак"});
+Translation.addTranslation("12x Glass Tank",{zh:"12x 玻璃储罐",ru:"12x Стеклянный бак"});
+Translation.addTranslation("13x Glass Tank",{zh:"13x 玻璃储罐",ru:"13x Стеклянный бак"});
+Translation.addTranslation("14x Glass Tank",{zh:"14x 玻璃储罐",ru:"14x Стеклянный бак"});
+Translation.addTranslation("15x Glass Tank",{zh:"15x 玻璃储罐",ru:"15x Стеклянный бак"});
+Translation.addTranslation("16x Glass Tank",{zh:"16x 玻璃储罐",ru:"16x Стеклянный бак"});
 
+// Scaffold
 Translation.addTranslation("Wood Scaffold",{zh:"木脚手架",ru:"Деревянные строительные леса"});
 Translation.addTranslation("Iron Scaffold",{zh:"铁脚手架",ru:"Железные строительные леса"});
 
+Translation.addTranslation("Dust",{zh:"尘土"});
+Translation.addTranslation("Concrete Block",{zh:"混凝土块"});
+Translation.addTranslation("Clear Glass",{zh:"通透玻璃"});
+Translation.addTranslation("Polished Marble",{zh:"磨制大理石"});
 Translation.addTranslation("Basic Machine Casing",{zh:"基础机器外壳",ru:"Базовая обшивка механизма"});
 Translation.addTranslation("Advanced Machine Casing",{zh:"高级机器外壳",ru:"Улучшенная обшивка механизма"});
 
-Translation.addTranslation("Dust",{zh:"尘土"});
-Translation.addTranslation("Clear Glass",{zh:"通透玻璃"});
+// Stone
+Translation.addTranslation("Marble",{zh:"大理石"});
+Translation.addTranslation("Marble Cobble",{zh:"大理石圆石"});
+Translation.addTranslation("Andesite Cobble",{zh:"安山岩圆石"});
+Translation.addTranslation("Diorite Cobble",{zh:"闪长岩圆石"});
+Translation.addTranslation("Granite Cobble",{zh:"花岗岩圆石"});
 
+// Ore
 Translation.addTranslation("Copper Ore",{zh:"铜矿石",ru:"Медная руда"});
 Translation.addTranslation("Tetrahedrite Ore",{zh:"黝铜矿石",ru:"Тетраэдритовая руда"});
 Translation.addTranslation("Tin Ore",{zh:"锡矿石",ru:"Оловянная руда"});
@@ -69,12 +97,15 @@ Translation.addTranslation("Ender Iron Ore",{zh:"末地铁矿石"});
 Translation.addTranslation("Ender Gold Ore",{zh:"末地金矿石"});
 
 Translation.addTranslation("Fire Generator",{zh:"火力发电机",ru:"Генератор внутреннего сгорания"});
+Translation.addTranslation("Fusion Reactor",{zh:"核聚变反应堆"});
 Translation.addTranslation("Nuclear Reactor",{zh:"核反应堆",ru:"Ядерный реактор"});
-Translation.addTranslation("Heat Sink",{zh:"散热片",ru:"Радиатор"});
-Translation.addTranslation("Coolant Block(Water)",{zh:"冷却器(水)",ru:"Блок хладагента(Вода)"});
-Translation.addTranslation("Fuel Rod(Uranium)",{zh:"燃料棒(铀)",ru:"Топливный стержень(Уран)"});
-Translation.addTranslation("Neutron Reflector",{zh:"中子反射板",ru:"Отражатель нейтронов"});
 Translation.addTranslation("Solar Generator",{zh:"太阳能发电机",ru:"Солнечный генератор"});
+
+Translation.addTranslation("Heat Sink",{zh:"散热片",ru:"Радиатор"});
+Translation.addTranslation("Reactor Casing",{zh:"反应堆外壳"});
+Translation.addTranslation("Neutron Reflector",{zh:"中子反射板",ru:"Отражатель нейтронов"});
+Translation.addTranslation("Fuel Rod(Uranium)",{zh:"燃料棒(铀)",ru:"Топливный стержень(Уран)"});
+Translation.addTranslation("Coolant Block(Water)",{zh:"冷却器(水)",ru:"Блок хладагента(Вода)"});
 
 Translation.addTranslation("Copper Ore Chunk",{zh:"铜矿物碎块",ru:"Кусочек медной руды"});
 Translation.addTranslation("Copper Ore Gravel",{zh:"铜矿沙砾",ru:"Медная гравиевая руда"});
@@ -197,11 +228,6 @@ Translation.addTranslation("Aluminium Ore Sand",{zh:"铝矿沙子",ru:"Алюм�
 Translation.addTranslation("Aluminium Dust Ore",{zh:"铝矿矿尘",ru:"Алюминиевая пыль"});
 Translation.addTranslation("Aluminium Ore Dust",{zh:"铝矿粉尘",ru:"Алюминиевая пыль"});
 
-Translation.addTranslation("Circuit",{zh:"电路板",ru:"Электросхема"});
-Translation.addTranslation("Circuit(Overclocker Upgrade)",{zh:"电路板(超频升级)",ru:"Электросхема(Улучшение Ускоритель)"});
-Translation.addTranslation("Circuit(Energy Storage Upgrade)",{zh:"电路板(储能升级)",ru:"Электросхема(Улучшение Энергохранилище)"});
-Translation.addTranslation("Circuit(Transformer Upgrade)",{zh:"电路板(高压升级)",ru:"Электросхема(Улучшение Трансформатор)"});
-
 Translation.addTranslation("Crushed Copper Ore",{zh:"粉碎铜矿石",ru:"Измельченная медная руда"});
 Translation.addTranslation("Crushed Tin Ore",{zh:"粉碎锡矿石",ru:"Измельченная оловянная руда"});
 Translation.addTranslation("Crushed Lead Ore",{zh:"粉碎铅矿石",ru:"Измельченная свинцовая руда"});
@@ -244,6 +270,7 @@ Translation.addTranslation("Impure Silver Dust",{zh:"含杂银粉",ru:"Неоч�
 Translation.addTranslation("Impure Aluminium Dust",{zh:"含杂铝粉",ru:"Неочищенная алюминиевая пыль"});
 Translation.addTranslation("Impure Tetrahedrite Dust",{zh:"含杂黝铜粉",ru:"Неочищенная тетраэдритовая пыль"});
 
+Translation.addTranslation("Flint Dust",{zh:"燧石粉"});
 Translation.addTranslation("Stone Dust",{zh:"石粉",ru:"Каменная пыль"});
 Translation.addTranslation("Copper Dust",{zh:"铜粉",ru:"Медная пыль"});
 Translation.addTranslation("Tin Dust",{zh:"锡粉",ru:"Оловянная пыль"});
@@ -261,9 +288,11 @@ Translation.addTranslation("Aluminium Dust",{zh:"铝粉",ru:"Алюминиев�
 Translation.addTranslation("Tetrahedrite Dust",{zh:"黝铜粉",ru:"Тетраэдритовая пыль"});
 Translation.addTranslation("Ender Dust",{zh:"末影粉",ru:"Пыль Края"});
 Translation.addTranslation("Diamond Dust",{zh:"钻石粉",ru:"Алмазная пыль"});
+Translation.addTranslation("Silicon Dioxide Dust",{zh:"二氧化硅粉"});
 Translation.addTranslation("Sherlock Alloy Dust",{zh:"夏洛克合金粉",ru:"Пыль сплава Шерлока"});
 Translation.addTranslation("Lead-Antimony Alloy Dust",{zh:"铅锑合金粉",ru:"Стибий-свинцовая пыль"});
 
+Translation.addTranslation("Small Pile of Flint Dust",{zh:"小堆燧石粉"});
 Translation.addTranslation("Small Pile of Stone Dust",{zh:"小堆石粉",ru:"Небольшая кучка каменной пыли"});
 Translation.addTranslation("Small Pile of Copper Dust",{zh:"小堆铜粉",ru:"Небольшая кучка медной пыли"});
 Translation.addTranslation("Small Pile of Tin Dust",{zh:"小堆锡粉",ru:"Небольшая кучка оловянной пыли"});
@@ -281,16 +310,23 @@ Translation.addTranslation("Small Pile of Aluminium Dust",{zh:"小堆铝粉",ru:
 Translation.addTranslation("Small Pile of Tetrahedrite Dust",{zh:"小堆黝铜粉",ru:"Небольшая кучка тетраэдритовой пыли"});
 Translation.addTranslation("Small Pile of Ender Dust",{zh:"小堆末影粉",ru:"Небольшая кучка пыли Края"});
 Translation.addTranslation("Small Pile of Diamond Dust",{zh:"小堆钻石粉",ru:"Небольшая кучка алмазной пыли"});
+Translation.addTranslation("Small Pile Silicon Dioxide Dust",{zh:"二氧化硅粉"});
 Translation.addTranslation("Small Pile of Sherlock Alloy Dust",{zh:"小堆夏洛克合金粉",ru:"Небольшая кучка пыли из сплава Шерлока"});
 Translation.addTranslation("Small Pile of Lead-Antimony Alloy Dust",{zh:"小堆铅锑合金粉",ru:"Небольшая кучка стибий-свинцовой пыли"});
 
+// Item
+Translation.addTranslation("Slag",{zh:"矿渣"});
+Translation.addTranslation("Resin",{zh:"树脂"});
+Translation.addTranslation("Enriched Uranium",{zh:"浓缩铀"});
+Translation.addTranslation("Vacuum Tube",{zh:"真空管",ru:"Вакуумная труба"});
 Translation.addTranslation("Electric Motor" ,{zh:"电动马达",ru:"Электромотор"});
 Translation.addTranslation("Electric Piston",{zh:"电动活塞",ru:"Электрический поршень"});
-Translation.addTranslation("Vacuum Tube",{zh:"真空管",ru:"Вакуумная труба"});
 
+// Gear
 Translation.addTranslation("Iron Gear",{zh:"铁齿轮",ru:"Железная шестерня"});
 Translation.addTranslation("Steel Gear",{zh:"钢齿轮",ru:"Стальная шестерня"});
 
+// Ingot
 Translation.addTranslation("Copper Ingot",{zh:"铜锭",ru:"Медная шестерня"});
 Translation.addTranslation("Tin Ingot",{zh:"锡锭",ru:"Оловянная шестерня"});
 Translation.addTranslation("Lead Ingot",{zh:"铅锭",ru:"Свинцовая шестерня"});
@@ -303,6 +339,7 @@ Translation.addTranslation("Uranium Ingot",{zh:"铀锭",ru:"Урановый с�
 Translation.addTranslation("Silver Ingot",{zh:"银锭",ru:"Серебряный слиток"});
 Translation.addTranslation("Aluminium Ingot",{zh:"铝锭",ru:"Алюминиевый слиток"});
 Translation.addTranslation("Tetrahedrite Ingot",{zh:"黝铜锭",ru:"Тетраэдритовый слиток"});
+Translation.addTranslation("Redstone Ingot",{zh:"红石锭"});
 Translation.addTranslation("Sherlock Alloy Ingot",{zh:"夏洛克合金锭",ru:"Слиток сплава Шерлока"});
 Translation.addTranslation("Lead-Antimony Alloy Ingot",{zh:"铅锑合金锭",ru:"Слиток стибий-свинцового сплава"});
 
@@ -316,6 +353,7 @@ Translation.addTranslation("Small Pile of Lithium-7",{zh:"小堆锂-7",ru:"Не�
 Translation.addTranslation("Small Pile of Uranium-235",{zh:"小堆铀-235",ru:"Небольшая кучка Урана-235"});
 Translation.addTranslation("Small Pile of Uranium-238",{zh:"小堆铀-238",ru:"Небольшая кучка Урана-238"});
 
+// Part
 Translation.addTranslation("Iron Part",{zh:"铁制零件",ru:"Железная деталь"});
 Translation.addTranslation("Tin Part",{zh:"锡制零件",ru:"Оловянная деталь"});
 Translation.addTranslation("Copper Part",{zh:"铜制零件",ru:"Медная деталь"});
@@ -324,6 +362,7 @@ Translation.addTranslation("Steel Part",{zh:"钢制零件",ru:"Стальная 
 Translation.addTranslation("Sherlock Alloy Part",{zh:"夏洛克特制零件",ru:"Деталь из сплава Шерлока"});
 Translation.addTranslation("Lead-Antimony Alloy Part",{zh:"铅锑特制零件",ru:"Деталь из стибий-свинцового сплава"});
 
+// Plate
 Translation.addTranslation("Tin Plate",{zh:"锡板",ru:"Оловянная пластина"});
 Translation.addTranslation("Iron Plate",{zh:"铁板",ru:"Железная пластина"});
 Translation.addTranslation("Gold Plate",{zh:"金板",ru:"Золотая пластина"});
@@ -337,13 +376,17 @@ Translation.addTranslation("Aluminium Plate",{zh:"铝板",ru:"Алюминиев
 Translation.addTranslation("Antimony Plate",{zh:"锑板"});
 Translation.addTranslation("Diamond Plate",{zh:"钻石板"});
 Translation.addTranslation("Redstone Plate",{zh:"红石板"});
+Translation.addTranslation("Circuit Plate",{zh:"电路板"});
+Translation.addTranslation("Plastic Plate",{zh:"塑料板"});
 Translation.addTranslation("Sherlock Alloy Plate",{zh:"夏洛克合金板",ru:"Пластина из сплава Шерлока"});
 Translation.addTranslation("Lead-Antimony Alloy Plate",{zh:"铅锑合金板",ru:"Пластина из стибий-свинцового сплава"});
 
+// Ring
 Translation.addTranslation("Iron Ring",{zh:"铁环",ru:"Железное кольцо"});
 Translation.addTranslation("Tin Ring",{zh:"锡环",ru:"Оловянное кольцо"});
 Translation.addTranslation("Steel Ring",{zh:"钢环",ru:"Стальное кольцо"});
 
+// Stick
 Translation.addTranslation("Copper Stick",{zh:"铜棍",ru:"Медная палка"});
 Translation.addTranslation("Tin Stick",{zh:"锡棍",ru:"Оловянная палка"});
 Translation.addTranslation("Iron Stick",{zh:"铁棍",ru:"Железная палка"});
@@ -353,42 +396,67 @@ Translation.addTranslation("Tungsten Stick",{zh:"钨棍",ru:"Вольфрамо�
 Translation.addTranslation("Sherlock Alloy Stick",{zh:"夏洛克合金棍",ru:"Палка из сплава Шерлока"});
 Translation.addTranslation("Lead-Antimony Alloy Stick",{zh:"铅锑合金棍",ru:"Палка из стибий-свинцового сплава"});
 
-Translation.addTranslation("Lithium Battery",{zh:"锂电池",ru:"Литиевая батарея"});
-Translation.addTranslation("Sherlock Battery",{zh:"夏洛克电池",ru:"Батарея из сплава Шерлока"});
-
+// Crop
 Translation.addTranslation("Cotton Seed",{zh:"棉花种子"});
 Translation.addTranslation("Cotton",{zh:"棉花"});
 
-Translation.addTranslation("Liquid Cell(Empty)",{zh:"液体单元(空)",ru:"Жидкостная капсула(Пустая)"});
-Translation.addTranslation("Liquid Cell(Water)",{zh:"液体单元(水)",ru:"Жидкостная капсула(Вода)"});
-Translation.addTranslation("Liquid Cell(Lava)",{zh:"液体单元(岩浆)",ru:"Жидкостная капсула(Лава)"});
-Translation.addTranslation("Liquid Cell(Uranium)",{zh:"液体单元(铀)",ru:"Жидкостная капсула(Уран)"});
-Translation.addTranslation("Liquid Cell(Lithium)",{zh:"液体单元(锂)",ru:"Жидкостная капсула(Литий)"});
+// Circuit
+Translation.addTranslation("Circuit",{zh:"电路板",ru:"Электросхема"});
+Translation.addTranslation("Circuit(Overclocker Upgrade)",{zh:"电路板(超频升级)",ru:"Электросхема(Улучшение Ускоритель)"});
+Translation.addTranslation("Circuit(Energy Storage Upgrade)",{zh:"电路板(储能升级)",ru:"Электросхема(Улучшение Энергохранилище)"});
+Translation.addTranslation("Circuit(Transformer Upgrade)",{zh:"电路板(高压升级)",ru:"Электросхема(Улучшение Трансформатор)"});
+
+// Cell
+Translation.addTranslation("Liquid Cell (Empty)",{zh:"液体单元 (空)",ru:"Жидкостная капсула (Пустая)"});
+Translation.addTranslation("Liquid Cell (Water)",{zh:"液体单元 (水)",ru:"Жидкостная капсула (Вода)"});
+Translation.addTranslation("Liquid Cell (Lava)",{zh:"液体单元 (岩浆)",ru:"Жидкостная капсула (Лава)"});
+Translation.addTranslation("Liquid Cell (Uranium)",{zh:"液体单元 (铀)",ru:"Жидкостная капсула (Уран)"});
+Translation.addTranslation("Liquid Cell (Uranium-235)",{zh:"液体单元 (铀-235)",ru:"Жидкостная капсула (Уран-235)"});
+Translation.addTranslation("Liquid Cell (Uranium-238)",{zh:"液体单元 (铀-238)",ru:"Жидкостная капсула (Уран-238)"});
+Translation.addTranslation("Liquid Cell (Lithium-6)",{zh:"液体单元 (锂-6)",ru:"Жидкостная капсула (Литий-6)"});
+Translation.addTranslation("Liquid Cell (Lithium-7)",{zh:"液体单元 (锂-7)",ru:"Жидкостная капсула (Литий-7)"});
+Translation.addTranslation("Liquid Cell (Tritium)",{zh:"液体单元 (氚)"});
+Translation.addTranslation("Liquid Cell (Deuterium)",{zh:"液体单元 (氘)"});
+Translation.addTranslation("Liquid Cell (Helium)",{zh:"液体单元 (氦)"});
+Translation.addTranslation("Liquid Cell (Helium-3)",{zh:"液体单元 (氦-3)"});
+Translation.addTranslation("Liquid Cell (Heavy Water)",{zh:"液体单元 (重水)"});
+Translation.addTranslation("Liquid Cell (Distilled Water)",{zh:"液体单元 (蒸馏水)"});
+
+// Coil
+Translation.addTranslation("Tin Coil",{zh:"锡线圈",ru:"Оловянная катушка"});
+Translation.addTranslation("Copper Coil",{zh:"铜线圈",ru:"Медная катушка"});
+Translation.addTranslation("Gold Coil",{zh:"金线圈",ru:"Золотая катушка"});
+Translation.addTranslation("Steel Coil",{zh:"钢线圈",ru:"Стальная катушка"});
+Translation.addTranslation("Tungsten Coil",{zh:"钨线圈",ru:"Вольфрамовая катушка"});
+
+// Tool
+Translation.addTranslation("Iron Drill",{zh:"铁制钻头"});
+
+Translation.addTranslation("Powered Helmet",{zh_CN:"动力装甲头盔"});
+Translation.addTranslation("Powered Chestplate",{zh_CN:"动力装甲胸甲"});
+Translation.addTranslation("Powered Leggings",{zh_CN:"动力装甲护腿"});
+Translation.addTranslation("Powered Boots",{zh_CN:"动力装甲靴子"});
 
 Translation.addTranslation("Antimony Sword",{zh:"锑剑",ru:"Сурьмяный меч"});
 Translation.addTranslation("Antimony Shovel",{zh:"锑铲",ru:"Сурьмяная лопата"});
 Translation.addTranslation("Antimony Pickaxe",{zh:"锑镐",ru:"Сурьмяная кирка"});
 Translation.addTranslation("Antimony Axe",{zh:"锑斧",ru:"Сурьмяный топор"});
 Translation.addTranslation("Antimony Hoe",{zh:"锑锄",ru:"Сурьмяная мотыга"});
-
 Translation.addTranslation("Copper Sword",{zh:"铜剑",ru:"Медный меч"});
 Translation.addTranslation("Copper Shovel",{zh:"铜铲",ru:"Медная лопата"});
 Translation.addTranslation("Copper Pickaxe",{zh:"铜镐",ru:"Медная кирка"});
 Translation.addTranslation("Copper Axe",{zh:"铜斧",ru:"Медный топор"});
 Translation.addTranslation("Copper Hoe",{zh:"铜锄",ru:"Медная мотыга"});
-
 Translation.addTranslation("Iron Wrench",{zh:"铁扳手",ru:"Железный ключ"});
 Translation.addTranslation("Iron Hammer",{zh:"铁锤",ru:"Железный молот"});
 Translation.addTranslation("Iron Cutter",{zh:"铁剪线钳",ru:"Железный резак"});
 Translation.addTranslation("Iron Mortar",{zh:"铁研钵",ru:"Пестик и ступка из железа"});
 Translation.addTranslation("Iron File",{zh:"铁锉刀",ru:"Железная пилочка"});
-
 Translation.addTranslation("Lead Sword",{zh:"铅剑",ru:"Свинцовый меч"});
 Translation.addTranslation("Lead Shovel",{zh:"铅铲",ru:"Свинцовая лопата"});
 Translation.addTranslation("Lead Pickaxe",{zh:"铅镐",ru:"Свинцовая кирка"});
 Translation.addTranslation("Lead Axe",{zh:"铅斧",ru:"Свинцовый топор"});
 Translation.addTranslation("Lead Hoe",{zh:"铅锄",ru:"Свинцовая мотыга"});
-
 Translation.addTranslation("Steel Sword",{zh:"钢剑",ru:"Стальной меч"});
 Translation.addTranslation("Steel Shovel",{zh:"钢铲",ru:"Стальная лопата"});
 Translation.addTranslation("Steel Pickaxe",{zh:"钢镐",ru:"Стальная кирка"});
@@ -399,7 +467,6 @@ Translation.addTranslation("Steel Hammer",{zh:"钢锤",ru:"Стальной мо
 Translation.addTranslation("Steel Cutter",{zh:"钢剪线钳",ru:"Стальной резак"});
 Translation.addTranslation("Steel Mortar",{zh:"钢研钵",ru:"Пестик и ступка из стали"});
 Translation.addTranslation("Steel File",{zh:"钢锉刀",ru:"Стальная пилочка"});
-
 Translation.addTranslation("Tin Sword",{zh:"锡剑",ru:"Оловянный меч"});
 Translation.addTranslation("Tin Shovel",{zh:"锡铲",ru:"Оловянная лопата"});
 Translation.addTranslation("Tin Pickaxe",{zh:"锡镐",ru:"Оловянная кирка"});
@@ -410,31 +477,29 @@ Translation.addTranslation("Tin Hammer",{zh:"锡锤",ru:"Оловянный мо
 Translation.addTranslation("Tin Cutter",{zh:"锡剪线钳",ru:"Оловянный резак"});
 Translation.addTranslation("Tin Mortar",{zh:"锡研钵",ru:"Пестик и ступка из олова"});
 Translation.addTranslation("Tin File",{zh:"锡锉刀",ru:"Оловянная пилочка"});
-
 Translation.addTranslation("Tungsten Sword",{zh:"钨剑",ru:"Вольфрамовый меч"});
 Translation.addTranslation("Tungsten Shovel",{zh:"钨铲",ru:"Вольфрамовая лопата"});
 Translation.addTranslation("Tungsten Pickaxe",{zh:"钨镐",ru:"Вольфрамовая кирка"});
 Translation.addTranslation("Tungsten Axe",{zh:"钨斧",ru:"Вольфрамовый топор"});
 Translation.addTranslation("Tungsten Hoe",{zh:"钨锄",ru:"Вольфрамовая мотыга"});
 
-// Coil
-Translation.addTranslation("Tin Coil",{zh:"锡线圈",ru:"Оловянная катушка"});
-Translation.addTranslation("Copper Coil",{zh:"铜线圈",ru:"Медная катушка"});
-Translation.addTranslation("Gold Coil",{zh:"金线圈",ru:"Золотая катушка"});
-Translation.addTranslation("Steel Coil",{zh:"钢线圈",ru:"Стальная катушка"});
-Translation.addTranslation("Tungsten Coil",{zh:"钨线圈",ru:"Вольфрамовая катушка"});
-
 // Machine
+Translation.addTranslation("Auto Sieve",{zh:"自动筛子"});
 Translation.addTranslation("Autoclave",{zh:"高压釜",ru:"Автоклав"});
 Translation.addTranslation("Blast Furnace",{zh:"高炉"});
+Translation.addTranslation("Canning Machine",{zh:"装罐机"});
 Translation.addTranslation("Centrifuge",{zh:"离心机",ru:"Центрифуга"});
 Translation.addTranslation("Compressor",{zh:"压缩机",ru:"Сжиматель"});
 Translation.addTranslation("Crusher",{zh:"破碎机",ru:"Дробитель"});
 Translation.addTranslation("Cutting",{zh:"切割机",ru:"Резак"});
+Translation.addTranslation("Chemical Decomposer",{zh:"分解反应台"});
+Translation.addTranslation("Distillery",{zh:"蒸馏室"});
 Translation.addTranslation("Electric Furnace",{zh:"电炉",ru:"Электрическая печь"});
+Translation.addTranslation("Electrolyzer",{zh:"电解机"});
 Translation.addTranslation("Farming Station",{zh:"种植站",ru:"Фермерская станция"});
 Translation.addTranslation("Macerator",{zh:"打粉机",ru:"Измельчитель"});
 Translation.addTranslation("Ore Washer",{zh:"洗矿机",ru:"Рудопромывочный механизм"});
+Translation.addTranslation("Chemical Synthesizer",{zh:"化学反应台"});
 Translation.addTranslation("LV Transformer",{zh:"低压变压器",ru:"Трансформатор НН"});
 Translation.addTranslation("MV Transformer",{zh:"中压变压器",ru:"Трансформатор СН"});
 Translation.addTranslation("HV Transformer",{zh:"高压变压器",ru:"Трансформатор ВН"});
@@ -444,9 +509,12 @@ Translation.addTranslation("Wiremill",{zh:"线缆轧制机",ru:"Автомати
 // Network
 Translation.addTranslation("Energy Card",{zh:"能源卡"});
 Translation.addTranslation("Network Terminal",{zh:"网络终端"});
-Translation.addTranslation("Superconductor Coil",{zh:"超导体线缆"});
+Translation.addTranslation("Superconductor",{zh:"超导体"});
 
 // Battery
+Translation.addTranslation("Lithium Battery",{zh:"锂电池",ru:"Литиевая батарея"});
+Translation.addTranslation("Sherlock Battery",{zh:"夏洛克电池",ru:"Батарея из сплава Шерлока"});
+
 Translation.addTranslation("Lithium Battery Box",{zh:"锂电池盒",ru:"Литиевая аккумуляторная коробка"});
 Translation.addTranslation("Sherlock Battery Box",{zh:"夏洛克电池盒",ru:"Аккумуляторная коробка из сплава Шерлока"});
 
@@ -467,10 +535,300 @@ Translation.addTranslation("Network IP: ",{zh:"网络IP: "});
 Translation.addTranslation("Hard Level: ",{zh:"坚硬程度: ",ru:"Уровень сложности: "});
 Translation.addTranslation("Power Tier: ",{zh:"能量等级: ",ru:"Энергоуровень: "});
 Translation.addTranslation("Max Voltage: ",{zh:"最大电压: ",ru:"Макс.напряжение: "});
+Translation.addTranslation("Module Type: ",{zh:"模块类型: "});
 Translation.addTranslation("Energy Input: ",{zh:"能量输入: ",ru:"Вход энергии: "});
 Translation.addTranslation("Energy Output: ",{zh:"能量输出: ",ru:"Выход энергии: "});
 Translation.addTranslation("Energy Storage: ",{zh:"储能: ",ru:"Энергохранилище: "});
 Translation.addTranslation("Destroy Tool Type: ",{zh:"破坏工具类型: "});
+
+// Molecule
+Translation.addTranslation("Cellulose",{zh:"纤维素"});
+Translation.addTranslation("Water",{zh:"水"});
+Translation.addTranslation("Carbon Dioxide",{zh:"二氧化碳"});
+Translation.addTranslation("Nitrogen Dioxide",{zh:"二氧化氮"});
+Translation.addTranslation("Toluene",{zh:"甲苯"});
+Translation.addTranslation("Potassium Nitrate",{zh:"硝酸钾"});
+Translation.addTranslation("Trinitrotoluene",{zh:"三硝基甲苯"});
+Translation.addTranslation("Silicon Dioxide",{zh:"二氧化硅"});
+Translation.addTranslation("Calcicpyroxene",{zh:"钙辉石"});
+Translation.addTranslation("Pyrite",{zh:"黄铁矿"});
+Translation.addTranslation("Nepheline",{zh:"霞石"});
+Translation.addTranslation("Sulfate (ion)",{zh:"硫酸根离子"});
+Translation.addTranslation("Noselite",{zh:"钠长石"});
+Translation.addTranslation("Sodalite",{zh:"方钠石"});
+Translation.addTranslation("Nitrate (ion)",{zh:"硝酸根离子"});
+Translation.addTranslation("Carbonate (ion)",{zh:"碳酸根离子"});
+Translation.addTranslation("Potassium Cyanide",{zh:"氰化钾"});
+Translation.addTranslation("Phosphate (ion)",{zh:"磷酸根离子"});
+Translation.addTranslation("Acetate (ion)",{zh:"醋酸根离子"});
+Translation.addTranslation("Chromate (ion)",{zh:"铬酸根离子"});
+Translation.addTranslation("Hydroxide (ion)",{zh:"氢氧根离子"});
+Translation.addTranslation("Ammonium (ion)",{zh:"铵根离子"});
+Translation.addTranslation("Hydronium (ion)",{zh:"氢离子"});
+Translation.addTranslation("Peroxide (ion)",{zh:"过氧根离子"});
+Translation.addTranslation("Calcium Oxide",{zh:"氧化钙"});
+Translation.addTranslation("Calcium Carbonate",{zh:"碳酸钙"});
+Translation.addTranslation("Magnesium Carbonate",{zh:"碳酸镁"});
+Translation.addTranslation("Lazurite",{zh:"天青石"});
+Translation.addTranslation("Isoprene",{zh:"异戊二烯"});
+Translation.addTranslation("Butene",{zh:"丁烯"});
+Translation.addTranslation("Polyisobutylene Rubber",{zh:"聚异丁烯橡胶"});
+Translation.addTranslation("Malic Acid",{zh:"苹果酸"});
+Translation.addTranslation("Vinyl Chloride Monomer",{zh:"氯乙烯单体"});
+Translation.addTranslation("Polyvinyl Chloride",{zh:"聚氯乙烯"});
+Translation.addTranslation("Methamphetamine",{zh:"甲基苯丙胺"});
+Translation.addTranslation("Psilocybin",{zh:"裸盖茹素"});
+Translation.addTranslation("Iron (iii) Oxide",{zh:"氧化铁"});
+Translation.addTranslation("Strontium Nitrate",{zh:"硝酸锶"});
+Translation.addTranslation("Magnetite",{zh:"磁铁矿"});
+Translation.addTranslation("Magnesium Oxide",{zh:"氧化镁"});
+Translation.addTranslation("Cucurbitacin",{zh:"葫芦素"});
+Translation.addTranslation("Aspartic Acid",{zh:"天冬氨酸"});
+Translation.addTranslation("Hydroxylapatite",{zh:"羟基磷灰石"});
+Translation.addTranslation("Alanine",{zh:"丙氨酸"});
+Translation.addTranslation("Glycine",{zh:"甘氨酸"});
+Translation.addTranslation("Serine",{zh:"丝氨酸"});
+Translation.addTranslation("Mescaline",{zh:"麦司卡林"});
+Translation.addTranslation("Methyl (ion)",{zh:"甲基离子"});
+Translation.addTranslation("Methylene (ion)",{zh:"亚甲基离子"});
+Translation.addTranslation("Methyl Methacrylate",{zh:"甲基丙烯酸甲酯"});
+Translation.addTranslation("Polymethyl Methacrylate",{zh:"聚甲基丙烯酸甲酯"});
+Translation.addTranslation("Cobalt (ii) Nitrate",{zh:"硝酸钴"});
+Translation.addTranslation("Potassium Dichromate",{zh:"重铬酸钾"});
+Translation.addTranslation("Potassium Chromate",{zh:"铬酸钾"});
+Translation.addTranslation("Nickel (ii) Chloride",{zh:"氯化镍"});
+Translation.addTranslation("Copper (ii) Sulfate",{zh:"硫酸铜"});
+Translation.addTranslation("Potassium Permanganate",{zh:"高锰酸钾"});
+Translation.addTranslation("Zinc Green",{zh:"锌绿"});
+Translation.addTranslation("Carbon Black",{zh:"碳黑"});
+Translation.addTranslation("Titanium Dioxide",{zh:"二氧化钛"});
+Translation.addTranslation("Metasilicate",{zh:"偏硅酸盐"});
+Translation.addTranslation("Beryl",{zh:"绿柱石"});
+Translation.addTranslation("Ethyl Alcohol",{zh:"乙醇"});
+Translation.addTranslation("Amphetamine",{zh:"苯丙胺"});
+Translation.addTranslation("Theobromine",{zh:"可可碱"});
+Translation.addTranslation("Starch",{zh:"淀粉"});
+Translation.addTranslation("Sucrose",{zh:"蔗糖"});
+Translation.addTranslation("Pantherine",{zh:"马来酸二胺"});
+Translation.addTranslation("Aluminium Oxide",{zh:"氧化铝"});
+Translation.addTranslation("Carbon Nanotubes",{zh:"碳纳米管"});
+Translation.addTranslation("Valine",{zh:"缬氨酸"});
+Translation.addTranslation("Penicillin",{zh:"青霉素"});
+Translation.addTranslation("Testosterone",{zh:"睾酮"});
+Translation.addTranslation("Kaolinite",{zh:"高岭石"});
+Translation.addTranslation("Fingolimod",{zh:"芬戈莫德"});
+Translation.addTranslation("Arginine",{zh:"精氨酸"});
+Translation.addTranslation("Shikimic Acid",{zh:"莽草酸"});
+Translation.addTranslation("Sulfuric Acid",{zh:"硫酸"});
+Translation.addTranslation("Glyphosate",{zh:"草甘膦"});
+Translation.addTranslation("Aspirin",{zh:"阿司匹林"});
+Translation.addTranslation("Ddt",{zh:"双对氯苯基三氯乙烷"});
+Translation.addTranslation("Dota",{zh:"轮环藤四乙酸"});
+Translation.addTranslation("T-2 Mycotoxin",{zh:"T-2真菌毒素"});
+Translation.addTranslation("Salt",{zh:"盐"});
+Translation.addTranslation("Ammonia",{zh:"氨气"});
+Translation.addTranslation("Nodularin",{zh:"结节素"});
+Translation.addTranslation("Tetrydotoxin",{zh:"河豚毒素"});
+Translation.addTranslation("Thc",{zh:"四氢大麻酚"});
+Translation.addTranslation("Methylcyclopentadienyl Manganese Tricarbonyl",{zh:"甲基环戊二烯基三羰基锰"});
+Translation.addTranslation("Tert-butyllithium",{zh:"叔丁基锂"});
+Translation.addTranslation("Chloroplatinic Acid",{zh:"氯铂酸"});
+Translation.addTranslation("Phosgene",{zh:"氢光气"});
+Translation.addTranslation("Allyl Alcohol",{zh:"烯丙醇"});
+Translation.addTranslation("Diphenhydramine",{zh:"苯海拉明"});
+Translation.addTranslation("Batrachotoxin",{zh:"巴特拉霍毒素"});
+Translation.addTranslation("Retinol",{zh:"视黄醇"});
+Translation.addTranslation("Xylitol",{zh:"木糖醇"});
+Translation.addTranslation("Aminocyclopyrachlor",{zh:"氨基环吡草胺"});
+Translation.addTranslation("Alprazolam",{zh:"阿普唑仑"});
+Translation.addTranslation("Hydrogen Chloride",{zh:"氯化氢"});
+Translation.addTranslation("Cocaine",{zh:"可卡因"});
+Translation.addTranslation("Cocaine Hydrochloride",{zh:"盐酸可卡因"});
+Translation.addTranslation("Guaiazulene",{zh:"愈创木烯"});
+Translation.addTranslation("Pelargonidin",{zh:"天竺葵素"});
+Translation.addTranslation("Delphinidin",{zh:"翠雀素"});
+Translation.addTranslation("Olivine",{zh:"橄榄石"});
+Translation.addTranslation("Methylene Blue",{zh:"亚甲蓝"});
+Translation.addTranslation("Methyl Alcohol",{zh:"甲醇"});
+Translation.addTranslation("Cholesteryl Benzoate",{zh:"苯甲酸胆甾醇酯"});
+Translation.addTranslation("Radium Chloride",{zh:"氯化镭"});
+Translation.addTranslation("Caulerpenyne",{zh:"六氢姜黄素"});
+Translation.addTranslation("Hyoscyamine",{zh:"莨菪碱"});
+Translation.addTranslation("Gallic Acid",{zh:"莽草酸"});
+Translation.addTranslation("Glucose",{zh:"葡萄糖"});
+Translation.addTranslation("Tannic Acid",{zh:"鞣酸"});
+Translation.addTranslation("Hydrogen Peroxide",{zh:"过氧化氢"});
+Translation.addTranslation("Gallium Arsenide",{zh:"砷化镓"});
+Translation.addTranslation("Fibroin",{zh:"丝素蛋白"});
+Translation.addTranslation("Aluminium Phosphate",{zh:"磷酸铝"});
+Translation.addTranslation("Potassium Oxide",{zh:"氧化钾"});
+Translation.addTranslation("Sodium Oxide",{zh:"氧化钠"});
+Translation.addTranslation("Anorthite",{zh:"钙长石"});
+Translation.addTranslation("Albite",{zh:"钠长石"});
+Translation.addTranslation("Orthoclase",{zh:"正长石"});
+Translation.addTranslation("Biotite",{zh:"黑云母"});
+Translation.addTranslation("Augite",{zh:"辉长岩"});
+Translation.addTranslation("Talc",{zh:"滑石"});
+Translation.addTranslation("Propane",{zh:"丙烷"});
+Translation.addTranslation("Peridot",{zh:"橄榄石"});
+Translation.addTranslation("Topaz",{zh:"黄玉"});
+Translation.addTranslation("Zoisite",{zh:"黝帘石"});
+Translation.addTranslation("Cysteine",{zh:"半胱氨酸"});
+Translation.addTranslation("Threonite",{zh:"苏云母"});
+Translation.addTranslation("Lysine",{zh:"赖氨酸"});
+Translation.addTranslation("Methionine",{zh:"蛋氨酸"});
+Translation.addTranslation("Tyrosine",{zh:"酪氨酸"});
+Translation.addTranslation("Histidine",{zh:"组氨酸"});
+Translation.addTranslation("Phenylalanine",{zh:"苯丙氨酸"});
+Translation.addTranslation("Glutamine",{zh:"谷氨酰胺"});
+Translation.addTranslation("Proline",{zh:"脯氨酸"});
+Translation.addTranslation("Leucine",{zh:"亮氨酸"});
+Translation.addTranslation("Tryptophan",{zh:"色氨酸"});
+Translation.addTranslation("Isoleucine",{zh:"异亮氨酸"});
+Translation.addTranslation("Glutamic Acid",{zh:"谷氨酸"});
+Translation.addTranslation("Asparagine",{zh:"天冬酰胺"});
+Translation.addTranslation("Keratin",{zh:"角蛋白"});
+Translation.addTranslation("Asbestos",{zh:"石棉"});
+Translation.addTranslation("Lithium Hydroxide",{zh:"氢氧化锂"});
+Translation.addTranslation("Sodium Hydroxide",{zh:"氢氧化钠"});
+Translation.addTranslation("Potassium Hydroxide",{zh:"氢氧化钾"});
+Translation.addTranslation("Rubidium Hydroxide",{zh:"氢氧化铷"});
+Translation.addTranslation("Cesium Hydroxide",{zh:"氢氧化铯"});
+Translation.addTranslation("Francium Hydroxide",{zh:"氢氧化铵"});
+Translation.addTranslation("Hypophosphite",{zh:"次磷酸钠"});
+Translation.addTranslation("Aluminium Hypophosphite",{zh:"次磷酸铝"});
+Translation.addTranslation("Omphacite",{zh:"绿辉石"});
+Translation.addTranslation("Silicate",{zh:"硅酸根离子"});
+Translation.addTranslation("Pyrope",{zh:"镁铝榴石"});
+Translation.addTranslation("Almandine",{zh:"铁铝榴石"});
+Translation.addTranslation("Spessartine",{zh:"锰铝榴石"});
+Translation.addTranslation("Red Garnet",{zh:"红石榴石"});
+Translation.addTranslation("Forsterite",{zh:"镁橄榄石"});
+Translation.addTranslation("Chromite",{zh:"铬铁矿"});
+Translation.addTranslation("Silicon Oxide",{zh:"氧化硅"});
+Translation.addTranslation("Iron Oxide",{zh:"氧化铁"});
+Translation.addTranslation("Gallium Oxide",{zh:"氧化镓"});
+Translation.addTranslation("Arsenic Oxide",{zh:"氧化砷"});
+Translation.addTranslation("Sulfur Oxide",{zh:"二氧化硫"});
+Translation.addTranslation("Hydrogen Sulfide",{zh:"硫化氢"});
+Translation.addTranslation("Sodium Bisulfate",{zh:"硫酸氢钠"});
+Translation.addTranslation("Sodium Sulfate",{zh:"硫酸钠"});
+Translation.addTranslation("Dimethyltryptamine",{zh:"二甲基色胺"});
+Translation.addTranslation("Oleic Acid",{zh:"油酸"});
+
+// Element
+Translation.addTranslation("Hydrogen",{zh:"氢"});
+Translation.addTranslation("Helium",{zh:"氦"});
+Translation.addTranslation("Lithium",{zh:"锂"});
+Translation.addTranslation("Beryllium",{zh:"铍"});
+Translation.addTranslation("Boron",{zh:"硼"});
+Translation.addTranslation("Carbon",{zh:"碳"});
+Translation.addTranslation("Nitrogen",{zh:"氮"});
+Translation.addTranslation("Oxygen",{zh:"氧"});
+Translation.addTranslation("Fluorine",{zh:"氟"});
+Translation.addTranslation("Neon",{zh:"氖"});
+Translation.addTranslation("Sodium",{zh:"钠"});
+Translation.addTranslation("Magnesium",{zh:"镁"});
+Translation.addTranslation("Aluminium",{zh:"铝"});
+Translation.addTranslation("Silicon",{zh:"硅"});
+Translation.addTranslation("Phosphorus",{zh:"磷"});
+Translation.addTranslation("Sulfur",{zh:"硫"});
+Translation.addTranslation("Chlorine",{zh:"氯"});
+Translation.addTranslation("Argon",{zh:"氩"});
+Translation.addTranslation("Potassium",{zh:"氩"});
+Translation.addTranslation("Calcium",{zh:"钙"});
+Translation.addTranslation("Scandium",{zh:"钪"});
+Translation.addTranslation("Titanium",{zh:"钛"});
+Translation.addTranslation("Vanadium",{zh:"钒"});
+Translation.addTranslation("Chromium",{zh:"铬"});
+Translation.addTranslation("Manganese",{zh:"锰"});
+Translation.addTranslation("Iron",{zh:"铁"});
+Translation.addTranslation("Cobalt",{zh:"钴"});
+Translation.addTranslation("Nickel",{zh:"镍"});
+Translation.addTranslation("Copper",{zh:"铜"});
+Translation.addTranslation("Zinc",{zh:"锌"});
+Translation.addTranslation("Gallium",{zh:"锗"});
+Translation.addTranslation("Arsenic",{zh:"砷"});
+Translation.addTranslation("Selenium",{zh:"硒"});
+Translation.addTranslation("Bromine",{zh:"溴"});
+Translation.addTranslation("Krypton",{zh:"氪"});
+Translation.addTranslation("Rubidium",{zh:"铷"});
+Translation.addTranslation("Strontium",{zh:"锶"});
+Translation.addTranslation("Yttrium",{zh:"钇"});
+Translation.addTranslation("Zirconium",{zh:"锆"});
+Translation.addTranslation("Niobium",{zh:"铌"});
+Translation.addTranslation("Molybdenum",{zh:"钼"});
+Translation.addTranslation("Technetium",{zh:"锝"});
+Translation.addTranslation("Ruthenium",{zh:"钌"});
+Translation.addTranslation("Rhodium",{zh:"铑"});
+Translation.addTranslation("Palladium",{zh:"钯"});
+Translation.addTranslation("Silver",{zh:"银"});
+Translation.addTranslation("Cadmium",{zh:"镉"});
+Translation.addTranslation("Indium",{zh:"铟"});
+Translation.addTranslation("Tin",{zh:"锡"});
+Translation.addTranslation("Antimony",{zh:"锑"});
+Translation.addTranslation("Tellurium",{zh:"碲"});
+Translation.addTranslation("Iodine",{zh:"碘"});
+Translation.addTranslation("Xenon",{zh:"氙气"});
+Translation.addTranslation("Caesium",{zh:"铯"});
+Translation.addTranslation("Barium",{zh:"钡"});
+Translation.addTranslation("Lanthanum",{zh:"镧"});
+Translation.addTranslation("Cerium",{zh:"铈"});
+Translation.addTranslation("Praseodymium",{zh:"镨"});
+Translation.addTranslation("Neodymium",{zh:"钕"});
+Translation.addTranslation("Promethium",{zh:"钷"});
+Translation.addTranslation("Samarium",{zh:"钐"});
+Translation.addTranslation("Europium",{zh:"铕"});
+Translation.addTranslation("Gadolinium",{zh:"钆"});
+Translation.addTranslation("Terbium",{zh:"铽"});
+Translation.addTranslation("Dysprosium",{zh:"镝"});
+Translation.addTranslation("Holmium",{zh:"钬"});
+Translation.addTranslation("Erbium",{zh:"铒"});
+Translation.addTranslation("Thulium",{zh:"铥"});
+Translation.addTranslation("Ytterbium",{zh:"镱"});
+Translation.addTranslation("Lutetium",{zh:"镏"});
+Translation.addTranslation("Hafnium",{zh:"铪"});
+Translation.addTranslation("Tantalum",{zh:"钽"});
+Translation.addTranslation("Tungsten",{zh:"钨"});
+Translation.addTranslation("Rhenium",{zh:"铼"});
+Translation.addTranslation("Osmium",{zh:"锇"});
+Translation.addTranslation("Iridium",{zh:"铱"});
+Translation.addTranslation("Platinum",{zh:"铂"});
+Translation.addTranslation("Gold",{zh:"金"});
+Translation.addTranslation("Mercury",{zh:"汞"});
+Translation.addTranslation("Thallium",{zh:"铊"});
+Translation.addTranslation("Lead",{zh:"铅"});
+Translation.addTranslation("Bismuth",{zh:"铋"});
+Translation.addTranslation("Polonium",{zh:"钋"});
+Translation.addTranslation("Astatine",{zh:"砹"});
+Translation.addTranslation("Radon",{zh:"氡"});
+Translation.addTranslation("Francium",{zh:"钫"});
+Translation.addTranslation("Radium",{zh:"镭"});
+Translation.addTranslation("Actinium",{zh:"锕"});
+Translation.addTranslation("Thorium",{zh:"钍"});
+Translation.addTranslation("Protactinium",{zh:"镤"});
+Translation.addTranslation("Uranium",{zh:"铀"});
+Translation.addTranslation("Neptunium",{zh:"镎"});
+Translation.addTranslation("Plutonium",{zh:"钚"});
+Translation.addTranslation("Americium",{zh:"銤"});
+Translation.addTranslation("Curium",{zh:"锔"});
+Translation.addTranslation("Berkelium",{zh:"锫"});
+Translation.addTranslation("Californium",{zh:"锎"});
+Translation.addTranslation("Einsteinium",{zh:"锿"});
+Translation.addTranslation("Fermium",{zh:"镄"});
+Translation.addTranslation("Mendelevium",{zh:"钔"});
+Translation.addTranslation("Nobelium",{zh:"锘"});
+Translation.addTranslation("Lawrencium",{zh:"铹"});
+Translation.addTranslation("Rutherfordium",{zh:"鈩"});
+Translation.addTranslation("Dubnium",{zh:"钅杜"});
+Translation.addTranslation("Seaborgium",{zh:"钅喜"});
+Translation.addTranslation("Bohrium",{zh:"钅波"});
+Translation.addTranslation("Hassium",{zh:"𨭆"});
+Translation.addTranslation("Meitnerium",{zh:"䥑"});
+Translation.addTranslation("Darmstadtium",{zh:"鐽"});
+Translation.addTranslation("Roentgenium",{zh:"钅仑"});
+Translation.addTranslation("Copernicium",{zh:"鎶"});
+Translation.addTranslation("Nihonium",{zh:"鉨"});
 
 // Tool Type
 Translation.addTranslation("Wrench",{zh:"扳手"});
@@ -484,6 +842,13 @@ Translation.addTranslation("Hammer",{zh:"锤"});
 Translation.addTranslation("Mortar",{zh:"研钵"});
 Translation.addTranslation("File",{zh:"锉刀"});
 Translation.addTranslation("EnergyCard",{zh:"能源卡"});
+
+// Module Type
+Translation.addTranslation("FuelRod",{zh:"燃料棒"});
+Translation.addTranslation("HeatSink",{zh:"散热器"});
+Translation.addTranslation("Coolant",{zh:"冷却器"});
+Translation.addTranslation("Casing",{zh:"外壳"});
+Translation.addTranslation("Coil",{zh:"线圈"});
 
 // Info
 Translation.addTranslation("You can use it to connect to the Network Terminal to transmit energy.",{zh:"你可以用他连接网络终端来传输能量."});

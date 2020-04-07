@@ -1,15 +1,16 @@
 {
-  "enabled":true,
-  "debug":false,
-  "sounds":{
-    "enabled":true
-  },
-  "machine":{
-    "voltage":{
-      "enabled":true
-    },
-    "reactor":{
-      "radius":2
-    }
-  }
+	"enabled":true,
+	"debug":false,
+	"sounds":{
+		"enabled":true
+	},
+  	"machine":{
+    	"voltage":{
+			"enabled":true
+    	},
+        "reactor":{
+			"radius":2,
+			"isDurability":true
+		}
+  	}
 }

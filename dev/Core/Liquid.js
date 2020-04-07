@@ -1,2 +1,11 @@
-LiquidRegistry.registerLiquid("lithium","Lithium","liquidLithium");
-LiquidRegistry.registerLiquid("uranium","Uranium","liquidUranium");
+LiquidRegistry.registerLiquid("helium","Helium","liquid.helium");
+LiquidRegistry.registerLiquid("helium3","Helium-3","liquid.helium3");
+LiquidRegistry.registerLiquid("lithium6","Lithium-6","liquid.lithium6");
+LiquidRegistry.registerLiquid("lithium7","Lithium-7","liquid.lithium7");
+LiquidRegistry.registerLiquid("uranium","Uranium","liquid.uranium");
+LiquidRegistry.registerLiquid("uranium235","Uranium-235","liquid.uranium235");
+LiquidRegistry.registerLiquid("uranium238","Uranium-238","liquid.uranium238");
+LiquidRegistry.registerLiquid("tritium","Tritium","liquid.tritium");
+LiquidRegistry.registerLiquid("deuterium","Deuterium","liquid.deuterium");
+LiquidRegistry.registerLiquid("heavyWater","Heavy Water","liquid.heavyWater");
+LiquidRegistry.registerLiquid("distilledWater","Distilled Water","liquid.distilledWater");

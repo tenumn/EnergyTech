@@ -20,6 +20,18 @@ IDRegistry.genItemID("partLeadAntimony");
 Item.createItem("partLeadAntimony","Lead-Antimony Alloy Part",{name:"partLeadAntimony"});
 
 Callback.addCallback("PreLoaded",function(){
+    // 组
+    Item.addCreativeGroup("ET-Part",Translation.translate("Part"),[
+        ItemID.partIron        ,
+        ItemID.partTin         ,
+        ItemID.partCopper      ,
+        ItemID.partGold        ,
+        ItemID.partSteel       ,
+        ItemID.partSherlock    ,
+        ItemID.partLeadAntimony
+    ]);
+
+    // 合成
     Recipes.addShaped({id:ItemID.partIron        ,count:1,data:0},["ab","ba"],["a",ItemID.plateIron        ,0,"b",ItemID.stickIron         ,0]);
     Recipes.addShaped({id:ItemID.partTin         ,count:1,data:0},["ab","ba"],["a",ItemID.plateTin         ,0,"b",ItemID.stickTin          ,0]);
     Recipes.addShaped({id:ItemID.partCopper      ,count:1,data:0},["ab","ba"],["a",ItemID.plateCopper      ,0,"b",ItemID.stickCopper       ,0]);

@@ -1,10 +1,11 @@
-var ETTool = {
+var Tool = {
     tool:{},
     
     registerTool:function(id,type){
         if(!this.tool[type]){this.tool[type] = []}
         this.tool[type].push(id);
         
+        Item.setCategory(id,Native.ItemCategory.TOOL);
         wheat.item.addTooltip(id,Translation.translate("Tool Type: ") + Translation.translate(type));
     },
     
@@ -12,7 +13,7 @@ var ETTool = {
         if(!this.tool[type]){this.tool[type] = []}
         return this.tool[type];
     },
-
+    
     isTool:function(id,type){
         var tool = this.getAllTool(type);
         for(let count in tool){
@@ -29,7 +30,7 @@ var ETTool = {
         this.HAMMER_RECIOE[blockID] = {id:dropID,count:dropCount,data:dropData}
         Block.registerDropFunctionForID(blockID,function(coords,id,data){
             var item = Player.getCarriedItem();
-			if(ETTool.isTool(item.id,"Hammer")){
+			if(Tool.isTool(item.id,"Hammer")){
                 return [[dropID,dropCount + (random?Math.round(Math.random()):0),dropData]];
             };
             return [[id,1,data]];
@@ -40,71 +41,81 @@ var ETTool = {
 CreateWrench = function(id,name,texture,damage){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Wrench");
+    Tool.registerTool(ItemID[id],"Wrench");
     Item.setMaxDamage(ItemID[id],damage);
+    Item.addCreativeGroup("ET-Wrench",Translation.translate("Wrench"),[ItemID[id]]);
 }
 
 CreateHammer = function(id,name,texture,material){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Hammer");
+    Tool.registerTool(ItemID[id],"Hammer");
     ToolAPI.setTool(ItemID[id],material.toLowerCase(),ToolType.pickaxe);
+    Item.addCreativeGroup("ET-Hammer",Translation.translate("Hammer"),[ItemID[id]]);
 }
 
 CreateFile = function(id,name,texture,damage){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"File");
+    Tool.registerTool(ItemID[id],"File");
     Item.setMaxDamage(ItemID[id],damage);
+    Item.addCreativeGroup("ET-File",Translation.translate("File"),[ItemID[id]]);
 }
 
 CreateCutter = function(id,name,texture,damage){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Cutter");
+    Tool.registerTool(ItemID[id],"Cutter");
     Item.setMaxDamage(ItemID[id],damage);
+    Item.addCreativeGroup("ET-Cutter",Translation.translate("Cutter"),[ItemID[id]]);
 }
 
 CreateMortar = function(id,name,texture,damage){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Mortar");
+    Tool.registerTool(ItemID[id],"Mortar");
     Item.setMaxDamage(ItemID[id],damage);
+    Item.addCreativeGroup("ET-Mortar",Translation.translate("Mortar"),[ItemID[id]]);
 }
 
 CreateSword = function(id,name,texture,material){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Sword");
+    Tool.registerTool(ItemID[id],"Sword");
     ToolAPI.setTool(ItemID[id],material,ToolType.sword);
+    Item.addCreativeGroup("ET-Sword",Translation.translate("Sword"),[ItemID[id]]);
 }
 
 CreateShovel = function(id,name,texture,material){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Shovel");
+    Tool.registerTool(ItemID[id],"Shovel");
     ToolAPI.setTool(ItemID[id],material,ToolType.shovel);
+    Item.addCreativeGroup("ET-Shovel",Translation.translate("Shovel"),[ItemID[id]]);
 }
 
 CreatePickaxe = function(id,name,texture,material){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Pickaxe");
+    Tool.registerTool(ItemID[id],"Pickaxe");
     ToolAPI.setTool(ItemID[id],material,ToolType.pickaxe);
+    Item.addCreativeGroup("ET-Pickaxe",Translation.translate("Pickaxe"),[ItemID[id]]);
 }
 
 CreateAxe = function(id,name,texture,material){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Axe");
+    Tool.registerTool(ItemID[id],"Axe");
     ToolAPI.setTool(ItemID[id],material,ToolType.axe);
+    Item.addCreativeGroup("ET-Axe",Translation.translate("Axe"),[ItemID[id]]);
 }
 
 CreateHoe = function(id,name,texture,material){
     IDRegistry.genItemID(id);
     Item.createItem(id,name,texture,{stack:1});
-    ETTool.registerTool(ItemID[id],"Hoe");
+    Tool.registerTool(ItemID[id],"Hoe");
     ToolAPI.setTool(ItemID[id],material,ToolType.hoe);
+    Item.addCreativeGroup("ET-Hoe",Translation.translate("Hoe"),[ItemID[id]]);
 }
 
 CreateTool = function(name,data){
@@ -119,7 +130,7 @@ CreateTool = function(name,data){
 
 Callback.addCallback("DestroyBlock",function(coords,block,player){
     var item = Player.getCarriedItem(),material = ToolAPI.getBlockMaterial(block.id);
-    if(ETTool.isTool(item.id,"Shovel") && material.dirt){
+    if(Tool.isTool(item.id,"Shovel") && material.dirt){
         Block.setTempDestroyTime(block.id,0.5);
     }
 });

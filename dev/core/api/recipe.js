@@ -1,4 +1,4 @@
-var ETRecipe = {
+var Recipe = {
     addShapedRecipe:function(output,recipe,data,extra){
         Recipes.addShaped(output,recipe,data,function(api,field,result){
             for(var i in field){
@@ -37,90 +37,91 @@ var ETRecipe = {
 		return this.recipes[name];
 	},
 
-    getRecipeResult:function(name,id,data){
-		var data = this.getRecipe(name);
-		if(data){
-			return data[id] || data[id + ":" + data];
+    getRecipeResult:function(name,data){
+		var recipe = this.getRecipe(name);
+		if(recipe){
+			if(data[2]){
+				return recipe[data[0] + ":" + data[1] + ":" + data[2] + ":" + data[3]] || recipe[data[2] + ":" + data[3] + ":" + data[0] + ":" + data[1]];
+			}
+			return recipe[data[0] + ":" + data[1]];
 		}
 	},
 
 	addMaceratorRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("Macerator")[input.id] = output;
-		} else {
-			this.getRecipe("Macerator")[input.id + ":" + input.data] = output;
-		}
+		var pecipe = this.getRecipe("Macerator");
+		pecipe[input.id + ":" + input.data] = output;
 	},
 
 	addCompressorRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("Compressor")[input.id] = output;
-		} else {
-			this.getRecipe("Compressor")[input.id + ":" + input.data] = output;
-		}
+		var pecipe = this.getRecipe("Compressor");
+		pecipe[input.id + ":" + input.data] = output;
 	},
 
 	addBlastFurnaceRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("BlastFurnace")[input.id] = output;
-		} else {
-			this.getRecipe("BlastFurnace")[input.id + ":" + input.data] = output;
-		}
+		var pecipe = this.getRecipe("BlastFurnace");
+		pecipe[input.id + ":" + input.data] = output;
 	},
 
 	addCrusherRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("Crusher")[input.id] = output;
-		} else {
-			this.getRecipe("Crusher")[input.id + ":" + input.data] = output;
-		}
+		var pecipe = this.getRecipe("Crusher");
+		pecipe[input.id + ":" + input.data] = output;
 	},
 
 	addCentrifugeRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("Centrifuge")[input.id] = output;
-		} else {
-			this.getRecipe("Centrifuge")[input.id + ":" + input.data] = output;
-		}
+		var pecipe = this.getRecipe("Centrifuge");
+		pecipe[input.id + ":" + input.data] = output;
 	},
 	
 	addCuttingRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("Cutting")[input.id] = output;
-		} else {
-			this.getRecipe("Cutting")[input.id + ":" + input.data] = output;
-		}
+		var pecipe = this.getRecipe("Cutting");
+		pecipe[input.id + ":" + input.data] = output;
 	},
 
 	addOreWasherRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("OreWasher")[input.id] = output;
-		} else {
-			this.getRecipe("OreWasher")[input.id + ":" + input.data] = output;
-		}
+		var pecipe = this.getRecipe("OreWasher");
+		pecipe[input.id + ":" + input.data] = output;
+	},
+
+	addCanningMachineRecipe:function(input,output,cell){
+		var pecipe = this.getRecipe("CanningMachine");
+		pecipe[input.id + ":" + input.data] = {output:output,cell:cell};
 	},
 
 	addFarmingStationRecipe:function(input,output,dirt){
-		if(!input.data){
-			this.getRecipe("FarmingStation")[input.id] = {output:output,dirt:dirt};
-		} else {
-			this.getRecipe("FarmingStation")[input.id + ":" + input.data] = {output:output,dirt:dirt};
-		}
+		var pecipe = this.getRecipe("FarmingStation");
+		pecipe[input.id + ":" + input.data] = {output:output,dirt:dirt};
 	},
 
 	addWiremillRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("Wiremill")[input.id] = {output:output,count:input.count};
-		} else {
-			this.getRecipe("Wiremill")[input.id + ":" + input.data] = {output:output,count:input.count};
-		}
+		var pecipe = this.getRecipe("Wiremill");
+		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 
 	addAutoclaveRecipe:function(input,output){
-		if(!input.data){
-			this.getRecipe("Autoclave")[input.id] = {output:output,count:input.count};
-		} else {
-			this.getRecipe("Autoclave")[input.id + ":" + input.data] = {output:output,count:input.count};
+		var pecipe = this.getRecipe("Autoclave");
+		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
+	},
+
+	addDistilleryRecipe:function(input,output){
+		var pecipe = this.getRecipe("Distillery");
+		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
+	},
+
+	addElectrolyzerRecipe:function(input,output){
+		var pecipe = this.getRecipe("Electrolyzer");
+		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
+	},
+
+	addAutoSaieveRecipe:function(input,output){
+		var pecipe = this.getRecipe("AutoSaieve");
+		if(!pecipe[input.id + ":" + input.data]){pecipe[input.id + ":" + input.data] = [];}
+		for(let key in output){
+			pecipe[input.id + ":" + input.data].push(output[key]);
 		}
+	},
+	
+	addFusionReactorRecipe:function(input,output,heat){
+		if(!heat){heat = 336;}
+		this.getRecipe("FusionReactor")[input[0].id + ":" + input[0].data + ":" + input[1].id + ":" + input[1].data] = {output:output,heat:heat};
 	}
 }

@@ -1,6 +1,7 @@
+// 能源卡
 IDRegistry.genItemID("energyCard");
 Item.createItem("energyCard","Energy Card",{name:"energyCard"},{stack:1});
-ETTool.registerTool(ItemID.energyCard,"EnergyCard");
+Tool.registerTool(ItemID.energyCard,"EnergyCard");
 
 wheat.item.setItemName(ItemID.energyCard,function(item,name,tooltip){
     if(item.extra){

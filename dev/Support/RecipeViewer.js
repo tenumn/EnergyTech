@@ -1,8 +1,8 @@
 ModAPI.addAPICallback("RecipeViewer",function(api){
-    let RVCore = api.Core;
+    let Core = api.Core;
 
     // [粗制高炉]Crude Blast Furnace
-    RVCore.registerRecipeType("ET-CrudeBlastFurnace",{
+    Core.registerRecipeType("ET-CrudeBlastFurnace",{
 		contents:{
             icon:BlockID.crudeBlastFurnace,
             
@@ -19,11 +19,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("BlastFurnace",id,data);
+                let result = Recipe.getRecipeResult("BlastFurnace",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("BlastFurnace");
+            let item,list = [],recipe = Recipe.getRecipe("BlastFurnace");
             for(let key in recipe){
                 result = recipe[key];
                 if(result[0].id == id && (result[0].data == data || data == -1)){
@@ -37,9 +37,9 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
 
     // [高炉]Blast Furnace
-    RVCore.registerRecipeType("ET-BlastFurnace",{
+    Core.registerRecipeType("ET-BlastFurnace",{
 		contents:{
-            icon:BlockID.crudeBlastFurnace,
+            icon:BlockID.blastFurnace,
             
 			drawing:[
 				{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
@@ -48,22 +48,25 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             
 			elements:{
 				"input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slotBlank",size:120}
+                "output0":{type:"slot",x:600,y:190,bitmap:"slotBlank",size:120},
+                "output1":{type:"slot",x:720,y:190,bitmap:"slotBlank",size:120}
 			}
         },
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("BlastFurnace",id,data);
+                let result = Recipe.getRecipeResult("BlastFurnace",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("BlastFurnace");
+            let item,list = [],recipe = Recipe.getRecipe("BlastFurnace");
             for(let key in recipe){
                 result = recipe[key];
-                if(result[0].id == id && (result[0].data == data || data == -1)){
-                    item = key.split(":");
-                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
+                for(let i in result){
+                    if(result[i].id == id && (result[i].data == data || data == -1)){
+                        item = key.split(":");
+                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
+                    }
                 }
             }
 
@@ -72,7 +75,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
 
     // [压缩机]Compressor
-    RVCore.registerRecipeType("ET-Compressor",{
+    Core.registerRecipeType("ET-Compressor",{
 		contents:{
             icon:BlockID.compressor,
             
@@ -89,11 +92,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("Compressor",id,data);
+                let result = Recipe.getRecipeResult("Compressor",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("Compressor");
+            let item,list = [],recipe = Recipe.getRecipe("Compressor");
             for(let key in recipe){
                 result = recipe[key];
                 if(result.id == id && (result.data == data || data == -1)){
@@ -107,7 +110,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
 
     // [破碎机]Crusher
-    RVCore.registerRecipeType("ET-Crusher",{
+    Core.registerRecipeType("ET-Crusher",{
 		contents:{
             icon:BlockID.crusher,
             
@@ -124,11 +127,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("Crusher",id,data);
+                let result = Recipe.getRecipeResult("Crusher",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("Crusher");
+            let list = [],recipe = Recipe.getRecipe("Crusher");
             for(let key in recipe){
                 result = recipe[key];
                 if(result.id == id && (result.data == data || data == -1)){
@@ -142,7 +145,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 	});
 
     // [打粉机]Macerator
-    RVCore.registerRecipeType("ET-Macerator",{
+    Core.registerRecipeType("ET-Macerator",{
 		contents:{
             icon:BlockID.macerator,
             
@@ -159,11 +162,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("Macerator",id,data);
+                let result = Recipe.getRecipeResult("Macerator",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("Macerator");
+            let item,list = [],recipe = Recipe.getRecipe("Macerator");
             for(let key in recipe){
                 result = recipe[key];
                 if(result.id == id && (result.data == data || data == -1)){
@@ -180,7 +183,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
 
     // [切割机]Cutting
-    RVCore.registerRecipeType("ET-Cutting",{
+    Core.registerRecipeType("ET-Cutting",{
 		contents:{
             icon:BlockID.cutting,
             
@@ -197,11 +200,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("Cutting",id,data);
+                let result = Recipe.getRecipeResult("Cutting",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("Cutting");
+            let item,list = [],recipe = Recipe.getRecipe("Cutting");
             for(let key in recipe){
                 result = recipe[key];
                 if(result.id == id && (result.data == data || data == -1)){
@@ -218,7 +221,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
     
     // [离心机]Centrifuge
-    RVCore.registerRecipeType("ET-Centrifuge",{
+    Core.registerRecipeType("ET-Centrifuge",{
 		contents:{
             icon:BlockID.centrifuge,
             
@@ -238,11 +241,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("Centrifuge",id,data);
+                let result = Recipe.getRecipeResult("Centrifuge",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("Centrifuge");
+            let item,list = [],recipe = Recipe.getRecipe("Centrifuge");
             for(let key in recipe){
                 result = recipe[key];
                 for(var i = 0;i <= 4;i++){
@@ -258,7 +261,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 	});
 
     // [洗矿机]Ore Washer
-    RVCore.registerRecipeType("ET-OreWasher",{
+    Core.registerRecipeType("ET-OreWasher",{
 		contents:{
             icon:BlockID.oreWasher,
             
@@ -278,11 +281,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("OreWasher",id,data);
+                let result = Recipe.getRecipeResult("OreWasher",[id,data]);
                 return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("OreWasher");
+            let item,list = [],recipe = Recipe.getRecipe("OreWasher");
             for(let key in recipe){
                 result = recipe[key];
                 for(var i = 0;i <= 4;i++){
@@ -298,7 +301,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 	});
 	
 	// [种植站]Farming Station
-    RVCore.registerRecipeType("ET-FarmingStation",{
+    Core.registerRecipeType("ET-FarmingStation",{
 		contents:{
             icon:BlockID.farmingStation,
             
@@ -308,7 +311,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+                "input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+                "input1":{type:"slot",x:280,y:310,bitmap:"slotBlank",size:120},
                 "output0":{type:"slot",x:600,y:130,bitmap:"slotBlank",size:120},
                 "output1":{type:"slot",x:720,y:130,bitmap:"slotBlank",size:120},
                 "output2":{type:"slot",x:600,y:250,bitmap:"slotBlank",size:120},
@@ -318,17 +322,17 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("FarmingStation",id,data);
-                return result?[{input:[{id:id,count:1,data:data}],output:result.output}]:[];
+                let result = Recipe.getRecipeResult("FarmingStation",[id,data]);
+                return result?[{input:[{id:id,count:1,data:data},{id:recipe.dirt.id,count:1,data:recipe.dirt.data}],output:result.output}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("FarmingStation");
+            let item,list = [],recipe = Recipe.getRecipe("FarmingStation");
             for(let key in recipe.output){
                 result = recipe.output[key];
                 for(var i = 0;i <= 4;i++){
                     if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
-                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
+                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.dirt.id,count:1,data:recipe.dirt.data}],output:result});
                     }
                 }
             }
@@ -338,7 +342,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
     
     // [锤子]Hammer
-    RVCore.registerRecipeType("ET-Hammer",{
+    Core.registerRecipeType("ET-Hammer",{
 		contents:{
             icon:ItemID.hammerIron,
             
@@ -355,11 +359,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETTool.HAMMER_RECIOE[id];
+                let result = Tool.HAMMER_RECIOE[id];
                 return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
             }
 
-            let item,list = [],recipe = ETTool.HAMMER_RECIOE;
+            let item,list = [],recipe = Tool.HAMMER_RECIOE;
             for(let key in recipe){
                 result = recipe[key];
                 if(result.id == id && (result.data == data || data == -1)){
@@ -376,7 +380,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
 
     // [线缆轧制机]Wiremill
-    RVCore.registerRecipeType("ET-Wiremill",{
+    Core.registerRecipeType("ET-Wiremill",{
 		contents:{
             icon:BlockID.wiremill,
             
@@ -393,11 +397,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("Wiremill",id,data);
+                let result = Recipe.getRecipeResult("Wiremill",[id,data]);
                 return result?[{input:[{id:id,count:result.count,data:data}],output:[result.output]}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("Wiremill");
+            let item,list = [],recipe = Recipe.getRecipe("Wiremill");
             for(let key in recipe.output){
                 result = recipe.output[key];
                 if(result.id == id && (result.data == data || data == -1)){
@@ -411,7 +415,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     });
 
     // [高压釜]Autoclave
-    RVCore.registerRecipeType("ET-Autoclave",{
+    Core.registerRecipeType("ET-Autoclave",{
 		contents:{
             icon:BlockID.autoclave,
             
@@ -428,16 +432,229 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
         
 		getList:function(id,data,isUsage){
             if(isUsage){
-                let result = ETRecipe.getRecipeResult("Autoclave",id,data);
+                let result = Recipe.getRecipeResult("Autoclave",[id,data]);
                 return result?[{input:[{id:id,count:result.count,data:data}],output:[result.output]}]:[];
             }
 
-            let item,list = [],recipe = ETRecipe.getRecipe("Autoclave");
+            let item,list = [],recipe = Recipe.getRecipe("Autoclave");
             for(let key in recipe.output){
                 result = recipe.output[key];
                 if(result.id == id && (result.data == data || data == -1)){
                     item = key.split(":");
                     list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:[result.output]});
+                }
+            }
+
+            return list;
+		}
+    });
+
+    // [电解机]Electrolyzer
+    Core.registerRecipeType("ET-Electrolyzer",{
+    	contents:{
+    		icon:BlockID.electrolyzer,
+        
+    		drawing:[
+    			{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
+    			{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+    		],
+        
+    		elements:{
+    			"input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slotBlank",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slotBlank",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slotBlank",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slotBlank",size:120}
+    		}
+    	},
+    
+    	getList:function(id,data,isUsage){
+    		if(isUsage){
+    			let result = Recipe.getRecipeResult("Electrolyzer",[id,data]);
+    			return result?[{input:[{id:id,count:result.count,data:data}],output:result.output}]:[];
+    		}
+        
+    		let item,list = [],recipe = Recipe.getRecipe("Electrolyzer");
+    		for(let key in recipe.output){
+    			result = recipe.output[key];
+    			if(result.id == id && (result.data == data || data == -1)){
+    				item = key.split(":");
+    				list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:result.output});
+    			}
+    		}
+        
+    		return list;
+    	}
+    });
+    
+    // [蒸馏室]Distillery
+    Core.registerRecipeType("ET-Distillery",{
+    	contents:{
+    		icon:BlockID.distillery,
+        
+    		drawing:[
+    			{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
+    			{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+    		],
+        
+    		elements:{
+    			"input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slotBlank",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slotBlank",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slotBlank",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slotBlank",size:120}
+    		}
+    	},
+    
+    	getList:function(id,data,isUsage){
+    		if(isUsage){
+    			let result = Recipe.getRecipeResult("Distillery",[id,data]);
+    			return result?[{input:[{id:id,count:result.count,data:data}],output:result.output}]:[];
+    		}
+        
+    		let item,list = [],recipe = Recipe.getRecipe("Distillery");
+    		for(let key in recipe.output){
+    			result = recipe.output[key];
+    			if(result.id == id && (result.data == data || data == -1)){
+    				item = key.split(":");
+    				list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:result.output});
+    			}
+    		}
+        
+    		return list;
+    	}
+    });
+
+    // [核聚变反应堆]Fusion Reactor
+    Core.registerRecipeType("ET-FusionReactor",{
+    	contents:{
+    		icon:BlockID.fusionReactor,
+        
+    		drawing:[
+    			{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
+    			{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+    		],
+        
+    		elements:{
+                "input0":{type:"slot",x:280,y:130,bitmap:"slotBlank",size:120},
+                "input1":{type:"slot",x:280,y:250,bitmap:"slotBlank",size:120},
+                
+                "output0":{type:"slot",x:600,y:130,bitmap:"slotBlank",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slotBlank",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slotBlank",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slotBlank",size:120},
+
+                "textHeat":{type:"text",x:430,y:410}
+    		}
+    	},
+        
+    	getList:function(id,data,isUsage){
+            let list = [],recipe = Recipe.getRecipe("FusionReactor");
+            
+            if(isUsage){
+                for(let key in recipe){
+                    let item = key.split(":");
+                    if(parseInt(item[0]) == id && parseInt(item[1]) == data){
+                        let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output,heat:result.heat}]:[];
+                    }
+                    if(parseInt(item[2]) == id && parseInt(item[3]) == data){
+                        let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output,heat:result.heat}]:[];
+                    }
+                }
+            }
+
+            for(let key in recipe.output){
+                result = recipe.output[key];
+                if(result.id == id && result.data == data){
+                    let item = key.split(":");
+                    let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output,heat:result.heat});
+                }
+            }
+
+    		return list;
+        },
+        
+		onOpen:function(elements,data){
+			let element = elements.get("textHeat");
+			element.onBindingUpdated("text",data?"Heat: " + data.heat/2 + " ~ " + data.heat*2:"");
+		}
+    });
+    
+    // 化学反应台
+    Core.registerRecipeType("ET-Synthesizer",{
+    	contents:{
+    		icon:BlockID.synthesizer,
+        
+    		drawing:[
+    			{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+    		],
+        
+    		elements:{
+                "output0":{type:"slot",x:120,y:120,bitmap:"slotBlank",size:120},
+                "output1":{type:"slot",x:240,y:120,bitmap:"slotBlank",size:120},
+                "output2":{type:"slot",x:360,y:120,bitmap:"slotBlank",size:120},
+                "output3":{type:"slot",x:120,y:240,bitmap:"slotBlank",size:120},
+                "output4":{type:"slot",x:240,y:240,bitmap:"slotBlank",size:120},
+                "output5":{type:"slot",x:360,y:240,bitmap:"slotBlank",size:120},
+                "output6":{type:"slot",x:120,y:360,bitmap:"slotBlank",size:120},
+                "output7":{type:"slot",x:240,y:360,bitmap:"slotBlank",size:120},
+                "output8":{type:"slot",x:360,y:360,bitmap:"slotBlank",size:120},
+                
+                "input0":{type:"slot",x:600,y:240,bitmap:"slotBlank",size:120}
+    		}
+    	},
+    
+    	getList:function(id,data,isUsage){
+            var output = [];
+
+            var pattern = Synthesizer.getPattern(id,data,true);
+            if(pattern){
+                var decode = Synthesizer.decodePattern(pattern);
+                for(let i = 0;i < 9;i++){
+                    decode[i]?output.push({id:parseInt(decode[i][0]),count:parseInt(decode[i][1]),data:0}):output.push({id:0,count:0,data:0});
+                }
+                    
+                return [{input:[{id:id,count:1,data:data}],output:output}]
+            }
+
+            return [];
+    	}
+    });
+
+    // [装罐机]Canning Machine
+    Core.registerRecipeType("ET-CanningMachine",{
+		contents:{
+            icon:BlockID.canningMachine,
+            
+			drawing:[
+				{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrowBackground"},
+				{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+            ],
+            
+			elements:{
+                "input0":{type:"slot",x:280,y:190,bitmap:"slotBlank",size:120},
+                "input1":{type:"slot",x:280,y:310,bitmap:"slotCell",size:120},
+                "output":{type:"slot",x:600,y:130,bitmap:"slotBlank",size:120}
+			}
+        },
+        
+		getList:function(id,data,isUsage){
+            if(isUsage){
+                let result = Recipe.getRecipeResult("CanningMachine",[id,data]);
+                return result?[{input:[{id:id,count:1,data:data},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:result.output}]:[];
+            }
+
+            let item,list = [],recipe = Recipe.getRecipe("CanningMachine");
+            for(let key in recipe.output){
+                result = recipe.output[key];
+                for(var i = 0;i <= 4;i++){
+                    if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
+                        item = key.split(":");
+                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:result});
+                    }
                 }
             }
 

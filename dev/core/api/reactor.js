@@ -1,4 +1,4 @@
-var ETReactor = {
+var Reactor = {
     moduleIDs:{},
 
     module:{},
@@ -14,9 +14,13 @@ var ETReactor = {
     },
 
     getModuleType:function(id){
-        if(this.getModule(id)){
+        if(this.isModule(id)){
             return this.getData(id).type;
         }
+    },
+
+    isModule:function(id){
+        return this.moduleIDs[id];
     },
 
     registerModule:function(id,state,data){
@@ -25,12 +29,15 @@ var ETReactor = {
             this.module[id] = state;
             this.data[id] = data;
 
-            Item.registerNameOverrideFunction(id,function(item,name){
-                var item = Player.getCarriedItem();
-                if(item.extra){return name + "\n§7" + Translation.translate("Durability: ") + item.extra.getInt("durability");}
-                return name;
-            });
+            wheat.item.addTooltip(id,Translation.translate("Module Type: ") + Translation.translate(data.type));
             
+            wheat.item.setItemName(id,function(item,name,tooltip){
+                if(item.extra){
+                    return name + tooltip + "\n§7" + Translation.translate("Durability: ") + item.extra.getInt("durability");
+                }
+                return name + tooltip;
+            });
+
             Block.registerDropFunctionForID(id,function(){return [];});
     
             Block.registerPlaceFunctionForID(id,function(coords,item){
@@ -70,11 +77,11 @@ var ETReactor = {
                     if(ToolAPI.getBlockDestroyLevel(this.id) <= ToolAPI.getToolLevel(item.id)){
                         var extra = new ItemExtraData();
                         extra.putInt("durability",this.data.durability);
-                        dropItem(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
+                        World.drop(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
                     }
                 }
             } else {
-                ETMachine.registerPrototype(id,{
+                Machine.registerPrototype(id,{
                     defaultValues:{
                         durability:data.durability
                     },
@@ -90,7 +97,7 @@ var ETReactor = {
                         if(ToolAPI.getBlockDestroyLevel(this.id) <= ToolAPI.getToolLevel(item.id)){
                             var extra = new ItemExtraData();
                             extra.putInt("durability",this.data.durability);
-                            dropItem(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
+                            World.drop(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
                         }
                     }
                 });

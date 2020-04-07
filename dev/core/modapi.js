@@ -1,15 +1,15 @@
 ModAPI.registerAPI("ETech",{
     // lib
     ChargeItem:ChargeItemRegistry,
-    Renderer:TileRenderer,
+    TileRenderer:TileRenderer,
 
     // api
-    Upgrade:ETUpgrade,
-    Machine:ETMachine,
-    Reactor:ETReactor,
-    Recipe:ETRecipe,
-    Model:ETModel,
-    Tool:ETTool,
+    Upgrade:Upgrade,
+    Machine:Machine,
+    Reactor:Reactor,
+    Recipe:Recipe,
+    Model:Model,
+    Tool:Tool,
 
 	requireGlobal:function(command){
 		return eval(command);

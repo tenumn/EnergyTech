@@ -1,4 +1,4 @@
-var ETMachine = {
+var Machine = {
     machineIDs:{},
 
     isMachine:function(id){
@@ -9,8 +9,9 @@ var ETMachine = {
         state.id = id;
 
         state.playSound = state.playSound || function(name){
-            if((!this.__sound || !this.__sound.isPlaying()) && this.dimension == Player.getDimension()){
-                this.__sound = SoundAPI.playSoundAt(this,name,true,16);
+            var dimension = Player.getDimension();
+            if((!this.__sound || !this.__sound.isPlaying()) && this.dimension == dimension){
+                this.__sound = SoundAPI.playSoundAt(this,name,true,this.data.sound_volume || 16);
             }
         }
 
@@ -22,33 +23,35 @@ var ETMachine = {
         }
 
         if(state.defaultValues && state.defaultValues.isActive !== undefined){
-			state.renderer = state.renderer || function(){
-				TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4:0));
-			}
+            state.renderer = state.renderer || function(){
+                TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4:0));
+            }
 
-			state.setActive = state.setActive || function(isActive){
-				if(this.data.isActive != isActive){
-					this.data.isActive = isActive;
-					this.renderer();
+            state.setActive = state.setActive || function(isActive){
+                if(this.data.isActive != isActive){
+                    this.data.isActive = isActive;
+                    this.renderer();
                 }
-			}
+            }
 
             state.activate = state.activate || function(sound){
                 this.setActive(true);
-                if(sound){
+                if(this.__sound){
                     this.playSound(sound);
                 }
             }
 
             state.deactive = state.deactive || function(){
-                this.stopSound();
                 this.setActive(false);
+                if(this.__sound){
+                    this.stopSound();
+                }
             }
 
-			state.destroy = state.destroy || function(){
-                this.stopSound();
-				BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
-			}
+            state.destroy = state.destroy || function(){
+                this.deactive();
+                BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
+            }
 		}
 
 		if(!state.init && state.renderer){
@@ -65,7 +68,7 @@ var ETMachine = {
     
             if(slot.count > 64){
                 World.drop(this.x + 0.5,this.y + 1.5,this.z + 0.5,slot.id,1,slot.data);
-                slot.count -= 1;
+                slot.count--;
             }
         }
 
@@ -92,11 +95,11 @@ var ETMachine = {
         TileEntity.registerPrototype(id,state);
     },
     
-    registerMachine:function(id,state){
+    registerMachine:function(id,state,type){
+        if(!type){type = "EU";}
         this.machineIDs[id] = true;
 
         ICRender.getGroup("et-wire").add(id,-1);
-        ICRender.getGroup("superconductor").add(id,-1);
         
         if(state.defaultValues){
             state.defaultValues.tier = state.defaultValues.tier || 1;
@@ -115,7 +118,7 @@ var ETMachine = {
         }
         
         state.getTier = function(){return this.data.tier;}
-        state.getMaxVoltage = function(){return 8 << this.getTier() * 2;}
+        state.getMaxVoltage = function(){return power(this.getTier() + 1);}
         state.getEnergyStorage = function(){return this.data.energy_storage;}
 
         state.energyTick = state.energyTick || function(){
@@ -127,25 +130,29 @@ var ETMachine = {
         wheat.item.addTooltip(id,Translation.translate("Destroy Tool Type: ") + Translation.translate("Wrench"));
 
         this.registerPrototype(id,state);
-        EnergyTileRegistry.addEnergyTypeForId(id,EU);
+        EnergyTileRegistry.addEnergyTypeForId(id,EnergyType[type]);
     },
 
-    registerGenerator:function(id,state){
+    registerGenerator:function(id,state,type){
+        if(!type){type = "EU";}
+
         state.isEnergySource = function(){return true;}
         state.canReceiveEnergy = function(){return false;}
 
         state.energyTick = state.energyTick || this.energyOutput;
 
-        this.registerMachine(id,state);
+        this.registerMachine(id,state,type);
     },
 
-    registerEnergyStorage:function(id,state){
+    registerEnergyStorage:function(id,state,type){
+        if(!type){type = "EU";}
+
         state.isEnergySource = function(){return true;}
         
         state.energyTick = state.energyTick || this.energyOutput;
         state.energyReceive = state.energyReceive || this.energyReceive;
         
-        this.registerMachine(id,state);
+        this.registerMachine(id,state,type);
     },
 
     energyReceive:function(type,amount,voltage){
@@ -181,19 +188,42 @@ var ETMachine = {
         Block.registerDropFunction(name,function(coords,id,data,level){
             BlockRenderer.unmapAtCoords(coords.x,coords.y,coords.z);
             var item = Player.getCarriedItem();
-            if(ETTool.isTool(item.id,"Wrench")){
+            if(Tool.isTool(item.id,"Wrench")){
                 World.setBlock(coords.x,coords.y,coords.z,0);
                 return [[id,1,data]];
             }
             if(level >= ToolAPI.getBlockDestroyLevel(id)){return [[dropID,1,dropData || 0]];}
             return [];
         });
+    },
+
+    isValidEUItem:function(id,count,data,container){
+		var level = container.tileEntity.getTier();
+		return ChargeItemRegistry.isValidItem(id,"Eu",level);
+	},
+	
+	isValidEUStorage:function(id,count,data,container){
+		var level = container.tileEntity.getTier();
+		return ChargeItemRegistry.isValidStorage(id,"Eu",level);
+    },
+    
+    wireIDs:{},
+
+    isWire:function(id){
+        return Machine.wireIDs[id];
+    },
+
+    registerWire:function(id,volt,type){
+        if(!type){type = "EU";}
+        this.wireIDs[id] = true;
+
+        EnergyType[type].registerWire(id,volt);
     }
 }
 
 Callback.addCallback("DestroyBlockStart",function(coords,block){
     var item = Player.getCarriedItem();
-    if(ETMachine.isMachine(block.id) && ETTool.isTool(item.id,"Wrench")){
+    if(Machine.isMachine(block.id) && Tool.isTool(item.id,"Wrench")){
         Block.setTempDestroyTime(block.id,0);
         SoundAPI.playSound("tool/wrench.ogg");
         ToolAPI.breakCarriedTool(8);
