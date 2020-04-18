@@ -1,7 +1,7 @@
 // [核反应堆]Nuclear Reactor
 IDRegistry.genBlockID("nuclearReactor");
 Block.createBlock("nuclearReactor",[
-    {name:"Nuclear Reactor",texture:[["machineBottom",0],["machineTop",0],["nuclear_reactor",0]],inCreative:true}
+    {name:"Nuclear Reactor",texture:[["machine_bottom",0],["machine_top",0],["nuclear_reactor",0]],inCreative:true}
 ],"opaque");
 
 Machine.setDrop("nuclearReactor",BlockID.machineCasing,1);
@@ -46,7 +46,7 @@ Machine.registerGenerator(BlockID.nuclearReactor,{
         blast_progress:0
     },
 
-    setDefaultValues:function(){
+    initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.hard = this.defaultValues.hard;
         this.data.heat = this.defaultValues.heat;
@@ -79,7 +79,7 @@ Machine.registerGenerator(BlockID.nuclearReactor,{
     },
 
     tick:function(){
-        this.setDefaultValues();
+        this.initValues();
         
         if(this.data.isActive){
             this.getModuleData();

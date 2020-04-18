@@ -1,4 +1,4 @@
-// [低压变压器]LV Transformer
+// 低压变压器
 IDRegistry.genBlockID("transformerLV");
 Block.createBlock("transformerLV",[
     {name:"LV Transformer",texture:[["transformer_side",0],["transformer_side",0],["transformer_side",0],["transformer",0],["transformer_side",0],["transformer_side",0]],inCreative:true}
@@ -7,6 +7,7 @@ TileRenderer.setStandartModel(BlockID.transformerLV,[["transformer_side",0],["tr
 TileRenderer.registerFullRotationModel(BlockID.transformerLV,0,[["transformer_side",0],["transformer_side",0],["transformer_side",0],["transformer",0],["transformer_side",0],["transformer_side",0]]);
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerLV]);
     Recipes.addShaped({id:BlockID.transformerLV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTin,0,"b",BlockID.machineCasing,0,"c",ItemID.partTin,0,"d",ItemID.stickTin,0]);
 });
 
@@ -54,7 +55,7 @@ Machine.registerMachine(BlockID.transformerLV,{
     canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
 });
 
-wheat.item.setItemName(BlockID.transformerLV,function(item,name,tooltip){
+Item.setItemName(BlockID.transformerLV,function(item,name,tooltip){
     return name + tooltip + "\n§7" + Translation.translate("Power Tier: ") + (item.data + 1);
 });
 
@@ -76,6 +77,7 @@ TileRenderer.setStandartModel(BlockID.transformerMV,[["transformer_side",1],["tr
 TileRenderer.registerFullRotationModel(BlockID.transformerMV,0,[["transformer_side",1],["transformer_side",1],["transformer_side",1],["transformer",1],["transformer_side",1],["transformer_side",1]]);
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerMV]);
     Recipes.addShaped({id:BlockID.transformerMV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireCopper,0,"b",BlockID.machineCasing,0,"c",ItemID.partCopper,0,"d",ItemID.stickCopper,0]);
 });
 
@@ -123,7 +125,7 @@ Machine.registerMachine(BlockID.transformerMV,{
     canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
 });
 
-wheat.item.setItemName(BlockID.transformerMV,function(item,name,tooltip){
+Item.setItemName(BlockID.transformerMV,function(item,name,tooltip){
     return name + tooltip + "\n§7" + Translation.translate("Power Tier: ") + (item.data + 1);
 });
 
@@ -145,6 +147,7 @@ TileRenderer.setStandartModel(BlockID.transformerHV,[["transformer_side",2],["tr
 TileRenderer.registerFullRotationModel(BlockID.transformerHV,0,[["transformer_side",2],["transformer_side",2],["transformer_side",2],["transformer",2],["transformer_side",2],["transformer_side",2]]);
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerHV]);
     Recipes.addShaped({id:BlockID.transformerHV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireGold  ,0,"b",BlockID.machineCasing,1,"c",ItemID.partGold  ,0,"d",ItemID.stickGold  ,0]);
 });
 
@@ -192,7 +195,7 @@ Machine.registerMachine(BlockID.transformerHV,{
     canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
 });
 
-wheat.item.setItemName(BlockID.transformerHV,function(item,name,tooltip){
+Item.setItemName(BlockID.transformerHV,function(item,name,tooltip){
     return name + tooltip + "\n§7" + Translation.translate("Power Tier: ") + (item.data + 1);
 });
 
@@ -214,6 +217,7 @@ TileRenderer.setStandartModel(BlockID.transformerEV,[["transformer_side",3],["tr
 TileRenderer.registerFullRotationModel(BlockID.transformerEV,0,[["transformer_side",3],["transformer_side",3],["transformer_side",3],["transformer",3],["transformer_side",3],["transformer_side",3]]);
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerEV]);
     Recipes.addShaped({id:BlockID.transformerEV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireSteel ,0,"b",BlockID.machineCasing,1,"c",ItemID.partSteel ,0,"d",ItemID.stickSteel ,0]);
 });
 
@@ -261,7 +265,7 @@ Machine.registerMachine(BlockID.transformerEV,{
     canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
 });
 
-wheat.item.setItemName(BlockID.transformerEV,function(item,name,tooltip){
+Item.setItemName(BlockID.transformerEV,function(item,name,tooltip){
     return name + tooltip + "\n§7" + Translation.translate("Power Tier: ") + (item.data + 1);
 });
 

@@ -1,10 +1,10 @@
 // [装罐机]Canning Machine
 IDRegistry.genBlockID("canningMachine");
 Block.createBlock("canningMachine",[
-    {name:"Canning Machine",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["canningMachine",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Canning Machine",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["canningMachine",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.canningMachine,[["machineBottom",0],["machineTop",0],["machineSide",0],["canningMachine",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.canningMachine,0,[["machineBottom",0],["machineTop",0],["machineSide",0],["canningMachine",0],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.canningMachine,[["machine_bottom",0],["machine_top",0],["machine_side",0],["canningMachine",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.canningMachine,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["canningMachine",0],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("canningMachine",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -50,7 +50,7 @@ Machine.registerMachine(BlockID.canningMachine,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

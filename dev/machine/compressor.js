@@ -1,11 +1,11 @@
 // [压缩机]Compressor
 IDRegistry.genBlockID("compressor");
 Block.createBlock("compressor",[
-    {name:"Compressor",texture:[["machineBottom",0],["compressor_top",0],["machineSide",0],["compressor",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Compressor",texture:[["machine_bottom",0],["compressor_top",0],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.compressor,[["machineBottom",0],["compressor_top",0],["machineSide",0],["compressor",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.compressor,0,[["machineBottom",0],["compressor_top",0],["machineSide",0],["compressor",0],["machineSide",0],["machineSide",0]]);
-for(var i = 1;i < 4;i++){TileRenderer.registerRotationModel(BlockID.compressor,i * 4,[["machineBottom",0],["compressor_top",1],["machineSide",0],["compressor",i],["machineSide",0],["machineSide",0]]);}
+TileRenderer.setStandartModel(BlockID.compressor,[["machine_bottom",0],["compressor_top",0],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.compressor,0,[["machine_bottom",0],["compressor_top",0],["machine_side",0],["compressor",0],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 4;i++){TileRenderer.registerRotationModel(BlockID.compressor,i * 4,[["machine_bottom",0],["compressor_top",1],["machine_side",0],["compressor",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("compressor",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -50,7 +50,7 @@ Machine.registerMachine(BlockID.compressor,{
         energy_consumption:4
     },
     
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

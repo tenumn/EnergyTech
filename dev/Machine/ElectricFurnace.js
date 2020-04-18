@@ -1,11 +1,11 @@
 // [电炉]Electric Furnace
 IDRegistry.genBlockID("electricFurnace");
 Block.createBlock("electricFurnace",[
-    {name:"Electric Furnace",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["electric_furnace",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Electric Furnace",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["electric_furnace",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.electricFurnace,[["machineBottom",0],["machineTop",0],["machineSide",0],["electric_furnace",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.electricFurnace,0,[["machineBottom",0],["machineTop",0],["machineSide",0],["electric_furnace",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.electricFurnace,4,[["machineBottom",0],["machineTop",0],["machineSide",0],["electric_furnace",1],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.electricFurnace,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electric_furnace",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.electricFurnace,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electric_furnace",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.electricFurnace,4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electric_furnace",1],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("electricFurnace",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -49,7 +49,7 @@ Machine.registerMachine(BlockID.electricFurnace,{
         energy_consumption:3,
     },
     
-	setDefaultValues:function(){
+	initValues:function(){
 		this.data.tier = this.defaultValues.tier;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;

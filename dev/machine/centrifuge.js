@@ -1,12 +1,12 @@
 // [离心机]Centrifuge
 IDRegistry.genBlockID("centrifuge");
 Block.createBlock("centrifuge",[
-    {name:"Centrifuge",texture:[["machineBottom",0],["centrifuge_top",0],["machineSide",0],["centrifuge",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Centrifuge",texture:[["machine_bottom",0],["centrifuge_top",0],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.centrifuge,[["machineBottom",0],["centrifuge_top",0],["machineSide",0],["centrifuge",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,0,[["machineBottom",0],["centrifuge_top",0],["machineSide",0],["centrifuge",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,4,[["machineBottom",0],["centrifuge_top",1],["machineSide",0],["centrifuge",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,8,[["machineBottom",0],["centrifuge_top",1],["machineSide",0],["centrifuge",1],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.centrifuge,[["machine_bottom",0],["centrifuge_top",0],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,0,[["machine_bottom",0],["centrifuge_top",0],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,4,[["machine_bottom",0],["centrifuge_top",1],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,8,[["machine_bottom",0],["centrifuge_top",1],["machine_side",0],["centrifuge",1],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("centrifuge",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -54,7 +54,7 @@ Machine.registerMachine(BlockID.centrifuge,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

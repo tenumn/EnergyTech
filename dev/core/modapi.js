@@ -8,7 +8,6 @@ ModAPI.registerAPI("ETech",{
     Machine:Machine,
     Reactor:Reactor,
     Recipe:Recipe,
-    Model:Model,
     Tool:Tool,
 
 	requireGlobal:function(command){

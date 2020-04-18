@@ -1,11 +1,11 @@
 // [蒸馏室]Distillery
 IDRegistry.genBlockID("distillery");
 Block.createBlock("distillery",[
-    {name:"Distillery",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["distillery",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Distillery",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["distillery",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.distillery,[["machineBottom",0],["machineTop",0],["machineSide",0],["distillery",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.distillery,0,[["machineBottom",0],["machineTop",0],["machineSide",0],["distillery",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.distillery,4,[["machineBottom",0],["machineTop",0],["machineSide",0],["distillery",1],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.distillery,[["machine_bottom",0],["machine_top",0],["machine_side",0],["distillery",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.distillery,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["distillery",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.distillery,4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["distillery",1],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("distillery",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -53,7 +53,7 @@ Machine.registerMachine(BlockID.distillery,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

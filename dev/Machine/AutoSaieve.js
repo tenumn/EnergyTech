@@ -4,7 +4,18 @@ Block.createBlock("autoSaieve",[
     {name:"Auto Sieve",texture:[["autoSieveBottom",0],["autoSieveTop",0],["autoSieveSide",0]],inCreative:true}
 ],"transparent");
 
-Model.AutoSaieve(BlockID.autoSaieve,0);
+var render = new ICRender.Model(),model = new BlockRenderer.Model();
+model.addBox(0.0625,0,0.0625,0.125,1,0.125,BlockID.autoSaieve,0);
+model.addBox(0.0625,0,0.875,0.125,1,0.9375,BlockID.autoSaieve,0);
+model.addBox(0.875,0,0.0625,0.9375,1,0.125,BlockID.autoSaieve,0);
+model.addBox(0.875,0,0.875,0.9375,1,0.9375,BlockID.autoSaieve,0);
+model.addBox(0,0.5,0,1,1,0.0625,BlockID.autoSaieve,0);
+model.addBox(0,0.5,0.9375,1,1,1,BlockID.autoSaieve,0);
+model.addBox(0,0.5,0.0625,0.0625,1,0.9375,BlockID.autoSaieve,0);
+model.addBox(0.9375,0.5,0.0625,1,1,0.9375,BlockID.autoSaieve,0);
+model.addBox(0.0625,0.5625,0.0625,0.9375,0.625,0.9375,[["string_mesh",0]]);
+render.addEntry(model),BlockRenderer.enableCoordMapping(BlockID.autoSaieve,-1,render);
+
 Machine.setDrop("autoSaieve",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:BlockID.autoSaieve,count:1,data:0},["ada","aca","b b"],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0,"c",BlockID.machineCasing,0,"d",ItemID.gearIron,0]);
@@ -60,7 +71,7 @@ Machine.registerMachine(BlockID.autoSaieve,{
         energy_consumption:8
     },
 
-    setDefaultValues: function(){
+    initValues: function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

@@ -1,7 +1,7 @@
 // [太阳能发电机]solar Generator
 IDRegistry.genBlockID("solarGenerator");
 Block.createBlock("solarGenerator",[
-	{name:"Solar Generator",texture:[["machineBottom",1],["solar_generator",0],["machineSide",1]],inCreative:true}
+	{name:"Solar Generator",texture:[["machine_bottom",1],["solar_generator",0],["machine_side",1]],inCreative:true}
 ],"opaque");
 
 Machine.setDrop("solarGenerator",BlockID.machineCasing,1);

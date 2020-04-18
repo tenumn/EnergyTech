@@ -1,22 +1,22 @@
 // [洗矿机]Ore Washer
 IDRegistry.genBlockID("oreWasher");
 Block.createBlock("oreWasher",[
-    {name:"Ore Washer",texture:[["machineBottom",0],["oreWasherTop",0],["machineSide",0],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]],inCreative:true}
+    {name:"Ore Washer",texture:[["machine_bottom",0],["oreWasherTop",0],["machine_side",0],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.oreWasher,[["machineBottom",0],["oreWasherTop",0],["machineSide",0],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,0 ,[["machineBottom",0],["oreWasherTop",0],["machineSide",0],["oreWasher",0 ],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,4 ,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",0 ],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,8 ,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",1 ],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,12,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",2 ],["oreWasherSide",1],["oreWasherSide",1]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,16,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",3 ],["oreWasherSide",1],["oreWasherSide",1]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,20,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",4 ],["oreWasherSide",2],["oreWasherSide",2]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,24,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",5 ],["oreWasherSide",2],["oreWasherSide",2]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,28,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",6 ],["oreWasherSide",3],["oreWasherSide",3]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,32,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",7 ],["oreWasherSide",3],["oreWasherSide",3]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,36,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",8 ],["oreWasherSide",4],["oreWasherSide",4]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,40,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",9 ],["oreWasherSide",4],["oreWasherSide",4]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,44,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",10],["oreWasherSide",5],["oreWasherSide",5]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,48,[["machineBottom",0],["oreWasherTop",1],["machineSide",0],["oreWasher",11],["oreWasherSide",5],["oreWasherSide",5]]);
+TileRenderer.setStandartModel(BlockID.oreWasher,[["machine_bottom",0],["oreWasherTop",0],["machine_side",0],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,0 ,[["machine_bottom",0],["oreWasherTop",0],["machine_side",0],["oreWasher",0 ],["oreWasherSide",0],["oreWasherSide",0]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,4 ,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",0 ],["oreWasherSide",0],["oreWasherSide",0]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,8 ,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",1 ],["oreWasherSide",0],["oreWasherSide",0]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,12,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",2 ],["oreWasherSide",1],["oreWasherSide",1]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,16,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",3 ],["oreWasherSide",1],["oreWasherSide",1]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,20,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",4 ],["oreWasherSide",2],["oreWasherSide",2]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,24,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",5 ],["oreWasherSide",2],["oreWasherSide",2]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,28,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",6 ],["oreWasherSide",3],["oreWasherSide",3]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,32,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",7 ],["oreWasherSide",3],["oreWasherSide",3]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,36,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",8 ],["oreWasherSide",4],["oreWasherSide",4]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,40,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",9 ],["oreWasherSide",4],["oreWasherSide",4]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,44,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",10],["oreWasherSide",5],["oreWasherSide",5]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,48,[["machine_bottom",0],["oreWasherTop",1],["machine_side",0],["oreWasher",11],["oreWasherSide",5],["oreWasherSide",5]]);
 
 Machine.setDrop("oreWasher",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -68,7 +68,7 @@ Machine.registerMachine(BlockID.oreWasher,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
 		this.data.tier = this.defaultValues.tier;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;

@@ -1,34 +1,39 @@
-wheat.renderer.renderScaffoldModel = function(id,data){
-    var model0 = new BlockRenderer.Model();
-    model0.addBox(0,0.8125,0,1,1,1,id,data);
-    model0.addBox(0.0625,0.1875,0.0625,0.9375,0.8125,0.9375,id,data);
-    model0.addBox(0,0,0,1,0.1875,1,id,data);
-    wheat.renderer.initRenderModel(id,data,model0);
-    wheat.renderer.registerRenderModel(id,0,model0);
+Block.createSpecialType({
+    base:5,
+    opaque:false,
+    destroytime:1
+},"scaffold");
 
-    var model1 = new BlockRenderer.Model();
-    model1.addBox(0,0.8125,0,1,1,1,id,data);
-    model1.addBox(0.0625,0,0.0625,0.9375,0.8125,0.9375,id,data);
-    wheat.renderer.registerRenderModel(id,1,model1);
-    
-    var model2 = new BlockRenderer.Model();
-    model2.addBox(0.0625,0,0.0625,0.9375,1,0.9375,id,data);
-    wheat.renderer.registerRenderModel(id,2,model2);
-    
-    var model3 = new BlockRenderer.Model();
-    model3.addBox(0.0625,0.1875,0.0625,0.9375,1,0.9375,id,data);
-    model3.addBox(0,0,0,1,0.1875,1,id,data);
-    wheat.renderer.registerRenderModel(id,3,model3);
+Renderer.renderScaffoldModel = function(id,data){
+    var model = new BlockRenderer.Model();
+    model.addBox(0,0.8125,0,1,1,1,id,data);
+    model.addBox(0.0625,0.1875,0.0625,0.9375,0.8125,0.9375,id,data);
+    model.addBox(0,0,0,1,0.1875,1,id,data);
+    Renderer.registerRenderModel(id,0,model);
 
-    Item.addCreativeGroup("ET-Scaffold",Translation.translate("Scaffold"),[id]);
+    var model = new BlockRenderer.Model();
+    model.addBox(0,0.8125,0,1,1,1,id,data);
+    model.addBox(0.0625,0,0.0625,0.9375,0.8125,0.9375,id,data);
+    Renderer.registerRenderModel(id,1,model);
+    
+    var model = new BlockRenderer.Model();
+    model.addBox(0.0625,0,0.0625,0.9375,1,0.9375,id,data);
+    Renderer.registerRenderModel(id,2,model);
+    
+    var model = new BlockRenderer.Model();
+    model.addBox(0.0625,0.1875,0.0625,0.9375,1,0.9375,id,data);
+    model.addBox(0,0,0,1,0.1875,1,id,data);
+    Renderer.registerRenderModel(id,3,model);
+
+    Item.addCreativeGroup("scaffold",Translation.translate("Scaffold"),[id]);
 }
 
 // 木脚手架
 IDRegistry.genBlockID("scaffoldWood");
 Block.createBlock("scaffoldWood",[
-    {name:"Wood Scaffold",texture:[["scaffoldWoodBottom",0],["scaffoldWoodTop",0],["scaffoldWoodSide",0]],inCreative:true}
+    {name:"Wood Scaffold",texture:[["scaffold_wood_bottom",0],["scaffold_wood_top",0],["scaffold_wood_side",0]],inCreative:true}
 ],"scaffold");
-wheat.renderer.renderScaffoldModel(BlockID.scaffoldWood,0);
+Renderer.renderScaffoldModel(BlockID.scaffoldWood,0);
 
 Machine.registerPrototype(BlockID.scaffoldWood,{
     defaultValues:{
@@ -48,7 +53,7 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
         if(top != this.id && bottom == this.id){this.data.meta = 1;}
         if(top == this.id && bottom == this.id){this.data.meta = 2;}
         if(top == this.id && bottom != this.id){this.data.meta = 3;}
-        wheat.renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
+        Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 
     destroy:function(){
@@ -60,9 +65,9 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
 // 铁脚手架
 IDRegistry.genBlockID("scaffoldIron");
 Block.createBlock("scaffoldIron",[
-    {name:"Iron Scaffold",texture:[["scaffoldIronBottom",0],["scaffoldIronTop",0],["scaffoldIronSide",0]],inCreative:true}
+    {name:"Iron Scaffold",texture:[["scaffold_iron_bottom",0],["scaffold_iron_top",0],["scaffold_iron_side",0]],inCreative:true}
 ],"scaffold");
-wheat.renderer.renderScaffoldModel(BlockID.scaffoldIron,0);
+Renderer.renderScaffoldModel(BlockID.scaffoldIron,0);
 
 Machine.registerPrototype(BlockID.scaffoldIron,{
     defaultValues:{
@@ -82,7 +87,7 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
         if(top != this.id && bottom == this.id){this.data.meta = 1;}
         if(top == this.id && bottom == this.id){this.data.meta = 2;}
         if(top == this.id && bottom != this.id){this.data.meta = 3;}
-        wheat.renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
+        Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 
     destroy:function(){

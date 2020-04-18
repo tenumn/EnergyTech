@@ -1,11 +1,11 @@
 // 燃料棒(铀)
 IDRegistry.genBlockID("fuelRodUranium");
 Block.createBlock("fuelRodUranium",[
-    {name:"Fuel Rod(Uranium)",texture:[["fuel_rod_bottom",0],["fuel_rod_top",0],["fuel_rod_uranium",10]],inCreative:true}
+    {name:"Fuel Rod(Uranium)",texture:[["machine_bottom",0],["machine_top",0],["fuel_rod_uranium",10]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.fuelRodUranium,[["fuel_rod_bottom",0],["fuel_rod_top",0],["fuel_rod_uranium",0],["fuel_rod_uranium",0],["fuel_rod_uranium",0],["fuel_rod_uranium",0]]);
+TileRenderer.setStandartModel(BlockID.fuelRodUranium,[["machine_bottom",0],["machine_top",0],["fuel_rod_uranium",0],["fuel_rod_uranium",0],["fuel_rod_uranium",0],["fuel_rod_uranium",0]]);
 for(let i = 0;i <= 10;i++){
-    TileRenderer.registerRenderModel(BlockID.fuelRodUranium,i,[["fuel_rod_bottom",0],["fuel_rod_top",0],["fuel_rod_uranium",i],["fuel_rod_uranium",i],["fuel_rod_uranium",i],["fuel_rod_uranium",i]]);
+    TileRenderer.registerRenderModel(BlockID.fuelRodUranium,i,[["machine_bottom",0],["machine_top",0],["fuel_rod_uranium",i],["fuel_rod_uranium",i],["fuel_rod_uranium",i],["fuel_rod_uranium",i]]);
 }
 
 Callback.addCallback("PreLoaded",function(){
@@ -21,9 +21,9 @@ Machine.registerPrototype(BlockID.fuelRodUranium,{
 
 Reactor.registerModule(BlockID.fuelRodUranium,function(id,data,coords){
     let heat = 3,fuel = 1;
-    for(let index in directions){
-        var dir = directions[index],block = World.getBlock(coords.x + dir[0],coords.y + dir[1],coords.z + dir[2]),type = Reactor.getModuleType(block.id);
-            if(type == "FuelRod"){heat += 3,fuel += 1;}
+    for(let side = 0;side < 6;side++){
+        var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side),block = World.getBlock(relative.x,relative.y,relative.z),type = Reactor.getModuleType(block.id);
+        if(type == "FuelRod"){heat += 3,fuel += 1;}
     }
     data.heat += heat,data.fuel += fuel;
     return 1;
@@ -32,11 +32,11 @@ Reactor.registerModule(BlockID.fuelRodUranium,function(id,data,coords){
 // 冷却器(水)
 IDRegistry.genBlockID("coolantWater");
 Block.createBlock("coolantWater",[
-    {name:"Coolant Block(Water)",texture:[["machineBottom",0],["machineTop",0],["coolant_water",10]],inCreative:true}
+    {name:"Coolant Block(Water)",texture:[["machine_bottom",0],["machine_top",0],["coolant_water",10]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.coolantWater,[["machineBottom",0],["machineTop",0],["coolant_water",0],["coolant_water",0],["coolant_water",0],["coolant_water",0]]);
+TileRenderer.setStandartModel(BlockID.coolantWater,[["machine_bottom",0],["machine_top",0],["coolant_water",0],["coolant_water",0],["coolant_water",0],["coolant_water",0]]);
 for(let i = 0;i <= 10;i++){
-    TileRenderer.registerRenderModel(BlockID.coolantWater,i,[["machineBottom",0],["machineTop",0],["coolant_water",i],["coolant_water",i],["coolant_water",i],["coolant_water",i]]);
+    TileRenderer.registerRenderModel(BlockID.coolantWater,i,[["machine_bottom",0],["machine_top",0],["coolant_water",i],["coolant_water",i],["coolant_water",i],["coolant_water",i]]);
 }
 
 Callback.addCallback("PreLoaded",function(){
@@ -52,8 +52,8 @@ Machine.registerPrototype(BlockID.coolantWater,{
 
 Reactor.registerModule(BlockID.coolantWater,function(id,data,coords){
     let coolant = 3;
-    for(let index in directions){
-        var dir = directions[index],block = World.getBlock(coords.x + dir[0],coords.y + dir[1],coords.z + dir[2]),type = Reactor.getModuleType(block.id);
+    for(let side = 0;side < 6;side++){
+        var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side),block = World.getBlock(relative.x,relative.y,relative.z),type = Reactor.getModuleType(block.id);
         if(type == "Coolant"){coolant += 3;}
     }
     data.coolant += coolant;
@@ -73,8 +73,8 @@ Callback.addCallback("PreLoaded",function(){
 
 Reactor.registerModule(BlockID.heatSink,function(id,data,coords){
     let heat = 3,coolant = 3;
-    for(let index in directions){
-        var dir = directions[index],block = World.getBlock(coords.x + dir[0],coords.y + dir[1],coords.z + dir[2]),type = Reactor.getModuleType(block.id);
+    for(let side = 0;side < 6;side++){
+        var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side),block = World.getBlock(relative.x,relative.y,relative.z),type = Reactor.getModuleType(block.id);
         if(type == "FuelRod"){heat += 3,coolant += 3;}
     }
     data.heat += heat;
@@ -95,8 +95,8 @@ Callback.addCallback("PreLoaded",function(){
 
 Reactor.registerModule(BlockID.neutronReflector,function(id,data,coords){
     let fuel = 0;
-    for(let index in directions){
-        var dir = directions[index],block = World.getBlock(coords.x + dir[0],coords.y + dir[1],coords.z + dir[2]),type = Reactor.getModuleType(block.id);
+    for(let side = 0;side < 6;side++){
+        var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side),block = World.getBlock(relative.x,relative.y,relative.z),type = Reactor.getModuleType(block.id);
         if(type == "FuelRod"){fuel += 1;}
     }
     data.fuel += fuel;
@@ -111,8 +111,8 @@ Block.createBlock("reactorCasing",[
 
 Reactor.registerModule(BlockID.reactorCasing,function(id,data,coords){
     let hard = 0;
-    for(let index in directions){
-        var dir = directions[index],block = World.getBlock(coords.x + dir[0],coords.y + dir[1],coords.z + dir[2]),type = Reactor.getModuleType(block.id);
+    for(let side = 0;side < 6;side++){
+        var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side),block = World.getBlock(relative.x,relative.y,relative.z),type = Reactor.getModuleType(block.id);
         if(type == "Casing"){hard += 1;}
     }
     data.hard += hard;
@@ -127,13 +127,13 @@ Callback.addCallback("PreLoaded",function(){
 // 铜线圈
 IDRegistry.genBlockID("coilCopper");
 Block.createBlock("coilCopper",[
-    {name:"Copper Coil",texture:[["machineBottom",0],["machineTop",0],["coilCopper",0]],inCreative:true}
+    {name:"Copper Coil",texture:[["machine_bottom",0],["machine_top",0],["coilCopper",0]],inCreative:true}
 ],"opaque");
 
 Reactor.registerModule(BlockID.coilCopper,function(id,data,coords){
     let durable = 0,heat = 3,fuel = 1,coolant = 3;
-    for(let index in directions){
-        var dir = directions[index],block = World.getBlock(coords.x + dir[0],coords.y + dir[1],coords.z + dir[2]),type = Reactor.getModuleType(block.id);
+    for(let side = 0;side < 6;side++){
+        var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side),block = World.getBlock(relative.x,relative.y,relative.z),type = Reactor.getModuleType(block.id);
         if(type == "Coil"){heat += 3,fuel += 1,coolant += 3;}
         if(type != "Coil" || type != "Casing" || type != "Coolant"){durable += 2;}
     }
@@ -144,13 +144,13 @@ Reactor.registerModule(BlockID.coilCopper,function(id,data,coords){
 // 锡线圈
 IDRegistry.genBlockID("coilTin");
 Block.createBlock("coilTin",[
-    {name:"Tin Coil",texture:[["machineBottom",0],["machineTop",0],["coilTin",0]],inCreative:true}
+    {name:"Tin Coil",texture:[["machine_bottom",0],["machine_top",0],["coilTin",0]],inCreative:true}
 ],"opaque");
 
 Reactor.registerModule(BlockID.coilTin,function(id,data,coords){
     let durable = 0,heat = 1,fuel = 1,coolant = 1;
-    for(let index in directions){
-        var dir = directions[index],block = World.getBlock(coords.x + dir[0],coords.y + dir[1],coords.z + dir[2]),type = Reactor.getModuleType(block.id);
+    for(let side = 0;side < 6;side++){
+        var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side),block = World.getBlock(relative.x,relative.y,relative.z),type = Reactor.getModuleType(block.id);
         if(type == "Coil"){heat += 1,fuel += 1,coolant += 1;}
         if(type != "Coil" || type != "Casing" || type != "Coolant"){durable += 2;}
     }

@@ -1,11 +1,11 @@
 // 粗制高炉
 IDRegistry.genBlockID("crudeBlastFurnace");
 Block.createBlock("crudeBlastFurnace",[
-    {name:"Crude Blast Furnace",texture:[["crudeBlastFurnaceBottom",0],["crudeBlastFurnaceTop",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnace",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnaceSide",0]],inCreative:true}
+    {name:"Crude Blast Furnace",texture:[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",0],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.crudeBlastFurnace,[["crudeBlastFurnaceBottom",0],["crudeBlastFurnaceTop",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnace",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnaceSide",0]]);
-TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,0,[["crudeBlastFurnaceBottom",0],["crudeBlastFurnaceTop",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnace",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnaceSide",0]]);
-TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,4,[["crudeBlastFurnaceBottom",0],["crudeBlastFurnaceTop",0],["crudeBlastFurnaceSide",0],["crudeBlastFurnace",1],["crudeBlastFurnaceSide",0],["crudeBlastFurnaceSide",0]]);
+TileRenderer.setStandartModel(BlockID.crudeBlastFurnace,[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",0],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,0,[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",0],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,4,[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",1],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]]);
 
 Callback.addCallback("PreLoaded",function(){
 	Recipes.addShaped({id:BlockID.crudeBlastFurnace,count:1,data:0},["aba","bcb","aba"],["a",ItemID.plateIron,0,"b",45,0,"c",61,0]);
@@ -71,14 +71,17 @@ Machine.registerPrototype(BlockID.crudeBlastFurnace,{
         this.container.setScale("scaleBurn",Math.round(this.data.burn / this.data.burnMax * 14) / 14 || 0);
     },
 
-    getGuiScreen:function(){return GuiCrudeBlastFurnace;}
+    getGuiScreen:function(){
+        return GuiCrudeBlastFurnace;
+    }
 });
 TileRenderer.setRotationPlaceFunction(BlockID.crudeBlastFurnace);
 StorageInterface.createInterface(BlockID.crudeBlastFurnace,{
 	slots:{
 		"slotInput":{input:true},
         "slotOutput":{output:true}
-	},
+    },
+    
 	isValidInput:function(item){
 		return Recipe.getRecipeResult("BlastFurnace",[item.id,item.data])?true:false;
 	}

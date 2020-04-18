@@ -1,14 +1,14 @@
 // [破碎机]Crusher
 IDRegistry.genBlockID("crusher");
 Block.createBlock("crusher",[
-    {name:"Crusher",texture:[["machineBottom",0],["crusher_top",0],["machineSide",0],["crusher",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Crusher",texture:[["machine_bottom",0],["crusher_top",0],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.crusher,[["machineBottom",0],["crusher_top",0],["machineSide",0],["crusher",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.crusher,0 ,[["machineBottom",0],["crusher_top",0],["machineSide",0],["crusher",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.crusher,4 ,[["machineBottom",0],["crusher_top",1],["machineSide",0],["crusher",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.crusher,8 ,[["machineBottom",0],["crusher_top",1],["machineSide",0],["crusher",1],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.crusher,12,[["machineBottom",0],["crusher_top",1],["machineSide",0],["crusher",2],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.crusher,16,[["machineBottom",0],["crusher_top",1],["machineSide",0],["crusher",3],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.crusher,[["machine_bottom",0],["crusher_top",0],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,0 ,[["machine_bottom",0],["crusher_top",0],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,4 ,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,8 ,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",1],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,12,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",2],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.crusher,16,[["machine_bottom",0],["crusher_top",1],["machine_side",0],["crusher",3],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("crusher",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -53,7 +53,7 @@ Machine.registerMachine(BlockID.crusher,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

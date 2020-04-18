@@ -1,7 +1,7 @@
 IDRegistry.genCropID("cropCotton");
 wheat.crop.createCrop("cropCotton","Cotton Seed",{
-    seed:{name:"cropCotton"},
-    crop:[["cropCotton",0],["cropCotton",1],["cropCotton",2],["cropCotton",3]]
+    seed:{name:"crop_cotton"},
+    crop:[["crop_cotton",0],["crop_cotton",1],["crop_cotton",2],["crop_cotton",3]]
 },{
     farmland:{id:60,data:-1},
     growTime:3600,

@@ -1,11 +1,11 @@
 // [高压釜]Autoclave
 IDRegistry.genBlockID("autoclave");
 Block.createBlock("autoclave",[
-    {name:"Autoclave",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["autoclave",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Autoclave",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["autoclave",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.autoclave,[["machineBottom",0],["machineTop",0],["machineSide",0],["autoclave",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.autoclave,0,[["machineBottom",0],["machineTop",0],["machineSide",0],["autoclave",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.autoclave,4,[["machineBottom",0],["machineTop",0],["machineSide",0],["autoclave",1],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.autoclave,[["machine_bottom",0],["machine_top",0],["machine_side",0],["autoclave",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.autoclave,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["autoclave",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.autoclave,4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["autoclave",1],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("autoclave",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -50,7 +50,7 @@ Machine.registerMachine(BlockID.autoclave,{
         energy_consumption:4
     },
 
-	setDefaultValues: function(){
+	initValues: function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

@@ -1,12 +1,73 @@
-CreateTool("Steel",{durability:512,level:3,efficiency:12,damage:2,enchantability:20});
+ToolAPI.addToolMaterial("steel",{durability:490,level:3,efficiency:6.5,damage:5.5,enchantability:10});
 
-CreateWrench("wrenchSteel","Steel Wrench",{name:"wrenchSteel"},256);
-CreateHammer("hammerSteel","Steel Hammer",{name:"hammerSteel"},"Steel");
-CreateCutter("cutterSteel","Steel Cutter",{name:"cutterSteel"},256);
-CreateMortar("mortarSteel","Steel Mortar",{name:"mortarSteel"},256);
-CreateFile("fileSteel","Steel File",{name:"fileSteel"},256);
+IDRegistry.genItemID("swordSteel");
+IDRegistry.genItemID("shovelSteel");
+IDRegistry.genItemID("pickaxeSteel");
+IDRegistry.genItemID("axeSteel");
+IDRegistry.genItemID("hoeSteel");
+IDRegistry.genItemID("hammerSteel");
+IDRegistry.genItemID("wrenchSteel");
+IDRegistry.genItemID("cutterSteel");
+IDRegistry.genItemID("mortarSteel");
+IDRegistry.genItemID("fileSteel");
+
+Item.createItem("swordSteel","Steel Sword",{name:"steel_sword"},{stack:1});
+Item.createItem("shovelSteel","Steel Shovel",{name:"steel_shovel"},{stack:1});
+Item.createItem("pickaxeSteel","Steel Pickaxe",{name:"steel_pickaxe"},{stack:1});
+Item.createItem("axeSteel","Steel Axe",{name:"steel_axe"},{stack:1});
+Item.createItem("hoeSteel","Steel Hoe",{name:"steel_hoe"},{stack:1});
+Item.createItem("hammerSteel","Steel Hammer",{name:"steel_hammer"},{stack:1});
+Item.createItem("wrenchSteel","Steel Wrench",{name:"steel_wrench"},{stack:1});
+Item.createItem("cutterSteel","Steel Cutter",{name:"steel_cutter"},{stack:1});
+Item.createItem("mortarSteel","Steel Mortar",{name:"steel_mortar"},{stack:1});
+Item.createItem("fileSteel","Steel File",{name:"steel_file"},{stack:1});
+
+Tool.registerTool(ItemID.swordSteel,"Sword");
+Tool.registerTool(ItemID.shovelSteel,"Shovel");
+Tool.registerTool(ItemID.pickaxeSteel,"Pickaxe");
+Tool.registerTool(ItemID.axeSteel,"Axe");
+Tool.registerTool(ItemID.hoeSteel,"Hoe");
+Tool.registerTool(ItemID.hammerSteel,"Hammer");
+Tool.registerTool(ItemID.wrenchSteel,"Wrench");
+Tool.registerTool(ItemID.cutterSteel,"Cutter");
+Tool.registerTool(ItemID.mortarSteel,"Mortar");
+Tool.registerTool(ItemID.fileSteel,"File");
+
+ToolAPI.setTool(ItemID.swordSteel,"steel",ToolType.sword);
+ToolAPI.setTool(ItemID.shovelSteel,"steel",ToolType.shovel);
+ToolAPI.setTool(ItemID.pickaxeSteel,"steel",ToolType.pickaxe);
+ToolAPI.setTool(ItemID.axeSteel,"steel",ToolType.axe);
+ToolAPI.setTool(ItemID.hoeSteel,"steel",ToolType.hoe);
+ToolAPI.setTool(ItemID.hammerSteel,"steel",ToolType.pickaxe);
+
+Item.setMaxDamage(ItemID.wrenchSteel,ToolAPI.getToolMaterial("steel").durability);
+Item.setMaxDamage(ItemID.cutterSteel,ToolAPI.getToolMaterial("steel").durability);
+Item.setMaxDamage(ItemID.mortarSteel,ToolAPI.getToolMaterial("steel").durability);
+Item.setMaxDamage(ItemID.fileSteel,ToolAPI.getToolMaterial("steel").durability);
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addRepairItemIds(ItemID.swordSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.shovelSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.pickaxeSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.axeSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.hoeSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.hammerSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.wrenchSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.cutterSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.mortarSteel,[ItemID.ingotSteel]);
+    Item.addRepairItemIds(ItemID.fileSteel,[ItemID.ingotSteel]);
+
+    Item.addCreativeGroup("sword",Translation.translate("Sword"),[ItemID.swordSteel]);
+    Item.addCreativeGroup("shovel",Translation.translate("Shovel"),[ItemID.shovelSteel]);
+    Item.addCreativeGroup("pickaxe",Translation.translate("Pickaxe"),[ItemID.pickaxeSteel]);
+    Item.addCreativeGroup("axe",Translation.translate("Axe"),[ItemID.axeSteel]);
+    Item.addCreativeGroup("hoe",Translation.translate("Hoe"),[ItemID.hoeSteel]);
+    Item.addCreativeGroup("hammer",Translation.translate("Hammer"),[ItemID.hammerSteel]);
+    Item.addCreativeGroup("wrench",Translation.translate("Wrench"),[ItemID.wrenchSteel]);
+    Item.addCreativeGroup("cutter",Translation.translate("Cutter"),[ItemID.cutterSteel]);
+    Item.addCreativeGroup("mortar",Translation.translate("Mortar"),[ItemID.mortarSteel]);
+    Item.addCreativeGroup("file",Translation.translate("File"),[ItemID.fileSteel]);
+
     var file = Tool.getAllTool("File"),hammer = Tool.getAllTool("Hammer");
     for(let i = 0;i < file.length;i++){
         for(let ii = 0;ii < hammer.length;ii++){
@@ -22,5 +83,5 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:ItemID.hammerSteel,count:1,data:0},[" ab"," ca","c  "],["a",ItemID.ingotSteel,0,"b",287,0,"c",280,0]);
     Recipes.addShaped({id:ItemID.cutterSteel,count:1,data:0},["a a","aba","b b"],["a",ItemID.plateSteel,0,"b",ItemID.ingotSteel,0]);
     Recipes.addShaped({id:ItemID.mortarSteel,count:1,data:0},["  c","aba"," a "],["a",ItemID.plateSteel,0,"b",318,0,"c",280,0]);
-    Recipes.addShaped({id:ItemID.fileSteel  ,count:1,data:0},[ "a" , "a" , "b" ],["a",ItemID.plateSteel,0,"b",280,0]);
+    Recipes.addShaped({id:ItemID.fileSteel,count:1,data:0},[ "a" , "a" , "b" ],["a",ItemID.plateSteel,0,"b",280,0]);
 });

@@ -26,21 +26,19 @@ Upgrade.registerUpgrade(ItemID.circuitTransformer,"transformer",function(item,ma
 });
 
 Callback.addCallback("PreLoaded",function(){
-    // 组
     Item.addCreativeGroup("ET-Circuit",Translation.translate("Circuit"),[
         ItemID.circuit             ,
         ItemID.circuitOverclocker  ,
         ItemID.circuitEnergyStorage,
         ItemID.circuitTransformer  
     ]);
-
-    // 合成
-    Recipes.addShaped({id:ItemID.circuit             ,count:1,data:0},["aaa","bcb","aaa"],["a",ItemID.wireCopper    ,0 ,"b",ItemID.vacuumTube,0,"c",ItemID.plateCarbon ,0]);
-    Recipes.addShaped({id:ItemID.circuit             ,count:1,data:0},["aaa","bcb","aaa"],["a",ItemID.wireCopper    ,0 ,"b",ItemID.vacuumTube,0,"c",ItemID.plateCircuit,0]);
-    Recipes.addShaped({id:ItemID.circuitOverclocker  ,count:1,data:0},[" a ","bcb"      ],["a",BlockID.coolantWater ,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit    ,0]);
-    Recipes.addShaped({id:ItemID.circuitEnergyStorage,count:1,data:0},[" a ","bcb"      ],["a",ItemID.lithiumBattery,-1,"b",ItemID.wireCopper,0,"c",ItemID.circuit    ,0]);
-    Recipes.addShaped({id:ItemID.circuitTransformer  ,count:1,data:0},[" a ","bcb"      ],["a",BlockID.transformerLV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit    ,0]);
-    Recipes.addShaped({id:ItemID.circuitTransformer  ,count:2,data:0},[" a ","bcb"      ],["a",BlockID.transformerMV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit    ,0]);
-    Recipes.addShaped({id:ItemID.circuitTransformer  ,count:3,data:0},[" a ","bcb"      ],["a",BlockID.transformerHV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit    ,0]);
-    Recipes.addShaped({id:ItemID.circuitTransformer  ,count:4,data:0},[" a ","bcb"      ],["a",BlockID.transformerEV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit    ,0]);
+    
+    Recipes.addShaped({id:ItemID.circuit,count:1,data:0},["aaa","bcb","aaa"],["a",ItemID.wireCopper,0,"b",ItemID.vacuumTube,0,"c",ItemID.plateCarbon,0]);
+    Recipes.addShaped({id:ItemID.circuit,count:1,data:0},["aaa","bcb","aaa"],["a",ItemID.wireCopper,0,"b",ItemID.vacuumTube,0,"c",ItemID.plateCircuit,0]);
+    Recipes.addShaped({id:ItemID.circuitOverclocker,count:1,data:0},[" a ","bcb"],["a",BlockID.coolantWater,0,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
+    Recipes.addShaped({id:ItemID.circuitEnergyStorage,count:1,data:0},[" a ","bcb"],["a",ItemID.lithiumBattery,-1,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
+    Recipes.addShaped({id:ItemID.circuitTransformer,count:1,data:0},[" a ","bcb"],["a",BlockID.transformerLV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
+    Recipes.addShaped({id:ItemID.circuitTransformer,count:2,data:0},[" a ","bcb"],["a",BlockID.transformerMV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
+    Recipes.addShaped({id:ItemID.circuitTransformer,count:3,data:0},[" a ","bcb"],["a",BlockID.transformerHV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
+    Recipes.addShaped({id:ItemID.circuitTransformer,count:4,data:0},[" a ","bcb"],["a",BlockID.transformerEV,0 ,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
 });

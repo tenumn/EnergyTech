@@ -29,9 +29,9 @@ var Reactor = {
             this.module[id] = state;
             this.data[id] = data;
 
-            wheat.item.addTooltip(id,Translation.translate("Module Type: ") + Translation.translate(data.type));
+            Item.addTooltip(id,Translation.translate("Module Type: ") + Translation.translate(data.type));
             
-            wheat.item.setItemName(id,function(item,name,tooltip){
+            Item.setItemName(id,function(item,name,tooltip){
                 if(item.extra){
                     return name + tooltip + "\n§7" + Translation.translate("Durability: ") + item.extra.getInt("durability");
                 }

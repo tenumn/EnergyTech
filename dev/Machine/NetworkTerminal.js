@@ -1,10 +1,10 @@
 // [网络终端]Network Terminal
 IDRegistry.genBlockID("networkTerminal");
 Block.createBlock("networkTerminal",[
-    {name:"Network Terminal",texture:[["machineBottom",1],["machineTop",1],["machineSide",1],["network_terminal",0],["machineSide",1],["machineSide",1]],inCreative:true}
+    {name:"Network Terminal",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.networkTerminal,[["machineBottom",1],["machineTop",1],["machineSide",1],["network_terminal",0],["machineSide",1],["machineSide",1]]);
-TileRenderer.registerRotationModel(BlockID.networkTerminal,0,[["machineBottom",1],["machineTop",1],["machineSide",1],["network_terminal",0],["machineSide",1],["machineSide",1]]);
+TileRenderer.setStandartModel(BlockID.networkTerminal,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.networkTerminal,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
 
 Machine.setDrop("networkTerminal",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -43,14 +43,14 @@ Machine.registerMachine(BlockID.networkTerminal,{
         load_limit:16,
         energy_storage:16384
     },
-    
+
     getNetwork:function(x,y,z){
         return network[x + ":" + y + ":" + z];
     },
 
     init:function(){
 		if(!this.getNetwork(this.x,this.y,this.z)){
-			network[this.x + ":" + this.y + ":" + this.z] = {
+			this.network[this.x + ":" + this.y + ":" + this.z] = {
                 range:this.data.range,
                 load:this.data.load,
                 load_limit:this.data.load_limit,
@@ -66,9 +66,9 @@ Machine.registerMachine(BlockID.networkTerminal,{
         var card = this.container.getSlot("slotCard");
         if(Tool.isTool(card.id,"EnergyCard")){
             if(!card.extra){card.extra = new ItemExtraData();}
-            card.extra.putInt("network_x",this.x);
-            card.extra.putInt("network_y",this.y);
-            card.extra.putInt("network_z",this.z);
+            card.extra.putInt("x",this.x);
+            card.extra.putInt("y",this.y);
+            card.extra.putInt("z",this.z);
         }
 
         var net = this.getNetwork(this.x,this.y,this.z);
@@ -119,8 +119,7 @@ Machine.registerMachine(BlockID.networkTerminal,{
     },
 
     destroy:function(){
-        var net = this.getNetwork(this.x,this.y,this.z);
-        if(net){
+        if(this.getNetwork(this.x,this.y,this.z)){
             delete network[this.x + ":" + this.y + ":" + this.z];
         }
     },

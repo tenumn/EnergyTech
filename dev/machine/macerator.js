@@ -1,14 +1,14 @@
 // [打粉机]Macerator
 IDRegistry.genBlockID("macerator");
 Block.createBlock("macerator",[
-    {name:"Macerator",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Macerator",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.macerator,[["machineBottom",0],["machineTop",0],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,0 ,[["machineBottom",0],["machineTop",0],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,4 ,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,8 ,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",1],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,12,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",2],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.macerator,16,[["machineBottom",0],["machineTop",1],["machineSide",0],["macerator",3],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.macerator,[["machine_bottom",0],["machine_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,0 ,[["machine_bottom",0],["machine_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,4 ,[["machine_bottom",0],["machine_top",1],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,8 ,[["machine_bottom",0],["machine_top",1],["machine_side",0],["macerator",1],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,12,[["machine_bottom",0],["machine_top",1],["machine_side",0],["macerator",2],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.macerator,16,[["machine_bottom",0],["machine_top",1],["machine_side",0],["macerator",3],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("macerator",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -53,7 +53,7 @@ Machine.registerMachine(BlockID.macerator,{
         energy_consumption:4
     },
 
-	setDefaultValues: function(){
+	initValues: function(){
 		this.data.tier = this.defaultValues.tier;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;

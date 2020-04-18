@@ -1,11 +1,11 @@
 // [线缆轧制机]Wiremill
 IDRegistry.genBlockID("wiremill");
 Block.createBlock("wiremill",[
-    {name:"Wiremill",texture:[["machineBottom",0],["wiremill_top",0],["machineSide",0],["wiremill",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Wiremill",texture:[["machine_bottom",0],["wiremill_top",0],["machine_side",0],["wiremill",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.wiremill,[["machineBottom",0],["wiremill_top",0],["machineSide",0],["wiremill",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.wiremill,0,[["machineBottom",0],["wiremill_top",0],["machineSide",0],["wiremill",0],["machineSide",0],["machineSide",0]]);
-for(var i = 1;i < 22;i++){TileRenderer.registerRotationModel(BlockID.wiremill,i * 4,[["machineBottom",0],["wiremill_top",1],["machineSide",0],["wiremill",i],["machineSide",0],["machineSide",0]]);}
+TileRenderer.setStandartModel(BlockID.wiremill,[["machine_bottom",0],["wiremill_top",0],["machine_side",0],["wiremill",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.wiremill,0,[["machine_bottom",0],["wiremill_top",0],["machine_side",0],["wiremill",0],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 22;i++){TileRenderer.registerRotationModel(BlockID.wiremill,i * 4,[["machine_bottom",0],["wiremill_top",1],["machine_side",0],["wiremill",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("wiremill",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -50,7 +50,7 @@ Machine.registerMachine(BlockID.wiremill,{
         energy_consumption:4
     },
     
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

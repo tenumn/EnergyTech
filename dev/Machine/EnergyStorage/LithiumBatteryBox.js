@@ -8,9 +8,9 @@ for(let i = 0;i < 9;i++){
     TileRenderer.registerRenderModel(BlockID.lithiumBatteryBox,i,[["batteryBottom",0],["batteryTop",0],["lithiumBattery",i],["lithiumBattery",i],["lithiumBattery",i],["lithiumBattery",i]]);
 }
 
-wheat.item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Input: ") + Translation.translate("Top Side"));
-wheat.item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Output: ") + Translation.translate("Bottom Side"));
-wheat.item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Storage: ") + 65536 + "Eu");
+Item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Input: ") + Translation.translate("Top Side"));
+Item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Output: ") + Translation.translate("Bottom Side"));
+Item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Storage: ") + 65536 + "Eu");
 
 Machine.setDrop("lithiumBatteryBox",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){

@@ -1,12 +1,12 @@
 // [火力发电机]Fire Generator
 IDRegistry.genBlockID("fireGenerator");
 Block.createBlock("fireGenerator",[
-	{name:"Fire Generator",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["fire_generator",0],["machineSide",0],["machineSide",0]],inCreative:true}
+	{name:"Fire Generator",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
 
-TileRenderer.setStandartModel(BlockID.fireGenerator,[["machineBottom",0],["machineTop",0],["machineSide",0],["fire_generator",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.fireGenerator,0,[["machineBottom",0],["machineTop",0],["machineSide",0],["fire_generator",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.fireGenerator,4,[["machineBottom",0],["machineTop",0],["machineSide",0],["fire_generator",1],["machineSide",0],["machineSide",0]]);
+TileRenderer.setStandartModel(BlockID.fireGenerator,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.fireGenerator,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.fireGenerator,4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",1],["machine_side",0],["machine_side",0]]);
 
 Machine.setDrop("fireGenerator",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -49,7 +49,7 @@ Machine.registerGenerator(BlockID.fireGenerator,{
 		isActive:false
 	},
 
-	setDefaultValues:function(){
+	initValues:function(){
 		this.data.tier = this.defaultValues.tier;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 	},

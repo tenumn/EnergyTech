@@ -3,10 +3,10 @@ var coils = [[7,0,-4],[-7,0,4],[-4,0,7],[-3,0,7],[-4,0,-7],[-3,0,-7],[-2,0,-7],[
 // [核聚变反应堆]Fusion Reactor
 IDRegistry.genBlockID("fusionReactor");
 Block.createBlock("fusionReactor",[
-    {name:"Fusion Reactor",texture:[["fusionReactorBottom",0],["fusionReactorTop",0],["fusionReactorBehind",0],["fusionReactor",0],["machineSide",1],["machineSide",1]],inCreative:true}
+    {name:"Fusion Reactor",texture:[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",1],["machine_side",1]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.fusionReactor,[["fusionReactorBottom",0],["fusionReactorTop",0],["fusionReactorBehind",0],["fusionReactor",0],["machineSide",1],["machineSide",1]]);
-TileRenderer.registerRotationModel(BlockID.fusionReactor,0,[["fusionReactorBottom",0],["fusionReactorTop",0],["fusionReactorBehind",0],["fusionReactor",0],["machineSide",1],["machineSide",1]]);
+TileRenderer.setStandartModel(BlockID.fusionReactor,[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.fusionReactor,0,[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",1],["machine_side",1]]);
 
 Machine.setDrop("fusionReactor",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -64,19 +64,25 @@ Machine.registerMachine(BlockID.fusionReactor,{
     },
 
     getModuleData:function(){
-        for(var i in coils){
+        var durability = __config__.getBool("machine.reactor.isDurability");
+        for(let i in coils){
             var coil = {x:this.x + coils[i][0],y:this.y + coils[i][1],z:this.z + coils[i][2]}
-            for(var ii in directions){
-                var coords = {x:coil.x + directions[ii][0],y:coil.y + directions[ii][1],z:coil.z + directions[ii][2]},type = Reactor.getModuleType(World.getBlockID(coords.x,coords.y,coords.z));
+            for(let side = 0;side < 6;side++){
+                var coords = World.getRelativeCoords(coil.x,coil.y,coil.z,side);
+                var block = World.getBlock(coords.x,coords.y,coords.z);
+                var type = Reactor.getModuleType(block.id);
                 if(type == "Casing" || type == "Coolant"){
-                    tile = World.getTileEntity(coords.x,coords.y,coords.z),reactor = Reactor.getModule(World.getBlockID(coords.x,coords.y,coords.z));
+                    var tile = World.getTileEntity(coords.x,coords.y,coords.z);
+                    var reactor = Reactor.getModule(block.id);
                     if(reactor && tile){
-                        __config__.getBool("machine.reactor.isDurability")?tile.data.durability -= reactor(this.id,this.data,coords):reactor(this.id,this.data,coords);
+                        durability?tile.data.durability -= reactor(this.id,this.data,coords):reactor(this.id,this.data,coords);
                     }
                 }
             }
             tile = World.getTileEntity(coil.x,coil.y,coil.z),reactor = Reactor.getModule(World.getBlockID(coil.x,coil.y,coil.z));
-            if(reactor && tile){tile.data.durability -= reactor(this.id,this.data,coil);}
+            if(reactor && tile){
+                durability?tile.data.durability -= reactor(this.id,this.data,coil):reactor(this.id,this.data,coil);
+            }
         }
     },
 
@@ -104,7 +110,7 @@ Machine.registerMachine(BlockID.fusionReactor,{
         }
     },
 
-    setDefaultValues:function(){
+    initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.hard = this.defaultValues.hard;
         this.data.heat = this.defaultValues.heat;
@@ -115,7 +121,7 @@ Machine.registerMachine(BlockID.fusionReactor,{
     },
 
     tick:function(){
-        this.setDefaultValues();
+        this.initValues();
         
         if(this.data.isActive){
             if(this.isCoil()){

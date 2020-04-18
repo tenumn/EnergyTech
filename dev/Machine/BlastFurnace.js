@@ -1,11 +1,11 @@
 // [高炉]Blast Furnace
 IDRegistry.genBlockID("blastFurnace");
 Block.createBlock("blastFurnace",[
-    {name:"Blast Furnace",texture:[["machineBottom",1],["machineTop",1],["machineSide",1],["blastFurnace",0],["machineSide",1],["machineSide",1]],inCreative:true}
+    {name:"Blast Furnace",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",0],["machine_side",1],["machine_side",1]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.blastFurnace,[["machineBottom",1],["machineTop",1],["machineSide",1],["blastFurnace",0],["machineSide",1],["machineSide",1]]);
-TileRenderer.registerRotationModel(BlockID.blastFurnace,0,[["machineBottom",1],["machineTop",1],["machineSide",1],["blastFurnace",0],["machineSide",1],["machineSide",1]]);
-TileRenderer.registerRotationModel(BlockID.blastFurnace,4,[["machineBottom",1],["machineTop",1],["machineSide",1],["blastFurnace",1],["machineSide",1],["machineSide",1]]);
+TileRenderer.setStandartModel(BlockID.blastFurnace,[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.blastFurnace,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.blastFurnace,4,[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",1],["machine_side",1],["machine_side",1]]);
 
 Machine.setDrop("blastFurnace",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -51,7 +51,7 @@ Machine.registerMachine(BlockID.blastFurnace,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

@@ -2,9 +2,9 @@
 IDRegistry.genItemID("superconductor");
 Item.createItem("superconductor","Superconductor",{name:"superconductor"});
 
-wheat.item.addTooltip(ItemID.superconductor,Translation.translate("Power Tier: ") + 1);
-wheat.item.addTooltip(ItemID.superconductor,Translation.translate("Max Voltage: ") + power(1) + "EU/t");
-wheat.item.addTooltip(ItemID.superconductor,Translation.translate("Info: ") + Translation.translate("You can use it to connect to the Network Terminal to transmit energy."));
+Item.addTooltip(ItemID.superconductor,Translation.translate("Power Tier: ") + 1);
+Item.addTooltip(ItemID.superconductor,Translation.translate("Max Voltage: ") + power(1) + "EU/t");
+Item.addTooltip(ItemID.superconductor,Translation.translate("Info: ") + Translation.translate("You can use it to connect to the Network Terminal to transmit energy."));
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:ItemID.superconductor,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTungsten,0,"b",ItemID.circuitTransformer,0,"c",ItemID.plateSteel,0,"d",ItemID.partSteel,0]);
@@ -29,7 +29,7 @@ Block.createBlock("superconductor",[
     {name:"Superconductor",texture:[["superconductor",0]],inCreative:false}
 ],"wire");
 
-TileRenderer.setupWireModel(BlockID.superconductor,0,0.25,"et-wire",true);
+TileRenderer.setupWireModel(BlockID.superconductor,0,0.25,"eu-wire",true);
 
 Block.registerDropFunction("superconductor",function(Coords,ID,Data){
     return [[ItemID.superconductor,1,0]];
@@ -68,20 +68,24 @@ Machine.registerGenerator(BlockID.superconductor,{
         if(net){delete net.machine[this.x + ":" + this.y + ":" + this.z];}
     },
 
-    setDefaultValues:function(){
+    initValues:function(){
         this.data.tier = this.defaultValues.tier;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 	},
-	
+    
+    getNetwork:function(x,y,z){
+        return network[x + ":" + y + ":" + z];
+    },
+    
 	tick:function(){
 		Upgrade.executeUpgrades(this);
-        var slot = this.container.getSlot("slotCard"),net = this.getNetwork(this.data.x,this.data.y,this.data.z),range = this.getRange(this.data.x,this.data.y,this.data.z);
-        
+        var slot = this.container.getSlot("slotCard"),net = this.getNetwork(this.data.x,this.data.y,this.data.z),range = Math.abs(this.data.x - this.x) + Math.abs(this.data.y - this.y) + Math.abs(this.data.z - this.z);
+
         if(Tool.isTool(slot.id,"EnergyCard") && slot.extra){
             this.destroyMachine();
-            this.data.x = slot.extra.getInt("network_x");
-            this.data.y = slot.extra.getInt("network_y");
-            this.data.z = slot.extra.getInt("network_z");
+            this.data.x = slot.extra.getInt("x");
+            this.data.y = slot.extra.getInt("y");
+            this.data.z = slot.extra.getInt("z");
 
             if(net && range < net.range){
                 network[this.data.x + ":" + this.data.y + ":" + this.data.z].machine[this.x + ":" + this.y + ":" + this.z] = {voltage:power(this.data.tier)};
@@ -108,19 +112,6 @@ Machine.registerGenerator(BlockID.superconductor,{
 		this.data.energy += src.add(output) - output;
 	},
 
-    destroy:function(){
-        this.destroyMachine();
-    },
-    
-    getGuiScreen:function(){
-        return GuiSuperconductorCoil;
-    },
-
-    getNetwork:function(x,y,z){
-        return network[x + ":" + y + ":" + z];
-    },
-
-    getRange:function(x,y,z){
-        return Math.abs(x - this.x) + Math.abs(y - this.y) + Math.abs(z - this.z);
-    }
+    destroy:function(){this.destroyMachine();},
+    getGuiScreen:function(){return GuiSuperconductorCoil;}
 });

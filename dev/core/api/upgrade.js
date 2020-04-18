@@ -50,7 +50,7 @@ var Upgrade = {
 	},
 
 	executeUpgrades:function(machine){
-		if(machine.setDefaultValues){machine.setDefaultValues();}
+		if(machine.initValues){machine.initValues();}
 		
 		var container = machine.container,data = machine.data,coords = {x:machine.x,y:machine.y,z:machine.z},upgrades = this.getUpgrades(machine,container);
 		for(var i in upgrades){

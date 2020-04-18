@@ -1,58 +1,40 @@
 Header.js
 Translation.js
 
-Core/BlockType.js
-Core/Debug.js
-Core/Liquid.js
-
-Core/API/Chemistry.js
-Core/API/Decomposer.js
 Core/API/Machine.js
-Core/API/Model.js
-Core/API/Synthesizer.js
 Core/API/Reactor.js
 Core/API/Recipe.js
 Core/API/Tool.js
 Core/API/Upgrade.js
 
-Resource/Block.js
+Resource/Material.js
 Resource/BrokenOre.js
-Resource/CrushedOre.js
-Resource/Dust.js
-Resource/DustImpure.js
-Resource/Element.js
-Resource/Gear.js
-Resource/Ingot.js
-Resource/Item.js
-Resource/Ore.js
-Resource/Part.js
-Resource/Plate.js
-Resource/Ring.js
-Resource/Stick.js
-Resource/Stone.js
 
-Item/Battery.js
-Item/Cell.js
-Item/Circuit.js
-Item/Crop.js
-Item/Drill.js
-Item/EnergyCard.js
-Item/Powered.js
-Item/Wire.js
+item/Battery.js
+item/Cell.js
+item/Circuit.js
+item/Crop.js
+item/Drill.js
+item/EnergyCard.js
+item/Powered.js
+item/Wire.js
 
-Item/Tool/Antimony.js
-Item/Tool/Copper.js
-Item/Tool/Iron.js
-Item/Tool/Lead.js
-Item/Tool/Steel.js
-Item/Tool/Tin.js
-Item/Tool/Tungsten.js
+item/tool/antimony.js
+item/tool/copper.js
+item/tool/flint.js
+item/tool/iron.js
+item/tool/lead.js
+item/tool/steel.js
+item/tool/tin.js
+item/tool/iungsten.js
 
 Block/Cover.js
 Block/CrudeBlastFurnace.js
 Block/GlassTank.js
 Block/Module.js
+Block/Ore.js
 Block/Scaffold.js
+Block/Stone.js
 
 Machine/Autoclave.js
 Machine/AutoSaieve.js
@@ -62,7 +44,6 @@ Machine/Centrifuge.js
 Machine/Compressor.js
 Machine/Crusher.js
 Machine/Cutting.js
-Machine/Decomposer.js
 Machine/Distillery.js
 Machine/ElectricFurnace.js
 Machine/Electrolyzer.js
@@ -71,7 +52,6 @@ Machine/Macerator.js
 Machine/NetworkTerminal.js
 Machine/OreWasher.js
 Machine/Superconductor.js
-Machine/Synthesizer.js
 Machine/Transformer.js
 Machine/Wiremill.js
 
@@ -81,9 +61,8 @@ Machine/Generator/NuclearReactor.js
 Machine/Generator/SolarGenerator.js
 
 Machine/EnergyStorage/LithiumBatteryBox.js
-Machine/EnergyStorage/SherlockBatteryBox.js
+Machine/EnergyStorage/EneteBatteryBox.js
 
-Support/AchievementsAPI.js
 Support/Minecraft.js
 Support/RecipeViewer.js
 

@@ -37,10 +37,10 @@ IDRegistry.genItemID("chestplatePowered");
 IDRegistry.genItemID("leggingsPowered"  );
 IDRegistry.genItemID("bootsPowered"     );
 
-Item.createArmorItem("helmetPowered"    ,"Powered Helmet"    ,{name:"helmetPowered"}    ,{type:"helmet"    ,armor:10,durability:262144,texture:"armor/powered_1.png",isTech:true});
-Item.createArmorItem("chestplatePowered","Powered Chestplate",{name:"chestplatePowered"},{type:"chestplate",armor:13,durability:262144,texture:"armor/powered_1.png",isTech:true});
-Item.createArmorItem("leggingsPowered"  ,"Powered Leggings"  ,{name:"leggingsPowered"}  ,{type:"leggings"  ,armor:12,durability:262144,texture:"armor/powered_2.png",isTech:true});
-Item.createArmorItem("bootsPowered"     ,"Powered Boots"     ,{name:"bootsPowered"}     ,{type:"boots"     ,armor:9,durability:262144,texture:"armor/powered_1.png",isTech:true});
+Item.createArmorItem("helmetPowered"    ,"Powered Helmet"    ,{name:"powered_helmet"}    ,{type:"helmet"    ,armor:10,durability:262144,texture:"armor/powered_1.png",isTech:true});
+Item.createArmorItem("chestplatePowered","Powered Chestplate",{name:"powered_chestplate"},{type:"chestplate",armor:13,durability:262144,texture:"armor/powered_1.png",isTech:true});
+Item.createArmorItem("leggingsPowered"  ,"Powered Leggings"  ,{name:"powered_leggings"}  ,{type:"leggings"  ,armor:12,durability:262144,texture:"armor/powered_2.png",isTech:true});
+Item.createArmorItem("bootsPowered"     ,"Powered Boots"     ,{name:"powered_boots"}     ,{type:"boots"     ,armor:9,durability:262144,texture:"armor/powered_1.png",isTech:true});
 
 ChargeItemRegistry.registerItem(ItemID.helmetPowered    ,"Eu",262144,power(2),2,"armor",true,true);
 ChargeItemRegistry.registerItem(ItemID.chestplatePowered,"Eu",262144,power(2),2,"armor",true,true);
@@ -52,7 +52,7 @@ Armor.registerFuncs("chestplatePowered",POWERED_FUNCS);
 Armor.registerFuncs("leggingsPowered"  ,POWERED_FUNCS);
 Armor.registerFuncs("bootsPowered"     ,POWERED_FUNCS);
 
-wheat.item.setItemName(ItemID.chestplatePowered,wheat.item.energyStored);
-wheat.item.setItemName(ItemID.helmetPowered    ,wheat.item.energyStored);
-wheat.item.setItemName(ItemID.leggingsPowered  ,wheat.item.energyStored);
-wheat.item.setItemName(ItemID.bootsPowered     ,wheat.item.energyStored);
+Item.setItemName(ItemID.chestplatePowered,ENERGY_STORED);
+Item.setItemName(ItemID.helmetPowered    ,ENERGY_STORED);
+Item.setItemName(ItemID.leggingsPowered  ,ENERGY_STORED);
+Item.setItemName(ItemID.bootsPowered     ,ENERGY_STORED);

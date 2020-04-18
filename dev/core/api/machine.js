@@ -95,8 +95,7 @@ var Machine = {
         TileEntity.registerPrototype(id,state);
     },
     
-    registerMachine:function(id,state,type){
-        if(!type){type = "EU";}
+    registerMachine:function(id,state){
         this.machineIDs[id] = true;
 
         ICRender.getGroup("et-wire").add(id,-1);
@@ -126,33 +125,29 @@ var Machine = {
             this.data.voltage = 0;
         }
 
-        wheat.item.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
-        wheat.item.addTooltip(id,Translation.translate("Destroy Tool Type: ") + Translation.translate("Wrench"));
+        Item.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
+        Item.addTooltip(id,Translation.translate("Destroy Tool Type: ") + Translation.translate("Wrench"));
 
         this.registerPrototype(id,state);
-        EnergyTileRegistry.addEnergyTypeForId(id,EnergyType[type]);
+        EnergyTileRegistry.addEnergyTypeForId(id,EU);
     },
 
-    registerGenerator:function(id,state,type){
-        if(!type){type = "EU";}
-
+    registerGenerator:function(id,state){
         state.isEnergySource = function(){return true;}
         state.canReceiveEnergy = function(){return false;}
 
         state.energyTick = state.energyTick || this.energyOutput;
 
-        this.registerMachine(id,state,type);
+        this.registerMachine(id,state);
     },
 
-    registerEnergyStorage:function(id,state,type){
-        if(!type){type = "EU";}
-
+    registerEnergyStorage:function(id,state){
         state.isEnergySource = function(){return true;}
         
         state.energyTick = state.energyTick || this.energyOutput;
         state.energyReceive = state.energyReceive || this.energyReceive;
         
-        this.registerMachine(id,state,type);
+        this.registerMachine(id,state);
     },
 
     energyReceive:function(type,amount,voltage){
@@ -210,20 +205,43 @@ var Machine = {
     wireIDs:{},
 
     isWire:function(id){
-        return Machine.wireIDs[id];
+        return this.wireIDs[id];
     },
-
-    registerWire:function(id,volt,type){
-        if(!type){type = "EU";}
+    
+    registerWire:function(id,volt){
         this.wireIDs[id] = true;
 
-        EnergyType[type].registerWire(id,volt);
+        EU.registerWire(id,volt,function(voltage){
+            for(let key in this.wireMap){
+                var coords = key.split(':'),x = Math.floor(coords[0]),y = Math.floor(coords[1]),z = Math.floor(coords[2]);
+                World.setBlock(x,y,z,0);
+                for(let i = 0;i < 32;i++){
+                    var px = x + Math.random(),pz = z + Math.random(),py = y + Math.random();
+                    Particles.addFarParticle(ParticleType.smoke,px,py,pz,0,0.01,0);
+                }
+            }
+            EnergyNetBuilder.removeNet(this);
+        });
+    },
+
+    registerWirePlacedCallback:function(name,id,data){
+        Item.registerUseFunction(name,function(coords,item,block){
+            var place = coords;
+            if(!canTileBeReplaced(block.id,block.data)){
+                place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+                if(!canTileBeReplaced(block.id,block.data)){
+                    return;
+                }
+            }
+            World.setBlock(place.x,place.y,place.z,id,data);
+            Player.decreaseCarriedItem(1);
+            EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
+        });
     }
 }
 
 Callback.addCallback("DestroyBlockStart",function(coords,block){
-    var item = Player.getCarriedItem();
-    if(Machine.isMachine(block.id) && Tool.isTool(item.id,"Wrench")){
+    if(Machine.isMachine(block.id) && Tool.isTool(Player.getCarriedItem().id,"Wrench")){
         Block.setTempDestroyTime(block.id,0);
         SoundAPI.playSound("tool/wrench.ogg");
         ToolAPI.breakCarriedTool(8);

@@ -1,11 +1,11 @@
 // [电解机]Electrolyzer
 IDRegistry.genBlockID("electrolyzer");
 Block.createBlock("electrolyzer",[
-    {name:"Electrolyzer",texture:[["machineBottom",0],["machineTop",0],["machineSide",0],["electrolyzer",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Electrolyzer",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.electrolyzer,[["machineBottom",0],["machineTop",0],["machineSide",0],["electrolyzer",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.electrolyzer,0,[["machineBottom",0],["machineTop",0],["machineSide",0],["electrolyzer",0],["machineSide",0],["machineSide",0]]);
-for(var i = 1;i < 8;i++){TileRenderer.registerRotationModel(BlockID.electrolyzer,i * 4,[["machineBottom",0],["machineTop",0],["machineSide",0],["electrolyzer",i],["machineSide",0],["machineSide",0]]);}
+TileRenderer.setStandartModel(BlockID.electrolyzer,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.electrolyzer,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",0],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 8;i++){TileRenderer.registerRotationModel(BlockID.electrolyzer,i * 4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("electrolyzer",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -53,7 +53,7 @@ Machine.registerMachine(BlockID.electrolyzer,{
         energy_consumption:4
     },
 
-	setDefaultValues: function(){
+	initValues: function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

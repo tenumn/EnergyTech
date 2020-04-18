@@ -3,11 +3,13 @@ for(var i = 0;i < 16;i++){
     var id = "glassTank" + (i + 1);
 
     IDRegistry.genBlockID(id);
-    Block.createBlock(id,[{name:(i + 1) + "x Glass Tank",texture:[["glassTank",i]],inCreative:true},],"glass");
+    Block.createBlock(id,[
+        {name:(i + 1) + "x Glass Tank",texture:[["glassTank",i]],inCreative:true}
+    ],"transparent");
 
     Block.registerDropFunction(id,function(){return [];});
     Item.addCreativeGroup("ET-GlassTank",Translation.translate("Glass Tank"),[BlockID[id]]);
-    wheat.item.setItemName(BlockID[id],function(item,name,tooltip){
+    Item.setItemName(BlockID[id],function(item,name,tooltip){
         var item = Player.getCarriedItem();
         if(item.extra){
             return name + tooltip + "\n§7" + LiquidRegistry.getLiquidName(item.extra.getString("liquid_stored")) + ": " + item.extra.getFloat("liquid_amount") * 1000 + " mB";
@@ -16,10 +18,10 @@ for(var i = 0;i < 16;i++){
     });
 
     Block.registerPlaceFunction(BlockID[id],function(coords,item){
-        var block = World.getBlock(coords.relative.x,coords.relative.y,coords.relative.z);
-        if(GenerationUtils.isTransparentBlock(block.id)){
-            World.setBlock(coords.relative.x,coords.relative.y,coords.relative.z,item.id,item.data);
-            var tile = World.addTileEntity(coords.relative.x,coords.relative.y,coords.relative.z);
+        var x = coords.relative.x,y = coords.relative.y,z = coords.relative.z,block = World.getBlock(x,y,z);
+        if(block.id == 0){
+            World.setBlock(x,y,z,item.id,item.data);
+            var tile = World.addTileEntity(x,y,z);
             if(item.extra){
                 tile.liquidStorage.addLiquid(item.extra.getString("liquid_stored"),item.extra.getFloat("liquid_amount"));
             }
@@ -27,7 +29,11 @@ for(var i = 0;i < 16;i++){
     });
 
     Machine.registerPrototype(BlockID[id],{    
-        defaultValues:{limit:16 * (i + 1),height:0,isLoaded:true},
+        defaultValues:{
+            limit:16 * (i + 1),
+            height:0,
+            isLoaded:true
+        },
         
         updateAnim:function(){
             if(this.data.isLoaded){

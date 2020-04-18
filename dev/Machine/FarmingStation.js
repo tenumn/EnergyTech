@@ -1,11 +1,11 @@
 // [种植站]Farming Station
 IDRegistry.genBlockID("farmingStation");
 Block.createBlock("farmingStation",[
-    {name:"Farming Station",texture:[["machineBottom",0],["farming_station_top",0],["machineSide",0],["farming_station",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Farming Station",texture:[["machine_bottom",0],["farming_station_top",0],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.farmingStation,[["machineBottom",0],["farming_station_top",0],["machineSide",0],["farming_station",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.farmingStation,0 ,[["machineBottom",0],["farming_station_top",0],["machineSide",0],["farming_station",0],["machineSide",0],["machineSide",0]]);
-for(var i = 1;i < 9;i++){TileRenderer.registerRotationModel(BlockID.farmingStation,i * 4,[["machineBottom",0],["farming_station_top",1],["machineSide",0],["farming_station",i],["machineSide",0],["machineSide",0]]);}
+TileRenderer.setStandartModel(BlockID.farmingStation,[["machine_bottom",0],["farming_station_top",0],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.farmingStation,0 ,[["machine_bottom",0],["farming_station_top",0],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 9;i++){TileRenderer.registerRotationModel(BlockID.farmingStation,i * 4,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("farmingStation",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -54,7 +54,7 @@ Machine.registerMachine(BlockID.farmingStation,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

@@ -1,11 +1,11 @@
 // [切割机]Cutting
 IDRegistry.genBlockID("cutting");
 Block.createBlock("cutting",[
-    {name:"Cutting",texture:[["machineBottom",0],["cutting_top",0],["machineSide",0],["cutting",0],["machineSide",0],["machineSide",0]],inCreative:true}
+    {name:"Cutting",texture:[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]],inCreative:true}
 ],"opaque");
-TileRenderer.setStandartModel(BlockID.cutting,[["machineBottom",0],["cutting_top",0],["machineSide",0],["cutting",0],["machineSide",0],["machineSide",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,0,[["machineBottom",0],["cutting_top",0],["machineSide",0],["cutting",0],["machineSide",0],["machineSide",0]]);
-for(var i = 1;i < 6;i++){TileRenderer.registerRotationModel(BlockID.cutting,i * 4,[["machineBottom",0],["cutting_top",1],["machineSide",0],["cutting",i],["machineSide",0],["machineSide",0]]);}
+TileRenderer.setStandartModel(BlockID.cutting,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
+TileRenderer.registerRotationModel(BlockID.cutting,0,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
+for(var i = 1;i < 6;i++){TileRenderer.registerRotationModel(BlockID.cutting,i * 4,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("cutting",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -50,7 +50,7 @@ Machine.registerMachine(BlockID.cutting,{
         energy_consumption:4
     },
 
-	setDefaultValues:function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

@@ -53,18 +53,16 @@ ToolType.drill = {
     }
 }
 
-// 铁制钻头
-IDRegistry.genItemID("drillIron");
-Item.createItem("drillIron","Iron Drill",{name:"drillIron"},{stack:1,isTech:true});
-Tool.registerTool(ItemID.drillIron,"Drill");
-ToolAPI.setTool(ItemID.drillIron,"iron",ToolType.drill);
-ChargeItemRegistry.registerItem(ItemID.drillIron,"Eu",16384,power(1),1,"tool",true,true);
+// 钻头
+IDRegistry.genItemID("drill");
+Item.createItem("drill","Drill",{name:"drill"},{stack:1,isTech:true});
+Tool.registerTool(ItemID.drill,"Drill");
+ToolAPI.setTool(ItemID.drill,"iron",ToolType.drill);
+ChargeItemRegistry.registerItem(ItemID.drill,"Eu",16384,power(1),1,"tool",true,true);
 
-wheat.item.addTooltip(ItemID.drillIron,Translation.translate("Power Tier: ") + 1);
-wheat.item.setItemName(ItemID.drillIron,function(item,name,tooltip){
-    return name + tooltip + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
-});
+Item.addTooltip(ItemID.drill,Translation.translate("Power Tier: ") + 1);
+Item.setItemName(ItemID.drill,ENERGY_STORED);
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:ItemID.drillIron,count:1,data:Item.getMaxDamage(ItemID.drillIron)},["bc ","cbc"," ca"],["a",ItemID.electricMotor,0,"b",ItemID.plateIron,0,"c",ItemID.gearIron,0]);
+    Recipes.addShaped({id:ItemID.drill,count:1,data:Item.getMaxDamage(ItemID.drill)},["bc ","cbc"," ca"],["a",ItemID.electricMotor,0,"b",ItemID.plateIron,0,"c",ItemID.gearIron,0]);
 });

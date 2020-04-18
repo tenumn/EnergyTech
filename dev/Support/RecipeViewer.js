@@ -582,47 +582,6 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 			element.onBindingUpdated("text",data?"Heat: " + data.heat/2 + " ~ " + data.heat*2:"");
 		}
     });
-    
-    // 化学反应台
-    Core.registerRecipeType("ET-Synthesizer",{
-    	contents:{
-    		icon:BlockID.synthesizer,
-        
-    		drawing:[
-    			{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
-    		],
-        
-    		elements:{
-                "output0":{type:"slot",x:120,y:120,bitmap:"slotBlank",size:120},
-                "output1":{type:"slot",x:240,y:120,bitmap:"slotBlank",size:120},
-                "output2":{type:"slot",x:360,y:120,bitmap:"slotBlank",size:120},
-                "output3":{type:"slot",x:120,y:240,bitmap:"slotBlank",size:120},
-                "output4":{type:"slot",x:240,y:240,bitmap:"slotBlank",size:120},
-                "output5":{type:"slot",x:360,y:240,bitmap:"slotBlank",size:120},
-                "output6":{type:"slot",x:120,y:360,bitmap:"slotBlank",size:120},
-                "output7":{type:"slot",x:240,y:360,bitmap:"slotBlank",size:120},
-                "output8":{type:"slot",x:360,y:360,bitmap:"slotBlank",size:120},
-                
-                "input0":{type:"slot",x:600,y:240,bitmap:"slotBlank",size:120}
-    		}
-    	},
-    
-    	getList:function(id,data,isUsage){
-            var output = [];
-
-            var pattern = Synthesizer.getPattern(id,data,true);
-            if(pattern){
-                var decode = Synthesizer.decodePattern(pattern);
-                for(let i = 0;i < 9;i++){
-                    decode[i]?output.push({id:parseInt(decode[i][0]),count:parseInt(decode[i][1]),data:0}):output.push({id:0,count:0,data:0});
-                }
-                    
-                return [{input:[{id:id,count:1,data:data}],output:output}]
-            }
-
-            return [];
-    	}
-    });
 
     // [装罐机]Canning Machine
     Core.registerRecipeType("ET-CanningMachine",{
