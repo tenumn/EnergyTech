@@ -41,13 +41,13 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
     },
 
     tick:function(){
-        this.deactive();
+        this.renderer();
 
         var bottom = World.getBlock(this.x,this.y - 1,this.z).id;
         if(bottom == 0){World.destroyBlock(this.x,this.y,this.z,true);}
     },
 
-    deactive:function(){
+    renderer:function(){
         var top = World.getBlock(this.x,this.y + 1,this.z).id,bottom = World.getBlock(this.x,this.y - 1,this.z).id;
         if(top != this.id && bottom != this.id){this.data.meta = 0;}
         if(top != this.id && bottom == this.id){this.data.meta = 1;}
@@ -57,7 +57,7 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
     },
 
     destroy:function(){
-        this.deactive();
+        this.renderer();
         BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
     }
 });
@@ -75,13 +75,13 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
     },
 
     tick:function(){
-        this.deactive();
+        this.renderer();
 
         var bottom = World.getBlock(this.x,this.y - 1,this.z).id;
         if(bottom == 0){World.destroyBlock(this.x,this.y,this.z,true);}
     },
 
-    deactive:function(){
+    renderer:function(){
         var top = World.getBlock(this.x,this.y + 1,this.z).id,bottom = World.getBlock(this.x,this.y - 1,this.z).id;
         if(top != this.id && bottom != this.id){this.data.meta = 0;}
         if(top != this.id && bottom == this.id){this.data.meta = 1;}
@@ -91,7 +91,7 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
     },
 
     destroy:function(){
-        this.deactive();
+        this.renderer();
         BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
     }
 });

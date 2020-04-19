@@ -5,7 +5,6 @@ var Tool = {
         if(!this.tool[type]){this.tool[type] = []}
         this.tool[type].push(id);
         
-        Item.setCategory(id,Native.ItemCategory.TOOL);
         Item.addTooltip(id,Translation.translate("Tool Type: ") + Translation.translate(type));
     },
     
@@ -44,3 +43,11 @@ Callback.addCallback("DestroyBlock",function(coords,block,player){
         Block.setTempDestroyTime(block.id,0.5);
     }
 });
+
+var OreIDs = {};
+for(id in BlockID){
+    var tile = TileEntity.isTileEntityBlock(BlockID[id]);
+    if(id[0] == "o" && id[1] == "r" && id[2] == "e" && !tile){
+        OreIDs[BlockID[id]] = true;
+    }
+}

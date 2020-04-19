@@ -29,6 +29,11 @@ Callback.addCallback("PreLoaded",function(){
     Item.addRepairItemIds(ItemID.mortarIron,[265]);
     Item.addRepairItemIds(ItemID.fileIron,[265]);
 
+    Item.setCategory(ItemID.wrenchIron,ItemCategory.TOOL);
+    Item.setCategory(ItemID.cutterIron,ItemCategory.TOOL);
+    Item.setCategory(ItemID.mortarIron,ItemCategory.TOOL);
+    Item.setCategory(ItemID.fileIron,ItemCategory.TOOL);
+
     Item.addCreativeGroup("hammer",Translation.translate("Hammer"),[ItemID.hammerIron]);
     Item.addCreativeGroup("wrench",Translation.translate("Wrench"),[ItemID.wrenchIron]);
     Item.addCreativeGroup("cutter",Translation.translate("Cutter"),[ItemID.cutterIron]);

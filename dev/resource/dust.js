@@ -269,6 +269,12 @@ IDRegistry.genItemID("dustSmallDiamond");
 Item.createItem("dustDiamond","Diamond Dust",{name:"diamond_dust"});
 Item.createItem("dustSmallDiamond","Small Pile of Diamond Dust",{name:"small_diamond_dust"});
 
+// 盐粉
+IDRegistry.genItemID("dustSalt");
+IDRegistry.genItemID("dustSmallSalt");
+Item.createItem("dustSalt","Salt Dust",{name:"salt_dust"});
+Item.createItem("dustSmallSalt","Small Pile of Salt Dust",{name:"small_salt_dust"});
+
 // 恩奈特合金粉
 IDRegistry.genItemID("dustEnete");
 IDRegistry.genItemID("dustSmallEnete");

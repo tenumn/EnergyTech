@@ -57,6 +57,17 @@ Callback.addCallback("PreLoaded",function(){
     Item.addRepairItemIds(ItemID.mortarSteel,[ItemID.ingotSteel]);
     Item.addRepairItemIds(ItemID.fileSteel,[ItemID.ingotSteel]);
 
+    Item.setCategory(ItemID.swordSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.shovelSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.pickaxeSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.axeSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.hoeSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.hammerSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.wrenchSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.cutterSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.mortarSteel,ItemCategory.TOOL);
+    Item.setCategory(ItemID.fileSteel,ItemCategory.TOOL);
+
     Item.addCreativeGroup("sword",Translation.translate("Sword"),[ItemID.swordSteel]);
     Item.addCreativeGroup("shovel",Translation.translate("Shovel"),[ItemID.shovelSteel]);
     Item.addCreativeGroup("pickaxe",Translation.translate("Pickaxe"),[ItemID.pickaxeSteel]);

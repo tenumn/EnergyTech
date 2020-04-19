@@ -11,7 +11,9 @@ var ChunkRegistry = {
     chunk:{},
     
     getChunk:function(x,z){
-        return this.chunk[x + ":" + z];
+        var chunk = this.chunk[x + ":" + z];
+        if(chunk){return chunk;}
+        return null;
     }
 },network = {}
 

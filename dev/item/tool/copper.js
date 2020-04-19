@@ -31,6 +31,12 @@ Callback.addCallback("PreLoaded",function(){
     Item.addRepairItemIds(ItemID.axeCopper,[ItemID.ingotCopper]);
     Item.addRepairItemIds(ItemID.hoeCopper,[ItemID.ingotCopper]);
 
+    Item.setCategory(ItemID.swordCopper,ItemCategory.TOOL);
+    Item.setCategory(ItemID.shovelCopper,ItemCategory.TOOL);
+    Item.setCategory(ItemID.pickaxeCopper,ItemCategory.TOOL);
+    Item.setCategory(ItemID.axeCopper,ItemCategory.TOOL);
+    Item.setCategory(ItemID.hoeCopper,ItemCategory.TOOL);
+
     Item.addCreativeGroup("sword",Translation.translate("Sword"),[ItemID.swordCopper]);
     Item.addCreativeGroup("shovel",Translation.translate("Shovel"),[ItemID.shovelCopper]);
     Item.addCreativeGroup("pickaxe",Translation.translate("Pickaxe"),[ItemID.pickaxeCopper]);

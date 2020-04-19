@@ -20,17 +20,17 @@ for(var i = 0;i < 16;i++){
     Block.registerPlaceFunction(BlockID[id],function(coords,item){
         Game.prevent();
 
-        var place = coords;
+        var block = World.getBlock(coords.x,coords.y,coords.z),place = coords;
         if(!canTileBeReplaced(block.id,block.data)){
             place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
             if(!canTileBeReplaced(block.id,block.data)){return;}
         }
-        
         World.setBlock(place.x,place.y,place.z,item.id,item.data);
         var tile = World.addTileEntity(place.x,place.y,place.z);
         if(item.extra){
             tile.liquidStorage.addLiquid(item.extra.getString("liquid_stored"),item.extra.getFloat("liquid_amount"));
         }
+        
         Player.decreaseCarriedItem(1);
     });
 

@@ -57,6 +57,17 @@ Callback.addCallback("PreLoaded",function(){
     Item.addRepairItemIds(ItemID.mortarTin,[ItemID.ingotTin]);
     Item.addRepairItemIds(ItemID.fileTin,[ItemID.ingotTin]);
 
+    Item.setCategory(ItemID.swordTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.shovelTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.pickaxeTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.axeTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.hoeTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.hammerTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.wrenchTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.cutterTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.mortarTin,ItemCategory.TOOL);
+    Item.setCategory(ItemID.fileTin,ItemCategory.TOOL);
+
     Item.addCreativeGroup("sword",Translation.translate("Sword"),[ItemID.swordTin]);
     Item.addCreativeGroup("shovel",Translation.translate("Shovel"),[ItemID.shovelTin]);
     Item.addCreativeGroup("pickaxe",Translation.translate("Pickaxe"),[ItemID.pickaxeTin]);

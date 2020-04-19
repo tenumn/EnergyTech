@@ -52,6 +52,14 @@ ToolAPI.registerBlockMaterial(BlockID.oreGraphite,"stone",2);
 Block.setDestroyTime(BlockID.oreGraphite,3);
 Block.setDestroyLevel("oreGraphite",2);
 
+Block.registerDropFunction("oreGraphite",function(coords,id,data,level,enchant){
+	if(level >= 2){
+        if(enchant.silk){return [[id,1,data]];}
+        return [[ItemID.dustCarbon,random(1 * (enchant.fortune + 1),4 * (enchant.fortune + 1)),0]];
+    }
+    return [];
+},2);
+
 // 钨矿石
 IDRegistry.genBlockID("oreTungsten");
 Block.createBlock("oreTungsten",[
@@ -88,6 +96,23 @@ ToolAPI.registerBlockMaterial(BlockID.oreBauxite,"stone",2);
 Block.setDestroyTime(BlockID.oreBauxite,3);
 Block.setDestroyLevel("oreBauxite",2);
 
+// 盐矿石
+IDRegistry.genBlockID("oreSalt");
+Block.createBlock("oreSalt",[
+    {name:"Salt Ore",texture:[["salt_ore",0]],inCreative:true}
+],"opaque");
+ToolAPI.registerBlockMaterial(BlockID.oreSalt,"stone",1);
+Block.setDestroyTime(BlockID.oreSalt,3);
+Block.setDestroyLevel("oreSalt",1);
+
+Block.registerDropFunction("oreSalt",function(coords,id,data,level,enchant){
+	if(level >= 1){
+        if(enchant.silk){return [[id,1,data]];}
+        return [[ItemID.dustSalt,random(1 * (enchant.fortune + 1),4 * (enchant.fortune + 1)),0]];
+    }
+    return [];
+},1);
+
 var VEIN = [
     // 煤炭矿脉
     {name:"Coal",ores:[{id:16,data:0}],minHeight:48,maxHeight:128,size:10},
@@ -114,7 +139,7 @@ var VEIN = [
     {name:"Galena",ores:[{id:BlockID.oreGalena,data:0},{id:BlockID.oreSilver,data:0}],minHeight:32,maxHeight:64,size:4},
 
     // 岩盐矿脉
-    {name:"Salt",ores:[{id:BlockID.oreSpodumene,data:0}],minHeight:48,maxHeight:64,size:2}
+    {name:"Salt",ores:[{id:BlockID.oreSalt,data:0},{id:BlockID.oreSpodumene,data:0}],minHeight:48,maxHeight:64,size:2}
 ];
 
 Callback.addCallback("PreLoaded",function(){
@@ -155,11 +180,3 @@ Callback.addCallback("PreLoaded",function(){
 
     Recipe.addBlastFurnaceRecipe({id:BlockID.oreTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
 });
-
-Block.registerDropFunction("oreGraphite",function(coords,id,data,level,enchant){
-	if(level >= 2){
-        if(enchant.silk){return [[id,1,data]];}
-        return [[ItemID.dustCarbon,random(1 * (enchant.fortune + 1),4 * (enchant.fortune + 1)),0]];
-    }
-    return [];
-},2);

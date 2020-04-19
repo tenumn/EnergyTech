@@ -34,6 +34,32 @@ Callback.addCallback("PreLoaded",function(){
     Recipe.addFarmingStationRecipe({id:392,data:0},[{id:392,count:1,data:0},{id:394,count:1,data:0}],{id:3,data:0});
     Recipe.addFarmingStationRecipe({id:435,data:0},[{id:434,count:1,data:0},{id:435,count:1,data:0}],{id:3,data:0});
 
+    Tool.registerTool(256,"Shovel");
+    Tool.registerTool(257,"Pickaxe");
+    Tool.registerTool(258,"Axe");
+    Tool.registerTool(267,"Sword");
+    Tool.registerTool(268,"Sword");
+    Tool.registerTool(269,"Shovel");
+    Tool.registerTool(270,"Pickaxe");
+    Tool.registerTool(271,"Axe");
+    Tool.registerTool(272,"Sword");
+    Tool.registerTool(273,"Shovel");
+    Tool.registerTool(274,"Pickaxe");
+    Tool.registerTool(275,"Axe");
+    Tool.registerTool(276,"Sword");
+    Tool.registerTool(277,"Shovel");
+    Tool.registerTool(278,"Pickaxe");
+    Tool.registerTool(279,"Axe");
+    Tool.registerTool(283,"Sword");
+    Tool.registerTool(284,"Shovel");
+    Tool.registerTool(285,"Pickaxe");
+    Tool.registerTool(286,"Axe");
+    Tool.registerTool(290,"Hoe");
+    Tool.registerTool(291,"Hoe");
+    Tool.registerTool(292,"Hoe");
+    Tool.registerTool(293,"Hoe");
+    Tool.registerTool(294,"Hoe");
+
     Recipes.deleteRecipeFor([
         {id:256,count:1,data:0},
         {id:257,count:1,data:0},

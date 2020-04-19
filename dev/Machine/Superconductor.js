@@ -1,23 +1,4 @@
-Item.addTooltip(BlockID.superconductor,Translation.translate("Power Tier: ") + 1);
-Item.addTooltip(BlockID.superconductor,Translation.translate("Max Voltage: ") + power(1) + "EU/t");
-Item.addTooltip(BlockID.superconductor,Translation.translate("Info: ") + Translation.translate("You can use it to connect to the Network Terminal to transmit energy."));
 
-Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.superconductor,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTungsten,0,"b",ItemID.circuitTransformer,0,"c",ItemID.plateSteel,0,"d",ItemID.partSteel,0]);
-});
-
-Block.registerPlaceFunction(BlockID.superconductor,function(coords,item){
-    Game.prevent();
-    var block = World.getBlock(coords.x,coords.y,coords.z);
-    var place = coords;
-    if(!canTileBeReplaced(block.id,block.data)){
-        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){return;}
-    }
-    World.setBlock(place.x,place.y,place.z,BlockID.superconductor,1);
-    World.addTileEntity(place.x,place.y,place.z);
-    Player.decreaseCarriedItem(1);
-});
 
 // Block
 IDRegistry.genBlockID("superconductor");
@@ -29,8 +10,28 @@ Block.createBlock("superconductor",[
 Block.setBlockShape(BlockID.superconductor,{x:0.375,y:0.375,z:0},{x:0.625,y:0.625,z:1},0);
 TileRenderer.setupWireModel(BlockID.superconductor,1,0.25,"et-wire",true);
 
+Item.addTooltip(BlockID.superconductor,Translation.translate("Power Tier: ") + 1);
+Item.addTooltip(BlockID.superconductor,Translation.translate("Max Voltage: ") + power(1) + "EU/t");
+Item.addTooltip(BlockID.superconductor,Translation.translate("Info: ") + Translation.translate("You can use it to connect to the Network Terminal to transmit energy."));
+
+Callback.addCallback("PreLoaded",function(){
+    Recipes.addShaped({id:BlockID.superconductor,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTungsten,0,"b",ItemID.circuitTransformer,0,"c",ItemID.plateSteel,0,"d",ItemID.partSteel,0]);
+});
+
 Block.registerDropFunction("superconductor",function(Coords,ID,Data){
     return [[BlockID.superconductor,1,0]];
+});
+
+Block.registerPlaceFunction(BlockID.superconductor,function(coords,item){
+    Game.prevent();
+    var block = World.getBlock(coords.x,coords.y,coords.z),place = coords;
+    if(!canTileBeReplaced(block.id,block.data)){
+        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+        if(!canTileBeReplaced(block.id,block.data)){return;}
+    }
+    World.setBlock(place.x,place.y,place.z,BlockID.superconductor,1);
+    World.addTileEntity(place.x,place.y,place.z);
+    Player.decreaseCarriedItem(1);
 });
 
 var GuiSuperconductorCoil = new UI.StandartWindow({
