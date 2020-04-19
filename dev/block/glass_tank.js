@@ -18,14 +18,20 @@ for(var i = 0;i < 16;i++){
     });
 
     Block.registerPlaceFunction(BlockID[id],function(coords,item){
-        var x = coords.relative.x,y = coords.relative.y,z = coords.relative.z,block = World.getBlock(x,y,z);
-        if(block.id == 0){
-            World.setBlock(x,y,z,item.id,item.data);
-            var tile = World.addTileEntity(x,y,z);
-            if(item.extra){
-                tile.liquidStorage.addLiquid(item.extra.getString("liquid_stored"),item.extra.getFloat("liquid_amount"));
-            }
+        Game.prevent();
+
+        var place = coords;
+        if(!canTileBeReplaced(block.id,block.data)){
+            place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+            if(!canTileBeReplaced(block.id,block.data)){return;}
         }
+        
+        World.setBlock(place.x,place.y,place.z,item.id,item.data);
+        var tile = World.addTileEntity(place.x,place.y,place.z);
+        if(item.extra){
+            tile.liquidStorage.addLiquid(item.extra.getString("liquid_stored"),item.extra.getFloat("liquid_amount"));
+        }
+        Player.decreaseCarriedItem(1);
     });
 
     Machine.registerPrototype(BlockID[id],{    

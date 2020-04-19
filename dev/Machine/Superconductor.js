@@ -1,24 +1,20 @@
-// Item
-IDRegistry.genItemID("superconductor");
-Item.createItem("superconductor","Superconductor",{name:"superconductor"});
-
-Item.addTooltip(ItemID.superconductor,Translation.translate("Power Tier: ") + 1);
-Item.addTooltip(ItemID.superconductor,Translation.translate("Max Voltage: ") + power(1) + "EU/t");
-Item.addTooltip(ItemID.superconductor,Translation.translate("Info: ") + Translation.translate("You can use it to connect to the Network Terminal to transmit energy."));
+Item.addTooltip(BlockID.superconductor,Translation.translate("Power Tier: ") + 1);
+Item.addTooltip(BlockID.superconductor,Translation.translate("Max Voltage: ") + power(1) + "EU/t");
+Item.addTooltip(BlockID.superconductor,Translation.translate("Info: ") + Translation.translate("You can use it to connect to the Network Terminal to transmit energy."));
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:ItemID.superconductor,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTungsten,0,"b",ItemID.circuitTransformer,0,"c",ItemID.plateSteel,0,"d",ItemID.partSteel,0]);
+    Recipes.addShaped({id:BlockID.superconductor,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTungsten,0,"b",ItemID.circuitTransformer,0,"c",ItemID.plateSteel,0,"d",ItemID.partSteel,0]);
 });
 
-Item.registerUseFunction("superconductor",function(coords,item,block){
+Block.registerPlaceFunction(BlockID.superconductor,function(coords,item){
+    Game.prevent();
+    var block = World.getBlock(coords.x,coords.y,coords.z);
     var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){
-            return;
-        }
+        if(!canTileBeReplaced(block.id,block.data)){return;}
     }
-    World.setBlock(place.x,place.y,place.z,BlockID.superconductor,0);
+    World.setBlock(place.x,place.y,place.z,BlockID.superconductor,1);
     World.addTileEntity(place.x,place.y,place.z);
     Player.decreaseCarriedItem(1);
 });
@@ -26,13 +22,15 @@ Item.registerUseFunction("superconductor",function(coords,item,block){
 // Block
 IDRegistry.genBlockID("superconductor");
 Block.createBlock("superconductor",[
+    {name:"Superconductor",texture:[["superconductor",0]],inCreative:true},
     {name:"Superconductor",texture:[["superconductor",0]],inCreative:false}
 ],"wire");
 
-TileRenderer.setupWireModel(BlockID.superconductor,0,0.25,"eu-wire",true);
+Block.setBlockShape(BlockID.superconductor,{x:0.375,y:0.375,z:0},{x:0.625,y:0.625,z:1},0);
+TileRenderer.setupWireModel(BlockID.superconductor,1,0.25,"et-wire",true);
 
 Block.registerDropFunction("superconductor",function(Coords,ID,Data){
-    return [[ItemID.superconductor,1,0]];
+    return [[BlockID.superconductor,1,0]];
 });
 
 var GuiSuperconductorCoil = new UI.StandartWindow({
@@ -43,7 +41,6 @@ var GuiSuperconductorCoil = new UI.StandartWindow({
     },
 
     drawing:[
-		{type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
         {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info",scale:GUI_SCALE}
     ],
@@ -51,7 +48,7 @@ var GuiSuperconductorCoil = new UI.StandartWindow({
     elements:{
         "textNetwork":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Network IP: ") + "0.0.0"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slotCard",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}},
+        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:250,bitmap:"slotCard",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}},
 
         "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
         "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},

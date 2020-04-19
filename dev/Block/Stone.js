@@ -1,54 +1,10 @@
-Block.createSpecialType({
-    base:1,
-    opaque:true,
-    destroytime:3
-},"small_stone");
-
-// 石子
-IDRegistry.genBlockID("smallStone");
-Block.createBlock("smallStone",[
-    {name:"Small Stone",texture:[["small_stone",0]],inCreative:false}
-],"small_stone");
-
-var shape = new ICRender.CollisionShape();
-shape.addEntry().addBox(1,1,1,0,0,0);
-BlockRenderer.setCustomCollisionShape(BlockID.smallStone,-1,shape);
-
-var render = new ICRender.Model(),model = new BlockRenderer.Model();
-model.addBox(0,0,0,0.9375,0.0625,0.9375,BlockID.smallStone,0);
-render.addEntry(model);
-BlockRenderer.enableCoordMapping(BlockID.smallStone,-1,render);
-
-IDRegistry.genItemID("smallStone");
-Item.createItem("smallStone","Small Stone",{name:"small_stone"});
-
-Block.registerDropFunction("smallStone",function(coords){
-	var chunk = ChunkRegistry.getChunk(Math.floor(coords.x / 16),Math.floor(coords.z / 16));
-	if(ItemID["oreChunk" + chunk]){return [[ItemID["oreChunk" + chunk],1,0]];}
-	if(Math.random() < 0.25){return [[318,1,0]];}
-	return [[ItemID.smallStone,1,0]];
-});
-
-Callback.addCallback("PreLoaded",function(){
-    Callback.addCallback("GenerateChunk",function(chunkX,chunkZ){
-		for(let i = 0;i < 64;i++){
-			var coords = GenerationUtils.randomCoords(chunkX,chunkZ,64,128);
-			if(!GenerationUtils.isTransparentBlock(World.getBlock(coords.x,coords.y - 1,coords.z).id)){
-				if(World.getBlock(coords.x,coords.y,coords.z).id == 0){
-					World.setBlock(coords.x,coords.y,coords.z,BlockID.smallStone,0);
-				}
-			}
-		}
-    });
-});
-
 // 磨制大理石
 IDRegistry.genBlockID("polishedMarble");
 Block.createBlock("polishedMarble",[
-    {name:"Polished Marble",texture:[["polishedMarble",0]],inCreative:true}
+    {name:"Polished Marble",texture:[["polished_marble",0]],inCreative:true}
 ],"opaque");
 ToolAPI.registerBlockMaterial(BlockID.polishedMarble,"stone",1);
-Block.setDestroyTime(BlockID.polishedMarble,3);
+Block.setDestroyTime(BlockID.polishedMarble,1);
 Block.setDestroyLevel("polishedMarble",1);
 
 // 大理石
@@ -57,7 +13,7 @@ Block.createBlock("marble",[
     {name:"Marble",texture:[["marble",0]],inCreative:true}
 ],"opaque");
 ToolAPI.registerBlockMaterial(BlockID.marble,"stone",1);
-Block.setDestroyTime(BlockID.marble,3);
+Block.setDestroyTime(BlockID.marble,1);
 Block.setDestroyLevel("marble",1);
 
 Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
@@ -73,7 +29,7 @@ Block.createBlock("cobbleMarble",[
     {name:"Marble Cobble",texture:[["cobbleMarble",0]],inCreative:true}
 ],"opaque");
 ToolAPI.registerBlockMaterial(BlockID.cobbleMarble,"stone",1);
-Block.setDestroyTime(BlockID.cobbleMarble,3);
+Block.setDestroyTime(BlockID.cobbleMarble,1);
 Block.setDestroyLevel("cobbleMarble",1);
 
 // 安山岩圆石
@@ -82,7 +38,7 @@ Block.createBlock("cobbleAndesite",[
     {name:"Andesite Cobble",texture:[["cobbleAndesite",0]],inCreative:true}
 ],"opaque");
 ToolAPI.registerBlockMaterial(BlockID.cobbleAndesite,"stone",1);
-Block.setDestroyTime(BlockID.cobbleAndesite,3);
+Block.setDestroyTime(BlockID.cobbleAndesite,1);
 Block.setDestroyLevel("cobbleAndesite",1);
 
 // 闪长岩圆石
@@ -91,7 +47,7 @@ Block.createBlock("cobbleDiorite",[
     {name:"Diorite Cobble",texture:[["cobbleDiorite",0]],inCreative:true}
 ],"opaque");
 ToolAPI.registerBlockMaterial(BlockID.cobbleDiorite,"stone",1);
-Block.setDestroyTime(BlockID.cobbleDiorite,3);
+Block.setDestroyTime(BlockID.cobbleDiorite,1);
 Block.setDestroyLevel("cobbleDiorite",1);
 
 // 花岗岩圆石
@@ -100,7 +56,7 @@ Block.createBlock("cobbleGranite",[
     {name:"Granite Cobble",texture:[["cobbleGranite",0]],inCreative:true}
 ],"opaque");
 ToolAPI.registerBlockMaterial(BlockID.cobbleGranite,"stone",1);
-Block.setDestroyTime(BlockID.cobbleGranite,3);
+Block.setDestroyTime(BlockID.cobbleGranite,1);
 Block.setDestroyLevel("cobbleGranite",1);
 
 Block.registerDropFunctionForID(1,function(coords,id,data,level,enchant){

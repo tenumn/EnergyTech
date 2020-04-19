@@ -1,3 +1,28 @@
+// Material
+Translation.addTranslation("Small Stone",{zh:"石子"});
+Translation.addTranslation("Slag",{zh:"矿渣"});
+Translation.addTranslation("Resin",{zh:"树脂"});
+Translation.addTranslation("Enriched Uranium",{zh:"浓缩铀"});
+Translation.addTranslation("Tiny Coal",{zh:"小块煤炭"});
+Translation.addTranslation("Tiny Charcoal",{zh:"小块木炭"});
+Translation.addTranslation("Vacuum Tube",{zh:"真空管",ru:"Вакуумная труба"});
+Translation.addTranslation("Electric Motor" ,{zh:"电动马达",ru:"Электромотор"});
+Translation.addTranslation("Electric Piston",{zh:"电动活塞",ru:"Электрический поршень"});
+Translation.addTranslation("Dust",{zh:"尘土"});
+Translation.addTranslation("Concrete Block",{zh:"混凝土块"});
+Translation.addTranslation("Clear Glass",{zh:"通透玻璃"});
+Translation.addTranslation("Polished Marble",{zh:"磨制大理石"});
+Translation.addTranslation("Basic Machine Casing",{zh:"基础机器外壳",ru:"Базовая обшивка механизма"});
+Translation.addTranslation("Advanced Machine Casing",{zh:"高级机器外壳",ru:"Улучшенная обшивка механизма"});
+Translation.addTranslation("Lithium-6",{zh:"锂-6",ru:"Литий-6"});
+Translation.addTranslation("Lithium-7",{zh:"锂-7",ru:"Литий-7"});
+Translation.addTranslation("Uranium-235",{zh:"铀-235",ru:"Уран-235"});
+Translation.addTranslation("Uranium-238",{zh:"铀-238",ru:"Уран-238"});
+Translation.addTranslation("Small Pile of Lithium-6",{zh:"小堆锂-6",ru:"Небольшая кучка Лития-6"});
+Translation.addTranslation("Small Pile of Lithium-7",{zh:"小堆锂-7",ru:"Небольшая кучка Лития-7"});
+Translation.addTranslation("Small Pile of Uranium-235",{zh:"小堆铀-235",ru:"Небольшая кучка Урана-235"});
+Translation.addTranslation("Small Pile of Uranium-238",{zh:"小堆铀-238",ru:"Небольшая кучка Урана-238"});
+
 // Block
 Translation.addTranslation("Copper Block",{zh:"铜块",ru:"Медный блок"});
 Translation.addTranslation("Tin Block",{zh:"锡块",ru:"Оловянный блок"});
@@ -39,13 +64,6 @@ Translation.addTranslation("16x Glass Tank",{zh:"16x 玻璃储罐",ru:"16x Ст�
 // Scaffold
 Translation.addTranslation("Wood Scaffold",{zh:"木脚手架",ru:"Деревянные строительные леса"});
 Translation.addTranslation("Iron Scaffold",{zh:"铁脚手架",ru:"Железные строительные леса"});
-
-Translation.addTranslation("Dust",{zh:"尘土"});
-Translation.addTranslation("Concrete Block",{zh:"混凝土块"});
-Translation.addTranslation("Clear Glass",{zh:"通透玻璃"});
-Translation.addTranslation("Polished Marble",{zh:"磨制大理石"});
-Translation.addTranslation("Basic Machine Casing",{zh:"基础机器外壳",ru:"Базовая обшивка механизма"});
-Translation.addTranslation("Advanced Machine Casing",{zh:"高级机器外壳",ru:"Улучшенная обшивка механизма"});
 
 // Stone
 Translation.addTranslation("Marble",{zh:"大理石"});
@@ -222,14 +240,6 @@ Translation.addTranslation("Small Pile of Silicon Dioxide Dust",{zh:"二氧化�
 Translation.addTranslation("Small Pile of Enete Alloy Dust",{zh:"小堆恩奈特合金粉"});
 Translation.addTranslation("Small Pile of Lead-Antimony Alloy Dust",{zh:"小堆铅锑合金粉",ru:"Небольшая кучка стибий-свинцовой пыли"});
 
-// Item
-Translation.addTranslation("Slag",{zh:"矿渣"});
-Translation.addTranslation("Resin",{zh:"树脂"});
-Translation.addTranslation("Enriched Uranium",{zh:"浓缩铀"});
-Translation.addTranslation("Vacuum Tube",{zh:"真空管",ru:"Вакуумная труба"});
-Translation.addTranslation("Electric Motor" ,{zh:"电动马达",ru:"Электромотор"});
-Translation.addTranslation("Electric Piston",{zh:"电动活塞",ru:"Электрический поршень"});
-
 // Gear
 Translation.addTranslation("Iron Gear",{zh:"铁齿轮",ru:"Железная шестерня"});
 Translation.addTranslation("Steel Gear",{zh:"钢齿轮",ru:"Стальная шестерня"});
@@ -248,16 +258,6 @@ Translation.addTranslation("Silver Ingot",{zh:"银锭",ru:"Серебряный 
 Translation.addTranslation("Aluminium Ingot",{zh:"铝锭",ru:"Алюминиевый слиток"});
 Translation.addTranslation("Enete Alloy Ingot",{zh:"恩奈特合金锭"});
 Translation.addTranslation("Lead-Antimony Alloy Ingot",{zh:"铅锑合金锭",ru:"Слиток стибий-свинцового сплава"});
-
-Translation.addTranslation("Lithium-6",{zh:"锂-6",ru:"Литий-6"});
-Translation.addTranslation("Lithium-7",{zh:"锂-7",ru:"Литий-7"});
-Translation.addTranslation("Uranium-235",{zh:"铀-235",ru:"Уран-235"});
-Translation.addTranslation("Uranium-238",{zh:"铀-238",ru:"Уран-238"});
-
-Translation.addTranslation("Small Pile of Lithium-6",{zh:"小堆锂-6",ru:"Небольшая кучка Лития-6"});
-Translation.addTranslation("Small Pile of Lithium-7",{zh:"小堆锂-7",ru:"Небольшая кучка Лития-7"});
-Translation.addTranslation("Small Pile of Uranium-235",{zh:"小堆铀-235",ru:"Небольшая кучка Урана-235"});
-Translation.addTranslation("Small Pile of Uranium-238",{zh:"小堆铀-238",ru:"Небольшая кучка Урана-238"});
 
 // Part
 Translation.addTranslation("Iron Part",{zh:"铁制零件",ru:"Железная деталь"});
@@ -299,10 +299,6 @@ Translation.addTranslation("Steel Stick",{zh:"钢棍",ru:"Стальная па�
 Translation.addTranslation("Tungsten Stick",{zh:"钨棍",ru:"Вольфрамовая палка"});
 Translation.addTranslation("Enete Alloy Stick",{zh:"恩奈特合金棍",ru:"Палка из сплава Шерлока"});
 Translation.addTranslation("Lead-Antimony Alloy Stick",{zh:"铅锑合金棍",ru:"Палка из стибий-свинцового сплава"});
-
-// Crop
-Translation.addTranslation("Cotton Seed",{zh:"棉花种子"});
-Translation.addTranslation("Cotton",{zh:"棉花"});
 
 // Circuit
 Translation.addTranslation("Circuit",{zh:"电路板",ru:"Электросхема"});
@@ -350,6 +346,11 @@ Translation.addTranslation("Copper Shovel",{zh:"铜铲",ru:"Медная лоп�
 Translation.addTranslation("Copper Pickaxe",{zh:"铜镐",ru:"Медная кирка"});
 Translation.addTranslation("Copper Axe",{zh:"铜斧",ru:"Медный топор"});
 Translation.addTranslation("Copper Hoe",{zh:"铜锄",ru:"Медная мотыга"});
+Translation.addTranslation("Flint Sword",{zh:"燧石剑"});
+Translation.addTranslation("Flint Shovel",{zh:"燧石铲"});
+Translation.addTranslation("Flint Pickaxe",{zh:"燧石镐"});
+Translation.addTranslation("Flint Axe",{zh:"燧石斧"});
+Translation.addTranslation("Flint Hoe",{zh:"燧石锄"});
 Translation.addTranslation("Iron Wrench",{zh:"铁扳手",ru:"Железный ключ"});
 Translation.addTranslation("Iron Hammer",{zh:"铁锤",ru:"Железный молот"});
 Translation.addTranslation("Iron Cutter",{zh:"铁剪线钳",ru:"Железный резак"});
@@ -414,9 +415,8 @@ Translation.addTranslation("Superconductor",{zh:"超导体"});
 
 // Battery
 Translation.addTranslation("Lithium Battery",{zh:"锂电池",ru:"Литиевая батарея"});
-Translation.addTranslation("Enete Battery",{zh:"恩奈特电池"});
-
 Translation.addTranslation("Lithium Battery Box",{zh:"锂电池盒",ru:"Литиевая аккумуляторная коробка"});
+Translation.addTranslation("Enete Battery",{zh:"恩奈特电池"});
 Translation.addTranslation("Enete Battery Box",{zh:"恩奈特电池盒"});
 
 // Info

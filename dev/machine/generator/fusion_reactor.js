@@ -10,7 +10,7 @@ TileRenderer.registerRotationModel(BlockID.fusionReactor,0,[["fusion_reactor_bot
 
 Machine.setDrop("fusionReactor",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.fusionReactor,count:1,data:0},["bcb","ada","beb"],["a",BlockID.coilCopper,0,"b",ItemID.circuitEnergyStorage,0,"c",ItemID.superconductor,0,"d",BlockID.networkTerminal,0,"e",BlockID.nuclearReactor,0]);
+	Recipes.addShaped({id:BlockID.fusionReactor,count:1,data:0},["bcb","ada","beb"],["a",BlockID.coilCopper,0,"b",ItemID.circuitEnergyStorage,0,"c",BlockID.superconductor,0,"d",BlockID.networkTerminal,0,"e",BlockID.nuclearReactor,0]);
 });
 
 var GuiFusionReactor = new UI.StandartWindow({

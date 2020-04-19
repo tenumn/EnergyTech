@@ -34,10 +34,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipe.addFarmingStationRecipe({id:392,data:0},[{id:392,count:1,data:0},{id:394,count:1,data:0}],{id:3,data:0});
     Recipe.addFarmingStationRecipe({id:435,data:0},[{id:434,count:1,data:0},{id:435,count:1,data:0}],{id:3,data:0});
 
-    
-        
-
-    wheat.recipe.deleteRecipeFor([
+    Recipes.deleteRecipeFor([
         {id:256,count:1,data:0},
         {id:257,count:1,data:0},
         {id:258,count:1,data:0},
@@ -86,7 +83,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.removeFurnaceRecipeFor([12,17,162]);
 
     Recipes.addShapeless({id:4,count:1,data:0},[{id:ItemID.smallStone,data:0},{id:ItemID.smallStone,data:0},{id:ItemID.smallStone,data:0},{id:ItemID.smallStone,data:0}]);
-    Recipes.addShapeless({id:287,count:1,data:0},[{id:ItemID.cotton,data:0},{id:ItemID.cotton,data:0},{id:ItemID.cotton,data:0}]);
     
     var file = Tool.getAllTool("File"),hammer = Tool.getAllTool("Hammer");
     for(let hi = 0;hi < hammer.length;hi++){

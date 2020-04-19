@@ -88,7 +88,7 @@ ToolAPI.registerBlockMaterial(BlockID.oreBauxite,"stone",2);
 Block.setDestroyTime(BlockID.oreBauxite,3);
 Block.setDestroyLevel("oreBauxite",2);
 
-var vein = [
+var VEIN = [
     // 煤炭矿脉
     {name:"Coal",ores:[{id:16,data:0}],minHeight:48,maxHeight:128,size:10},
 
@@ -120,7 +120,7 @@ var vein = [
 Callback.addCallback("PreLoaded",function(){
     Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
         if(Math.random() < 0.25 && (chunkX + chunkZ)%2 == 0){
-            var ore = vein[Math.floor(Math.random() * vein.length)],coords = GenerationUtils.randomCoords(chunkX,chunkZ,ore.minHeight,ore.maxHeight);
+            var ore = VEIN[Math.floor(Math.random() * VEIN.length)],coords = GenerationUtils.randomCoords(chunkX,chunkZ,ore.minHeight,ore.maxHeight);
             runOnMainThread(function(){
                 for(let x = 0;x <= ore.size;x++){for(let y = 0;y <= ore.size;y++){for(let z = 0;z <= ore.size;z++){
                     var pointed = {x:Math.floor(coords.x - ore.size + x),y:Math.floor(coords.y - ore.size + y),z:Math.floor(coords.z - ore.size + z)}

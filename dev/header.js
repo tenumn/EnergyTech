@@ -1,7 +1,6 @@
 // lib
 IMPORT("ToolLib");
 IMPORT("SoundAPI");
-IMPORT("WheatAPI");
 IMPORT("UsefulTool");
 IMPORT("EnergyNet");
 IMPORT("ChargeItem");
@@ -10,7 +9,7 @@ IMPORT("StorageInterface");
 
 var ChunkRegistry = {
     chunk:{},
-
+    
     getChunk:function(x,z){
         return this.chunk[x + ":" + z];
     }
@@ -57,17 +56,6 @@ Saver.addSavesScope("EnergyTech",
         }
     }
 );
-
-// IC
-if(getCoreAPILevel() < 10){
-    Item.addCreativeGroup = function(uid,name,item){
-        
-    }
-
-    Item.addRepairItemIds = function(id,item){
-
-    }
-}
 
 LiquidRegistry.registerLiquid("helium","Helium","liquid.helium");
 LiquidRegistry.registerLiquid("helium3","Helium-3","liquid.helium3");

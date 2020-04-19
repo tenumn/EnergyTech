@@ -1,23 +1,31 @@
-Header.js
-Translation.js
+header.js
+translation.js
 
-Core/API/Machine.js
-Core/API/Reactor.js
-Core/API/Recipe.js
-Core/API/Tool.js
-Core/API/Upgrade.js
+core/api/machine.js
+core/api/reactor.js
+core/api/recipe.js
+core/api/tool.js
+core/api/upgrade.js
 
-Resource/Material.js
-Resource/BrokenOre.js
+resource/broken_ore.js
+resource/crushed.js
+resource/dust.js
+resource/gear.js
+resource/ingot.js
+resource/material.js
+resource/part.js
+resource/plate.js
+resource/ring.js
+resource/stick.js
 
-item/Battery.js
-item/Cell.js
-item/Circuit.js
-item/Crop.js
-item/Drill.js
-item/EnergyCard.js
-item/Powered.js
-item/Wire.js
+item/battery.js
+item/cell.js
+item/circuit.js
+item/drill.js
+item/energy_card.js
+item/wire.js
+
+item/armor/powered.js
 
 item/tool/antimony.js
 item/tool/copper.js
@@ -28,42 +36,42 @@ item/tool/steel.js
 item/tool/tin.js
 item/tool/iungsten.js
 
-Block/Cover.js
-Block/CrudeBlastFurnace.js
-Block/GlassTank.js
-Block/Module.js
-Block/Ore.js
-Block/Scaffold.js
-Block/Stone.js
+block/cover.js
+block/crude_blast_furnace.js
+block/glass_tank.js
+block/module.js
+block/ore.js
+block/scaffold.js
+block/stone.js
 
-Machine/Autoclave.js
-Machine/AutoSaieve.js
-Machine/BlastFurnace.js
-Machine/CanningMachine.js
-Machine/Centrifuge.js
-Machine/Compressor.js
-Machine/Crusher.js
-Machine/Cutting.js
-Machine/Distillery.js
-Machine/ElectricFurnace.js
-Machine/Electrolyzer.js
-Machine/FarmingStation.js
-Machine/Macerator.js
-Machine/NetworkTerminal.js
-Machine/OreWasher.js
-Machine/Superconductor.js
-Machine/Transformer.js
-Machine/Wiremill.js
+machine/autoclave.js
+machine/auto_saieve.js
+machine/blast_furnace.js
+machine/canning_machine.js
+machine/centrifuge.js
+machine/compressor.js
+machine/crusher.js
+machine/cutting.js
+machine/distillery.js
+machine/electric_furnace.js
+machine/electrolyzer.js
+machine/farming_station.js
+machine/macerator.js
+machine/network_terminal.js
+machine/ore_washer.js
+machine/superconductor.js
+machine/transformer.js
+machine/wiremill.js
 
-Machine/Generator/FireGenerator.js
-Machine/Generator/FusionReactor.js
-Machine/Generator/NuclearReactor.js
-Machine/Generator/SolarGenerator.js
+machine/generator/fire_generator.js
+machine/generator/fusion_reactor.js
+machine/generator/nuclear_reactor.js
+machine/generator/solar_generator.js
 
-Machine/EnergyStorage/LithiumBatteryBox.js
-Machine/EnergyStorage/EneteBatteryBox.js
+machine/energy_storage/lithium_battery_box.js
+machine/energy_storage/enete_battery_box.js
 
-Support/Minecraft.js
-Support/RecipeViewer.js
+Support/minecraft.js
+Support/recipe_viewer.js
 
-Core/ModAPI.js
+core/mod_api.js

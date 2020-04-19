@@ -1,8 +1,8 @@
 var POWERED_FUNCS = {
     hurt:function(params,slot,index,maxDamage){
         if(slot.data < maxDamage){
-            wheat.player.addEffect(10,params.damage,20);
-            wheat.player.addEffect(11,params.damage,20);
+            Player.addEffect(10,params.damage,20);
+            Player.addEffect(11,params.damage,20);
 
             var health = Entity.getHealth(Player.get());
             if(health <= 20){
