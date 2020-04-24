@@ -5,25 +5,29 @@ Block.createSpecialType({
 },"scaffold");
 
 Renderer.renderScaffoldModel = function(id,data){
-    var model = new BlockRenderer.Model();
+    var render = new ICRender.Model(),model = new BlockRenderer.Model();
     model.addBox(0,0.8125,0,1,1,1,id,data);
     model.addBox(0.0625,0.1875,0.0625,0.9375,0.8125,0.9375,id,data);
     model.addBox(0,0,0,1,0.1875,1,id,data);
-    Renderer.registerRenderModel(id,0,model);
+    render.addEntry(model);
+    Renderer.registerRenderModel(id,0,render);
 
-    var model = new BlockRenderer.Model();
+    var render = new ICRender.Model(),model = new BlockRenderer.Model();
     model.addBox(0,0.8125,0,1,1,1,id,data);
     model.addBox(0.0625,0,0.0625,0.9375,0.8125,0.9375,id,data);
-    Renderer.registerRenderModel(id,1,model);
+    render.addEntry(model);
+    Renderer.registerRenderModel(id,1,render);
     
-    var model = new BlockRenderer.Model();
+    var render = new ICRender.Model(),model = new BlockRenderer.Model();
     model.addBox(0.0625,0,0.0625,0.9375,1,0.9375,id,data);
-    Renderer.registerRenderModel(id,2,model);
+    render.addEntry(model);
+    Renderer.registerRenderModel(id,2,render);
     
-    var model = new BlockRenderer.Model();
+    var render = new ICRender.Model(),model = new BlockRenderer.Model();
     model.addBox(0.0625,0.1875,0.0625,0.9375,1,0.9375,id,data);
     model.addBox(0,0,0,1,0.1875,1,id,data);
-    Renderer.registerRenderModel(id,3,model);
+    render.addEntry(model);
+    Renderer.registerRenderModel(id,3,render);
 
     Item.addCreativeGroup("scaffold",Translation.translate("Scaffold"),[id]);
 }
@@ -57,7 +61,6 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
     },
 
     destroy:function(){
-        this.renderer();
         BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
     }
 });
@@ -91,12 +94,11 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
     },
 
     destroy:function(){
-        this.renderer();
         BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
     }
 });
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.scaffoldWood,count:16,data:0},["aaa","bbb","aaa"],["a",5               ,-1,"b",280             ,0]);
-    Recipes.addShaped({id:BlockID.scaffoldIron,count:16,data:0},["aaa","bbb","aaa"],["a",ItemID.plateIron,0 ,"b",ItemID.stickIron,0]);
+    Recipes.addShaped({id:BlockID.scaffoldWood,count:16,data:0},["aaa","bbb","aaa"],["a",5,-1,"b",280,0]);
+    Recipes.addShaped({id:BlockID.scaffoldIron,count:16,data:0},["aaa","bbb","aaa"],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0]);
 });

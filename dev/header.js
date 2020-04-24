@@ -7,16 +7,6 @@ IMPORT("ChargeItem");
 IMPORT("TileRender");
 IMPORT("StorageInterface");
 
-var ChunkRegistry = {
-    chunk:{},
-    
-    getChunk:function(x,z){
-        var chunk = this.chunk[x + ":" + z];
-        if(chunk){return chunk;}
-        return null;
-    }
-},network = {}
-
 // API
 World.drop = ModAPI.requireGlobal("Level.dropItem");
 canTileBeReplaced = ModAPI.requireGlobal("canTileBeReplaced");
@@ -27,8 +17,37 @@ var EU = EnergyTypeRegistry.assureEnergyType("Eu",1);
 var GUI_SCALE = 3.2;
 var GUI_TEXT = {size:16,color:android.graphics.Color.parseColor("#96dcdc")}
 
-function ENERGY_STORED(item,name,tooltip){
-    return name + tooltip + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu";
+var ChunkRegistry = {
+    chunk:{},
+    
+    getChunk:function(x,z){
+        var chunk = this.chunk[x + ":" + z];
+        if(chunk){return chunk;}
+        return null;
+    }
+},network = {}
+
+var Tooltip = {
+    energyStored:function(item,name,tooltip){
+        return name + tooltip + "\n§7" + Translation.translate("Energy: ") + ChargeItemRegistry.getEnergyStored(item) + "Eu"; 
+    },
+
+    tier:function(id,tier){
+        Item.addTooltip(id,Translation.translate("Power Tier: ") + tier);
+        Item.addTooltip(id,Translation.translate("Max Voltage: ") + power(tier) + "Eu");
+    },
+
+    destroyType:function(id,type){
+        Item.addTooltip(id,Translation.translate("Destroy Tool Type: ") + Translation.translate(type));
+    },
+
+    moduleType:function(id,type){
+        Item.addTooltip(id,Translation.translate("Module Type: ") + Translation.translate(type));
+    },
+
+    toolType:function(id,type){
+        Item.addTooltip(id,Translation.translate("Tool Type: ") + Translation.translate(type));
+    }
 }
 
 Block.createSpecialType({

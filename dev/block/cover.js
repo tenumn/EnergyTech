@@ -1,26 +1,16 @@
-Block.createSpecialType({
-    opaque:false,
-    destroytime:3
-},"cover");
-
-Renderer.initCoverModel = function(id,texture){
-    var size = [[0,0.9375,0,1,1,1],[0,0,0,1,0.0625,1],[0,0,0.9375,1,1,1],[0,0,0,1,1,0.0625],[0.9375,0,0,1,1,1],[0,0,0,0.0625,1,1]];
-    for(var i = 0;i < 6;i++){
-        var box = size[i],model = new BlockRenderer.Model();
-        model.addBox(box[0],box[1],box[2],box[3],box[4],box[5],texture);
-        Renderer.initRenderModel(id,i,model);
-
-        Block.setBlockShape(id,{x:box[0],y:box[1],z:box[2]},{x:box[3],y:box[4],z:box[5]},i);
-    }
-}
-
 Renderer.registerCoverModel = function(id,data,texture){
     var size = [[0,0.9375,0,1,1,1],[0,0,0,1,0.0625,1],[0,0,0.9375,1,1,1],[0,0,0,1,1,0.0625],[0.9375,0,0,1,1,1],[0,0,0,0.0625,1,1]];
+    
     for(var i = 0;i < 6;i++){
-        var box = size[i],model = new BlockRenderer.Model();
-        model.addBox(box[0],box[1],box[2],box[3],box[4],box[5],texture);
-        Renderer.registerRenderModel(id,data + i,model);
+        var render = new ICRender.Model(),model = new BlockRenderer.Model();
+        model.addBox(size[i][0],size[i][1],size[i][2],size[i][3],size[i][4],size[i][5],texture);
+		render.addEntry(model);
+        Renderer.registerRenderModel(id,data + i,render);
+
+        Block.setBlockShape(id,{x:size[i][0],y:size[i][1],z:size[i][2]},{x:size[i][3],y:size[i][4],z:size[i][5]},i);
     }
+
+    Item.addCreativeGroup("cover",Translation.translate("Cover"),[id]);
 }
 
 Renderer.setCoverRotationPlace = function(id){
@@ -40,6 +30,11 @@ Renderer.setCoverRotationPlace = function(id){
     });
 }
 
+Block.createSpecialType({
+    opaque:false,
+    destroytime:3
+},"cover");
+
 // 能量显示面板
 IDRegistry.genItemID("coverEnergyDisplay");
 Item.createItem("coverEnergyDisplay","Energy Display Cover",{name:"cover_energy_display",meta:0});
@@ -53,8 +48,6 @@ Block.createBlock("coverEnergyDisplay",[
     {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false},
     {name:"Energy Display Cover",texture:[["cover_energy_display",0]],inCreative:false}
 ],"cover");
-
-Renderer.initCoverModel(BlockID.coverEnergyDisplay,[["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0],["cover_energy_display",0]]);
 for(let i = 0;i <= 10;i++){
     Renderer.registerCoverModel(BlockID.coverEnergyDisplay,i * 6,[["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i],["cover_energy_display",i]]);
 }
@@ -76,6 +69,10 @@ Machine.registerPrototype(BlockID.coverEnergyDisplay,{
         if(tile && tile.data.energy && tile.getEnergyStorage()){
             Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (Math.round(tile.data.energy / tile.getEnergyStorage() * 10) * 6));
         }
+    },
+
+    destroy:function(){
+        BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
     }
 });
 Renderer.setCoverRotationPlace("coverEnergyDisplay");
@@ -93,8 +90,6 @@ Block.createBlock("coverProgressDisplay",[
     {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false},
     {name:"Progress Display Cover",texture:[["cover_progress_display",0]],inCreative:false}
 ],"cover");
-
-Renderer.initCoverModel(BlockID.coverProgressDisplay,[["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0],["cover_progress_display",0]]);
 for(let i = 0;i <= 11;i++){
     Renderer.registerCoverModel(BlockID.coverProgressDisplay,i * 6,[["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i],["cover_progress_display",i]]);
 }
@@ -115,6 +110,10 @@ Machine.registerPrototype(BlockID.coverProgressDisplay,{
         if(tile && tile.data.progress){
             Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (tile.data.isActive?(Math.round(tile.data.progress / 1 * 11) * 6):0));
         }
+    },
+
+    destroy:function(){
+        BlockRenderer.unmapAtCoords(this.x,this.y,this.z);
     }
 });
 Renderer.setCoverRotationPlace("coverProgressDisplay");

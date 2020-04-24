@@ -113,39 +113,59 @@ Block.registerDropFunction("oreSalt",function(coords,id,data,level,enchant){
     return [];
 },1);
 
-var VEIN = [
+// 红宝石矿石
+IDRegistry.genBlockID("oreRuby");
+Block.createBlock("oreRuby",[
+    {name:"Ruby Ore",texture:[["ruby_ore",0]],inCreative:true}
+],"opaque");
+ToolAPI.registerBlockMaterial(BlockID.oreRuby,"stone",3);
+Block.setDestroyTime(BlockID.oreRuby,3);
+Block.setDestroyLevel("oreRuby",3);
+
+Block.registerDropFunction("oreRuby",function(coords,id,data,level,enchant){
+	if(level >= 3){
+        if(enchant.silk){return [[id,1,data]];}
+        return [[ItemID.ruby,Math.floor(Math.random() * enchant.fortune + 1),0]];
+    }
+    return [];
+},3);
+
+var OVERWORLD_VEIN = [
     // 煤炭矿脉
     {name:"Coal",ores:[{id:16,data:0}],minHeight:48,maxHeight:128,size:10},
 
     // 铝土矿脉
-    {name:"Bauxite",ores:[{id:BlockID.oreBauxite,data:0}],minHeight:64,maxHeight:96,size:5},
+    {name:"Bauxite",ores:[{id:BlockID.oreBauxite,data:0}],minHeight:64,maxHeight:96,size:15},
 
     // 黝铜矿脉
-    {name:"Tetrahedrite",ores:[{id:BlockID.oreTetrahedrite,data:0},{id:BlockID.oreCopper,data:0}],minHeight:64,maxHeight:128,size:9},
+    {name:"Tetrahedrite",ores:[{id:BlockID.oreTetrahedrite,data:0},{id:BlockID.oreCopper,data:0}],minHeight:64,maxHeight:128,size:19},
 
     // 钻石矿脉
-    {name:"Diamonds",ores:[{id:56,data:0},{id:16,data:0},{id:BlockID.oreGraphite,data:0}],minHeight:4,maxHeight:16,size:4},
+    {name:"Diamonds",ores:[{id:56,data:0},{id:16,data:0},{id:BlockID.oreGraphite,data:0}],minHeight:4,maxHeight:16,size:14},
 
     // 铀矿脉
-    {name:"Uranium",ores:[{id:BlockID.oreUranium,data:0}],minHeight:8,maxHeight:32,size:3},
+    {name:"Uranium",ores:[{id:BlockID.oreUranium,data:0}],minHeight:8,maxHeight:32,size:13},
 
     // 锡石矿脉
     {name:"Cassiterite",ores:[{id:BlockID.oreCassiterite,data:0},{id:BlockID.oreTungsten,data:0}],minHeight:32,maxHeight:96,size:11},
 
     // 铁矿脉
-    {name:"Iron",ores:[{id:15,data:0}],minHeight:16,maxHeight:32,size:8},
+    {name:"Iron",ores:[{id:15,data:0}],minHeight:16,maxHeight:32,size:18},
 
     // 方铅矿脉
-    {name:"Galena",ores:[{id:BlockID.oreGalena,data:0},{id:BlockID.oreSilver,data:0}],minHeight:32,maxHeight:64,size:4},
+    {name:"Galena",ores:[{id:BlockID.oreGalena,data:0},{id:BlockID.oreSilver,data:0}],minHeight:32,maxHeight:64,size:14},
 
     // 岩盐矿脉
-    {name:"Salt",ores:[{id:BlockID.oreSalt,data:0},{id:BlockID.oreSpodumene,data:0}],minHeight:48,maxHeight:64,size:2}
+    {name:"Salt",ores:[{id:BlockID.oreSalt,data:0},{id:BlockID.oreSpodumene,data:0}],minHeight:48,maxHeight:64,size:12},
+
+    // 红石矿脉
+    {name:"Redstone",ores:[{id:73,data:0},{id:BlockID.oreRuby,data:0}],minHeight:16,maxHeight:48,size:14}
 ];
 
 Callback.addCallback("PreLoaded",function(){
     Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
-        if(Math.random() < 0.25 && (chunkX + chunkZ)%2 == 0){
-            var ore = VEIN[Math.floor(Math.random() * VEIN.length)],coords = GenerationUtils.randomCoords(chunkX,chunkZ,ore.minHeight,ore.maxHeight);
+        if(Math.random() < 0.25 && (chunkX + chunkZ)%4 == 0){
+            var ore = OVERWORLD_VEIN[Math.floor(Math.random() * OVERWORLD_VEIN.length)],coords = GenerationUtils.randomCoords(chunkX,chunkZ,ore.minHeight,ore.maxHeight);
             runOnMainThread(function(){
                 for(let x = 0;x <= ore.size;x++){for(let y = 0;y <= ore.size;y++){for(let z = 0;z <= ore.size;z++){
                     var pointed = {x:Math.floor(coords.x - ore.size + x),y:Math.floor(coords.y - ore.size + y),z:Math.floor(coords.z - ore.size + z)}
@@ -156,9 +176,24 @@ Callback.addCallback("PreLoaded",function(){
                 }}}
             });
             ChunkRegistry.chunk[chunkX + ":" + chunkZ] = ore.name;
-            if(__config__.getBool("debug")){Debug.message(coords.x + " " + coords.y + " " + coords.z);}
+            if(__config__.getBool("debug")){Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);}
         }
     });
+
+    Item.addCreativeGroup("ore",Translation.translate("Ore"),[
+        BlockID.oreCopper,
+        BlockID.oreTetrahedrite,
+        BlockID.oreCassiterite,
+        BlockID.oreGalena,
+        BlockID.oreSpodumene,
+        BlockID.oreGraphite,
+        BlockID.oreTungsten,
+        BlockID.oreUranium,
+        BlockID.oreSilver,
+        BlockID.oreBauxite,
+        BlockID.oreSalt,
+        BlockID.oreRuby
+    ]);
 
     Recipes.addFurnace(BlockID.oreCopper,ItemID.ingotCopper);
     Recipes.addFurnace(BlockID.oreTetrahedrite,ItemID.ingotCopper);
@@ -167,6 +202,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreUranium,ItemID.ingotUranium);
     Recipes.addFurnace(BlockID.oreSilver,ItemID.ingotSilver);
     Recipes.addFurnace(BlockID.oreBauxite,ItemID.ingotAluminium);
+    Recipes.addFurnace(BlockID.oreRuby,ItemID.ruby);
 
     Tool.setHammerDestroyDrop(BlockID.oreCopper,ItemID.oreChunkCopper,4,0,true);
     Tool.setHammerDestroyDrop(BlockID.oreTetrahedrite,ItemID.oreChunkTetrahedrite,4,0,true);

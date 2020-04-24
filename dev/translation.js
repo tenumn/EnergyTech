@@ -1,5 +1,6 @@
 // Material
 Translation.addTranslation("Small Stone",{zh:"石子"});
+Translation.addTranslation("Ruby",{zh:"红宝石"});
 Translation.addTranslation("Slag",{zh:"矿渣"});
 Translation.addTranslation("Resin",{zh:"树脂"});
 Translation.addTranslation("Enriched Uranium",{zh:"浓缩铀"});
@@ -22,6 +23,11 @@ Translation.addTranslation("Small Pile of Lithium-6",{zh:"小堆锂-6",ru:"Не�
 Translation.addTranslation("Small Pile of Lithium-7",{zh:"小堆锂-7",ru:"Небольшая кучка Лития-7"});
 Translation.addTranslation("Small Pile of Uranium-235",{zh:"小堆铀-235",ru:"Небольшая кучка Урана-235"});
 Translation.addTranslation("Small Pile of Uranium-238",{zh:"小堆铀-238",ru:"Небольшая кучка Урана-238"});
+
+// Item Pipe
+Translation.addTranslation("Item Pipe (Input)",{zh:"物品管道 (输入)"});
+Translation.addTranslation("Item Pipe (Transport)",{zh:"物品管道 (传输)"});
+Translation.addTranslation("Item Pipe (Output)",{zh:"物品管道 (输出)"});
 
 // Block
 Translation.addTranslation("Copper Block",{zh:"铜块",ru:"Медный блок"});
@@ -83,6 +89,7 @@ Translation.addTranslation("Tungsten Ore",{zh:"钨矿石",ru:"Вольфрамо
 Translation.addTranslation("Uranium Ore",{zh:"铀矿石",ru:"Урановая руда"});
 Translation.addTranslation("Silver Ore",{zh:"银矿石",ru:"Серебряная руда"});
 Translation.addTranslation("Bauxite Ore",{zh:"铝土矿石",ru:"Алюминиевая руда"});
+Translation.addTranslation("Ruby Ore",{zh:"红宝石矿石"});
 
 Translation.addTranslation("Fire Generator",{zh:"火力发电机",ru:"Генератор внутреннего сгорания"});
 Translation.addTranslation("Fusion Reactor",{zh:"核聚变反应堆"});
@@ -218,6 +225,9 @@ Translation.addTranslation("Diamond Dust",{zh:"钻石粉",ru:"Алмазная �
 Translation.addTranslation("Silicon Dioxide Dust",{zh:"二氧化硅粉"});
 Translation.addTranslation("Enete Alloy Dust",{zh:"恩奈特合金粉"});
 Translation.addTranslation("Lead-Antimony Alloy Dust",{zh:"铅锑合金粉",ru:"Стибий-свинцовая пыль"});
+Translation.addTranslation("Salt Dust",{zh:"盐粉"});
+Translation.addTranslation("Energium Dust",{zh:"能量水晶粉"});
+Translation.addTranslation("Ruby Dust",{zh:"红宝石粉"});
 
 Translation.addTranslation("Small Pile of Flint Dust",{zh:"小堆燧石粉"});
 Translation.addTranslation("Small Pile of Stone Dust",{zh:"小堆石粉",ru:"Небольшая кучка каменной пыли"});
@@ -239,6 +249,10 @@ Translation.addTranslation("Small Pile of Diamond Dust",{zh:"小堆钻石粉",ru
 Translation.addTranslation("Small Pile of Silicon Dioxide Dust",{zh:"二氧化硅粉"});
 Translation.addTranslation("Small Pile of Enete Alloy Dust",{zh:"小堆恩奈特合金粉"});
 Translation.addTranslation("Small Pile of Lead-Antimony Alloy Dust",{zh:"小堆铅锑合金粉",ru:"Небольшая кучка стибий-свинцовой пыли"});
+Translation.addTranslation("Small Pile of Salt Dust",{zh:"小堆盐粉"});
+Translation.addTranslation("Small Pile of Energium Dust",{zh:"小堆能量水晶粉"});
+Translation.addTranslation("Small Pile of Redstone Dust",{zh:"小堆能量红石粉"});
+Translation.addTranslation("Small Pile of Ruby Dust",{zh:"小堆红宝石粉"});
 
 // Gear
 Translation.addTranslation("Iron Gear",{zh:"铁齿轮",ru:"Железная шестерня"});
@@ -299,6 +313,7 @@ Translation.addTranslation("Steel Stick",{zh:"钢棍",ru:"Стальная па�
 Translation.addTranslation("Tungsten Stick",{zh:"钨棍",ru:"Вольфрамовая палка"});
 Translation.addTranslation("Enete Alloy Stick",{zh:"恩奈特合金棍",ru:"Палка из сплава Шерлока"});
 Translation.addTranslation("Lead-Antimony Alloy Stick",{zh:"铅锑合金棍",ru:"Палка из стибий-свинцового сплава"});
+Translation.addTranslation("Lapis Stick",{zh:"青金石棍"});
 
 // Circuit
 Translation.addTranslation("Circuit",{zh:"电路板",ru:"Электросхема"});
@@ -418,6 +433,8 @@ Translation.addTranslation("Lithium Battery",{zh:"锂电池",ru:"Литиева�
 Translation.addTranslation("Lithium Battery Box",{zh:"锂电池盒",ru:"Литиевая аккумуляторная коробка"});
 Translation.addTranslation("Enete Battery",{zh:"恩奈特电池"});
 Translation.addTranslation("Enete Battery Box",{zh:"恩奈特电池盒"});
+Translation.addTranslation("Energy Crystal",{zh:"能量水晶"});
+Translation.addTranslation("Lapotron Crystal",{zh:"兰波顿水晶"});
 
 // Info
 Translation.addTranslation("Info: ",{zh:"信息: "});

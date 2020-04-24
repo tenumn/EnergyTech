@@ -55,16 +55,19 @@ Machine.registerGenerator(BlockID.nuclearReactor,{
     },
     
     getModuleData:function(){
-        var reactor_radius = __config__.getNumber("machine.reactor.radius"),range = reactor_radius * 2 + 1;
-        for(let x = 0;x <= range;x++){for(let y = 0;y <= range;y++){for(let z = 0;z <= range;z++){
-            var coords = {x:this.x - reactor_radius + x,y:this.y - reactor_radius + y,z:this.z - reactor_radius + z};
-            if(Reactor.getModuleType(World.getBlockID(coords.x,coords.y,coords.z)) != "Coil"){
-                var tile = World.getTileEntity(coords.x,coords.y,coords.z),reactor = Reactor.getModule(World.getBlock(coords.x,coords.y,coords.z).id);
-                if(reactor && tile){
-                    __config__.getBool("machine.reactor.isDurability")?tile.data.durability -= reactor(this.id,this.data,coords):reactor(this.id,this.data,coords);
+        var radius = __config__.getNumber("machine.nuclear_reactor_radius");
+        for(let x = 0;x <= (radius * 2 + 1);x++){
+            for(let y = 0;y <= (radius * 2 + 1);y++){
+                for(let z = 0;z <= (radius * 2 + 1);z++){
+                    var coords = {x:this.x - radius + x,y:this.y - radius + y,z:this.z - radius + z};
+                    var tile = World.getTileEntity(coords.x,coords.y,coords.z);
+                    var reactor = NuclearReactor.getModule(World.getBlock(coords.x,coords.y,coords.z).id);
+                    if(reactor && tile){
+                        __config__.getBool("machine.nuclear_reactor_durability")?tile.data.durability -= reactor(coords,this.data,this.id):reactor(coords,this.data,this.id);
+                    }
                 }
             }
-        }}}
+        }
     },
 
     blast:function(){
@@ -81,10 +84,12 @@ Machine.registerGenerator(BlockID.nuclearReactor,{
     tick:function(){
         this.initValues();
         
+        var energy_output = Math.floor(this.data.heat * this.data.fuel);
+
         if(this.data.isActive){
             this.getModuleData();
-            if(this.data.energy + Math.floor(this.data.heat * this.data.fuel) < this.getEnergyStorage()){
-                this.data.energy += Math.floor(this.data.heat * this.data.fuel);
+            if(this.data.energy + energy_output < this.getEnergyStorage()){
+                this.data.energy += energy_output;
             }
         }
 
@@ -93,7 +98,7 @@ Machine.registerGenerator(BlockID.nuclearReactor,{
         this.container.setScale("scaleBurn",this.data.blast_progress);
 		this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
-        this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + Math.floor(this.data.heat * this.data.fuel) + "Eu");
+        this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + energy_output + "Eu");
         this.container.setText("textHard",Translation.translate("Hard Level: ") + this.data.hard);
         this.container.setText("textHeat",Translation.translate("Heat: ") + this.data.heat + "Hu");
         this.container.setText("textFuel",Translation.translate("Fuel: ") + this.data.fuel);

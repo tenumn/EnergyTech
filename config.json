@@ -1,16 +1,10 @@
 {
 	"enabled":true,
 	"debug":false,
-	"sounds":{
-		"enabled":true
-	},
   	"machine":{
-    	"voltage":{
-			"enabled":true
-    	},
-        "reactor":{
-			"radius":2,
-			"isDurability":true
-		}
+    	"voltage_enabled":true,
+		"nuclear_reactor_radius":2,
+		"nuclear_reactor_durability":true,
+		"fusion_reactor_durability":false
   	}
 }

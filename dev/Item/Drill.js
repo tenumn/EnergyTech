@@ -58,10 +58,10 @@ IDRegistry.genItemID("drill");
 Item.createItem("drill","Drill",{name:"drill"},{stack:1,isTech:true});
 Tool.registerTool(ItemID.drill,"Drill");
 ToolAPI.setTool(ItemID.drill,"iron",ToolType.drill);
-ChargeItemRegistry.registerItem(ItemID.drill,"Eu",16384,power(1),1,"tool",true,true);
+ChargeItemRegistry.registerItem(ItemID.drill,"Eu",16384,power(1),1,"tool",true);
 
-Item.addTooltip(ItemID.drill,Translation.translate("Power Tier: ") + 1);
-Item.setItemName(ItemID.drill,ENERGY_STORED);
+Tooltip.tier(ItemID.drill,1);
+Item.setItemName(ItemID.drill,Tooltip.energyStored);
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:ItemID.drill,count:1,data:Item.getMaxDamage(ItemID.drill)},["bc ","cbc"," ca"],["a",ItemID.electricMotor,0,"b",ItemID.plateIron,0,"c",ItemID.gearIron,0]);

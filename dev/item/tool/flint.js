@@ -45,7 +45,7 @@ Callback.addCallback("PreLoaded",function(){
 
     Recipes.addShaped({id:ItemID.swordFlint,count:1,data:0},["a","a","b"],["a",318,0,"b",280,0]);
     Recipes.addShaped({id:ItemID.shovelFlint,count:1,data:0},["a","b","b"],["a",318,0,"b",280,0]);
-    Recipes.addShaped({id:ItemID.pickaxeFlint,count:1,data:0},["aaa"," b  "," b "],["a",318,0,"b",280,0]);
+    Recipes.addShaped({id:ItemID.pickaxeFlint,count:1,data:0},["aaa"," b "," b "],["a",318,0,"b",280,0]);
     Recipes.addShaped({id:ItemID.axeFlint,count:1,data:0},["aa ","ab "," b "],["a",318,0,"b",280,0]);
     Recipes.addShaped({id:ItemID.hoeFlint,count:1,data:0},["aa "," b "," b "],["a",318,0,"b",280,0]);
 });

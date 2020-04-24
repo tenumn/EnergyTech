@@ -42,17 +42,17 @@ Item.createArmorItem("chestplatePowered","Powered Chestplate",{name:"powered_che
 Item.createArmorItem("leggingsPowered"  ,"Powered Leggings"  ,{name:"powered_leggings"}  ,{type:"leggings"  ,armor:12,durability:262144,texture:"armor/powered_2.png",isTech:true});
 Item.createArmorItem("bootsPowered"     ,"Powered Boots"     ,{name:"powered_boots"}     ,{type:"boots"     ,armor:9,durability:262144,texture:"armor/powered_1.png",isTech:true});
 
-ChargeItemRegistry.registerItem(ItemID.helmetPowered    ,"Eu",262144,power(2),2,"armor",true,true);
-ChargeItemRegistry.registerItem(ItemID.chestplatePowered,"Eu",262144,power(2),2,"armor",true,true);
-ChargeItemRegistry.registerItem(ItemID.leggingsPowered  ,"Eu",262144,power(2),2,"armor",true,true);
-ChargeItemRegistry.registerItem(ItemID.bootsPowered     ,"Eu",262144,power(2),2,"armor",true,true);
+ChargeItemRegistry.registerItem(ItemID.helmetPowered    ,"Eu",262144,power(2),2,"armor",true);
+ChargeItemRegistry.registerItem(ItemID.chestplatePowered,"Eu",262144,power(2),2,"armor",true);
+ChargeItemRegistry.registerItem(ItemID.leggingsPowered  ,"Eu",262144,power(2),2,"armor",true);
+ChargeItemRegistry.registerItem(ItemID.bootsPowered     ,"Eu",262144,power(2),2,"armor",true);
 
 Armor.registerFuncs("helmetPowered"    ,POWERED_FUNCS);
 Armor.registerFuncs("chestplatePowered",POWERED_FUNCS);
 Armor.registerFuncs("leggingsPowered"  ,POWERED_FUNCS);
 Armor.registerFuncs("bootsPowered"     ,POWERED_FUNCS);
 
-Item.setItemName(ItemID.chestplatePowered,ENERGY_STORED);
-Item.setItemName(ItemID.helmetPowered    ,ENERGY_STORED);
-Item.setItemName(ItemID.leggingsPowered  ,ENERGY_STORED);
-Item.setItemName(ItemID.bootsPowered     ,ENERGY_STORED);
+Item.setItemName(ItemID.chestplatePowered,Tooltip.energyStored);
+Item.setItemName(ItemID.helmetPowered    ,Tooltip.energyStored);
+Item.setItemName(ItemID.leggingsPowered  ,Tooltip.energyStored);
+Item.setItemName(ItemID.bootsPowered     ,Tooltip.energyStored);

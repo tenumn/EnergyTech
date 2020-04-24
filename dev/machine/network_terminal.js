@@ -87,7 +87,7 @@ Machine.registerMachine(BlockID.networkTerminal,{
                     World.explode(this.x,this.y,this.z,1,true);
                 }
     
-                if(__config__.getBool("machine.voltage.enabled")){
+                if(__config__.getBool("machine.voltage_enabled")){
                     if(machine.voltage && machine.voltage > net.voltage){
                         World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,0.5,true);
                     }

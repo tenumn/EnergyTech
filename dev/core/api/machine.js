@@ -6,6 +6,7 @@ var Machine = {
     },
 
     registerPrototype:function(id,state){
+        this.machineIDs[id] = true;
         state.id = id;
 
         state.playSound = state.playSound || function(name){
@@ -96,8 +97,6 @@ var Machine = {
     },
     
     registerMachine:function(id,state){
-        this.machineIDs[id] = true;
-
         ICRender.getGroup("et-wire").add(id,-1);
         
         if(state.defaultValues){
@@ -125,9 +124,9 @@ var Machine = {
             this.data.voltage = 0;
         }
 
-        Item.addTooltip(id,Translation.translate("Power Tier: ") + state.defaultValues.tier);
-        Item.addTooltip(id,Translation.translate("Destroy Tool Type: ") + Translation.translate("Wrench"));
-
+        Tooltip.tier(id,state.defaultValues.tier);
+        Tooltip.destroyType(id,"Wrench");
+        
         this.registerPrototype(id,state);
         EnergyTileRegistry.addEnergyTypeForId(id,EU);
     },
@@ -153,7 +152,7 @@ var Machine = {
     energyReceive:function(type,amount,voltage){
         var voltage_max = this.getMaxVoltage();
         if(voltage > voltage_max){
-            var voltage_enabled = __config__.getBool("machine.voltage.enabled");
+            var voltage_enabled = __config__.getBool("machine.voltage_enabled");
             if(voltage_enabled){
                 World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,0.5,true);
                 this.selfDestroy();

@@ -41,6 +41,7 @@ var GuiFusionReactor = new UI.StandartWindow({
         "textHard":{type:"text",font:GUI_TEXT,x:700,y:135,width:300,height:30,text:Translation.translate("Hard Level: ") + "0"},
         "textHeat":{type:"text",font:GUI_TEXT,x:700,y:165,width:300,height:30,text:Translation.translate("Heat: ") + "0Hu"},
         "textFuel":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Fuel: ") + "0"},
+        "textHeatTip":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Need Heat: ") + "0 <= 0 => 0"},
 
         "scaleBurn":{type:"scale",x:350 + GUI_SCALE * 4,y:325 + GUI_SCALE * 4,direction:0,value:0.5,bitmap:"heatScale",scale:GUI_SCALE},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE}
@@ -59,44 +60,48 @@ Machine.registerMachine(BlockID.fusionReactor,{
         work_time:160,
         isActive:false,
         blast_progress:0,
-        energy_consumption:6272,
-        energy_storage:1048576
+        energy_storage:1048576,
+        energy_consumption:6272
     },
 
     getModuleData:function(){
-        var durability = __config__.getBool("machine.reactor.isDurability");
+        var durability = __config__.getBool("machine.fusion_reactor_durability");
         for(let i in coils){
             var coil = {x:this.x + coils[i][0],y:this.y + coils[i][1],z:this.z + coils[i][2]}
             for(let side = 0;side < 6;side++){
                 var coords = World.getRelativeCoords(coil.x,coil.y,coil.z,side);
-                var block = World.getBlock(coords.x,coords.y,coords.z);
-                var type = Reactor.getModuleType(block.id);
-                if(type == "Casing" || type == "Coolant"){
-                    var tile = World.getTileEntity(coords.x,coords.y,coords.z);
-                    var reactor = Reactor.getModule(block.id);
-                    if(reactor && tile){
-                        durability?tile.data.durability -= reactor(this.id,this.data,coords):reactor(this.id,this.data,coords);
-                    }
+                var reactor = FusionReactor.getModule(World.getBlock(coords.x,coords.y,coords.z).id);
+                var coil_tile = World.getTileEntity(coords.x,coords.y,coords.z);
+                if(reactor && coil_tile){
+                    durability?coil_tile.data.durability -= reactor(this.id,this.data,coords,this.id):reactor(this.id,this.data,coords,this.id);
                 }
             }
-            tile = World.getTileEntity(coil.x,coil.y,coil.z),reactor = Reactor.getModule(World.getBlockID(coil.x,coil.y,coil.z));
-            if(reactor && tile){
-                durability?tile.data.durability -= reactor(this.id,this.data,coil):reactor(this.id,this.data,coil);
+
+            var module_tile = World.getTileEntity(coil.x,coil.y,coil.z);
+            var reactor = FusionReactor.getModule(World.getBlock(coil.x,coil.y,coil.z).id);
+            if(reactor && module_tile){
+                durability?module_tile.data.durability -= reactor(coil,this.data):reactor(coil,this.data);
             }
         }
     },
 
 	isCoil:function(){
-        var count = 0;
+        var fusion = 0,coil = 0;
         
-        for(var i in coils){
-            var coil = {x:this.x + coils[i][0],y:this.y + coils[i][1],z:this.z + coils[i][2]},block = World.getBlock(coil.x,coil.y,coil.z);
-            if(Reactor.isModule(block.id) && Reactor.getModuleType(block.id) == "Coil"){
-                count += 1;
+        for(let i in coils){
+            var coords = {x:this.x + coils[i][0],y:this.y + coils[i][1],z:this.z + coils[i][2]};
+            if(FusionReactor.getModuleType(World.getBlock(coords.x,coords.y,coords.z).id) == "Coil"){
+                coil++;
+                for(let side = 0;side < 6;side++){
+                    var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side);
+                    if(FusionReactor.isModule(World.getBlock(relative.x,relative.y,relative.z).id)){
+                        fusion++;
+                    }
+                }
             }
         }
 
-        return (count == 48)?true:false;
+        return (coil == 48 && fusion == 188)?true:false;
     },
 
     blast:function(){
@@ -123,43 +128,40 @@ Machine.registerMachine(BlockID.fusionReactor,{
     tick:function(){
         this.initValues();
         
-        if(this.data.isActive){
-            if(this.isCoil()){
-                this.getModuleData();
+        var energy_output = Math.floor(this.data.heat * this.data.fuel);
+        if(this.data.isActive && this.isCoil()){
+            this.getModuleData();
 
-                var input1 = this.container.getSlot("slotInput1"),input2 = this.container.getSlot("slotInput2"),recipe = Recipe.getRecipeResult("FusionReactor",[input1.id,input1.data,input2.id,input2.data]);
-                var heat = this.data.heat - Math.max(0,this.data.coolant - this.data.heat);
-                if(recipe && (recipe.heat >= heat/2 && recipe.heat <= heat*2)){
-                    if(this.data.energy +  Math.floor(this.data.heat * this.data.fuel) < this.getEnergyStorage()){
-                        this.data.energy += Math.floor(this.data.heat * this.data.fuel);
-                    }
-    
+            var input1 = this.container.getSlot("slotInput1"),input2 = this.container.getSlot("slotInput2"),recipe = Recipe.getRecipeResult("FusionReactor",[input1.id,input1.data,input2.id,input2.data]);
+            var heat = this.data.heat - Math.max(0,this.data.coolant - this.data.heat);
+            if(recipe){
+                if(recipe.heat >= heat/2 && recipe.heat <= heat*2){
+                    if(this.data.energy + energy_output < this.getEnergyStorage()){this.data.energy += energy_output;}
                     if(this.data.energy >= this.data.energy_consumption){
                         this.data.energy -= this.data.energy_consumption;
                         this.data.progress += 1 / this.data.work_time;
                         if(this.data.progress.toFixed(3) >= 1){
-                            for(let i = 0;i <= 3;i++){
-                                var output = recipe.output[i];
-                                if(output){this.setOutput("slotOutput" + i,output.id,output.count,output.data);}
-                            }
+                            for(let i = 0;i < 4;i++){var output = recipe.output[i];if(output){this.setOutput("slotOutput" + i,output.id,output.count,output.data);}}
                             input1.count--,input2.count--;
                             this.container.validateAll();
                             this.data.progress = 0;
                         }
                     }
-                } else {
-                    this.data.progress = 0;
                 }
+                this.container.setText("textHeatTip",Translation.translate("Need Heat: ") + heat / 2 + " <= " + recipe.heat + " => " + heat * 2);
+            } else {
+                this.data.progress = 0;
+                this.container.setText("textHeatTip",Translation.translate("Need Heat: ") + "0 <= 0 => 0");
             }
         }
-
+        
         this.blast();
         
         // Info
         this.container.setScale("scaleBurn",this.data.blast_progress);
 		this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
-        this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + Math.floor(this.data.heat * this.data.fuel) + "Eu");
+        this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + energy_output + "Eu");
         this.container.setText("textHard",Translation.translate("Hard Level: ") + this.data.hard);
         this.container.setText("textHeat",Translation.translate("Heat: ") + (this.data.heat - Math.max(0,this.data.coolant - this.data.heat)) + "Hu");
         this.container.setText("textFuel",Translation.translate("Fuel: ") + this.data.fuel);

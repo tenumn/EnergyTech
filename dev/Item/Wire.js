@@ -35,7 +35,7 @@ Machine.registerWire(BlockID.wireTin,power(1));
 Machine.registerWirePlacedCallback("wireTin",BlockID.wireTin,0);
 TileRenderer.setupWireModel(BlockID.wireTin,0,0.25,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireTin,1,0.3125,"et-wire");
-Item.addTooltip(ItemID.wireTin,Translation.translate("Max Voltage: ") + power(1) + "EU/t");
+Tooltip.tier(ItemID.wireTin,1);
 
 Block.registerDropFunction("wireTin",function(coords,id,data){
     if(data == 1){
@@ -58,7 +58,7 @@ Machine.registerWire(BlockID.wireCopper,power(2));
 Machine.registerWirePlacedCallback("wireCopper",BlockID.wireCopper,0);
 TileRenderer.setupWireModel(BlockID.wireCopper,0,0.25,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireCopper,1,0.3125,"et-wire");
-Item.addTooltip(ItemID.wireCopper,Translation.translate("Max Voltage: ") + power(2) + "EU/t");
+Tooltip.tier(ItemID.wireCopper,2);
 
 Block.registerDropFunction("wireCopper",function(coords,id,data){
     if(data == 1){
@@ -81,7 +81,7 @@ Machine.registerWire(BlockID.wireGold,power(3));
 Machine.registerWirePlacedCallback("wireGold",BlockID.wireGold,0);
 TileRenderer.setupWireModel(BlockID.wireGold,0,0.375,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireGold,1,0.4375,"et-wire");
-Item.addTooltip(ItemID.wireGold,Translation.translate("Max Voltage: ") + power(3) + "EU/t");
+Tooltip.tier(ItemID.wireGold,3);
 
 Block.registerDropFunction("wireGold",function(coords,id,data){
     if(data == 1){
@@ -104,7 +104,7 @@ Machine.registerWire(BlockID.wireSteel,power(4));
 Machine.registerWirePlacedCallback("wireSteel",BlockID.wireSteel,0);
 TileRenderer.setupWireModel(BlockID.wireSteel,0,0.375,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireSteel,1,0.4375,"et-wire");
-Item.addTooltip(ItemID.wireSteel,Translation.translate("Max Voltage: ") + power(4) + "EU/t");
+Tooltip.tier(ItemID.wireSteel,4);
 
 Block.registerDropFunction("wireSteel",function(coords,id,data){
     if(data == 1){
@@ -127,7 +127,7 @@ Machine.registerWire(BlockID.wireTungsten,power(5));
 Machine.registerWirePlacedCallback("wireTungsten",BlockID.wireTungsten,0);
 TileRenderer.setupWireModel(BlockID.wireTungsten,0,0.5,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireTungsten,1,0.5625,"et-wire");
-Item.addTooltip(ItemID.wireTungsten,Translation.translate("Max Voltage: ") + power(5) + "EU/t");
+Tooltip.tier(ItemID.wireTungsten,5);
 
 Block.registerDropFunction("wireTungsten",function(coords,id,data){
     if(data == 1){

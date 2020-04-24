@@ -16,6 +16,13 @@ ToolAPI.registerBlockMaterial(BlockID.marble,"stone",1);
 Block.setDestroyTime(BlockID.marble,1);
 Block.setDestroyLevel("marble",1);
 
+Block.registerDropFunction("marble",function(coords,id,data,level,enchant){
+	if(level >= 1){
+		[[BlockID.cobbleMarble,1,0]];
+	}
+	return [];
+},1);
+
 Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
     for(var i = 0;i < 6;i++){
         var coords = GenerationUtils.randomCoords(chunkX,chunkZ,0,255);

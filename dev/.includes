@@ -1,11 +1,17 @@
 header.js
 translation.js
 
+core/api/pipe.js
 core/api/machine.js
-core/api/reactor.js
 core/api/recipe.js
 core/api/tool.js
 core/api/upgrade.js
+
+core/api/pipe/item_pipe.js
+core/api/pipe/liquid_pipe.js
+
+machine/generator/fusion_reactor/reactor_api.js
+machine/generator/nuclear_reactor/reactor_api.js
 
 resource/broken_ore.js
 resource/crushed.js
@@ -44,6 +50,10 @@ block/ore.js
 block/scaffold.js
 block/stone.js
 
+
+block/pipe/item_pipe.js
+block/pipe/liquid_pipe.js
+
 machine/autoclave.js
 machine/auto_saieve.js
 machine/blast_furnace.js
@@ -64,14 +74,15 @@ machine/transformer.js
 machine/wiremill.js
 
 machine/generator/fire_generator.js
-machine/generator/fusion_reactor.js
-machine/generator/nuclear_reactor.js
 machine/generator/solar_generator.js
+
+machine/generator/fusion_reactor/fusion_reactor.js
+machine/generator/nuclear_reactor/nuclear_reactor.js
 
 machine/energy_storage/lithium_battery_box.js
 machine/energy_storage/enete_battery_box.js
 
-Support/minecraft.js
-Support/recipe_viewer.js
+support/minecraft.js
+support/recipe_viewer.js
 
 core/mod_api.js

@@ -5,7 +5,7 @@ var Tool = {
         if(!this.tool[type]){this.tool[type] = []}
         this.tool[type].push(id);
         
-        Item.addTooltip(id,Translation.translate("Tool Type: ") + Translation.translate(type));
+        Tooltip.toolType(id,type);
     },
     
     getAllTool:function(type){
@@ -25,29 +25,15 @@ var Tool = {
     
     HAMMER_RECIOE:{},
     
-    setHammerDestroyDrop:function(blockID,dropID,dropCount,dropData,random){
-        this.HAMMER_RECIOE[blockID] = {id:dropID,count:dropCount,data:dropData}
+    setHammerDestroyDrop:function(blockID,dropID,dropMaxCount,dropData,dropMinCount){
+        dropData = dropData || 0,dropMinCount = dropMinCount || dropMaxCount;
+        this.HAMMER_RECIOE[blockID] = {id:dropID,count:dropMaxCount,data:dropData}
         Block.registerDropFunctionForID(blockID,function(coords,id,data){
             var item = Player.getCarriedItem();
 			if(Tool.isTool(item.id,"Hammer")){
-                return [[dropID,dropCount + (random?Math.round(Math.random()):0),dropData]];
+                return [[dropID,random(dropMinCount,dropMaxCount),dropData]];
             };
             return [[id,1,data]];
         });
-    }
-}
-
-Callback.addCallback("DestroyBlock",function(coords,block,player){
-    var item = Player.getCarriedItem(),material = ToolAPI.getBlockMaterial(block.id);
-    if(Tool.isTool(item.id,"Shovel") && material.dirt){
-        Block.setTempDestroyTime(block.id,0.5);
-    }
-});
-
-var OreIDs = {};
-for(id in BlockID){
-    var tile = TileEntity.isTileEntityBlock(BlockID[id]);
-    if(id[0] == "o" && id[1] == "r" && id[2] == "e" && !tile){
-        OreIDs[BlockID[id]] = true;
     }
 }

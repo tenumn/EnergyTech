@@ -213,6 +213,10 @@ Item.createItem("ingotEnete","Enete Alloy Ingot",{name:"ingotEnete"});
 IDRegistry.genItemID("ingotLeadAntimony");
 Item.createItem("ingotLeadAntimony","Lead-Antimony Alloy Ingot",{name:"ingotLeadAntimony"});
 
+// 红宝石
+IDRegistry.genItemID("ruby");
+Item.createItem("ruby","Ruby",{name:"ruby"});
+
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("ingot",Translation.translate("Ingot"),[
         ItemID.ingotCopper,

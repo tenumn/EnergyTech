@@ -1,35 +1,38 @@
 // 铜棍
 IDRegistry.genItemID("stickCopper");
-Item.createItem("stickCopper","Copper Stick",{name:"stickCopper"});
+Item.createItem("stickCopper","Copper Stick",{name:"copper_stick"});
 
 // 锡棍
 IDRegistry.genItemID("stickTin");
-Item.createItem("stickTin","Tin Stick",{name:"stickTin"});
+Item.createItem("stickTin","Tin Stick",{name:"tin_stick"});
 
 // 铁棍
 IDRegistry.genItemID("stickIron");
-Item.createItem("stickIron","Iron Stick",{name:"stickIron"});
+Item.createItem("stickIron","Iron Stick",{name:"iron_stick"});
 
 // 钢棍
 IDRegistry.genItemID("stickSteel");
-Item.createItem("stickSteel","Steel Stick",{name:"stickSteel"});
+Item.createItem("stickSteel","Steel Stick",{name:"steel_stick"});
 
 // 金棍
 IDRegistry.genItemID("stickGold");
-Item.createItem("stickGold","Gold Stick",{name:"stickGold"});
+Item.createItem("stickGold","Gold Stick",{name:"gold_stick"});
 
 // 钨棍
 IDRegistry.genItemID("stickTungsten");
-Item.createItem("stickTungsten","Tungsten Stick",{name:"stickTungsten"});
+Item.createItem("stickTungsten","Tungsten Stick",{name:"tungsten_stick"});
 
 // 恩奈特合金棍
 IDRegistry.genItemID("stickEnete");
-Item.createItem("stickEnete","Enete Alloy Stick",{name:"stickEnete"});
+Item.createItem("stickEnete","Enete Alloy Stick",{name:"enete_stick"});
 
 // 铅锑合金棍
 IDRegistry.genItemID("stickLeadAntimony");
-Item.createItem("stickLeadAntimony","Lead-Antimony Alloy Stick",{name:"stickLeadAntimony"});
+Item.createItem("stickLeadAntimony","Lead-Antimony Alloy Stick",{name:"lead_antimony_stick"});
 
+// 青金石棍
+IDRegistry.genItemID("stickLapis");
+Item.createItem("stickLapis","Lapis Stick",{name:"lapis_stick"});
 
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("stick",Translation.translate("Stick"),[
@@ -41,6 +44,7 @@ Callback.addCallback("PreLoaded",function(){
         ItemID.stickTungsten,
         ItemID.stickEnete,
         ItemID.stickLeadAntimony,
+        ItemID.stickLapis
     ]);
 
     Recipe.addCuttingRecipe({id:ItemID.plateCopper,data:0},{id:ItemID.stickCopper,count:4,data:0});
@@ -51,6 +55,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipe.addCuttingRecipe({id:ItemID.plateTungsten,data:0},{id:ItemID.stickTungsten,count:4,data:0});
     Recipe.addCuttingRecipe({id:ItemID.plateEnete,data:0},{id:ItemID.stickEnete,count:4,data:0});
     Recipe.addCuttingRecipe({id:ItemID.plateLeadAntimony,data:0},{id:ItemID.stickLeadAntimony,count:4,data:0});
+    Recipe.addCuttingRecipe({id:ItemID.plateLapis,data:0},{id:ItemID.stickLapis,count:4,data:0});
 
     var cutter = Tool.getAllTool("Cutter");
     for(var i in cutter){
@@ -61,5 +66,6 @@ Callback.addCallback("PreLoaded",function(){
         Recipe.addShapeless({id:ItemID.stickGold,count:4,data:0},[{id:ItemID.plateGold,data:0},{id:ItemID.plateGold,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickTungsten,count:4,data:0},[{id:ItemID.plateTungsten,data:0},{id:ItemID.plateTungsten,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickLeadAntimony,count:4,data:0},[{id:ItemID.plateLeadAntimony,data:0},{id:ItemID.plateLeadAntimony,data:0}],cutter[i]);
+        Recipe.addShapeless({id:ItemID.stickLapis,count:4,data:0},[{id:ItemID.plateLapis,data:0},{id:ItemID.plateLapis,data:0}],cutter[i]);
     }
 });

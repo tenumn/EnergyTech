@@ -18,7 +18,7 @@ var Recipe = {
 		data.push({id:tool,data:-1});
 		Recipes.addShapeless(output,data,function(api,field,output){
 			for (var i in field){
-				if (field[i].id == tool){
+				if(field[i].id == tool){
 					field[i].data++;
 					if (field[i].data >= Item.getMaxDamage(tool)){
 						field[i].id = field[i].count = field[i].data = 0;

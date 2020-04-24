@@ -47,7 +47,10 @@ var SMALL_STONE = {
     "Galena":{id:ItemID.oreChunkGalena,count:1,data:0},
 
     // 岩盐矿脉
-    "Salt":{id:ItemID.dustSmallSalt,count:1,data:0}
+    "Salt":{id:ItemID.dustSmallSalt,count:1,data:0},
+
+    // 红石矿脉
+    "Redstone":{id:ItemID.dustSmallRedstone,count:1,data:0}
 }
 
 Block.registerDropFunction("smallStone",function(coords){

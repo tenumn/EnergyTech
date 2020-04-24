@@ -1,35 +1,34 @@
-var Reactor = {
-    moduleIDs:{},
-
-    module:{},
-
+var NuclearReactor = {
     data:{},
 
     getData:function(id){
-        return this.data[id];
-    },
-
-    getModule:function(id){
-        return this.module[id];
-    },
-
-    getModuleType:function(id){
         if(this.isModule(id)){
-            return this.getData(id).type;
+            return this.data[id];
         }
+        return null;
     },
 
     isModule:function(id){
-        return this.moduleIDs[id];
+        if(this.data[id]){
+            return true;
+        }
+        return false;
     },
 
-    registerModule:function(id,state,data){
-        if(!this.getModule(id)){
-            this.moduleIDs[id] = true;
-            this.module[id] = state;
+    getModule:function(id){
+        return this.getData(id).module;
+    },
+
+    getModuleType:function(id){
+        return this.getData(id).type;
+    },
+
+    registerModule:function(id,prototype,data){
+        if(!this.isModule(id)){
+            data.module = prototype;
             this.data[id] = data;
 
-            Item.addTooltip(id,Translation.translate("Module Type: ") + Translation.translate(data.type));
+            Tooltip.moduleType(id,data.type);
             
             Item.setItemName(id,function(item,name,tooltip){
                 if(item.extra){
@@ -50,29 +49,30 @@ var Reactor = {
                 }
             });
 
-            var tile = TileEntity.getPrototype(id);
-            if(tile){
-                var prototype = TileEntity.getPrototype(id);
-                if(prototype.defaultValues){
-                    prototype.defaultValues.durability = data.durability;
+            var state = TileEntity.getPrototype(id);
+            if(state){
+                if(state.defaultValues){
+                    state.defaultValues.durability = data.durability;
                 } else {
-                    prototype.defaultValues = {
+                    state.defaultValues = {
                         durability:data.durability
                     }
                 }
 
-                prototype.$tick = prototype.tick || function(){};
-                prototype.$destroyBlock = prototype.destroyBlock || function(){};
+                state.$tick = state.tick || function(){};
+                state.$destroyBlock = state.destroyBlock || function(){};
 
-                prototype.tick = function(){
+                state.tick = function(){
                     this.$tick();
+
                     if(this.data.durability <= 0){
-                        World.setBlock(this.x,this.y,this.z,0)
+                        this.selfDestroy();
                     }
                 }
                 
-                prototype.destroyBlock = function(){
+                state.destroyBlock = function(){
                     this.$destroyBlock();
+
                     var item = Player.getCarriedItem();
                     if(ToolAPI.getBlockDestroyLevel(this.id) <= ToolAPI.getToolLevel(item.id)){
                         var extra = new ItemExtraData();
@@ -88,7 +88,7 @@ var Reactor = {
 
                     tick:function(){
                         if(this.data.durability <= 0){
-                            World.setBlock(this.x,this.y,this.z,0)
+                            this.selfDestroy();
                         }
                     },
 
