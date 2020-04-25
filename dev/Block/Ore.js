@@ -164,9 +164,9 @@ var OVERWORLD_VEIN = [
 
 Callback.addCallback("PreLoaded",function(){
     Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
-        if(Math.random() < 0.25 && (chunkX + chunkZ)%4 == 0){
-            var vein = OVERWORLD_VEIN[Math.floor(Math.random() * OVERWORLD_VEIN.length)];
-            var coords = GenerationUtils.randomCoords(chunkX,chunkZ,vein.minHeight,vein.maxHeight);
+        var vein = OVERWORLD_VEIN[Math.floor(Math.random() * OVERWORLD_VEIN.length)];
+        var coords = GenerationUtils.randomCoords(chunkX,chunkZ,vein.minHeight,vein.maxHeight);
+        if(World.getBlock(coords.x,coords.y,coords.z).id == 1 && Math.random() < 0.25 && (chunkX + chunkZ)%4 == 0){
             for(let x = 0;x <= vein.size;x++){for(let y = 0;y <= vein.size;y++){for(let z = 0;z <= vein.size;z++){
                 var pointed = {x:Math.floor(coords.x - vein.size + x),y:Math.floor(coords.y - vein.size + y),z:Math.floor(coords.z - vein.size + z)}
                 if(Math.random() < 0.75 && World.getBlock(pointed.x,pointed.y,pointed.z).id == 1){
@@ -174,6 +174,7 @@ Callback.addCallback("PreLoaded",function(){
                     World.setBlock(pointed.x,pointed.y,pointed.z,ores.id,ores.data);
                 }
             }}}
+
             ChunkRegistry.chunk[chunkX + ":" + chunkZ] = vein.name;
             if(__config__.getBool("debug")){
                 Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);

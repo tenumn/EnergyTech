@@ -7,6 +7,16 @@ IMPORT("ChargeItem");
 IMPORT("TileRender");
 IMPORT("StorageInterface");
 
+if(getCoreAPILevel() < 10){
+    Item.addCreativeGroup = function(uid,name,item){
+        
+    }
+
+    Item.addRepairItemIds = function(id,item){
+
+    }
+}
+
 // API
 World.dropItem = ModAPI.requireGlobal("Level.dropItem");
 canTileBeReplaced = ModAPI.requireGlobal("canTileBeReplaced");
