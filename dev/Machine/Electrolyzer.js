@@ -9,7 +9,7 @@ for(var i = 1;i < 8;i++){TileRenderer.registerRotationModel(BlockID.electrolyzer
 
 Machine.setDrop("electrolyzer",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.electrolyzer,count:1,data:0},["aba","aca","ded"],["a",ItemID.wireGold,0,"b",BlockID.glassTank1,0,"c",BlockID.machineCasing,1,"d",ItemID.circuit,0,"e",ItemID.wireTin,0]);
+	Recipes.addShaped({id:BlockID.electrolyzer,count:1,data:0},["aba","aca","ded"],["a",ItemID.wireGold,0,"b",BlockID.glassTank,0,"c",BlockID.machineCasing,1,"d",ItemID.circuit,0,"e",ItemID.wireTin,0]);
 });
 
 var GuiElectrolyzer = new UI.StandartWindow({

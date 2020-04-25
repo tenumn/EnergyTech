@@ -60,14 +60,16 @@ Renderer.registerPipeOutputRenderModel = function(id,data,texture,groups){
 	Block.setBlockShape(id,{x:0.25,y:0.25,z:0.25},{x:0.75,y:0.75,z:0.75},data);
 }
 
-for(let i in BlockID){
-    var tile = TileEntity.getPrototype(BlockID[i]);
-    if(tile && tile.getTransportSlots){
-		ICRender.getGroup("input-item-pipe").add(BlockID[i],-1);
-		ICRender.getGroup("output-item-pipe").add(BlockID[i],-1);
-		ICRender.getGroup("transport-item-pipe").add(BlockID[i],-1);
-    }
-}
+Callback.addCallback("PreLoaded",function(){
+	for(let i in BlockID){
+		var tile = TileEntity.getPrototype(BlockID[i]);
+		if(tile && tile.getTransportSlots){
+			ICRender.getGroup("input-item-pipe").add(BlockID[i],-1);
+			ICRender.getGroup("output-item-pipe").add(BlockID[i],-1);
+			ICRender.getGroup("transport-item-pipe").add(BlockID[i],-1);
+		}
+	}
+});
 
 addGroupFor(54,["input-item-pipe","output-item-pipe","transport-item-pipe"]);
 addGroupFor(61,["input-item-pipe","output-item-pipe","transport-item-pipe"]);
@@ -82,6 +84,7 @@ Block.createBlock("itemPipeInput",[
     {name:"Item Pipe (Input)",texture:[["input_item_pipe",0]],inCreative:false}
 ],"transparent");
 
+Tooltip.info(BlockID.itemPipeInput,"Input item into pipeline.");
 addGroupFor(BlockID.itemPipeInput,[
 	"transport-item-pipe",
 	"output-item-pipe"
@@ -103,14 +106,14 @@ Machine.registerPrototype(BlockID.itemPipeInput,{
 	},
 	
 	getTransportingDirections:function(item){
-		var cur = [],res = ItemPipe.filterDirections(ItemPipe.findDirections(item.position.x,item.position.y,item.position.z),item.direction);
+		var output = [],res = ItemPipe.filterDirections(ItemPipe.findDirections(item.position.x,item.position.y,item.position.z),item.direction);
 		for(let i in res){
             var block = World.getBlock(this.x + res[i].x,this.y + res[i].y,this.z + res[i].z);
 			if(block.id != this.id){
-				cur.push(res[i]);
+				output.push(res[i]);
 			}
 		}
-		return cur;
+		return output;
 	},
 
 	tick:function(){
@@ -225,6 +228,7 @@ Block.createBlock("itemPipeOutput",[
     {name:"Item Pipe (Output)",texture:[["output_item_pipe",0]],inCreative:false}
 ],"transparent");
 
+Tooltip.info(BlockID.itemPipeOutput,"Output item to specified direction.");
 ItemPipe.registerTile(BlockID.itemPipeOutput);
 Block.registerPlaceFunction("itemPipeOutput",PIPE_PLACE);
 Machine.setDrop("itemPipeOutput",BlockID.itemPipeOutput);

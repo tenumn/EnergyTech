@@ -50,7 +50,7 @@ Machine.registerMachine(BlockID.networkTerminal,{
 
     init:function(){
 		if(!this.getNetwork(this.x,this.y,this.z)){
-			this.network[this.x + ":" + this.y + ":" + this.z] = {
+			network[this.x + ":" + this.y + ":" + this.z] = {
                 range:this.data.range,
                 load:this.data.load,
                 load_limit:this.data.load_limit,

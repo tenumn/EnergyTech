@@ -77,7 +77,7 @@ var NuclearReactor = {
                     if(ToolAPI.getBlockDestroyLevel(this.id) <= ToolAPI.getToolLevel(item.id)){
                         var extra = new ItemExtraData();
                         extra.putInt("durability",this.data.durability);
-                        World.drop(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
+                        World.dropItem(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
                     }
                 }
             } else {
@@ -97,7 +97,7 @@ var NuclearReactor = {
                         if(ToolAPI.getBlockDestroyLevel(this.id) <= ToolAPI.getToolLevel(item.id)){
                             var extra = new ItemExtraData();
                             extra.putInt("durability",this.data.durability);
-                            World.drop(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
+                            World.dropItem(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
                         }
                     }
                 });

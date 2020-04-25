@@ -221,21 +221,6 @@ var Machine = {
             }
             EnergyNetBuilder.removeNet(this);
         });
-    },
-
-    registerWirePlacedCallback:function(name,id,data){
-        Item.registerUseFunction(name,function(coords,item,block){
-            var place = coords;
-            if(!canTileBeReplaced(block.id,block.data)){
-                place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-                if(!canTileBeReplaced(block.id,block.data)){
-                    return;
-                }
-            }
-            World.setBlock(place.x,place.y,place.z,id,data);
-            Player.decreaseCarriedItem(1);
-            EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
-        });
     }
 }
 

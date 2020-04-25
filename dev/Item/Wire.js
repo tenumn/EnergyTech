@@ -31,11 +31,23 @@ Block.createBlock("wireTin",[
     {name:"Tin Coil",texture:[["tin_wire",1]],inCreative:false}
 ],"wire");
 
+Tooltip.tier(ItemID.wireTin,1);
 Machine.registerWire(BlockID.wireTin,power(1));
-Machine.registerWirePlacedCallback("wireTin",BlockID.wireTin,0);
 TileRenderer.setupWireModel(BlockID.wireTin,0,0.25,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireTin,1,0.3125,"et-wire");
-Tooltip.tier(ItemID.wireTin,1);
+
+Item.registerUseFunction("wireTin",function(coords,item,block){
+    var place = coords;
+    if(!canTileBeReplaced(block.id,block.data)){
+        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+        if(!canTileBeReplaced(block.id,block.data)){
+            return;
+        }
+    }
+    World.setBlock(place.x,place.y,place.z,BlockID.wireTin,0);
+    Player.decreaseCarriedItem(1);
+    EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
+});
 
 Block.registerDropFunction("wireTin",function(coords,id,data){
     if(data == 1){
@@ -54,11 +66,23 @@ Block.createBlock("wireCopper",[
     {name:"Copper Coil",texture:[["copper_wire",1]],inCreative:false}
 ],"wire");
 
+Tooltip.tier(ItemID.wireCopper,2);
 Machine.registerWire(BlockID.wireCopper,power(2));
-Machine.registerWirePlacedCallback("wireCopper",BlockID.wireCopper,0);
 TileRenderer.setupWireModel(BlockID.wireCopper,0,0.25,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireCopper,1,0.3125,"et-wire");
-Tooltip.tier(ItemID.wireCopper,2);
+
+Item.registerUseFunction("wireCopper",function(coords,item,block){
+    var place = coords;
+    if(!canTileBeReplaced(block.id,block.data)){
+        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+        if(!canTileBeReplaced(block.id,block.data)){
+            return;
+        }
+    }
+    World.setBlock(place.x,place.y,place.z,BlockID.wireCopper,0);
+    Player.decreaseCarriedItem(1);
+    EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
+});
 
 Block.registerDropFunction("wireCopper",function(coords,id,data){
     if(data == 1){
@@ -77,11 +101,23 @@ Block.createBlock("wireGold",[
     {name:"Gold Coil",texture:[["gold_wire",1]],inCreative:false}
 ],"wire");
 
+Tooltip.tier(ItemID.wireGold,3);
 Machine.registerWire(BlockID.wireGold,power(3));
-Machine.registerWirePlacedCallback("wireGold",BlockID.wireGold,0);
 TileRenderer.setupWireModel(BlockID.wireGold,0,0.375,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireGold,1,0.4375,"et-wire");
-Tooltip.tier(ItemID.wireGold,3);
+
+Item.registerUseFunction("wireGold",function(coords,item,block){
+    var place = coords;
+    if(!canTileBeReplaced(block.id,block.data)){
+        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+        if(!canTileBeReplaced(block.id,block.data)){
+            return;
+        }
+    }
+    World.setBlock(place.x,place.y,place.z,BlockID.wireGold,0);
+    Player.decreaseCarriedItem(1);
+    EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
+});
 
 Block.registerDropFunction("wireGold",function(coords,id,data){
     if(data == 1){
@@ -100,11 +136,23 @@ Block.createBlock("wireSteel",[
     {name:"Steel Coil",texture:[["steel_wire",1]],inCreative:false}
 ],"wire");
 
+Tooltip.tier(ItemID.wireSteel,4);
 Machine.registerWire(BlockID.wireSteel,power(4));
-Machine.registerWirePlacedCallback("wireSteel",BlockID.wireSteel,0);
 TileRenderer.setupWireModel(BlockID.wireSteel,0,0.375,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireSteel,1,0.4375,"et-wire");
-Tooltip.tier(ItemID.wireSteel,4);
+
+Item.registerUseFunction("wireSteel",function(coords,item,block){
+    var place = coords;
+    if(!canTileBeReplaced(block.id,block.data)){
+        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+        if(!canTileBeReplaced(block.id,block.data)){
+            return;
+        }
+    }
+    World.setBlock(place.x,place.y,place.z,BlockID.wireSteel,0);
+    Player.decreaseCarriedItem(1);
+    EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
+});
 
 Block.registerDropFunction("wireSteel",function(coords,id,data){
     if(data == 1){
@@ -123,11 +171,23 @@ Block.createBlock("wireTungsten",[
     {name:"Tungsten Coil",texture:[["tungsten_wire",1]],inCreative:false}
 ],"wire");
 
+Tooltip.tier(ItemID.wireTungsten,5);
 Machine.registerWire(BlockID.wireTungsten,power(5));
-Machine.registerWirePlacedCallback("wireTungsten",BlockID.wireTungsten,0);
 TileRenderer.setupWireModel(BlockID.wireTungsten,0,0.5,"et-wire");
 TileRenderer.setupWireModel(BlockID.wireTungsten,1,0.5625,"et-wire");
-Tooltip.tier(ItemID.wireTungsten,5);
+
+Item.registerUseFunction("wireTungsten",function(coords,item,block){
+    var place = coords;
+    if(!canTileBeReplaced(block.id,block.data)){
+        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
+        if(!canTileBeReplaced(block.id,block.data)){
+            return;
+        }
+    }
+    World.setBlock(place.x,place.y,place.z,BlockID.wireTungsten,0);
+    Player.decreaseCarriedItem(1);
+    EnergyTypeRegistry.onWirePlaced(place.x,place.y,place.z);
+});
 
 Block.registerDropFunction("wireTungsten",function(coords,id,data){
     if(data == 1){

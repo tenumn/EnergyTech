@@ -109,7 +109,8 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.removeFurnaceRecipe(162);
 
     Recipes.addShapeless({id:4,count:1,data:0},[{id:ItemID.smallStone,data:0},{id:ItemID.smallStone,data:0},{id:ItemID.smallStone,data:0},{id:ItemID.smallStone,data:0}]);
-    
+    Recipes.addShapeless({id:5,count:4,data:1},[{id:BlockID.rubberTreeLog,data:-1}]);
+
     var file = Tool.getAllTool("File"),hammer = Tool.getAllTool("Hammer");
     for(let hi = 0;hi < hammer.length;hi++){
         Recipe.addShapedRecipe({id:325,count:1,data:0},["   ","aba"," a "],["a",ItemID.plateIron,0,"b",hammer[hi],-1],{4:1});

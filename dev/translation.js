@@ -1,5 +1,7 @@
 // Material
 Translation.addTranslation("Small Stone",{zh:"石子"});
+Translation.addTranslation("Rubber Tree Log",{zh:"橡胶树原木"});
+Translation.addTranslation("Rubber Tree Leaves",{zh:"橡胶树树叶"});
 Translation.addTranslation("Ruby",{zh:"红宝石"});
 Translation.addTranslation("Slag",{zh:"矿渣"});
 Translation.addTranslation("Resin",{zh:"树脂"});

@@ -45,7 +45,7 @@ Tooltip.tier(ItemID.lapotronCrystal,4);
 Item.setItemName(ItemID.lapotronCrystal,Tooltip.energyStored);
 
 Callback.addCallback("PreLoaded",function(){
-    Recipe.addAutoclaveRecipe({id:ItemID.dustEnergium,count:9,data:0},{id:ItemID.energyCrystal,count:1,data:0});
+    Recipe.addAutoclaveRecipe({id:ItemID.dustEnergium,count:9,data:0},{id:ItemID.energyCrystal,count:1,data:Item.getMaxDamage(ItemID.energyCrystal)});
 
     Recipes.addShaped({id:ItemID.lithiumBattery,count:1,data:Item.getMaxDamage(ItemID.lithiumBattery)},[
 		" a ",

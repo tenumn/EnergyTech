@@ -8,7 +8,7 @@ IMPORT("TileRender");
 IMPORT("StorageInterface");
 
 // API
-World.drop = ModAPI.requireGlobal("Level.dropItem");
+World.dropItem = ModAPI.requireGlobal("Level.dropItem");
 canTileBeReplaced = ModAPI.requireGlobal("canTileBeReplaced");
 Player.setInventorySlot = ModAPI.requireGlobal("Player.setInventorySlot");
 
@@ -47,6 +47,10 @@ var Tooltip = {
 
     toolType:function(id,type){
         Item.addTooltip(id,Translation.translate("Tool Type: ") + Translation.translate(type));
+    },
+
+    info:function(id,info){
+        Item.addTooltip(id,Translation.translate("Info: ") + Translation.translate(info));
     }
 }
 

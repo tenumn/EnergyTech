@@ -9,7 +9,7 @@ TileRenderer.registerRotationModel(BlockID.distillery,4,[["machine_bottom",0],["
 
 Machine.setDrop("distillery",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.distillery,count:1,data:0},["ebe","dad","ece"],["a",BlockID.machineCasing,0,"b",BlockID.glassTank1,0,"c",410,0,"d",369,0,"e",ItemID.plateIron,0]);
+	Recipes.addShaped({id:BlockID.distillery,count:1,data:0},["ebe","dad","ece"],["a",BlockID.machineCasing,0,"b",BlockID.glassTank,0,"c",410,0,"d",369,0,"e",ItemID.plateIron,0]);
 });
 
 var GuiDistillery = new UI.StandartWindow({

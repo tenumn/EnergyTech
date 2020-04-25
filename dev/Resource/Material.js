@@ -9,12 +9,15 @@ Block.createBlock("smallStone",[
     {name:"Small Stone",texture:[["small_stone",0]],inCreative:false}
 ],"small_stone");
 
+Block.setDestroyTime(BlockID.smallStone,0.1);
+Block.setBlockShape(BlockID.smallStone,{x:0.0625,y:0,z:0.0625},{x:0.9375,y:0.0625,z:0.9375},0);
+
 var shape = new ICRender.CollisionShape();
 shape.addEntry().addBox(1,1,1,0,0,0);
 BlockRenderer.setCustomCollisionShape(BlockID.smallStone,-1,shape);
 
 var render = new ICRender.Model(),model = new BlockRenderer.Model();
-model.addBox(0,0,0,0.9375,0.0625,0.9375,BlockID.smallStone,0);
+model.addBox(0.0625,0,0.0625,0.9375,0.0625,0.9375,BlockID.smallStone,0);
 render.addEntry(model);
 BlockRenderer.enableCoordMapping(BlockID.smallStone,-1,render);
 
