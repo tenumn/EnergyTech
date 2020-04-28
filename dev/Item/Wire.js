@@ -1,5 +1,4 @@
 Block.createSpecialType({
-    base:35,
     opaque:false,
     destroytime:1
 },"wire");

@@ -1,109 +1,104 @@
+Block.createSpecialType({
+    base:1,
+    solid:true,
+	destroytime:1,
+	explosionres:12
+},"block");
+
 // 铜块
 IDRegistry.genBlockID("blockCopper");
 Block.createBlock("blockCopper",[
     {name:"Copper Block",texture:[["copper_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockCopper,"stone",1);
-Block.setDestroyTime(BlockID.blockCopper,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockCopper,"stone",1,true);
 Block.setDestroyLevel("blockCopper",1);
 
 // 锡块
 IDRegistry.genBlockID("blockTin");
 Block.createBlock("blockTin",[
     {name:"Tin Block",texture:[["tin_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockTin,"stone",1);
-Block.setDestroyTime(BlockID.blockTin,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockTin,"stone",1,true);
 Block.setDestroyLevel("blockTin",1);
 
 // 铅块
 IDRegistry.genBlockID("blockLead");
 Block.createBlock("blockLead",[
     {name:"Lead Block",texture:[["lead_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockLead,"stone",1);
-Block.setDestroyTime(BlockID.blockLead,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockLead,"stone",1,true);
 Block.setDestroyLevel("blockLead",1);
 
 // 锻铁块
 IDRegistry.genBlockID("blockWroughtIron");
 Block.createBlock("blockWroughtIron",[
     {name:"Wrought Iron Block",texture:[["wrought_iron_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockWroughtIron,"stone",1);
-Block.setDestroyTime(BlockID.blockWroughtIron,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockWroughtIron,"stone",1,true);
 Block.setDestroyLevel("blockWroughtIron",1);
 
 // 钢块
 IDRegistry.genBlockID("blockSteel");
 Block.createBlock("blockSteel",[
     {name:"Steel Block",texture:[["steel_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockSteel,"stone",1);
-Block.setDestroyTime(BlockID.blockSteel,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockSteel,"stone",1,true);
 Block.setDestroyLevel("blockSteel",1);
 
 // 锑块
 IDRegistry.genBlockID("blockAntimony");
 Block.createBlock("blockAntimony",[
     {name:"Antimony Block",texture:[["antimony_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockAntimony,"stone",1);
-Block.setDestroyTime(BlockID.blockAntimony,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockAntimony,"stone",1,true);
 Block.setDestroyLevel("blockAntimony",1);
 
 // 锂块
 IDRegistry.genBlockID("blockLithium");
 Block.createBlock("blockLithium",[
     {name:"Lithium Block",texture:[["lithium_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockLithium,"stone",1);
-Block.setDestroyTime(BlockID.blockLithium,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockLithium,"stone",1,true);
 Block.setDestroyLevel("blockLithium",1);
 
 // 碳块
 IDRegistry.genBlockID("blockCarbon");
 Block.createBlock("blockCarbon",[
     {name:"Carbon Block",texture:[["carbon_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockCarbon,"stone",1);
-Block.setDestroyTime(BlockID.blockCarbon,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockCarbon,"stone",1,true);
 Block.setDestroyLevel("blockCarbon",1);
 
 // 钨块
 IDRegistry.genBlockID("blockTungsten");
 Block.createBlock("blockTungsten",[
     {name:"Tungsten Block",texture:[["tungsten_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockTungsten,"stone",1);
-Block.setDestroyTime(BlockID.blockTungsten,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockTungsten,"stone",1,true);
 Block.setDestroyLevel("blockTungsten",1);
 
 // 银块
 IDRegistry.genBlockID("blockSilver");
 Block.createBlock("blockSilver",[
     {name:"Silver Block",texture:[["silver_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockSilver,"stone",1);
-Block.setDestroyTime(BlockID.blockSilver,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockSilver,"stone",1,true);
 Block.setDestroyLevel("blockSilver",1);
 
 // 铝块
 IDRegistry.genBlockID("blockAluminium");
 Block.createBlock("blockAluminium",[
     {name:"Aluminium Block",texture:[["aluminium_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockAluminium,"stone",1);
-Block.setDestroyTime(BlockID.blockAluminium,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockAluminium,"stone",1,true);
 Block.setDestroyLevel("blockAluminium",1);
 
 // 铅锑合金块
 IDRegistry.genBlockID("blockLeadAntimony");
 Block.createBlock("blockLeadAntimony",[
     {name:"Lead-Antimony Alloy Block",texture:[["lead_antimony_block",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockLeadAntimony,"stone",1);
-Block.setDestroyTime(BlockID.blockLeadAntimony,1);
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockLeadAntimony,"stone",1,true);
 Block.setDestroyLevel("blockLeadAntimony",1);
 
 Callback.addCallback("PreLoaded",function(){

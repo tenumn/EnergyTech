@@ -1,8 +1,16 @@
+Block.createSpecialType({
+    base:1,
+    solid:true,
+    opaque:true,
+    destroytime:5,
+    explosionres:16
+},"auto_saieve");
+
 // 自动筛子
 IDRegistry.genBlockID("autoSaieve");
 Block.createBlock("autoSaieve",[
-    {name:"Auto Sieve",texture:[["autoSieveBottom",0],["autoSieveTop",0],["autoSieveSide",0]],inCreative:true}
-],"transparent");
+    {name:"Auto Sieve",texture:[["auto_sieve_bottom",0],["auto_sieve_top",0],["auto_sieve_side",0]],inCreative:true}
+],"auto_saieve");
 
 var render = new ICRender.Model(),model = new BlockRenderer.Model();
 model.addBox(0.0625,0,0.0625,0.125,1,0.125,BlockID.autoSaieve,0);
@@ -31,35 +39,35 @@ var GuiAutoSaieve = new UI.StandartWindow({
     drawing:[
         {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
-        {type:"bitmap",x:600,y:175,bitmap:"arrowBackground",scale:GUI_SCALE}
+        {type:"bitmap",x:600,y:175,bitmap:"arrow_background",scale:GUI_SCALE}
     ],
 
     elements:{
-        "slotInput":{type:"slot",x:500,y:175,bitmap:"slotBlank",scale:GUI_SCALE},
-        "scaleArrow":{type:"scale",x:600,y:175,direction:0,value:0.5,bitmap:"arrowScale",scale:GUI_SCALE},
-        "slotOutput1":{type:"slot",x:700,y:75,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput2":{type:"slot",x:760,y:75,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput3":{type:"slot",x:820,y:75,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput4":{type:"slot",x:880,y:75,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput5":{type:"slot",x:700,y:135,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput6":{type:"slot",x:760,y:135,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput7":{type:"slot",x:820,y:135,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput8":{type:"slot",x:880,y:135,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput9":{type:"slot",x:700,y:195,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput10":{type:"slot",x:760,y:195,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput11":{type:"slot",x:820,y:195,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput12":{type:"slot",x:880,y:195,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput13":{type:"slot",x:700,y:255,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput14":{type:"slot",x:760,y:255,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput15":{type:"slot",x:820,y:255,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput16":{type:"slot",x:880,y:255,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotInput":{type:"slot",x:500,y:175,bitmap:"slot.empty",scale:GUI_SCALE},
+        "scaleArrow":{type:"scale",x:600,y:175,direction:0,value:0.5,bitmap:"arrow_scale",scale:GUI_SCALE},
+        "slotOutput1":{type:"slot",x:700,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput2":{type:"slot",x:760,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput3":{type:"slot",x:820,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput4":{type:"slot",x:880,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput5":{type:"slot",x:700,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput6":{type:"slot",x:760,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput7":{type:"slot",x:820,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput8":{type:"slot",x:880,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput9":{type:"slot",x:700,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput10":{type:"slot",x:760,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput11":{type:"slot",x:820,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput12":{type:"slot",x:880,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput13":{type:"slot",x:700,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput14":{type:"slot",x:760,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput15":{type:"slot",x:820,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput16":{type:"slot",x:880,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
 
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
     }
 });
 
@@ -89,9 +97,7 @@ Machine.registerMachine(BlockID.autoSaieve,{
             if(this.data.progress.toFixed(3) >= 1){
                 input.count -= 1;
                 var output = recipe[Math.floor(Math.random() * recipe.length)];
-                if(Math.random() * 25 <= output.random){
-                    this.setOutput(output.id,random(output.minCount,output.maxCount),output.data);
-                }
+                if(Math.random() * 25 <= output.random){this.setOutput(output.id,random(output.minCount,output.maxCount),output.data);}
                 this.container.validateAll();
                 this.data.progress = 0;
             }

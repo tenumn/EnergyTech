@@ -2,7 +2,7 @@
 IDRegistry.genBlockID("networkTerminal");
 Block.createBlock("networkTerminal",[
     {name:"Network Terminal",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]],inCreative:true}
-],"opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.networkTerminal,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
 TileRenderer.registerRotationModel(BlockID.networkTerminal,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
 
@@ -31,7 +31,7 @@ var GuiNetworkTerminal = new UI.StandartWindow({
         "textVoltage":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Voltage: ") + "0"},
 
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slotCard",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}}
+        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slot.card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}}
     }
 });
 
@@ -65,7 +65,7 @@ Machine.registerMachine(BlockID.networkTerminal,{
     tick:function(){
         var card = this.container.getSlot("slotCard");
         if(Tool.isTool(card.id,"EnergyCard")){
-            if(!card.extra){card.extra = new ItemExtraData();}
+            if(!card.extra) card.extra = new ItemExtraData();
             card.extra.putInt("x",this.x);
             card.extra.putInt("y",this.y);
             card.extra.putInt("z",this.z);
@@ -83,14 +83,11 @@ Machine.registerMachine(BlockID.networkTerminal,{
                 var machine = net.machine[count];
                 net.load += 1;
     
-                if(net.load > net.loadLimit){
-                    World.explode(this.x,this.y,this.z,1,true);
-                }
+                if(net.load > net.loadLimit) World.explode(this.x,this.y,this.z,1,true);
     
-                if(__config__.getBool("machine.voltage_enabled")){
-                    if(machine.voltage && machine.voltage > net.voltage){
-                        World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,0.5,true);
-                    }
+                if(__config__.getBool("machine.voltage_enabled") && machine.voltage && machine.voltage > net.voltage){
+                    World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,0.5,true);
+                    World.setBlock(this.x,this.y,this.z,0);
                 }
             }
     
@@ -100,8 +97,8 @@ Machine.registerMachine(BlockID.networkTerminal,{
                 net.energy += energy_output;
             }
     
-            if(net.energy < 0){net.energy = 0;}
-            if(net.energy > net.energy_storage){net.energy = net.energy_storage;}
+            if(net.energy < 0) net.energy = 0;
+            if(net.energy > net.energy_storage) net.energy = net.energy_storage;
 
             this.container.setText("textRange",Translation.translate("Range: ") + net.range);
             this.container.setText("textVoltage",Translation.translate("Voltage: ") + net.voltage);

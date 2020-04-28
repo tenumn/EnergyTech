@@ -1,8 +1,14 @@
+Block.createSpecialType({
+    solid:true,
+    destroytime:3,
+    explosionres:12
+},"furnace");
+
 // 粗制高炉
 IDRegistry.genBlockID("crudeBlastFurnace");
 Block.createBlock("crudeBlastFurnace",[
     {name:"Crude Blast Furnace",texture:[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",0],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]],inCreative:true}
-],"opaque");
+],"furnace");
 TileRenderer.setStandartModel(BlockID.crudeBlastFurnace,[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",0],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]]);
 TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,0,[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",0],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]]);
 TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,4,[["crude_blast_furnace_bottom",0],["crude_blast_furnace_top",0],["crude_blast_furnace_side",0],["crude_blast_furnace",1],["crude_blast_furnace_side",0],["crude_blast_furnace_side",0]]);
@@ -20,16 +26,16 @@ var GuiCrudeBlastFurnace = new UI.StandartWindow({
 
     drawing:[
         {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
-        {type:"bitmap",x:525,y:225 + GUI_SCALE,bitmap:"arrowBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:525,y:225 + GUI_SCALE,bitmap:"arrow_background",scale:GUI_SCALE},
         {type:"bitmap",x:425 + GUI_SCALE * 4,y:225 + GUI_SCALE * 2,bitmap:"fireBackground",scale:GUI_SCALE}
     ],
     
 	elements:{
-        "slotInput":{type:"slot",x:425,y:150,bitmap:"slotBlank",scale:GUI_SCALE},
-        "scaleArrow":{type:"scale",x:525,y:225 + GUI_SCALE,direction:0,value:0.5,bitmap:"arrowScale",scale:GUI_SCALE},
-        "slotOutput":{type:"slot",x:625,y:225,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotInput":{type:"slot",x:425,y:150,bitmap:"slot.empty",scale:GUI_SCALE},
+        "scaleArrow":{type:"scale",x:525,y:225 + GUI_SCALE,direction:0,value:0.5,bitmap:"arrow_scale",scale:GUI_SCALE},
+        "slotOutput":{type:"slot",x:625,y:225,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
 		"scaleBurn":{type:"scale",x:425 + GUI_SCALE * 3,y:225 + GUI_SCALE * 2,direction:1,value:0.5,bitmap:"fireScale",scale:GUI_SCALE},
-        "slotFuel":{type:"slot",x:425,y:300,bitmap:"slotFuel",isValid:function(id,count,data){return Recipes.getFuelBurnDuration(id,data) > 0;}}
+        "slotFuel":{type:"slot",x:425,y:300,bitmap:"slot.fuel",isValid:function(id,count,data){return Recipes.getFuelBurnDuration(id,data) > 0;}}
 	}
 });
 
@@ -54,7 +60,8 @@ Machine.registerPrototype(BlockID.crudeBlastFurnace,{
                 this.data.progress += 1 / 640;
                 this.setActive(true);
                 if(this.data.progress.toFixed(3) >= 1){
-                    if(recipe[0]){this.setOutput("slotOutput",recipe[0].id,recipe[0].count,recipe[0].data);}
+                    var output = recipe.output;
+                    if(output[0]){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
                     input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;

@@ -32,7 +32,8 @@ Renderer.setCoverRotationPlace = function(id){
 
 Block.createSpecialType({
     opaque:false,
-    destroytime:3
+    destroytime:5,
+    explosionres:1
 },"cover");
 
 // 能量显示面板
@@ -60,9 +61,13 @@ Callback.addCallback("PreLoaded",function(){
 });
 
 Machine.registerPrototype(BlockID.coverEnergyDisplay,{
-    defaultValues:{meta:0},
+    defaultValues:{
+        meta:0
+    },
 
-    tick:function(){this.renderer();},
+    tick:function(){
+        this.renderer();
+    },
     
     renderer:function(){
         var coords = World.getRelativeCoords(this.x,this.y,this.z,this.data.meta),tile = World.getTileEntity(coords.x,coords.y,coords.z);
@@ -102,8 +107,13 @@ Callback.addCallback("PreLoaded",function(){
 });
 
 Machine.registerPrototype(BlockID.coverProgressDisplay,{
-    defaultValues:{meta:0},
-    tick:function(){this.renderer();},
+    defaultValues:{
+        meta:0
+    },
+
+    tick:function(){
+        this.renderer();
+    },
     
     renderer:function(){
         var coords = World.getRelativeCoords(this.x,this.y,this.z,this.data.meta),tile = World.getTileEntity(coords.x,coords.y,coords.z);

@@ -2,7 +2,7 @@
 IDRegistry.genBlockID("transformerLV");
 Block.createBlock("transformerLV",[
     {name:"LV Transformer",texture:[["transformer_side",0],["transformer_side",0],["transformer_side",0],["transformer",0],["transformer_side",0],["transformer_side",0]],inCreative:true}
-], "opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.transformerLV,[["transformer_side",0],["transformer_side",0],["transformer_side",0],["transformer",0],["transformer_side",0],["transformer_side",0]]);
 TileRenderer.registerFullRotationModel(BlockID.transformerLV,0,[["transformer_side",0],["transformer_side",0],["transformer_side",0],["transformer",0],["transformer_side",0],["transformer_side",0]]);
 
@@ -33,9 +33,7 @@ Machine.registerMachine(BlockID.transformerLV,{
     
         var voltage_max = this.getMaxVoltage();
         if(this.data.mode){
-            if(this.data.energy >= voltage_max){
-                this.data.energy += src.add(voltage_max,voltage_max) - voltage_max;
-            }
+            if(this.data.energy >= voltage_max) this.data.energy += src.add(voltage_max,voltage_max) - voltage_max;
         } else {
             if(this.data.energy >= voltage_max / 4){
                 var output = this.data.energy;
@@ -49,11 +47,19 @@ Machine.registerMachine(BlockID.transformerLV,{
         TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (block.data * 6));
     },
 
+    canReceiveEnergy:function(side){
+        if(side == this.data.meta) return !this.data.mode;
+        return this.data.mode;
+    },
+    
+    canExtractEnergy:function(side){
+        if(side == this.data.meta) return this.data.mode;
+        return !this.data.mode;
+    },
+
     energyReceive:Machine.energyReceive,
     isEnergySource:function(){return true;},
-    destroy:function(){BlockRenderer.unmapAtCoords(this.x,this.y,this.z);},
-    canReceiveEnergy:function(side){if(side == this.data.meta){return !this.data.mode;}return this.data.mode;},
-    canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
+    destroy:function(){BlockRenderer.unmapAtCoords(this.x,this.y,this.z);}
 });
 
 Block.registerPlaceFunction(BlockID.transformerLV,function(coords,item,block){
@@ -69,7 +75,7 @@ Block.registerPlaceFunction(BlockID.transformerLV,function(coords,item,block){
 IDRegistry.genBlockID("transformerMV");
 Block.createBlock("transformerMV",[
     {name:"MV Transformer",texture:[["transformer_side",1],["transformer_side",1],["transformer_side",1],["transformer",1],["transformer_side",1],["transformer_side",1]],inCreative:true}
-], "opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.transformerMV,[["transformer_side",1],["transformer_side",1],["transformer_side",1],["transformer",1],["transformer_side",1],["transformer_side",1]]);
 TileRenderer.registerFullRotationModel(BlockID.transformerMV,0,[["transformer_side",1],["transformer_side",1],["transformer_side",1],["transformer",1],["transformer_side",1],["transformer_side",1]]);
 
@@ -136,7 +142,7 @@ Block.registerPlaceFunction(BlockID.transformerMV,function(coords,item,block){
 IDRegistry.genBlockID("transformerHV");
 Block.createBlock("transformerHV",[
     {name:"HV Transformer",texture:[["transformer_side",2],["transformer_side",2],["transformer_side",2],["transformer",2],["transformer_side",2],["transformer_side",2]],inCreative:true}
-], "opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.transformerHV,[["transformer_side",2],["transformer_side",2],["transformer_side",2],["transformer",2],["transformer_side",2],["transformer_side",2]]);
 TileRenderer.registerFullRotationModel(BlockID.transformerHV,0,[["transformer_side",2],["transformer_side",2],["transformer_side",2],["transformer",2],["transformer_side",2],["transformer_side",2]]);
 
@@ -203,7 +209,7 @@ Block.registerPlaceFunction(BlockID.transformerHV,function(coords,item,block){
 IDRegistry.genBlockID("transformerEV");
 Block.createBlock("transformerEV",[
     {name:"EV Transformer",texture:[["transformer_side",3],["transformer_side",3],["transformer_side",3],["transformer",3],["transformer_side",3],["transformer_side",3]],inCreative:true}
-], "opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.transformerEV,[["transformer_side",3],["transformer_side",3],["transformer_side",3],["transformer",3],["transformer_side",3],["transformer_side",3]]);
 TileRenderer.registerFullRotationModel(BlockID.transformerEV,0,[["transformer_side",3],["transformer_side",3],["transformer_side",3],["transformer",3],["transformer_side",3],["transformer_side",3]]);
 

@@ -2,7 +2,7 @@
 IDRegistry.genBlockID("macerator");
 Block.createBlock("macerator",[
     {name:"Macerator",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]],inCreative:true}
-],"opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.macerator,[["machine_bottom",0],["machine_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.macerator,0 ,[["machine_bottom",0],["machine_top",0],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.macerator,4 ,[["machine_bottom",0],["machine_top",1],["machine_side",0],["macerator",0],["machine_side",0],["machine_side",0]]);
@@ -25,21 +25,21 @@ var GuiMacerator = new UI.StandartWindow({
     drawing:[
         {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
-        {type:"bitmap",x:600,y:175 + GUI_SCALE * 2,bitmap:"arrowBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:600,y:175 + GUI_SCALE * 2,bitmap:"arrow_background",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
-        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"slotBlank",scale:GUI_SCALE},
-        "scaleArrow":{type:"scale",x:600,y:175 + GUI_SCALE * 2,direction:0,value:0.5,bitmap:"arrowScale",scale:GUI_SCALE},
-        "slotOutput":{type:"slot",x:720,y:175,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"slot.empty",scale:GUI_SCALE},
+        "scaleArrow":{type:"scale",x:600,y:175 + GUI_SCALE * 2,direction:0,value:0.5,bitmap:"arrow_scale",scale:GUI_SCALE},
+        "slotOutput":{type:"slot",x:720,y:175,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade}
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade}
     }
 });
 

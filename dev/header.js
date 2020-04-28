@@ -1,10 +1,21 @@
+/*
+
+    ._______. .__. .__. ._______. .______.   .______. .__.   .__. .________. ._______.  .______. .__.  .__.
+    |  .____| |  \ |  | |  .____| |  .__. \ / ._____| |  \   /  | |__.  .__| |  .____| /  .____| |  |__|  |
+    |  |____. |   \|  | |  |____. |  |__| | | | .___   \  \./  /     |  |    |  |____. |  |      |        |
+    |  .____| |  .    | |  .____| |  .____/ | | |_. \   \.   ./      |  |    |  .____| |  |      |  .__.  |
+    |  |____. |  |\   | |  |____. |  |\  \  | |___| |    |   |       |  |    |  |____. |  |____. |  |  |  |
+    |_______| |__| \__| |_______| |__| \__\ \_______/    |___|       |__|    |_______| \_______| |__|  |__|
+
+*/
+
 // lib
 IMPORT("ToolLib");
 IMPORT("SoundAPI");
-IMPORT("UsefulTool");
 IMPORT("EnergyNet");
 IMPORT("ChargeItem");
 IMPORT("TileRender");
+IMPORT("UsefulTool");
 IMPORT("StorageInterface");
 
 if(getCoreAPILevel() < 10){
@@ -22,9 +33,8 @@ World.dropItem = ModAPI.requireGlobal("Level.dropItem");
 canTileBeReplaced = ModAPI.requireGlobal("canTileBeReplaced");
 Player.setInventorySlot = ModAPI.requireGlobal("Player.setInventorySlot");
 
-var EU = EnergyTypeRegistry.assureEnergyType("Eu",1);
-
 var GUI_SCALE = 3.2;
+var EU = EnergyTypeRegistry.assureEnergyType("Eu",1);
 var GUI_TEXT = {size:16,color:android.graphics.Color.parseColor("#96dcdc")}
 
 var ChunkRegistry = {
@@ -63,12 +73,6 @@ var Tooltip = {
         Item.addTooltip(id,Translation.translate("Info: ") + Translation.translate(info));
     }
 }
-
-Block.createSpecialType({
-    base:1,
-    opaque:false,
-    destroytime:3
-},"transparent");
 
 function power(tier){
     return 32 * Math.pow(4,tier - 1);

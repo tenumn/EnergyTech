@@ -1,55 +1,56 @@
+Block.createSpecialType({
+    base:1,
+    solid:true,
+    destroytime:3,
+    explosionres:3
+},"ore");
+
 // 铜矿石
 IDRegistry.genBlockID("oreCopper");
 Block.createBlock("oreCopper",[
     {name:"Copper Ore",texture:[["copper_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreCopper,"stone",2);
-Block.setDestroyTime(BlockID.oreCopper,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreCopper,"stone",2,true);
 Block.setDestroyLevel("oreCopper",2);
 
 // 黝铜矿石
 IDRegistry.genBlockID("oreTetrahedrite");
 Block.createBlock("oreTetrahedrite",[
     {name:"Tetrahedrite Ore",texture:[["tetrahedrite_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreTetrahedrite,"stone",2);
-Block.setDestroyTime(BlockID.oreTetrahedrite,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreTetrahedrite,"stone",2,true);
 Block.setDestroyLevel("oreTetrahedrite",2);
 
 // 锡石矿石
 IDRegistry.genBlockID("oreCassiterite");
 Block.createBlock("oreCassiterite",[
     {name:"Cassiterite Ore",texture:[["cassiterite_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreCassiterite,"stone",2);
-Block.setDestroyTime(BlockID.oreCassiterite,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreCassiterite,"stone",2,true);
 Block.setDestroyLevel("oreCassiterite",2);
 
 // 方铅矿石
 IDRegistry.genBlockID("oreGalena");
 Block.createBlock("oreGalena",[
     {name:"Galena Ore",texture:[["galena_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreGalena,"stone",2);
-Block.setDestroyTime(BlockID.oreGalena,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreGalena,"stone",2,true);
 Block.setDestroyLevel("oreGalena",2);
 
 // 锂辉石矿石
 IDRegistry.genBlockID("oreSpodumene");
 Block.createBlock("oreSpodumene",[
     {name:"Spodumene Ore",texture:[["spodumene_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreSpodumene,"stone",2);
-Block.setDestroyTime(BlockID.oreSpodumene,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreSpodumene,"stone",2,true);
 Block.setDestroyLevel("oreSpodumene",2);
 
 // 石墨矿石
 IDRegistry.genBlockID("oreGraphite");
 Block.createBlock("oreGraphite",[
     {name:"Graphite Ore",texture:[["graphite_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreGraphite,"stone",2);
-Block.setDestroyTime(BlockID.oreGraphite,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreGraphite,"stone",2,true);
 Block.setDestroyLevel("oreGraphite",2);
 
 Block.registerDropFunction("oreGraphite",function(coords,id,data,level,enchant){
@@ -64,50 +65,45 @@ Block.registerDropFunction("oreGraphite",function(coords,id,data,level,enchant){
 IDRegistry.genBlockID("oreTungsten");
 Block.createBlock("oreTungsten",[
     {name:"Tungsten Ore",texture:[["tungsten_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreTungsten,"stone",3);
-Block.setDestroyTime(BlockID.oreTungsten,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreTungsten,"stone",3,true);
 Block.setDestroyLevel("oreTungsten",3);
 
 // 铀矿石
 IDRegistry.genBlockID("oreUranium");
 Block.createBlock("oreUranium",[
     {name:"Uranium Ore",texture:[["uranium_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreUranium,"stone",3);
-Block.setDestroyTime(BlockID.oreUranium,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreUranium,"stone",3,true);
 Block.setDestroyLevel("oreUranium",3);
 
 // 银矿石
 IDRegistry.genBlockID("oreSilver");
 Block.createBlock("oreSilver",[
     {name:"Silver Ore",texture:[["silver_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreSilver,"stone",2);
-Block.setDestroyTime(BlockID.oreSilver,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreSilver,"stone",2,true);
 Block.setDestroyLevel("oreSilver",2);
 
 // 铝土矿石
 IDRegistry.genBlockID("oreBauxite");
 Block.createBlock("oreBauxite",[
     {name:"Bauxite Ore",texture:[["bauxite_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreBauxite,"stone",2);
-Block.setDestroyTime(BlockID.oreBauxite,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreBauxite,"stone",2,true);
 Block.setDestroyLevel("oreBauxite",2);
 
 // 盐矿石
 IDRegistry.genBlockID("oreSalt");
 Block.createBlock("oreSalt",[
     {name:"Salt Ore",texture:[["salt_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreSalt,"stone",1);
-Block.setDestroyTime(BlockID.oreSalt,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreSalt,"stone",1,true);
 Block.setDestroyLevel("oreSalt",1);
 
 Block.registerDropFunction("oreSalt",function(coords,id,data,level,enchant){
 	if(level >= 1){
-        if(enchant.silk){return [[id,1,data]];}
+        if(enchant.silk) return [[id,1,data]];
         return [[ItemID.dustSalt,random(1 * (enchant.fortune + 1),4 * (enchant.fortune + 1)),0]];
     }
     return [];
@@ -117,14 +113,13 @@ Block.registerDropFunction("oreSalt",function(coords,id,data,level,enchant){
 IDRegistry.genBlockID("oreRuby");
 Block.createBlock("oreRuby",[
     {name:"Ruby Ore",texture:[["ruby_ore",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.oreRuby,"stone",3);
-Block.setDestroyTime(BlockID.oreRuby,3);
+],"ore");
+ToolAPI.registerBlockMaterial(BlockID.oreRuby,"stone",3,true);
 Block.setDestroyLevel("oreRuby",3);
 
 Block.registerDropFunction("oreRuby",function(coords,id,data,level,enchant){
 	if(level >= 3){
-        if(enchant.silk){return [[id,1,data]];}
+        if(enchant.silk) return [[id,1,data]];
         return [[ItemID.ruby,Math.floor(Math.random() * enchant.fortune + 1),0]];
     }
     return [];
@@ -176,9 +171,7 @@ Callback.addCallback("PreLoaded",function(){
             }}}
 
             ChunkRegistry.chunk[chunkX + ":" + chunkZ] = vein.name;
-            if(__config__.getBool("debug")){
-                Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);
-            }
+            if(__config__.getBool("debug")) Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);
         }
     });
 

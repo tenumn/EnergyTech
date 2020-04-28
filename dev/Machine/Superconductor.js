@@ -1,9 +1,17 @@
+Block.createSpecialType({
+    base:1,
+    solid:true,
+    opaque:true,
+    destroytime:5,
+    explosionres:16
+},"superconductor");
+
 // [超导体]Superconductor
 IDRegistry.genBlockID("superconductor");
 Block.createBlock("superconductor",[
     {name:"Superconductor",texture:[["superconductor",0]],inCreative:true},
     {name:"Superconductor",texture:[["superconductor",0]],inCreative:false}
-],"wire");
+],"superconductor");
 
 Block.setBlockShape(BlockID.superconductor,{x:0.375,y:0.375,z:0},{x:0.625,y:0.625,z:1},0);
 TileRenderer.setupWireModel(BlockID.superconductor,1,0.25,"et-wire",true);
@@ -42,12 +50,12 @@ var GuiSuperconductorCoil = new UI.StandartWindow({
     elements:{
         "textNetwork":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Network IP: ") + "0.0.0"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:250,bitmap:"slotCard",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}},
+        "slot.card":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:250,bitmap:"slot.card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade}
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade}
     }
 });
 
@@ -70,7 +78,7 @@ Machine.registerGenerator(BlockID.superconductor,{
     
 	tick:function(){
 		Upgrade.executeUpgrades(this);
-        var slot = this.container.getSlot("slotCard"),net = this.getNetwork(this.data.x,this.data.y,this.data.z),range = Math.abs(this.data.x - this.x) + Math.abs(this.data.y - this.y) + Math.abs(this.data.z - this.z);
+        var slot = this.container.getSlot("slot.card"),net = this.getNetwork(this.data.x,this.data.y,this.data.z),range = Math.abs(this.data.x - this.x) + Math.abs(this.data.y - this.y) + Math.abs(this.data.z - this.z);
 
         if(Tool.isTool(slot.id,"EnergyCard") && slot.extra){
             this.destroyMachine();

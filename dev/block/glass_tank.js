@@ -1,3 +1,10 @@
+Block.createSpecialType({
+    solid:true,
+    opaque:true,
+    destroytime:3,
+    explosionres:6
+},"glass_tank");
+
 // 玻璃储罐
 IDRegistry.genBlockID("glassTank");
 Block.createBlock("glassTank",[
@@ -17,7 +24,7 @@ Block.createBlock("glassTank",[
     {name:"14x Glass Tank",texture:[["glass_tank",13]],inCreative:true},
     {name:"15x Glass Tank",texture:[["glass_tank",14]],inCreative:true},
     {name:"16x Glass Tank",texture:[["glass_tank",15]],inCreative:true}
-],"transparent");
+],"glass_tank");
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:BlockID.glassTank,count:1,data:0},["ABA","B B","ABA"],["A",102,0,"B",20,0]);
@@ -67,15 +74,14 @@ Machine.registerPrototype(BlockID.glassTank,{
         if(this.data.isLoaded){
             var render = new Render();
             var stored = this.liquidStorage.getLiquidStored();
-            render.setPart("body",[{type:"box",uv:{x:0,y:0},coords:{x:0,y:-this.data.height / 2,z:0},size:{x:15,y:this.data.height * 0.9375,z:15}}],{});
+            render.setPart("body",[{type:"box",uv:{x:0,y:0},coords:{x:0,y:-this.data.height / 2,z:0},size:{x:14,y:this.data.height * 0.9375,z:14}}],{});
             this.anim.describe({skin:"models/liquid/" + stored + ".png",render:render.getID()});
             this.anim.load();
         }
     },
 
     init:function(){
-        var block = World.getBlock(this.x,this.y,this.z);
-        this.data.limit = 16 * (block.data + 1);
+        this.data.limit = 16 * (World.getBlockData(this.x,this.y,this.z) + 1);
         this.data.isLoaded = true;
         
         this.anim = new Animation.Base(this.x + 0.5,this.y - 1.5,this.z + 0.5);
@@ -94,10 +100,10 @@ Machine.registerPrototype(BlockID.glassTank,{
     click:function(id,count,data){
         var stored = this.liquidStorage.getLiquidStored();
         var amount = this.liquidStorage.getAmount(stored);
-        var liquid = LiquidRegistry.getItemLiquid(id,data);
+        var liquid = Liquid.getItemLiquid(id,data);
         if(liquid){
             if(!stored || stored == liquid && amount <= this.data.limit - 1){
-                var empty = LiquidRegistry.getEmptyItem(id,data);
+                var empty = Liquid.getEmptyItem(id,data);
                 this.liquidStorage.addLiquid(liquid,1);
                 Player.decreaseCarriedItem(1);
                 Player.addItemToInventory(empty.id,1,empty.data);
@@ -105,7 +111,7 @@ Machine.registerPrototype(BlockID.glassTank,{
             return;
         }
 
-        var full = LiquidRegistry.getFullItem(id,data,stored);
+        var full = Liquid.getFullItem(id,data,stored);
         if(full && amount >= 1){
             this.liquidStorage.getLiquid(stored,1);
             Player.decreaseCarriedItem(1);
@@ -122,9 +128,7 @@ Machine.registerPrototype(BlockID.glassTank,{
         this.data.height = Math.round(this.data.height * 100) / 100;
 
         if(stored){
-            if(Math.abs(amount / ((block.data + 1) * 4) - this.data.height) > 0.1){
-                this.updateAnim();
-            }
+            if(Math.abs(amount / ((block.data + 1) * 4) - this.data.height) > 0.1) this.updateAnim();
         } else if(this.anim && this.anim.isLoaded){
             this.anim.destroy();
         }

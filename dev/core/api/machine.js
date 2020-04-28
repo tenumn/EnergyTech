@@ -60,9 +60,12 @@ var Machine = {
         }
         
         state.setOutput = state.setOutput || function(name,id,count,data){
+            
             var slot = this.container.getSlot(name);
             if(slot.id == id && slot.data == data && slot.count < 64 || slot.id == 0){
-                slot.id = id,slot.data = data,slot.count += count;
+                slot.id = id;
+                slot.data = data;
+                slot.count += count;
             } else {
                 World.drop(this.x + 0.5,this.y + 1,this.z + 0.5,id,count,data);
             }
@@ -77,8 +80,8 @@ var Machine = {
             var fuel = this.container.getSlot(name);
             var burn = Recipes.getFuelBurnDuration(fuel.id,fuel.data);
             if(burn){
-                if(LiquidRegistry.getItemLiquid(fuel.id,fuel.data)){
-                    var empty = LiquidRegistry.getEmptyItem(fuel.id,fuel.data);
+                if(Liquid.getItemLiquid(fuel.id,fuel.data)){
+                    var empty = Liquid.getEmptyItem(fuel.id,fuel.data);
                     fuel.id = empty.id;
                     fuel.data = empty.data;
                     return burn;
@@ -90,8 +93,7 @@ var Machine = {
             return 0;
         }
 
-        ToolAPI.registerBlockMaterial(id,"stone",1);
-        Block.setDestroyTime(id,3);
+        ToolAPI.registerBlockMaterial(id,"stone",1,true);
 
         TileEntity.registerPrototype(id,state);
     },
@@ -155,6 +157,7 @@ var Machine = {
             var voltage_enabled = __config__.getBool("machine.voltage_enabled");
             if(voltage_enabled){
                 World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,0.5,true);
+                World.setBlock(this.x,this.y,this.z,0);
                 this.selfDestroy();
                 return 1;
             }

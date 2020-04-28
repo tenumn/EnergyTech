@@ -4,7 +4,7 @@ var coils = [[7,0,-4],[-7,0,4],[-4,0,7],[-3,0,7],[-4,0,-7],[-3,0,-7],[-2,0,-7],[
 IDRegistry.genBlockID("fusionReactor");
 Block.createBlock("fusionReactor",[
     {name:"Fusion Reactor",texture:[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",1],["machine_side",1]],inCreative:true}
-],"opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.fusionReactor,[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",1],["machine_side",1]]);
 TileRenderer.registerRotationModel(BlockID.fusionReactor,0,[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",1],["machine_side",1]]);
 
@@ -28,13 +28,13 @@ var GuiFusionReactor = new UI.StandartWindow({
     ],
 
     elements:{
-        "slotInput1":{type:"slot",x:437,y:75,bitmap:"slotCell",scale:GUI_SCALE},
-        "slotInput2":{type:"slot",x:497,y:75,bitmap:"slotCell",scale:GUI_SCALE},
+        "slotInput1":{type:"slot",x:437,y:75,bitmap:"slot.cell",scale:GUI_SCALE},
+        "slotInput2":{type:"slot",x:497,y:75,bitmap:"slot.cell",scale:GUI_SCALE},
 
-        "slotOutput0":{type:"slot",x:437,y:150,bitmap:"slotCell",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput1":{type:"slot",x:497,y:150,bitmap:"slotCell",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput2":{type:"slot",x:437,y:210,bitmap:"slotCell",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput3":{type:"slot",x:497,y:210,bitmap:"slotCell",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput0":{type:"slot",x:437,y:150,bitmap:"slot.cell",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput1":{type:"slot",x:497,y:150,bitmap:"slot.cell",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput2":{type:"slot",x:437,y:210,bitmap:"slot.cell",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput3":{type:"slot",x:497,y:210,bitmap:"slot.cell",scale:GUI_SCALE,isValid:function(){return false;}},
 
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
 		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Energy Output: ") + "0Eu"},
@@ -72,16 +72,12 @@ Machine.registerMachine(BlockID.fusionReactor,{
                 var coords = World.getRelativeCoords(coil.x,coil.y,coil.z,side);
                 var reactor = FusionReactor.getModule(World.getBlock(coords.x,coords.y,coords.z).id);
                 var coil_tile = World.getTileEntity(coords.x,coords.y,coords.z);
-                if(reactor && coil_tile){
-                    durability?coil_tile.data.durability -= reactor(this.id,this.data,coords,this.id):reactor(this.id,this.data,coords,this.id);
-                }
+                if(reactor && coil_tile) durability?coil_tile.data.durability -= reactor(this.id,this.data,coords,this.id):reactor(this.id,this.data,coords,this.id);
             }
 
             var module_tile = World.getTileEntity(coil.x,coil.y,coil.z);
             var reactor = FusionReactor.getModule(World.getBlock(coil.x,coil.y,coil.z).id);
-            if(reactor && module_tile){
-                durability?module_tile.data.durability -= reactor(coil,this.data):reactor(coil,this.data);
-            }
+            if(reactor && module_tile) durability?module_tile.data.durability -= reactor(coil,this.data):reactor(coil,this.data);
         }
     },
 
@@ -141,7 +137,11 @@ Machine.registerMachine(BlockID.fusionReactor,{
                         this.data.energy -= this.data.energy_consumption;
                         this.data.progress += 1 / this.data.work_time;
                         if(this.data.progress.toFixed(3) >= 1){
-                            for(let i = 0;i < 4;i++){var output = recipe.output[i];if(output){this.setOutput("slotOutput" + i,output.id,output.count,output.data);}}
+                            var output = recipe.output;
+                            if(output[0]){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
+                            if(output[1]){this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);}
+                            if(output[2]){this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);}
+                            if(output[3]){this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);}
                             input1.count--,input2.count--;
                             this.container.validateAll();
                             this.data.progress = 0;

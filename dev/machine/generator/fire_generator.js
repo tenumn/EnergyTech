@@ -2,7 +2,7 @@
 IDRegistry.genBlockID("fireGenerator");
 Block.createBlock("fireGenerator",[
 	{name:"Fire Generator",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]],inCreative:true}
-],"opaque");
+],"machine");
 
 TileRenderer.setStandartModel(BlockID.fireGenerator,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.fireGenerator,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]]);
@@ -32,12 +32,12 @@ var GuiFireGenerator = new UI.StandartWindow({
 		"scaleBurn":{type:"scale",x:450 + GUI_SCALE * 3,y:75 + GUI_SCALE * 2,direction:1,value:0.5,bitmap:"fireScale",scale:GUI_SCALE},
 		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Energy Output: ") + "0Eu"},
 		"scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-		"slotFuel":{type:"slot",x:450,y:150,bitmap:"slotFuel",isValid:function(id,count,data){return Recipes.getFuelBurnDuration(id,data) > 0;}},
+		"slotFuel":{type:"slot",x:450,y:150,bitmap:"slot.fuel",isValid:function(id,count,data){return Recipes.getFuelBurnDuration(id,data) > 0;}},
 
-		"slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade}
+		"slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade}
 	}
 });
 
@@ -59,7 +59,7 @@ Machine.registerGenerator(BlockID.fireGenerator,{
 		StorageInterface.checkHoppers(this);
 		var output = Math.min((this.data.isActive?random(1,this.data.burn / 20):0),this.getMaxVoltage());
 
-		if(this.data.burn <= 0 && this.data.energy + output < this.getEnergyStorage()){this.data.burn = this.data.burnMax = this.getFuel("slotFuel");}
+		if(this.data.burn <= 0 && this.data.energy + output < this.getEnergyStorage()) this.data.burn = this.data.burnMax = this.getFuel("slotFuel");
 
 		if(this.data.burn > 0 && this.data.energy + output < this.getEnergyStorage()){
 			this.data.energy += output;
@@ -83,7 +83,7 @@ Machine.registerGenerator(BlockID.fireGenerator,{
 TileRenderer.setRotationPlaceFunction(BlockID.fireGenerator);
 StorageInterface.createInterface(BlockID.fireGenerator,{
 	slots:{
-		"slotFuel":{input:true}
+		"slot.fuel":{input:true}
 	},
 	isValidInput:function(item){
 		return Recipes.getFuelBurnDuration(item.id,item.data) > 0;

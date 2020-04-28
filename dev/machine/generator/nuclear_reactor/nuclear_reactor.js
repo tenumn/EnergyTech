@@ -2,7 +2,7 @@
 IDRegistry.genBlockID("nuclearReactor");
 Block.createBlock("nuclearReactor",[
     {name:"Nuclear Reactor",texture:[["machine_bottom",0],["machine_top",0],["nuclear_reactor",0]],inCreative:true}
-],"opaque");
+],"machine");
 
 Machine.setDrop("nuclearReactor",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){

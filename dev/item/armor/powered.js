@@ -4,11 +4,9 @@ var POWERED_FUNCS = {
             Player.addEffect(10,params.damage,20);
             Player.addEffect(11,params.damage,20);
 
-            var health = Entity.getHealth(Player.get());
-            if(health <= 20){
-                Entity.setHealth(Player.get(),Math.min(20 - health,params.damage + health));
-            }
-
+            var health = Player.getHealth();
+            if(health <= 20) Player.setHealth(Math.min(20 - health,params.damage + health));
+            
             var data = Math.min(slot.data + (params.damage * 16),maxDamage);
             Player.setArmorSlot(index,slot.id,slot.count,data,slot.extra);
         }
@@ -32,20 +30,20 @@ var POWERED_FUNCS = {
     }
 }
 
-IDRegistry.genItemID("helmetPowered"    );
+IDRegistry.genItemID("helmetPowered");
 IDRegistry.genItemID("chestplatePowered");
-IDRegistry.genItemID("leggingsPowered"  );
-IDRegistry.genItemID("bootsPowered"     );
+IDRegistry.genItemID("leggingsPowered");
+IDRegistry.genItemID("bootsPowered");
 
-Item.createArmorItem("helmetPowered"    ,"Powered Helmet"    ,{name:"powered_helmet"}    ,{type:"helmet"    ,armor:10,durability:262144,texture:"armor/powered_1.png",isTech:true});
+Item.createArmorItem("helmetPowered","Powered Helmet",{name:"powered_helmet"},{type:"helmet",armor:10,durability:262144,texture:"armor/powered_1.png",isTech:true});
 Item.createArmorItem("chestplatePowered","Powered Chestplate",{name:"powered_chestplate"},{type:"chestplate",armor:13,durability:262144,texture:"armor/powered_1.png",isTech:true});
-Item.createArmorItem("leggingsPowered"  ,"Powered Leggings"  ,{name:"powered_leggings"}  ,{type:"leggings"  ,armor:12,durability:262144,texture:"armor/powered_2.png",isTech:true});
-Item.createArmorItem("bootsPowered"     ,"Powered Boots"     ,{name:"powered_boots"}     ,{type:"boots"     ,armor:9,durability:262144,texture:"armor/powered_1.png",isTech:true});
+Item.createArmorItem("leggingsPowered","Powered Leggings",{name:"powered_leggings"},{type:"leggings",armor:12,durability:262144,texture:"armor/powered_2.png",isTech:true});
+Item.createArmorItem("bootsPowered","Powered Boots",{name:"powered_boots"},{type:"boots",armor:9,durability:262144,texture:"armor/powered_1.png",isTech:true});
 
-ChargeItemRegistry.registerItem(ItemID.helmetPowered    ,"Eu",262144,power(2),2,"armor",true);
+ChargeItemRegistry.registerItem(ItemID.helmetPowered,"Eu",262144,power(2),2,"armor",true);
 ChargeItemRegistry.registerItem(ItemID.chestplatePowered,"Eu",262144,power(2),2,"armor",true);
-ChargeItemRegistry.registerItem(ItemID.leggingsPowered  ,"Eu",262144,power(2),2,"armor",true);
-ChargeItemRegistry.registerItem(ItemID.bootsPowered     ,"Eu",262144,power(2),2,"armor",true);
+ChargeItemRegistry.registerItem(ItemID.leggingsPowered,"Eu",262144,power(2),2,"armor",true);
+ChargeItemRegistry.registerItem(ItemID.bootsPowered,"Eu",262144,power(2),2,"armor",true);
 
 Armor.registerFuncs("helmetPowered"    ,POWERED_FUNCS);
 Armor.registerFuncs("chestplatePowered",POWERED_FUNCS);

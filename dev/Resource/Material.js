@@ -1,6 +1,6 @@
 Block.createSpecialType({
     opaque:false,
-    destroytime:0.25
+    destroytime:0
 },"small_stone");
 
 // 石子
@@ -9,17 +9,11 @@ Block.createBlock("smallStone",[
     {name:"Small Stone",texture:[["small_stone",0]],inCreative:false}
 ],"small_stone");
 
-Block.setDestroyTime(BlockID.smallStone,0.1);
 Block.setBlockShape(BlockID.smallStone,{x:0.0625,y:0,z:0.0625},{x:0.9375,y:0.0625,z:0.9375},0);
 
 var shape = new ICRender.CollisionShape();
 shape.addEntry().addBox(1,1,1,0,0,0);
 BlockRenderer.setCustomCollisionShape(BlockID.smallStone,-1,shape);
-
-var render = new ICRender.Model(),model = new BlockRenderer.Model();
-model.addBox(0.0625,0,0.0625,0.9375,0.0625,0.9375,BlockID.smallStone,0);
-render.addEntry(model);
-BlockRenderer.enableCoordMapping(BlockID.smallStone,-1,render);
 
 IDRegistry.genItemID("smallStone");
 Item.createItem("smallStone","Small Stone",{name:"small_stone"});
@@ -129,14 +123,19 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:ItemID.vacuumTube,count:1,data:0},[" c ","aba"," d "],["a",ItemID.wireCopper,0,"b",ItemID.dustCarbon,0,"c",20,0,"d",331,0]);
 });
 
+Block.createSpecialType({
+    base:1,
+    solid:true,
+    destroyTime:5
+},"machine");
+
 // 机器外壳
 IDRegistry.genBlockID("machineCasing");
 Block.createBlock("machineCasing",[
     {name:"Basic Machine Casing",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0]],inCreative:true},
     {name:"Advanced Machine Casing",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.machineCasing,"stone",1);
-Block.setDestroyTime(BlockID.machineCasing,3);
+],"machine");
+ToolAPI.registerBlockMaterial(BlockID.machineCasing,"stone",1,true);
 Block.setDestroyLevel("machineCasing",1);
 
 Callback.addCallback("PreLoaded",function(){
@@ -144,13 +143,19 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShaped({id:BlockID.machineCasing,count:1,data:1},["abb","bcb","bba"],["a",ItemID.stickSteel,0,"b",ItemID.plateSteel,0,"c",ItemID.gearSteel,0]);
 });
 
+Block.createSpecialType({
+    base:12,
+    solid:true,
+    opaque:true,
+    destroytime:1
+},"dust");
+
 // 尘土
 IDRegistry.genBlockID("dust");
 Block.createBlock("dust",[
     {name:"Dust",texture:[["dust",0]],inCreative:true}
 ],"dust");
-ToolAPI.registerBlockMaterial(BlockID.dust,"dirt");
-Block.setDestroyTime(BlockID.dust,1);
+ToolAPI.registerBlockMaterial(BlockID.dust,"dirt",true);
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.dust,BlockID.clearGlass);
@@ -163,12 +168,17 @@ Callback.addCallback("PreLoaded",function(){
     });
 });
 
+Block.createSpecialType({
+    base:20,
+    solid:true,
+    destroyTime:0.5
+},"glass");
+
 // 通透玻璃
 IDRegistry.genBlockID("clearGlass");
 Block.createBlock("clearGlass",[
     {name:"Clear Glass",texture:[["clear_glass",0]],inCreative:true}
-],"transparent");
-Block.setDestroyTime(BlockID.clearGlass,0.5);
+],"glass");
 
 Block.registerDropFunction("clearGlass",function(coords,id,data,level,enchant){
     if(enchant.silk){
@@ -181,9 +191,8 @@ Block.registerDropFunction("clearGlass",function(coords,id,data,level,enchant){
 IDRegistry.genBlockID("blockConcrete");
 Block.createBlock("blockConcrete",[
     {name:"Concrete Block",texture:[["blockConcrete",0]],inCreative:true}
-],"opaque");
-ToolAPI.registerBlockMaterial(BlockID.blockConcrete,"stone",1);
-Block.setDestroyTime(BlockID.blockConcrete,1);
+],"stone");
+ToolAPI.registerBlockMaterial(BlockID.blockConcrete,"stone",1,true);
 Block.setDestroyLevel("blockConcrete",1);
 
 Callback.addCallback("PreLoaded",function(){

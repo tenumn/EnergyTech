@@ -1,9 +1,3 @@
-Block.createSpecialType({
-    base:12,
-    opaque:true,
-    destroytime:1
-},"sand");
-
 function CreateBrokenOre(name,random){
     IDRegistry.genItemID("oreChunk" + name);
     Item.createItem("oreChunk" + name,name + " Ore Chunk",{name:"chunk_" + name.toLowerCase(),meta:0});
@@ -11,9 +5,8 @@ function CreateBrokenOre(name,random){
     IDRegistry.genBlockID("gravel" + name);
     Block.createBlock("gravel" + name,[
         {name:name + " Ore Gravel",texture:[["gravel_" + name.toLowerCase(),0]],inCreative:true}
-    ],"sand");
-    ToolAPI.registerBlockMaterial(BlockID["gravel" + name],"dirt");
-    Block.setDestroyTime(BlockID["gravel" + name],1);
+    ],"dust");
+    ToolAPI.registerBlockMaterial(BlockID["gravel" + name],"dirt",true);
 
     IDRegistry.genItemID("orePiece" + name);
     Item.createItem("orePiece" + name,name + " Piece Ore",{name:"piece_" + name.toLowerCase(),meta:0});
@@ -21,9 +14,8 @@ function CreateBrokenOre(name,random){
     IDRegistry.genBlockID("sand" + name);
     Block.createBlock("sand" + name,[
         {name:name + " Ore Sand",texture:[["sand_" + name.toLowerCase(),0]],inCreative:true}
-    ],"sand");
-    ToolAPI.registerBlockMaterial(BlockID["sand" + name],"dirt");
-    Block.setDestroyTime(BlockID["sand" + name],1);
+    ],"dust");
+    ToolAPI.registerBlockMaterial(BlockID["sand" + name],"dirt",true);
 
     IDRegistry.genItemID("oreDust" + name);
     Item.createItem("oreDust" + name,name + " Dust Ore",{name:"dust_" + name.toLowerCase()});
@@ -31,9 +23,8 @@ function CreateBrokenOre(name,random){
     IDRegistry.genBlockID("dust" + name);
     Block.createBlock("dust" + name,[
         {name:name + " Ore Dust",texture:[["dust_" + name.toLowerCase(),0]],inCreative:true}
-    ],"sand");
-    ToolAPI.registerBlockMaterial(BlockID["dust" + name],"dirt");
-    Block.setDestroyTime(BlockID["dust" + name],1);
+    ],"dust");
+    ToolAPI.registerBlockMaterial(BlockID["dust" + name],"dirt",true);
 
     Callback.addCallback("PreLoaded",function(){
         Item.addCreativeGroup("chunk-1",Translation.translate("Ore Chunk"),[BlockID["gravel" + name]]);

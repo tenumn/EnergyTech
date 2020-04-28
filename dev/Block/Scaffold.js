@@ -1,5 +1,6 @@
 Block.createSpecialType({
     base:5,
+    solid:true,
     opaque:false,
     destroytime:1
 },"scaffold");
@@ -46,17 +47,14 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
 
     tick:function(){
         this.renderer();
-
-        var bottom = World.getBlock(this.x,this.y - 1,this.z).id;
-        if(bottom == 0){World.destroyBlock(this.x,this.y,this.z,true);}
+        if(World.getBlockID(this.x,this.y - 1,this.z) == 0) World.destroyBlock(this.x,this.y,this.z,true);
     },
 
     renderer:function(){
-        var top = World.getBlock(this.x,this.y + 1,this.z).id,bottom = World.getBlock(this.x,this.y - 1,this.z).id;
-        if(top != this.id && bottom != this.id){this.data.meta = 0;}
-        if(top != this.id && bottom == this.id){this.data.meta = 1;}
-        if(top == this.id && bottom == this.id){this.data.meta = 2;}
-        if(top == this.id && bottom != this.id){this.data.meta = 3;}
+        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 0;
+        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 1;
+        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 2;
+        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 3;
         Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 
@@ -79,17 +77,14 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
 
     tick:function(){
         this.renderer();
-
-        var bottom = World.getBlock(this.x,this.y - 1,this.z).id;
-        if(bottom == 0){World.destroyBlock(this.x,this.y,this.z,true);}
+        if(World.getBlockID(this.x,this.y - 1,this.z) == 0) World.destroyBlock(this.x,this.y,this.z,true);
     },
 
     renderer:function(){
-        var top = World.getBlock(this.x,this.y + 1,this.z).id,bottom = World.getBlock(this.x,this.y - 1,this.z).id;
-        if(top != this.id && bottom != this.id){this.data.meta = 0;}
-        if(top != this.id && bottom == this.id){this.data.meta = 1;}
-        if(top == this.id && bottom == this.id){this.data.meta = 2;}
-        if(top == this.id && bottom != this.id){this.data.meta = 3;}
+        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 0;
+        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 1;
+        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 2;
+        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 3;
         Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 

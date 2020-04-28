@@ -1,4 +1,4 @@
-ToolAPI.addToolMaterial("steel",{durability:490,level:3,efficiency:6.5,damage:5.5,enchantability:10});
+ToolAPI.addToolMaterial("steel",{durability:490,level:3,efficiency:7,damage:6,enchantability:10});
 
 IDRegistry.genItemID("swordSteel");
 IDRegistry.genItemID("shovelSteel");

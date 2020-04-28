@@ -2,7 +2,7 @@
 IDRegistry.genBlockID("blastFurnace");
 Block.createBlock("blastFurnace",[
     {name:"Blast Furnace",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",0],["machine_side",1],["machine_side",1]],inCreative:true}
-],"opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.blastFurnace,[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",0],["machine_side",1],["machine_side",1]]);
 TileRenderer.registerRotationModel(BlockID.blastFurnace,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",0],["machine_side",1],["machine_side",1]]);
 TileRenderer.registerRotationModel(BlockID.blastFurnace,4,[["machine_bottom",1],["machine_top",1],["machine_side",1],["blastFurnace",1],["machine_side",1],["machine_side",1]]);
@@ -22,22 +22,22 @@ var GuiBlastFurnace = new UI.StandartWindow({
     drawing:[
         {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
-        {type:"bitmap",x:620,y:175 + GUI_SCALE * 2,bitmap:"arrowBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:620,y:175 + GUI_SCALE * 2,bitmap:"arrow_background",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
 
     elements:{
-        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"slotBlank",scale:GUI_SCALE},
-        "slotOutput0":{type:"slot",x:720,y:175,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput1":{type:"slot",x:780,y:175,bitmap:"slotBlank",scale:GUI_SCALE,isValid:function(){return false;}},
-        "scaleArrow":{type:"scale",x:620,y:175 + GUI_SCALE * 2,direction:0,value:0.5,bitmap:"arrowScale",scale:GUI_SCALE},
+        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"slot.empty",scale:GUI_SCALE},
+        "slotOutput0":{type:"slot",x:720,y:175,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput1":{type:"slot",x:780,y:175,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "scaleArrow":{type:"scale",x:620,y:175 + GUI_SCALE * 2,direction:0,value:0.5,bitmap:"arrow_scale",scale:GUI_SCALE},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slotCircuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
     }
 });
 
@@ -69,10 +69,9 @@ Machine.registerMachine(BlockID.blastFurnace,{
             this.data.progress += 1 / this.data.work_time;
             this.activate("machine/blast_furnace.ogg");
             if(this.data.progress.toFixed(3) >= 1){
-                for(let i = 0;i <= 1;i++){
-                    var output = recipe.output[i];
-                    if(output){this.setOutput("slotOutput" + i,output.id,output.count,output.data);}
-                }
+                var output = recipe.output;
+                if(output[0]){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
+                if(output[1]){this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);}
                 input.count--;
                 this.container.validateAll();
                 this.data.progress = 0;

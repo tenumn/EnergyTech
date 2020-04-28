@@ -7,9 +7,6 @@ core/api/recipe.js
 core/api/tool.js
 core/api/upgrade.js
 
-core/api/pipe/item_pipe.js
-core/api/pipe/liquid_pipe.js
-
 machine/generator/fusion_reactor/reactor_api.js
 machine/generator/nuclear_reactor/reactor_api.js
 
@@ -52,7 +49,10 @@ block/stone.js
 
 block/tree/rubber.js
 
-block/pipe/item_pipe.js
+block/item_pipe/item_pipe.js
+block/item_pipe/input_item_pipe.js
+block/item_pipe/output_item_pipe.js
+block/item_pipe/transport_item_pipe.js
 
 machine/autoclave.js
 machine/auto_saieve.js

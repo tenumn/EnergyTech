@@ -2,7 +2,7 @@
 IDRegistry.genBlockID("lithiumBatteryBox");
 Block.createBlock("lithiumBatteryBox",[
     {name:"Lithium Battery Box",texture:[["batteryBottom",0],["batteryTop",0],["lithiumBattery",0]],inCreative:true}
-],"opaque");
+],"machine");
 TileRenderer.setStandartModel(BlockID.lithiumBatteryBox,[["batteryBottom",0],["batteryTop",0],["lithiumBattery",0],["lithiumBattery",0],["lithiumBattery",0],["lithiumBattery",0]]);
 for(let i = 0;i < 9;i++){
     TileRenderer.registerRenderModel(BlockID.lithiumBatteryBox,i,[["batteryBottom",0],["batteryTop",0],["lithiumBattery",i],["lithiumBattery",i],["lithiumBattery",i],["lithiumBattery",i]]);
@@ -33,8 +33,8 @@ var GuiLithiumBatteryBox = new UI.StandartWindow({
 	elements:{
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "slotBatteryInput":{type:"slot",x:510,y:300,bitmap:"slotBatteryInput",scale:GUI_SCALE,isValid:Machine.isValidEUItem},
-        "slotBatteryOutput":{type:"slot",x:450,y:300,bitmap:"slotBatteryOutput",scale:GUI_SCALE,isValid:Machine.isValidEUStorage}
+        "slot.battery_input":{type:"slot",x:510,y:300,bitmap:"slot.battery_input",scale:GUI_SCALE,isValid:Machine.isValidEUItem},
+        "slot.battery_output":{type:"slot",x:450,y:300,bitmap:"slot.battery_output",scale:GUI_SCALE,isValid:Machine.isValidEUStorage}
 	}
 });
 
@@ -44,8 +44,8 @@ Machine.registerEnergyStorage(BlockID.lithiumBatteryBox,{
     tick:function(){
         this.renderer();
 
-        this.data.energy += ChargeItemRegistry.getEnergyFrom(this.container.getSlot("slotBatteryOutput"),"Eu",this.getEnergyStorage() - this.data.energy,1);
-		this.data.energy -= ChargeItemRegistry.addEnergyTo(this.container.getSlot("slotBatteryInput"),"Eu",this.data.energy,1);
+        this.data.energy += ChargeItemRegistry.getEnergyFrom(this.container.getSlot("slot.battery_output"),"Eu",this.getEnergyStorage() - this.data.energy,1);
+		this.data.energy -= ChargeItemRegistry.addEnergyTo(this.container.getSlot("slot.battery_input"),"Eu",this.data.energy,1);
 
         this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");

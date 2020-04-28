@@ -1,4 +1,4 @@
-ToolAPI.addToolMaterial("tin",{durability:235,level:2,efficiency:4.5,damage:4,enchantability:7});
+ToolAPI.addToolMaterial("tin",{durability:235,level:2,efficiency:5,damage:4,enchantability:7});
 
 IDRegistry.genItemID("swordTin");
 IDRegistry.genItemID("shovelTin");
