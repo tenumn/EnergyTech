@@ -248,7 +248,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             let item,list = [],recipe = Recipe.getRecipe("Centrifuge");
             for(let key in recipe){
                 result = recipe[key];
-                for(var i = 0;i <= 4;i++){
+                for(let i = 0;i <= 4;i++){
                     if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
                         list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
@@ -288,7 +288,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             let item,list = [],recipe = Recipe.getRecipe("OreWasher");
             for(let key in recipe){
                 result = recipe[key];
-                for(var i = 0;i <= 4;i++){
+                for(let i = 0;i <= 4;i++){
                     if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
                         list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
@@ -329,7 +329,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             let item,list = [],recipe = Recipe.getRecipe("FarmingStation");
             for(let key in recipe.output){
                 result = recipe.output[key];
-                for(var i = 0;i <= 4;i++){
+                for(let i = 0;i <= 4;i++){
                     if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
                         list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.dirt.id,count:1,data:recipe.dirt.data}],output:result});
@@ -609,7 +609,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             let item,list = [],recipe = Recipe.getRecipe("CanningMachine");
             for(let key in recipe.output){
                 result = recipe.output[key];
-                for(var i = 0;i <= 4;i++){
+                for(let i = 0;i <= 4;i++){
                     if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
                         list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:result});

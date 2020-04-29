@@ -98,7 +98,7 @@ var Machine = {
         TileEntity.registerPrototype(id,state);
     },
     
-    registerMachine:function(id,state){
+    registerMachine:function(id,state,type){
         ICRender.getGroup("et-wire").add(id,-1);
         
         if(state.defaultValues){
@@ -130,25 +130,25 @@ var Machine = {
         Tooltip.destroyType(id,"Wrench");
         
         this.registerPrototype(id,state);
-        EnergyTileRegistry.addEnergyTypeForId(id,EU);
+        EnergyTileRegistry.addEnergyTypeForId(id,type || EU);
     },
 
-    registerGenerator:function(id,state){
+    registerGenerator:function(id,state,type){
         state.isEnergySource = function(){return true;}
         state.canReceiveEnergy = function(){return false;}
 
         state.energyTick = state.energyTick || this.energyOutput;
 
-        this.registerMachine(id,state);
+        this.registerMachine(id,state,type || EU);
     },
 
-    registerEnergyStorage:function(id,state){
+    registerEnergyStorage:function(id,state,type){
         state.isEnergySource = function(){return true;}
         
         state.energyTick = state.energyTick || this.energyOutput;
         state.energyReceive = state.energyReceive || this.energyReceive;
         
-        this.registerMachine(id,state);
+        this.registerMachine(id,state,type || EU);
     },
 
     energyReceive:function(type,amount,voltage){

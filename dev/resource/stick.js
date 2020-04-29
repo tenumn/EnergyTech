@@ -58,7 +58,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipe.addCuttingRecipe({id:ItemID.plateLapis,data:0},{id:ItemID.stickLapis,count:4,data:0});
 
     var cutter = Tool.getAllTool("Cutter");
-    for(var i in cutter){
+    for(let i in cutter){
         Recipe.addShapeless({id:ItemID.stickCopper,count:4,data:0},[{id:ItemID.plateCopper,data:0},{id:ItemID.plateCopper,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickTin,count:4,data:0},[{id:ItemID.plateTin,data:0},{id:ItemID.plateTin,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickIron,count:4,data:0},[{id:ItemID.plateIron,data:0},{id:ItemID.plateIron,data:0}],cutter[i]);

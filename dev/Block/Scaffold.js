@@ -47,14 +47,17 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
 
     tick:function(){
         this.renderer();
-        if(World.getBlockID(this.x,this.y - 1,this.z) == 0) World.destroyBlock(this.x,this.y,this.z,true);
+
+        var bot = World.getBlockID(this.x,this.y - 1,this.z);
+        if(bot == 0) World.destroyBlock(this.x,this.y,this.z,true);
     },
 
     renderer:function(){
-        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 0;
-        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 1;
-        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 2;
-        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 3;
+        var top = World.getBlockID(this.x,this.y + 1,this.z),bot = World.getBlockID(this.x,this.y - 1,this.z);
+        if(top != this.id && bot != this.id) this.data.meta = 0;
+        if(top != this.id && bot == this.id) this.data.meta = 1;
+        if(top == this.id && bot == this.id) this.data.meta = 2;
+        if(top == this.id && bot != this.id) this.data.meta = 3;
         Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 
@@ -81,10 +84,11 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
     },
 
     renderer:function(){
-        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 0;
-        if(World.getBlockID(this.x,this.y + 1,this.z) != this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 1;
-        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) == this.id) this.data.meta = 2;
-        if(World.getBlockID(this.x,this.y + 1,this.z) == this.id && World.getBlockID(this.x,this.y - 1,this.z) != this.id) this.data.meta = 3;
+        var top = World.getBlockID(this.x,this.y + 1,this.z),bot = World.getBlockID(this.x,this.y - 1,this.z);
+        if(top != this.id && bot != this.id) this.data.meta = 0;
+        if(top != this.id && bot == this.id) this.data.meta = 1;
+        if(top == this.id && bot == this.id) this.data.meta = 2;
+        if(top == this.id && bot != this.id) this.data.meta = 3;
         Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 

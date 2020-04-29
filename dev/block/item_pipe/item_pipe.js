@@ -75,7 +75,7 @@ var ItemPipe = {
         },
 
         move:function(){
-            var dvelocity = Math.min(0.5,Math.max(0.2,this.velocity - this.friction || 0));
+            var dvelocity = Math.min(0.5,Math.max(0.2,this.velocity - this.friction || 0)) / 10;
             if(this.target && dvelocity){
                 var delta = {
                     x:this.target.x - this.position.x,
@@ -111,7 +111,7 @@ var ItemPipe = {
 
             var dir,path = ItemPipe.findPath(this);
             if(path){
-                dir = path[parseInt(Math.random() * path.length)]
+                dir = path[parseInt(Math.random() * path.length)];
             } else {
                 dir = this.direction
             }
@@ -176,7 +176,7 @@ var ItemPipe = {
     },
 
     isPipe:function(id){
-        return this.pipes[id] || false;
+        return this.pipes[id]?true:false;
     },
 
     canUseTile:function(tile){

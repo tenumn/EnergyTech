@@ -52,8 +52,8 @@ Machine.registerPrototype(BlockID.crudeBlastFurnace,{
         StorageInterface.checkHoppers(this);
         var input = this.container.getSlot("slotInput"),recipe = Recipe.getRecipeResult("BlastFurnace",[input.id,input.data]);
         
-        if(this.data.burn > 0){this.data.burn -= 1;}
-		if(this.data.burn == 0 && recipe){this.data.burn = this.data.burnMax = this.getFuel("slotFuel");}
+        if(this.data.burn > 0) this.data.burn -= 1;
+		if(this.data.burn == 0 && recipe) this.data.burn = this.data.burnMax = this.getFuel("slotFuel");
 		
         if(recipe){
             if(this.data.burn > 0){
@@ -61,7 +61,7 @@ Machine.registerPrototype(BlockID.crudeBlastFurnace,{
                 this.setActive(true);
                 if(this.data.progress.toFixed(3) >= 1){
                     var output = recipe.output;
-                    if(output[0]){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
+                    if(output[0]) this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);
                     input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;

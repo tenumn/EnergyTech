@@ -93,7 +93,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipe.addCompressorRecipe({id:ItemID.ingotAntimony,data:0},{id:ItemID.plateAntimony,count:1,data:0});
 
     var hammer = Tool.getAllTool("Hammer");
-    for(var i in hammer){
+    for(let i in hammer){
         Recipe.addShapeless({id:ItemID.plateCopper,count:1,data:0},[{id:ItemID.ingotCopper,data:0},{id:ItemID.ingotCopper,data:0}],hammer[i]);
         Recipe.addShapeless({id:ItemID.plateTin,count:1,data:0},[{id:ItemID.ingotTin,data:0},{id:ItemID.ingotTin,data:0}],hammer[i]);
         Recipe.addShapeless({id:ItemID.plateIron,count:1,data:0},[{id:265,data:0},{id:265,data:0}],hammer[i]);

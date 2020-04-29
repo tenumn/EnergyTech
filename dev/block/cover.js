@@ -1,7 +1,7 @@
 Renderer.registerCoverModel = function(id,data,texture){
     var size = [[0,0.9375,0,1,1,1],[0,0,0,1,0.0625,1],[0,0,0.9375,1,1,1],[0,0,0,1,1,0.0625],[0.9375,0,0,1,1,1],[0,0,0,0.0625,1,1]];
     
-    for(var i = 0;i < 6;i++){
+    for(let i = 0;i < 6;i++){
         var render = new ICRender.Model(),model = new BlockRenderer.Model();
         model.addBox(size[i][0],size[i][1],size[i][2],size[i][3],size[i][4],size[i][5],texture);
 		render.addEntry(model);

@@ -28,13 +28,13 @@ Renderer.setTransportItemPipeModel = function(id,data,name){
 	}
 
 	var model = BlockRenderer.createModel();
-	model.addBox(0.25,0.25,0.25,0.75,0.75,0.75,id,data);
+	model.addBox(0.3125,0.3125,0.3125,0.6875,0.6875,0.6875,id,data);
 	render.addEntry(model);
 	
 	var entry = shape.addEntry();
-	entry.addBox(0.25,0.25,0.25,0.75,0.75,0.75);
+	entry.addBox(0.3125,0.3125,0.3125,0.6875,0.6875,0.6875);
 	
-	Block.setShape(id,0.25,0.25,0.25,0.75,0.75,0.75,data);
+	Block.setShape(id,0.3125,0.3125,0.3125,0.6875,0.6875,0.6875,data);
 	
 	BlockRenderer.setStaticICRender(id,data,render);
 	BlockRenderer.setCustomCollisionShape(id,data,shape);

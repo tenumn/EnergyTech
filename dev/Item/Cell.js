@@ -62,18 +62,20 @@ Item.registerUseFunction("cellEmpty",function(coords,item,block){
 	}
 });
 
-Item.registerUseFunction("cellWater",function(coords,item,block){
+Item.registerUseFunction("cellWater",function(coords){
 	var x = coords.relative.x,y = coords.relative.y,z = coords.relative.z;
-	if(!World.getTileEntity(coords.x,coords.y,coords.z) && (block == 0 || block > 7 && block < 12)){
+	var tile = World.getTileEntity(coords.x,coords.y,coords.z),id = World.getBlockID(x,y,z);
+	if(!tile && (id == 0 || id > 7 && id < 12)){
 		World.setBlock(x,y,z,8);
 		Player.addItemToInventory(ItemID.cellEmpty,1);
 		Player.decreaseCarriedItem(1);
 	}
 });
 
-Item.registerUseFunction("cellLava",function(coords,item,block){
+Item.registerUseFunction("cellLava",function(coords){
 	var x = coords.relative.x,y = coords.relative.y,z = coords.relative.z;
-	if(!World.getTileEntity(coords.x,coords.y,coords.z) && (block == 0 || block > 7 && block < 12)){
+	var tile = World.getTileEntity(coords.x,coords.y,coords.z),id = World.getBlockID(x,y,z);
+	if(!tile && (id == 0 || id > 7 && id < 12)){
 		World.setBlock(x,y,z,10);      
 		Player.addItemToInventory(ItemID.cellEmpty,1);
 		Player.decreaseCarriedItem(1);

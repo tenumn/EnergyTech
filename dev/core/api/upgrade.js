@@ -27,12 +27,12 @@ var Upgrade = {
 	
 	getUpgrades:function(machine,container){
 		var upgrades = [];
-		for(var slotName in container.slots){
+		for(let slotName in container.slots){
 			if(slotName.match(/Upgrade/)){
 				var slot = container.getSlot(slotName);
 				if(slot.id){
 					var find = false;
-					for(var i in upgrades){
+					for(let i in upgrades){
 						var item = upgrades[i];
 						if(item.id == slot.id && item.data == slot.data){
 							find = true;
@@ -53,7 +53,7 @@ var Upgrade = {
 		if(machine.initValues){machine.initValues();}
 		
 		var container = machine.container,data = machine.data,coords = {x:machine.x,y:machine.y,z:machine.z},upgrades = this.getUpgrades(machine,container);
-		for(var i in upgrades){
+		for(let i in upgrades){
 			this.callUpgrade(upgrades[i],machine,container,data,coords);
 		}
 		StorageInterface.checkHoppers(machine);

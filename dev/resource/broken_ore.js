@@ -13,7 +13,7 @@ function CreateBrokenOre(name,random){
     
     IDRegistry.genBlockID("sand" + name);
     Block.createBlock("sand" + name,[
-        {name:name + " Ore Sand",texture:[["sand_" + name.toLowerCase(),0]],inCreative:true}
+        {name:name + " Ore Sand",texture:[[name.toLowerCase() + "_sand",0]],inCreative:true}
     ],"dust");
     ToolAPI.registerBlockMaterial(BlockID["sand" + name],"dirt",true);
 
@@ -22,7 +22,7 @@ function CreateBrokenOre(name,random){
     
     IDRegistry.genBlockID("dust" + name);
     Block.createBlock("dust" + name,[
-        {name:name + " Ore Dust",texture:[["dust_" + name.toLowerCase(),0]],inCreative:true}
+        {name:name + " Ore Dust",texture:[[name.toLowerCase() + "_dust",0]],inCreative:true}
     ],"dust");
     ToolAPI.registerBlockMaterial(BlockID["dust" + name],"dirt",true);
 

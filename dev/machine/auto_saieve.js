@@ -1,18 +1,17 @@
-Block.createSpecialType({
+// 自动筛子
+IDRegistry.genBlockID("autoSaieve");
+Block.createBlock("autoSaieve",[
+    {name:"Auto Sieve",texture:[["auto_sieve_bottom",0],["auto_sieve_top",0],["auto_sieve_side",0]],inCreative:true}
+],{
     base:1,
     solid:true,
     opaque:true,
     destroytime:5,
     explosionres:16
-},"auto_saieve");
+});
 
-// 自动筛子
-IDRegistry.genBlockID("autoSaieve");
-Block.createBlock("autoSaieve",[
-    {name:"Auto Sieve",texture:[["auto_sieve_bottom",0],["auto_sieve_top",0],["auto_sieve_side",0]],inCreative:true}
-],"auto_saieve");
-
-var render = new ICRender.Model(),model = new BlockRenderer.Model();
+var render = new ICRender.Model();
+var model = new BlockRenderer.Model();
 model.addBox(0.0625,0,0.0625,0.125,1,0.125,BlockID.autoSaieve,0);
 model.addBox(0.0625,0,0.875,0.125,1,0.9375,BlockID.autoSaieve,0);
 model.addBox(0.875,0,0.0625,0.9375,1,0.125,BlockID.autoSaieve,0);
@@ -22,7 +21,8 @@ model.addBox(0,0.5,0.9375,1,1,1,BlockID.autoSaieve,0);
 model.addBox(0,0.5,0.0625,0.0625,1,0.9375,BlockID.autoSaieve,0);
 model.addBox(0.9375,0.5,0.0625,1,1,0.9375,BlockID.autoSaieve,0);
 model.addBox(0.0625,0.5625,0.0625,0.9375,0.625,0.9375,[["string_mesh",0]]);
-render.addEntry(model),BlockRenderer.enableCoordMapping(BlockID.autoSaieve,-1,render);
+render.addEntry(model);
+BlockRenderer.enableCoordMapping(BlockID.autoSaieve,-1,render);
 
 Machine.setDrop("autoSaieve",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -108,7 +108,7 @@ Machine.registerMachine(BlockID.autoSaieve,{
     },
 
     setOutput:function(id,count,data){
-        for(var slot = 1;slot < 17;slot++){
+        for(let slot = 1;slot < 17;slot++){
             var output = this.container.getSlot("slotOutput" + slot);
             if(output.id == 0 || output.id == id && output.data == data && output.count < 64){
                 if(output.count + count > 64){
@@ -146,6 +146,7 @@ StorageInterface.createInterface(BlockID.autoSaieve,{
         "slotOutput14":{output:true},
         "slotOutput15":{output:true},
         "slotOutput16":{output:true}
-	},
+    },
+    
 	isValidInput:function(item){return Recipe.getRecipeResult("AutoSaieve",[item.id,item.data])?true:false;}
 });

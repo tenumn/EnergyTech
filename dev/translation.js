@@ -52,22 +52,7 @@ Translation.addTranslation("Progress Display Cover",{zh:"进度显示面板",ru:
 Translation.addTranslation("Crude Blast Furnace",{zh:"粗制高炉",ru:"Доменная печь"});
 
 // Glass Tank
-Translation.addTranslation("1x Glass Tank",{zh:"1x 玻璃储罐",ru:"1x Стеклянный бак"});
-Translation.addTranslation("2x Glass Tank",{zh:"2x 玻璃储罐",ru:"2x Стеклянный бак"});
-Translation.addTranslation("3x Glass Tank",{zh:"3x 玻璃储罐",ru:"3x Стеклянный бак"});
-Translation.addTranslation("4x Glass Tank",{zh:"4x 玻璃储罐",ru:"4x Стеклянный бак"});
-Translation.addTranslation("5x Glass Tank",{zh:"5x 玻璃储罐",ru:"5x Стеклянный бак"});
-Translation.addTranslation("6x Glass Tank",{zh:"6x 玻璃储罐",ru:"6x Стеклянный бак"});
-Translation.addTranslation("7x Glass Tank",{zh:"7x 玻璃储罐",ru:"7x Стеклянный бак"});
-Translation.addTranslation("8x Glass Tank",{zh:"8x 玻璃储罐",ru:"8x Стеклянный бак"});
-Translation.addTranslation("9x Glass Tank",{zh:"9x 玻璃储罐",ru:"9x Стеклянный бак"});
-Translation.addTranslation("10x Glass Tank",{zh:"10x 玻璃储罐",ru:"10x Стеклянный бак"});
-Translation.addTranslation("11x Glass Tank",{zh:"11x 玻璃储罐",ru:"11x Стеклянный бак"});
-Translation.addTranslation("12x Glass Tank",{zh:"12x 玻璃储罐",ru:"12x Стеклянный бак"});
-Translation.addTranslation("13x Glass Tank",{zh:"13x 玻璃储罐",ru:"13x Стеклянный бак"});
-Translation.addTranslation("14x Glass Tank",{zh:"14x 玻璃储罐",ru:"14x Стеклянный бак"});
-Translation.addTranslation("15x Glass Tank",{zh:"15x 玻璃储罐",ru:"15x Стеклянный бак"});
-Translation.addTranslation("16x Glass Tank",{zh:"16x 玻璃储罐",ru:"16x Стеклянный бак"});
+Translation.addTranslation("Glass Tank",{zh:"玻璃储罐",ru:"Стеклянный бак"});
 
 // Scaffold
 Translation.addTranslation("Wood Scaffold",{zh:"木脚手架",ru:"Деревянные строительные леса"});

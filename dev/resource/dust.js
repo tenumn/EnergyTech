@@ -108,7 +108,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipe.addCentrifugeRecipe({id:ItemID.dustImpureBauxite,data:0},[{id:ItemID.dustAluminium,count:1,data:0},{id:ItemID.dustSmallAluminium,count:1,data:0},{id:ItemID.dustSmallStone,count:1,data:0}]);
     
     var mortar = Tool.getAllTool("Mortar");
-    for(var i in mortar){
+    for(let i in mortar){
         Recipe.addShapeless({id:ItemID.dustImpureCopper,count:1,data:0},[{id:BlockID.oreCopper,data:0}],mortar[i]);
         Recipe.addShapeless({id:ItemID.dustImpureCassiterite,count:1,data:0},[{id:BlockID.oreCassiterite,data:0}],mortar[i]);
         Recipe.addShapeless({id:ItemID.dustImpureGalena,count:1,data:0},[{id:BlockID.oreGalena,data:0}],mortar[i]);

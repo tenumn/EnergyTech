@@ -5,7 +5,7 @@ Block.createBlock("wiremill",[
 ],"machine");
 TileRenderer.setStandartModel(BlockID.wiremill,[["machine_bottom",0],["wiremill_top",0],["machine_side",0],["wiremill",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.wiremill,0,[["machine_bottom",0],["wiremill_top",0],["machine_side",0],["wiremill",0],["machine_side",0],["machine_side",0]]);
-for(var i = 1;i < 22;i++){TileRenderer.registerRotationModel(BlockID.wiremill,i * 4,[["machine_bottom",0],["wiremill_top",1],["machine_side",0],["wiremill",i],["machine_side",0],["machine_side",0]]);}
+for(let i = 1;i < 22;i++){TileRenderer.registerRotationModel(BlockID.wiremill,i * 4,[["machine_bottom",0],["wiremill_top",1],["machine_side",0],["wiremill",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("wiremill",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){

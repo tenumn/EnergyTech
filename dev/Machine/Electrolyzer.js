@@ -5,7 +5,7 @@ Block.createBlock("electrolyzer",[
 ],"machine");
 TileRenderer.setStandartModel(BlockID.electrolyzer,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.electrolyzer,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",0],["machine_side",0],["machine_side",0]]);
-for(var i = 1;i < 8;i++){TileRenderer.registerRotationModel(BlockID.electrolyzer,i * 4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",i],["machine_side",0],["machine_side",0]]);}
+for(let i = 1;i < 8;i++){TileRenderer.registerRotationModel(BlockID.electrolyzer,i * 4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["electrolyzer",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("electrolyzer",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -72,10 +72,10 @@ Machine.registerMachine(BlockID.electrolyzer,{
             this.activate();
             if(this.data.progress.toFixed(3) >= 1){
                 var output = recipe.output;
-                if(output[0]){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
-                if(output[1]){this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);}
-                if(output[2]){this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);}
-                if(output[3]){this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);}
+                if(output[0]) this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);
+                if(output[1]) this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);
+                if(output[2]) this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);
+                if(output[3]) this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);
                 input.count -= recipe.count;
                 this.container.validateAll();
                 this.data.progress = 0;

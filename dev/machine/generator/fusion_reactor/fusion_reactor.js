@@ -132,16 +132,16 @@ Machine.registerMachine(BlockID.fusionReactor,{
             var heat = this.data.heat - Math.max(0,this.data.coolant - this.data.heat);
             if(recipe){
                 if(recipe.heat >= heat/2 && recipe.heat <= heat*2){
-                    if(this.data.energy + energy_output < this.getEnergyStorage()){this.data.energy += energy_output;}
+                    if(this.data.energy + energy_output < this.getEnergyStorage()) this.data.energy += energy_output;
                     if(this.data.energy >= this.data.energy_consumption){
                         this.data.energy -= this.data.energy_consumption;
                         this.data.progress += 1 / this.data.work_time;
                         if(this.data.progress.toFixed(3) >= 1){
                             var output = recipe.output;
-                            if(output[0]){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
-                            if(output[1]){this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);}
-                            if(output[2]){this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);}
-                            if(output[3]){this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);}
+                            if(output[0]) this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);
+                            if(output[1]) this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);
+                            if(output[2]) this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);
+                            if(output[3]) this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);
                             input1.count--,input2.count--;
                             this.container.validateAll();
                             this.data.progress = 0;

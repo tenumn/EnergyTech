@@ -70,8 +70,8 @@ Machine.registerMachine(BlockID.blastFurnace,{
             this.activate("machine/blast_furnace.ogg");
             if(this.data.progress.toFixed(3) >= 1){
                 var output = recipe.output;
-                if(output[0]){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
-                if(output[1]){this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);}
+                if(output[0]) this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);
+                if(output[1]) this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);
                 input.count--;
                 this.container.validateAll();
                 this.data.progress = 0;

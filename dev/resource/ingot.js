@@ -77,6 +77,14 @@ Block.createBlock("blockTungsten",[
 ToolAPI.registerBlockMaterial(BlockID.blockTungsten,"stone",1,true);
 Block.setDestroyLevel("blockTungsten",1);
 
+// 铀块
+IDRegistry.genBlockID("blockUranium");
+Block.createBlock("blockUranium",[
+    {name:"Uranium Block",texture:[["uranium_block",0]],inCreative:true}
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockUranium,"stone",1,true);
+Block.setDestroyLevel("blockUranium",1);
+
 // 银块
 IDRegistry.genBlockID("blockSilver");
 Block.createBlock("blockSilver",[
@@ -112,6 +120,7 @@ Callback.addCallback("PreLoaded",function(){
         BlockID.blockLithium,
         BlockID.blockCarbon,
         BlockID.blockTungsten,
+        BlockID.blockUranium,
         BlockID.blockSilver,
         BlockID.blockAluminium,
         BlockID.blockLeadAntimony

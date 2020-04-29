@@ -5,7 +5,7 @@ Block.createBlock("cutting",[
 ],"machine");
 TileRenderer.setStandartModel(BlockID.cutting,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.cutting,0,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
-for(var i = 1;i < 6;i++){TileRenderer.registerRotationModel(BlockID.cutting,i * 4,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",i],["machine_side",0],["machine_side",0]]);}
+for(let i = 1;i < 6;i++){TileRenderer.registerRotationModel(BlockID.cutting,i * 4,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("cutting",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){

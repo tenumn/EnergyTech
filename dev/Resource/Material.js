@@ -161,7 +161,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.dust,BlockID.clearGlass);
 
     Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
-        for(var i = 0;i < 6;i++){
+        for(let i = 0;i < 6;i++){
             var coords = GenerationUtils.randomCoords(chunkX,chunkZ,0,255);
             GenerationUtils.generateOre(coords.x,coords.y,coords.z,BlockID.dust,0,32);
         }
@@ -185,18 +185,6 @@ Block.registerDropFunction("clearGlass",function(coords,id,data,level,enchant){
         return [[id,1,data]];
     }
     return [];
-});
-
-// 混凝土块
-IDRegistry.genBlockID("blockConcrete");
-Block.createBlock("blockConcrete",[
-    {name:"Concrete Block",texture:[["blockConcrete",0]],inCreative:true}
-],"stone");
-ToolAPI.registerBlockMaterial(BlockID.blockConcrete,"stone",1,true);
-Block.setDestroyLevel("blockConcrete",1);
-
-Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.blockConcrete,count:3,data:0},["aba","bcb","aba"],["a",12,-1,"b",13,0,"c",ItemID.slag,0]);
 });
 
 // 锂-6

@@ -18,7 +18,7 @@ Callback.addCallback("PreLoaded",function(){
     ]);
 
     var hammer = Tool.getAllTool("Hammer");
-    for(var i in hammer){
+    for(let i in hammer){
         Recipe.addShapeless({id:ItemID.ringIron,count:1,data:0},[{id:ItemID.stickIron,data:0}],hammer[i]);
         Recipe.addShapeless({id:ItemID.ringTin,count:1,data:0},[{id:ItemID.stickTin,data:0}],hammer[i]);
         Recipe.addShapeless({id:ItemID.ringSteel,count:1,data:0},[{id:ItemID.stickSteel,data:0}],hammer[i]);

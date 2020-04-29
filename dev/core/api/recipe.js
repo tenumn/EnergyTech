@@ -1,7 +1,7 @@
 var Recipe = {
     addShapedRecipe:function(output,recipe,data,extra){
         Recipes.addShaped(output,recipe,data,function(api,field,result){
-            for(var i in field){
+            for(let i in field){
                 if(extra[i] >= 1){
                     field[i].data += extra[i];
                     if(field[i].data >= Item.getMaxDamage(field[i].id)){

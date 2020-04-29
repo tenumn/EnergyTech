@@ -5,7 +5,7 @@ Block.createBlock("farmingStation",[
 ],"machine");
 TileRenderer.setStandartModel(BlockID.farmingStation,[["machine_bottom",0],["farming_station_top",0],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]]);
 TileRenderer.registerRotationModel(BlockID.farmingStation,0 ,[["machine_bottom",0],["farming_station_top",0],["machine_side",0],["farming_station",0],["machine_side",0],["machine_side",0]]);
-for(var i = 1;i < 9;i++){TileRenderer.registerRotationModel(BlockID.farmingStation,i * 4,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",i],["machine_side",0],["machine_side",0]]);}
+for(let i = 1;i < 9;i++){TileRenderer.registerRotationModel(BlockID.farmingStation,i * 4,[["machine_bottom",0],["farming_station_top",1],["machine_side",0],["farming_station",i],["machine_side",0],["machine_side",0]]);}
 
 Machine.setDrop("farmingStation",BlockID.machineCasing);
 Callback.addCallback("PreLoaded",function(){
@@ -72,13 +72,11 @@ Machine.registerMachine(BlockID.farmingStation,{
             this.data.progress += 1 / this.data.work_time;
             this.activate();
             if(this.data.progress.toFixed(3) >= 1){
-                for(let i = 0;i <= 3;i++){
-                    var output = recipe.output;
-                    if(output[0] && Math.random() <= 1.00){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
-                    if(output[1] && Math.random() <= 0.75){this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);}
-                    if(output[2] && Math.random() <= 0.50){this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);}
-                    if(output[3] && Math.random() <= 0.25){this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);}
-                }
+                var output = recipe.output;
+                if(output[0] && Math.random() <= 1.00){this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);}
+                if(output[1] && Math.random() <= 0.75){this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);}
+                if(output[2] && Math.random() <= 0.50){this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);}
+                if(output[3] && Math.random() <= 0.25){this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);}
                 if(Math.random() <= 0.25) dirt.count--;
                 input.count--;
                 this.container.validateAll();
