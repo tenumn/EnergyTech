@@ -9,7 +9,7 @@ TileRenderer.registerFullRotationModel(BlockID.transformerLV,0,[["transformer_si
 Tooltip.tier(BlockID.transformerLV,1);
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerLV]);
-    Recipes.addShaped({id:BlockID.transformerLV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTin,0,"b",BlockID.machineCasing,0,"c",ItemID.partTin,0,"d",ItemID.stickTin,0]);
+    Recipes.addShaped({id:BlockID.transformerLV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTin,0,"b",BlockID.machineCasing,1,"c",ItemID.partTin,0,"d",ItemID.stickTin,0]);
 });
 
 Machine.registerMachine(BlockID.transformerLV,{
@@ -62,7 +62,7 @@ Machine.registerMachine(BlockID.transformerLV,{
     destroy:function(){BlockRenderer.unmapAtCoords(this.x,this.y,this.z);}
 });
 
-Block.registerPlaceFunction(BlockID.transformerLV,function(coords,item,block){
+Block.registerPlaceFunction("transformerLV",function(coords,item,block){
     var place = canTileBeReplaced(block.id,block.data)?coords:coords.relative;
     World.setBlock(place.x,place.y,place.z,item.id,item.data);
     var rotation = TileRenderer.getBlockRotation(true);
@@ -82,7 +82,7 @@ TileRenderer.registerFullRotationModel(BlockID.transformerMV,0,[["transformer_si
 Tooltip.tier(BlockID.transformerMV,2);
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerMV]);
-    Recipes.addShaped({id:BlockID.transformerMV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireCopper,0,"b",BlockID.machineCasing,0,"c",ItemID.partCopper,0,"d",ItemID.stickCopper,0]);
+    Recipes.addShaped({id:BlockID.transformerMV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireCopper,0,"b",BlockID.machineCasing,1,"c",ItemID.partCopper,0,"d",ItemID.stickCopper,0]);
 });
 
 Machine.registerMachine(BlockID.transformerMV,{
@@ -129,7 +129,7 @@ Machine.registerMachine(BlockID.transformerMV,{
     canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
 });
 
-Block.registerPlaceFunction(BlockID.transformerMV,function(coords,item,block){
+Block.registerPlaceFunction("transformerMV",function(coords,item,block){
     var place = canTileBeReplaced(block.id,block.data)?coords:coords.relative;
     World.setBlock(place.x,place.y,place.z,item.id,item.data);
     var rotation = TileRenderer.getBlockRotation(true);
@@ -149,7 +149,7 @@ TileRenderer.registerFullRotationModel(BlockID.transformerHV,0,[["transformer_si
 Tooltip.tier(BlockID.transformerHV,3);
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerHV]);
-    Recipes.addShaped({id:BlockID.transformerHV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireGold  ,0,"b",BlockID.machineCasing,1,"c",ItemID.partGold  ,0,"d",ItemID.stickGold  ,0]);
+    Recipes.addShaped({id:BlockID.transformerHV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireGold  ,0,"b",BlockID.machineCasing,2,"c",ItemID.partGold  ,0,"d",ItemID.stickGold  ,0]);
 });
 
 Machine.registerMachine(BlockID.transformerHV,{
@@ -196,7 +196,7 @@ Machine.registerMachine(BlockID.transformerHV,{
     canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
 });
 
-Block.registerPlaceFunction(BlockID.transformerHV,function(coords,item,block){
+Block.registerPlaceFunction("transformerHV",function(coords,item,block){
     var place = canTileBeReplaced(block.id,block.data)?coords:coords.relative;
     World.setBlock(place.x,place.y,place.z,item.id,item.data);
     var rotation = TileRenderer.getBlockRotation(true);
@@ -216,7 +216,7 @@ TileRenderer.registerFullRotationModel(BlockID.transformerEV,0,[["transformer_si
 Tooltip.tier(BlockID.transformerEV,4);
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerEV]);
-    Recipes.addShaped({id:BlockID.transformerEV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireSteel ,0,"b",BlockID.machineCasing,1,"c",ItemID.partSteel ,0,"d",ItemID.stickSteel ,0]);
+    Recipes.addShaped({id:BlockID.transformerEV,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireSteel ,0,"b",BlockID.machineCasing,2,"c",ItemID.partSteel ,0,"d",ItemID.stickSteel ,0]);
 });
 
 Machine.registerMachine(BlockID.transformerEV,{
@@ -263,7 +263,7 @@ Machine.registerMachine(BlockID.transformerEV,{
     canExtractEnergy:function(side){if(side == this.data.meta){return this.data.mode;}return !this.data.mode;}
 });
 
-Block.registerPlaceFunction(BlockID.transformerEV,function(coords,item,block){
+Block.registerPlaceFunction("transformerEV",function(coords,item,block){
     var place = canTileBeReplaced(block.id,block.data)?coords:coords.relative;
     World.setBlock(place.x,place.y,place.z,item.id,item.data);
     var rotation = TileRenderer.getBlockRotation(true);

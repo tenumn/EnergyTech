@@ -96,13 +96,15 @@ Saver.addSavesScope("EnergyTech",
     }
 );
 
-LiquidRegistry.registerLiquid("helium","Helium","liquid.helium");
-LiquidRegistry.registerLiquid("helium3","Helium-3","liquid.helium3");
-LiquidRegistry.registerLiquid("lithium6","Lithium-6","liquid.lithium6");
-LiquidRegistry.registerLiquid("lithium7","Lithium-7","liquid.lithium7");
-LiquidRegistry.registerLiquid("uranium235","Uranium-235","liquid.uranium235");
-LiquidRegistry.registerLiquid("uranium238","Uranium-238","liquid.uranium238");
-LiquidRegistry.registerLiquid("tritium","Tritium","liquid.tritium");
-LiquidRegistry.registerLiquid("deuterium","Deuterium","liquid.deuterium");
-LiquidRegistry.registerLiquid("heavyWater","Heavy Water","liquid.heavyWater");
-LiquidRegistry.registerLiquid("distilledWater","Distilled Water","liquid.distilledWater");
+LiquidRegistry.registerLiquid("steam","Steam",["liquid_steam"]);
+LiquidRegistry.registerLiquid("helium","Helium",["liquid_helium"]);
+LiquidRegistry.registerLiquid("helium3","Helium-3",["liquid_helium3"]);
+LiquidRegistry.registerLiquid("lithium6","Lithium-6",["liquid_lithium6"]);
+LiquidRegistry.registerLiquid("lithium7","Lithium-7",["liquid_lithium7"]);
+LiquidRegistry.registerLiquid("uranium","Uranium",["liquid_uranium"]);
+LiquidRegistry.registerLiquid("uranium235","Uranium-235",["liquid_uranium235"]);
+LiquidRegistry.registerLiquid("uranium238","Uranium-238",["liquid_uranium238"]);
+LiquidRegistry.registerLiquid("tritium","Tritium",["liquid_tritium"]);
+LiquidRegistry.registerLiquid("deuterium","Deuterium",["liquid_deuterium"]);
+LiquidRegistry.registerLiquid("heavyWater","Heavy Water",["liquid_heavy_water"]);
+LiquidRegistry.registerLiquid("distilledWater","Distilled Water",["liquid_distilled_water"]);

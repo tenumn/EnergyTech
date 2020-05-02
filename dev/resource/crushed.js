@@ -154,8 +154,8 @@ Callback.addCallback("PreLoaded",function(){
         Recipe.addShapeless({id:ItemID.crushedBauxite,count:1,data:0},[{id:BlockID.oreBauxite,data:0}],hammer[i]);
     }
 
-    Recipe.addBlastFurnaceRecipe({id:BlockID.crushedTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
-    Recipe.addBlastFurnaceRecipe({id:BlockID.crushedPurifiedTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    Recipe.addBlastFurnaceRecipe({id:ItemID.crushedTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
+    Recipe.addBlastFurnaceRecipe({id:ItemID.crushedPurifiedTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
     
     Recipe.addOreWasherRecipe({id:ItemID.crushedCopper,data:0},[{id:ItemID.crushedPurifiedCopper,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     Recipe.addOreWasherRecipe({id:ItemID.crushedCassiterite,data:0},[{id:ItemID.crushedPurifiedCassiterite,count:1,data:0},{id:ItemID.dustSmallIron,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);

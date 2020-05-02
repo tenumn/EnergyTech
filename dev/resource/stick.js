@@ -6,6 +6,10 @@ Item.createItem("stickCopper","Copper Stick",{name:"copper_stick"});
 IDRegistry.genItemID("stickTin");
 Item.createItem("stickTin","Tin Stick",{name:"tin_stick"});
 
+// 青铜棍
+IDRegistry.genItemID("stickBronze");
+Item.createItem("stickBronze","Bronze Stick",{name:"bronze_stick"});
+
 // 铁棍
 IDRegistry.genItemID("stickIron");
 Item.createItem("stickIron","Iron Stick",{name:"iron_stick"});
@@ -38,6 +42,7 @@ Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("stick",Translation.translate("Stick"),[
         ItemID.stickCopper,
         ItemID.stickTin,
+        ItemID.stickBronze,
         ItemID.stickIron,
         ItemID.stickSteel,
         ItemID.stickGold,
@@ -49,6 +54,7 @@ Callback.addCallback("PreLoaded",function(){
 
     Recipe.addCuttingRecipe({id:ItemID.plateCopper,data:0},{id:ItemID.stickCopper,count:4,data:0});
     Recipe.addCuttingRecipe({id:ItemID.plateTin,data:0},{id:ItemID.stickTin,count:4,data:0});
+    Recipe.addCuttingRecipe({id:ItemID.plateBronze,data:0},{id:ItemID.stickBronze,count:4,data:0});
     Recipe.addCuttingRecipe({id:ItemID.plateIron,data:0},{id:ItemID.stickIron,count:4,data:0});
     Recipe.addCuttingRecipe({id:ItemID.plateSteel,data:0},{id:ItemID.stickSteel,count:4,data:0});
     Recipe.addCuttingRecipe({id:ItemID.plateGold,data:0},{id:ItemID.stickGold,count:4,data:0});
@@ -61,6 +67,7 @@ Callback.addCallback("PreLoaded",function(){
     for(let i in cutter){
         Recipe.addShapeless({id:ItemID.stickCopper,count:4,data:0},[{id:ItemID.plateCopper,data:0},{id:ItemID.plateCopper,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickTin,count:4,data:0},[{id:ItemID.plateTin,data:0},{id:ItemID.plateTin,data:0}],cutter[i]);
+        Recipe.addShapeless({id:ItemID.stickBronze,count:4,data:0},[{id:ItemID.plateBronze,data:0},{id:ItemID.plateBronze,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickIron,count:4,data:0},[{id:ItemID.plateIron,data:0},{id:ItemID.plateIron,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickSteel,count:4,data:0},[{id:ItemID.plateSteel,data:0},{id:ItemID.plateSteel,data:0}],cutter[i]);
         Recipe.addShapeless({id:ItemID.stickGold,count:4,data:0},[{id:ItemID.plateGold,data:0},{id:ItemID.plateGold,data:0}],cutter[i]);

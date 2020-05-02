@@ -39,9 +39,7 @@ Item.registerUseFunction("wireTin",function(coords,item,block){
     var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){
-            return;
-        }
+        if(!canTileBeReplaced(block.id,block.data)) return;
     }
     World.setBlock(place.x,place.y,place.z,BlockID.wireTin,0);
     Player.decreaseCarriedItem(1);
@@ -49,9 +47,7 @@ Item.registerUseFunction("wireTin",function(coords,item,block){
 });
 
 Block.registerDropFunction("wireTin",function(coords,id,data){
-    if(data == 1){
-        return [[ItemID.wireTin,1,0],[171,1,15]];
-    }
+    if(data == 1) return [[ItemID.wireTin,1,0],[171,1,15]];
     return [[ItemID.wireTin,1,0]];
 });
 
@@ -74,9 +70,7 @@ Item.registerUseFunction("wireCopper",function(coords,item,block){
     var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){
-            return;
-        }
+        if(!canTileBeReplaced(block.id,block.data)) return;
     }
     World.setBlock(place.x,place.y,place.z,BlockID.wireCopper,0);
     Player.decreaseCarriedItem(1);
@@ -84,9 +78,7 @@ Item.registerUseFunction("wireCopper",function(coords,item,block){
 });
 
 Block.registerDropFunction("wireCopper",function(coords,id,data){
-    if(data == 1){
-        return [[ItemID.wireCopper,1,0],[171,1,15]];
-    }
+    if(data == 1) return [[ItemID.wireCopper,1,0],[171,1,15]];
     return [[ItemID.wireCopper,1,0]];
 });
 
@@ -109,9 +101,7 @@ Item.registerUseFunction("wireGold",function(coords,item,block){
     var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){
-            return;
-        }
+        if(!canTileBeReplaced(block.id,block.data)) return;
     }
     World.setBlock(place.x,place.y,place.z,BlockID.wireGold,0);
     Player.decreaseCarriedItem(1);
@@ -119,9 +109,7 @@ Item.registerUseFunction("wireGold",function(coords,item,block){
 });
 
 Block.registerDropFunction("wireGold",function(coords,id,data){
-    if(data == 1){
-        return [[ItemID.wireGold,1,0],[171,1,15]];
-    }
+    if(data == 1) return [[ItemID.wireGold,1,0],[171,1,15]];
     return [[ItemID.wireGold,1,0]];
 });
 
@@ -144,9 +132,7 @@ Item.registerUseFunction("wireSteel",function(coords,item,block){
     var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){
-            return;
-        }
+        if(!canTileBeReplaced(block.id,block.data)) return;
     }
     World.setBlock(place.x,place.y,place.z,BlockID.wireSteel,0);
     Player.decreaseCarriedItem(1);
@@ -154,9 +140,7 @@ Item.registerUseFunction("wireSteel",function(coords,item,block){
 });
 
 Block.registerDropFunction("wireSteel",function(coords,id,data){
-    if(data == 1){
-        return [[ItemID.wireSteel,1,0],[171,1,15]];
-    }
+    if(data == 1) return [[ItemID.wireSteel,1,0],[171,1,15]];
     return [[ItemID.wireSteel,1,0]];
 });
 
@@ -179,9 +163,7 @@ Item.registerUseFunction("wireTungsten",function(coords,item,block){
     var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){
-            return;
-        }
+        if(!canTileBeReplaced(block.id,block.data)) return;
     }
     World.setBlock(place.x,place.y,place.z,BlockID.wireTungsten,0);
     Player.decreaseCarriedItem(1);
@@ -189,30 +171,28 @@ Item.registerUseFunction("wireTungsten",function(coords,item,block){
 });
 
 Block.registerDropFunction("wireTungsten",function(coords,id,data){
-    if(data == 1){
-        return [[ItemID.wireTungsten,1,0],[171,1,15]];
-    }
+    if(data == 1) return [[ItemID.wireTungsten,1,0],[171,1,15]];
     return [[ItemID.wireTungsten,1,0]];
 });
 
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("ET-Wire",Translation.translate("Wire"),[
-        ItemID.wireTin     ,
-        ItemID.wireCopper  ,
-        ItemID.wireGold    ,
-        ItemID.wireSteel   ,
+        ItemID.wireTin,
+        ItemID.wireCopper,
+        ItemID.wireGold,
+        ItemID.wireSteel,
         ItemID.wireTungsten
     ]);
 
-    Recipe.addWiremillRecipe({id:ItemID.plateTin     ,count:1,data:0},{id:ItemID.wireTin     ,count:1,data:0});
-    Recipe.addWiremillRecipe({id:ItemID.plateCopper  ,count:1,data:0},{id:ItemID.wireCopper  ,count:1,data:0});
-    Recipe.addWiremillRecipe({id:ItemID.plateGold    ,count:1,data:0},{id:ItemID.wireGold    ,count:1,data:0});
-    Recipe.addWiremillRecipe({id:ItemID.plateSteel   ,count:1,data:0},{id:ItemID.wireSteel   ,count:1,data:0});
+    Recipe.addWiremillRecipe({id:ItemID.plateTin,count:1,data:0},{id:ItemID.wireTin,count:1,data:0});
+    Recipe.addWiremillRecipe({id:ItemID.plateCopper,count:1,data:0},{id:ItemID.wireCopper,count:1,data:0});
+    Recipe.addWiremillRecipe({id:ItemID.plateGold,count:1,data:0},{id:ItemID.wireGold,count:1,data:0});
+    Recipe.addWiremillRecipe({id:ItemID.plateSteel,count:1,data:0},{id:ItemID.wireSteel,count:1,data:0});
     Recipe.addWiremillRecipe({id:ItemID.plateTungsten,count:1,data:0},{id:ItemID.wireTungsten,count:1,data:0});
 
-    Recipes.addShaped({id:ItemID.wireTin     ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickTin     ,0,"b",5,-1]);
-    Recipes.addShaped({id:ItemID.wireCopper  ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickCopper  ,0,"b",5,-1]);
-    Recipes.addShaped({id:ItemID.wireGold    ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickGold    ,0,"b",5,-1]);
-    Recipes.addShaped({id:ItemID.wireSteel   ,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickSteel   ,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.wireTin,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickTin,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.wireCopper,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickCopper,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.wireGold,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickGold,0,"b",5,-1]);
+    Recipes.addShaped({id:ItemID.wireSteel,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickSteel,0,"b",5,-1]);
     Recipes.addShaped({id:ItemID.wireTungsten,count:2,data:0},[" a ","aba"," a "],["a",ItemID.stickTungsten,0,"b",5,-1]);
 });

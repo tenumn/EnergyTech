@@ -31,12 +31,6 @@ Callback.addCallback("PreLoaded",function(){
     Item.addRepairItemIds(ItemID.axeAntimony,[ItemID.ingotAntimony]);
     Item.addRepairItemIds(ItemID.hoeAntimony,[ItemID.ingotAntimony]);
 
-    Item.setCategory(ItemID.swordAntimony,ItemCategory.TOOL);
-    Item.setCategory(ItemID.shovelAntimony,ItemCategory.TOOL);
-    Item.setCategory(ItemID.pickaxeAntimony,ItemCategory.TOOL);
-    Item.setCategory(ItemID.axeAntimony,ItemCategory.TOOL);
-    Item.setCategory(ItemID.hoeAntimony,ItemCategory.TOOL);
-
     Item.addCreativeGroup("sword",Translation.translate("Sword"),[ItemID.swordAntimony]);
     Item.addCreativeGroup("shovel",Translation.translate("Shovel"),[ItemID.shovelAntimony]);
     Item.addCreativeGroup("pickaxe",Translation.translate("Pickaxe"),[ItemID.pickaxeAntimony]);

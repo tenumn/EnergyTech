@@ -31,12 +31,6 @@ Callback.addCallback("PreLoaded",function(){
     Item.addRepairItemIds(ItemID.axeFlint,[318]);
     Item.addRepairItemIds(ItemID.hoeFlint,[318]);
 
-    Item.setCategory(ItemID.swordFlint,ItemCategory.TOOL);
-    Item.setCategory(ItemID.shovelFlint,ItemCategory.TOOL);
-    Item.setCategory(ItemID.pickaxeFlint,ItemCategory.TOOL);
-    Item.setCategory(ItemID.axeFlint,ItemCategory.TOOL);
-    Item.setCategory(ItemID.hoeFlint,ItemCategory.TOOL);
-
     Item.addCreativeGroup("sword",Translation.translate("Sword"),[ItemID.swordFlint]);
     Item.addCreativeGroup("shovel",Translation.translate("Shovel"),[ItemID.shovelFlint]);
     Item.addCreativeGroup("pickaxe",Translation.translate("Pickaxe"),[ItemID.pickaxeFlint]);

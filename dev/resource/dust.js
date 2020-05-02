@@ -191,6 +191,12 @@ IDRegistry.genItemID("dustSmallTin");
 Item.createItem("dustTin","Tin Dust",{name:"tin_dust"});
 Item.createItem("dustSmallTin","Small Pile of Tin Dust",{name:"small_tin_dust"});
 
+// 青铜粉
+IDRegistry.genItemID("dustBronze");
+IDRegistry.genItemID("dustSmallBronze");
+Item.createItem("dustBronze","Bronze Dust",{name:"bronze_dust"});
+Item.createItem("dustSmallBronze","Small Pile of Bronze Dust",{name:"small_bronze_dust"});
+
 // 铅粉
 IDRegistry.genItemID("dustLead");
 IDRegistry.genItemID("dustSmallLead");
@@ -316,6 +322,7 @@ Callback.addCallback("PreLoaded",function(){
         ItemID.dustFlint,
         ItemID.dustCopper,
         ItemID.dustTin,
+        ItemID.dustBronze,
         ItemID.dustLead,
         ItemID.dustIron,
         ItemID.dustSteel,
@@ -343,6 +350,7 @@ Callback.addCallback("PreLoaded",function(){
         ItemID.dustSmallFlint,
         ItemID.dustSmallCopper,
         ItemID.dustSmallTin,
+        ItemID.dustSmallBronze,
         ItemID.dustSmallLead,
         ItemID.dustSmallIron,
         ItemID.dustSmallSteel,
@@ -380,6 +388,9 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShapeless({id:ItemID.dustSmallTin,count:9,data:0},[{id:ItemID.dustTin,data:0}]);
     Recipes.addShaped({id:ItemID.dustTin,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.dustSmallTin,0]);
     
+    Recipes.addShapeless({id:ItemID.dustSmallBronze,count:9,data:0},[{id:ItemID.dustBronze,data:0}]);
+    Recipes.addShaped({id:ItemID.dustBronze,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.dustSmallBronze,0]);
+
     Recipes.addShapeless({id:ItemID.dustSmallLead,count:9,data:0},[{id:ItemID.dustLead,data:0}]);
     Recipes.addShaped({id:ItemID.dustLead,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.dustSmallLead,0]);
     
@@ -437,9 +448,11 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShapeless({id:ItemID.dustSmallRuby,count:9,data:0},[{id:ItemID.dustRuby,data:0}]);
     Recipes.addShaped({id:ItemID.dustRuby,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.dustSmallRuby,0]);
 
-    Recipes.addShapeless({id:ItemID.dustLeadAntimony,count:2,data:0},[{id:ItemID.dustLead,data:0},{id:ItemID.dustAntimony,data:0}]);
-    Recipes.addShaped({id:ItemID.dustEnete,count:3,data:0},["bca","cdc","acb"],["a",348,0,"b",331,0,"c",ItemID.dustEnder,0,"d",ItemID.dustIron,0]);
     Recipes.addShaped({id:ItemID.dustEnergium,count:1,data:0},["aba","bab","aba"],["a",331,0,"b",ItemID.dustRuby,0]);
+    Recipes.addShaped({id:ItemID.dustEnete,count:3,data:0},["bca","cdc","acb"],["a",348,0,"b",331,0,"c",ItemID.dustEnder,0,"d",ItemID.dustIron,0]);
+    
+    Recipes.addShapeless({id:ItemID.dustLeadAntimony,count:2,data:0},[{id:ItemID.dustLead,data:0},{id:ItemID.dustAntimony,data:0}]);
+    Recipes.addShapeless({id:ItemID.dustBronze,count:9,data:0},[{id:ItemID.dustTin,data:0},{id:ItemID.dustCopper,data:0},{id:ItemID.dustCopper,data:0},{id:ItemID.dustCopper,data:0}]);
 
     var mortar = Tool.getAllTool("Mortar");
     for(let i in mortar){
@@ -462,6 +475,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.dustCopper,ItemID.ingotCopper);
     Recipes.addFurnace(ItemID.dustTin,ItemID.ingotTin);
     Recipes.addFurnace(ItemID.dustLead,ItemID.ingotLead);
+    Recipes.addFurnace(ItemID.dustBronze,ItemID.ingotBronze);
     Recipes.addFurnace(ItemID.dustIron,265);
     Recipes.addFurnace(ItemID.dustGold,266);
     Recipes.addFurnace(ItemID.dustAntimony,ItemID.ingotAntimony);
@@ -472,12 +486,13 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.dustEnete,ItemID.ingotEnete);
     Recipes.addFurnace(ItemID.dustLeadAntimony,ItemID.ingotLeadAntimony);
     Recipes.addFurnace(ItemID.dustSiliconDioxide,20);
-
+    
     Recipe.addMaceratorRecipe({id:318,data:0},{id:ItemID.dustFlint,count:1,data:0});
     Recipe.addMaceratorRecipe({id:368,data:0},{id:ItemID.dustEnder,count:1,data:0});
     Recipe.addMaceratorRecipe({id:264,data:0},{id:ItemID.dustDiamond,count:1,data:0});
     Recipe.addMaceratorRecipe({id:ItemID.ingotCopper,data:0},{id:ItemID.dustCopper,count:1,data:0});
     Recipe.addMaceratorRecipe({id:ItemID.ingotTin,data:0},{id:ItemID.dustTin,count:1,data:0});
+    Recipe.addMaceratorRecipe({id:ItemID.ingotBronze,data:0},{id:ItemID.dustBronze,count:1,data:0});
     Recipe.addMaceratorRecipe({id:ItemID.ingotLead,data:0},{id:ItemID.dustLead,count:1,data:0});
     Recipe.addMaceratorRecipe({id:265,data:0},{id:ItemID.dustIron,count:1,data:0});
     Recipe.addMaceratorRecipe({id:ItemID.ingotSteel,data:0},{id:ItemID.dustSteel,count:1,data:0});

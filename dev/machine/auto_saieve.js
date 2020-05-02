@@ -24,9 +24,9 @@ model.addBox(0.0625,0.5625,0.0625,0.9375,0.625,0.9375,[["string_mesh",0]]);
 render.addEntry(model);
 BlockRenderer.enableCoordMapping(BlockID.autoSaieve,-1,render);
 
-Machine.setDrop("autoSaieve",BlockID.machineCasing);
+Machine.setDrop("autoSaieve",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.autoSaieve,count:1,data:0},["ada","aca","b b"],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0,"c",BlockID.machineCasing,0,"d",ItemID.gearIron,0]);
+    Recipes.addShaped({id:BlockID.autoSaieve,count:1,data:0},["ada","aca","b b"],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0,"c",BlockID.machineCasing,1,"d",ItemID.gearIron,0]);
 });
 
 var GuiAutoSaieve = new UI.StandartWindow({
@@ -43,31 +43,31 @@ var GuiAutoSaieve = new UI.StandartWindow({
     ],
 
     elements:{
-        "slotInput":{type:"slot",x:500,y:175,bitmap:"slot.empty",scale:GUI_SCALE},
+        "slotInput":{type:"slot",x:500,y:175,bitmap:"slot_empty",scale:GUI_SCALE},
         "scaleArrow":{type:"scale",x:600,y:175,direction:0,value:0.5,bitmap:"arrow_scale",scale:GUI_SCALE},
-        "slotOutput1":{type:"slot",x:700,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput2":{type:"slot",x:760,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput3":{type:"slot",x:820,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput4":{type:"slot",x:880,y:75,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput5":{type:"slot",x:700,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput6":{type:"slot",x:760,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput7":{type:"slot",x:820,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput8":{type:"slot",x:880,y:135,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput9":{type:"slot",x:700,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput10":{type:"slot",x:760,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput11":{type:"slot",x:820,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput12":{type:"slot",x:880,y:195,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput13":{type:"slot",x:700,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput14":{type:"slot",x:760,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput15":{type:"slot",x:820,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput16":{type:"slot",x:880,y:255,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput1":{type:"slot",x:700,y:75,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput2":{type:"slot",x:760,y:75,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput3":{type:"slot",x:820,y:75,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput4":{type:"slot",x:880,y:75,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput5":{type:"slot",x:700,y:135,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput6":{type:"slot",x:760,y:135,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput7":{type:"slot",x:820,y:135,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput8":{type:"slot",x:880,y:135,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput9":{type:"slot",x:700,y:195,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput10":{type:"slot",x:760,y:195,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput11":{type:"slot",x:820,y:195,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput12":{type:"slot",x:880,y:195,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput13":{type:"slot",x:700,y:255,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput14":{type:"slot",x:760,y:255,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput15":{type:"slot",x:820,y:255,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput16":{type:"slot",x:880,y:255,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
 
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
     }
 });
 
@@ -104,9 +104,9 @@ Machine.registerMachine(BlockID.autoSaieve,{
         }} else {this.data.progress = 0;}
 
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
-        this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
+        this.container.setScale("scaleEnergy",Math.round(this.data.energy / this.getEnergyStorage() * 47) / 47);
     },
-
+    
     setOutput:function(id,count,data){
         for(let slot = 1;slot < 17;slot++){
             var output = this.container.getSlot("slotOutput" + slot);

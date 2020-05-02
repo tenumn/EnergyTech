@@ -31,12 +31,6 @@ Callback.addCallback("PreLoaded",function(){
     Item.addRepairItemIds(ItemID.axeTungsten,[ItemID.ingotTungsten]);
     Item.addRepairItemIds(ItemID.hoeTungsten,[ItemID.ingotTungsten]);
 
-    Item.setCategory(ItemID.swordTungsten,ItemCategory.TOOL);
-    Item.setCategory(ItemID.shovelTungsten,ItemCategory.TOOL);
-    Item.setCategory(ItemID.pickaxeTungsten,ItemCategory.TOOL);
-    Item.setCategory(ItemID.axeTungsten,ItemCategory.TOOL);
-    Item.setCategory(ItemID.hoeTungsten,ItemCategory.TOOL);
-
     Item.addCreativeGroup("sword",Translation.translate("Sword"),[ItemID.swordTungsten]);
     Item.addCreativeGroup("shovel",Translation.translate("Shovel"),[ItemID.shovelTungsten]);
     Item.addCreativeGroup("pickaxe",Translation.translate("Pickaxe"),[ItemID.pickaxeTungsten]);

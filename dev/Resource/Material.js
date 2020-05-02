@@ -1,19 +1,16 @@
-Block.createSpecialType({
-    opaque:false,
-    destroytime:0
-},"small_stone");
-
 // 石子
 IDRegistry.genBlockID("smallStone");
 Block.createBlock("smallStone",[
     {name:"Small Stone",texture:[["small_stone",0]],inCreative:false}
-],"small_stone");
-
-Block.setBlockShape(BlockID.smallStone,{x:0.0625,y:0,z:0.0625},{x:0.9375,y:0.0625,z:0.9375},0);
+],{
+    opaque:false,
+    destroytime:0
+});
 
 var shape = new ICRender.CollisionShape();
 shape.addEntry().addBox(1,1,1,0,0,0);
 BlockRenderer.setCustomCollisionShape(BlockID.smallStone,-1,shape);
+Block.setBlockShape(BlockID.smallStone,{x:0.0625,y:0,z:0.0625},{x:0.9375,y:0.0625,z:0.9375},0);
 
 IDRegistry.genItemID("smallStone");
 Item.createItem("smallStone","Small Stone",{name:"small_stone"});
@@ -132,15 +129,34 @@ Block.createSpecialType({
 // 机器外壳
 IDRegistry.genBlockID("machineCasing");
 Block.createBlock("machineCasing",[
-    {name:"Basic Machine Casing",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0]],inCreative:true},
-    {name:"Advanced Machine Casing",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1]],inCreative:true}
+    // 青铜
+    {name:"Machine Casing",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0]],inCreative:true},
+    // 基础 (铁)
+    {name:"Machine Casing",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1]],inCreative:true},
+    // 高级 (钢)
+    {name:"Machine Casing",texture:[["machine_bottom",2],["machine_top",2],["machine_side",2]],inCreative:true}
 ],"machine");
 ToolAPI.registerBlockMaterial(BlockID.machineCasing,"stone",1,true);
 Block.setDestroyLevel("machineCasing",1);
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.machineCasing,count:1,data:0},["abb","bcb","bba"],["a",ItemID.stickIron ,0,"b",ItemID.plateIron ,0,"c",ItemID.gearIron ,0]);
-    Recipes.addShaped({id:BlockID.machineCasing,count:1,data:1},["abb","bcb","bba"],["a",ItemID.stickSteel,0,"b",ItemID.plateSteel,0,"c",ItemID.gearSteel,0]);
+    Recipes.addShaped({id:BlockID.machineCasing,count:1,data:0},[
+        "abb",
+        "bcb",
+        "bba"
+    ],["a",ItemID.stickBronze,0,"b",ItemID.plateBronze,0,"c",ItemID.gearBronze,0]);
+    
+    Recipes.addShaped({id:BlockID.machineCasing,count:1,data:1},[
+        "abb",
+        "bcb",
+        "bba"
+    ],["a",ItemID.stickIron,0,"b",ItemID.plateIron,0,"c",ItemID.gearIron,0]);
+    
+    Recipes.addShaped({id:BlockID.machineCasing,count:1,data:2},[
+        "abb",
+        "bcb",
+        "bba"
+    ],["a",ItemID.stickSteel,0,"b",ItemID.plateSteel,0,"c",ItemID.gearSteel,0]);
 });
 
 Block.createSpecialType({
@@ -168,17 +184,15 @@ Callback.addCallback("PreLoaded",function(){
     });
 });
 
-Block.createSpecialType({
-    base:20,
-    solid:true,
-    destroyTime:0.5
-},"glass");
-
 // 通透玻璃
 IDRegistry.genBlockID("clearGlass");
 Block.createBlock("clearGlass",[
     {name:"Clear Glass",texture:[["clear_glass",0]],inCreative:true}
-],"glass");
+],{
+    base:20,
+    solid:true,
+    destroyTime:0.5
+});
 
 Block.registerDropFunction("clearGlass",function(coords,id,data,level,enchant){
     if(enchant.silk){

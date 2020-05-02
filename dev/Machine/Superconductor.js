@@ -23,12 +23,11 @@ Callback.addCallback("PreLoaded",function(){
 });
 
 Machine.setDrop("superconductor",BlockID.superconductor);
-Block.registerPlaceFunction("superconductor",function(coords,item){
-    Game.prevent();
-    var block = World.getBlock(coords.x,coords.y,coords.z),place = coords;
+Block.registerPlaceFunction("superconductor",function(coords,item,block){
+    var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)){return;}
+        if(!canTileBeReplaced(block.id,block.data)) return;
     }
     World.setBlock(place.x,place.y,place.z,item.id,1);
     World.addTileEntity(place.x,place.y,place.z);
@@ -50,12 +49,12 @@ var GuiSuperconductorCoil = new UI.StandartWindow({
     elements:{
         "textNetwork":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Network IP: ") + "0.0.0"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "slot.card":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:250,bitmap:"slot.card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}},
+        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:250,bitmap:"slot_card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade}
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade}
     }
 });
 
@@ -64,7 +63,7 @@ Machine.registerGenerator(BlockID.superconductor,{
 
     destroyMachine:function(){
         var net = network[this.data.x + ":" + this.data.y + ":" + this.data.z];
-        if(net){delete net.machine[this.x + ":" + this.y + ":" + this.z];}
+        if(net) delete net.machine[this.x + ":" + this.y + ":" + this.z];
     },
 
     initValues:function(){
@@ -72,30 +71,42 @@ Machine.registerGenerator(BlockID.superconductor,{
 		this.data.energy_storage = this.defaultValues.energy_storage;
 	},
     
-    getNetwork:function(x,y,z){
-        return network[x + ":" + y + ":" + z];
-    },
+    getCard:function(){
+        var slot = this.container.getSlot("slotCard");
+        
+        if(Tool.isTool(slot.id,"EnergyCard")){
+            if(slot.extra){
+                this.destroyMachine();
+                this.data.x = slot.extra.getInt("x");
+                this.data.y = slot.extra.getInt("y");
+                this.data.z = slot.extra.getInt("z");
     
-	tick:function(){
-		Upgrade.executeUpgrades(this);
-        var slot = this.container.getSlot("slot.card"),net = this.getNetwork(this.data.x,this.data.y,this.data.z),range = Math.abs(this.data.x - this.x) + Math.abs(this.data.y - this.y) + Math.abs(this.data.z - this.z);
-
-        if(Tool.isTool(slot.id,"EnergyCard") && slot.extra){
-            this.destroyMachine();
-            this.data.x = slot.extra.getInt("x");
-            this.data.y = slot.extra.getInt("y");
-            this.data.z = slot.extra.getInt("z");
-
-            if(net && range < net.range){
-                network[this.data.x + ":" + this.data.y + ":" + this.data.z].machine[this.x + ":" + this.y + ":" + this.z] = {voltage:power(this.data.tier)};
+                var net = network[this.data.x + ":" + this.data.y + ":" + this.data.z];
+                if(net && this.getRange() < net.range){
+                    network[this.data.x + ":" + this.data.y + ":" + this.data.z].machine[this.x + ":" + this.y + ":" + this.z] = {
+                        voltage:power(this.data.tier)
+                    };
+                }
             }
         }
+    },
 
-		if(net && range <= net.range){
-            var energy_output = power(this.data.tier);
-            if(net.energy >= energy_output && this.data.energy + energy_output < this.data.energy_storage){
-                this.data.energy += energy_output;
-                net.energy -= energy_output;
+    getRange:function(){
+        return Math.abs(this.data.x - this.x) + Math.abs(this.data.y - this.y) + Math.abs(this.data.z - this.z);
+    },
+
+    
+
+	tick:function(){
+        Upgrade.executeUpgrades(this);
+
+        this.getCard();
+
+        var net = network[this.data.x + ":" + this.data.y + ":" + this.data.z];
+		if(net && this.getRange() <= net.range){
+            if(net.energy >= power(this.data.tier) && this.data.energy + power(this.data.tier) < this.data.energy_storage){
+                this.data.energy += power(this.data.tier);
+                net.energy -= power(this.data.tier);
             }
 		} else {
 			this.destroyMachine();

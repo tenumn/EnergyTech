@@ -5,7 +5,8 @@ Tool.registerTool(ItemID.energyCard,"EnergyCard");
 
 Item.setItemName(ItemID.energyCard,function(item,name,tooltip){
     if(item.extra){
-        return name + tooltip + "\n§7" + Translation.translate("Network IP: ") + Math.abs(item.extra.getInt("x")) + "." + Math.abs(item.extra.getInt("y")) + "." + Math.abs(item.extra.getInt("z"));
+        var x = Math.abs(item.extra.getInt("x")),y = Math.abs(item.extra.getInt("y")),z = Math.abs(item.extra.getInt("z"));
+        return name + tooltip + "\n§7" + Translation.translate("Network IP: ") + x + "." + y + "." + z;
     }
     return name + tooltip;
 });

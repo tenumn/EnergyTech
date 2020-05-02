@@ -37,3 +37,14 @@ var Tool = {
         });
     }
 }
+
+ToolType.lighter = {
+    useItem:function(coords,item,block){
+        var x = coords.relative.x,y = coords.relative.y,z = coords.relative.z;
+        if(World.getBlock(x,y,z).id == 0){
+            World.setBlock(x,y,z,51);
+            World.playSoundAtEntity(Player.get(),"fire.ignite",1,0.8);
+            ToolAPI.breakCarriedTool(1);
+        }
+    }
+}

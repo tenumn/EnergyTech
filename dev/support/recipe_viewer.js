@@ -12,8 +12,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -47,9 +47,9 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-                "output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120},
-                "output1":{type:"slot",x:720,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+                "output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120},
+                "output1":{type:"slot",x:720,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -85,8 +85,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -120,8 +120,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -155,8 +155,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -193,8 +193,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -231,11 +231,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-                "output0":{type:"slot",x:600,y:130,bitmap:"slot.empty",size:120},
-                "output1":{type:"slot",x:720,y:130,bitmap:"slot.empty",size:120},
-                "output2":{type:"slot",x:600,y:250,bitmap:"slot.empty",size:120},
-                "output3":{type:"slot",x:720,y:250,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slot_empty",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slot_empty",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -271,11 +271,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-                "output0":{type:"slot",x:600,y:130,bitmap:"slot.empty",size:120},
-                "output1":{type:"slot",x:720,y:130,bitmap:"slot.empty",size:120},
-                "output2":{type:"slot",x:600,y:250,bitmap:"slot.empty",size:120},
-                "output3":{type:"slot",x:720,y:250,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slot_empty",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slot_empty",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -311,12 +311,12 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-                "input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-                "input1":{type:"slot",x:280,y:310,bitmap:"slot.empty",size:120},
-                "output0":{type:"slot",x:600,y:130,bitmap:"slot.empty",size:120},
-                "output1":{type:"slot",x:720,y:130,bitmap:"slot.empty",size:120},
-                "output2":{type:"slot",x:600,y:250,bitmap:"slot.empty",size:120},
-                "output3":{type:"slot",x:720,y:250,bitmap:"slot.empty",size:120}
+                "input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+                "input1":{type:"slot",x:280,y:310,bitmap:"slot_empty",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slot_empty",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slot_empty",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -352,8 +352,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -390,8 +390,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -425,8 +425,8 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-				"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-				"output0":{type:"slot",x:600,y:190,bitmap:"slot.empty",size:120}
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
 			}
         },
         
@@ -460,11 +460,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     		],
         
     		elements:{
-    			"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-                "output0":{type:"slot",x:600,y:130,bitmap:"slot.empty",size:120},
-                "output1":{type:"slot",x:720,y:130,bitmap:"slot.empty",size:120},
-                "output2":{type:"slot",x:600,y:250,bitmap:"slot.empty",size:120},
-                "output3":{type:"slot",x:720,y:250,bitmap:"slot.empty",size:120}
+    			"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slot_empty",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slot_empty",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120}
     		}
     	},
     
@@ -498,11 +498,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     		],
         
     		elements:{
-    			"input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-                "output0":{type:"slot",x:600,y:130,bitmap:"slot.empty",size:120},
-                "output1":{type:"slot",x:720,y:130,bitmap:"slot.empty",size:120},
-                "output2":{type:"slot",x:600,y:250,bitmap:"slot.empty",size:120},
-                "output3":{type:"slot",x:720,y:250,bitmap:"slot.empty",size:120}
+    			"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slot_empty",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slot_empty",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120}
     		}
     	},
     
@@ -536,13 +536,13 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     		],
         
     		elements:{
-                "input0":{type:"slot",x:280,y:130,bitmap:"slot.empty",size:120},
-                "input1":{type:"slot",x:280,y:250,bitmap:"slot.empty",size:120},
+                "input0":{type:"slot",x:280,y:130,bitmap:"slot_empty",size:120},
+                "input1":{type:"slot",x:280,y:250,bitmap:"slot_empty",size:120},
                 
-                "output0":{type:"slot",x:600,y:130,bitmap:"slot.empty",size:120},
-                "output1":{type:"slot",x:720,y:130,bitmap:"slot.empty",size:120},
-                "output2":{type:"slot",x:600,y:250,bitmap:"slot.empty",size:120},
-                "output3":{type:"slot",x:720,y:250,bitmap:"slot.empty",size:120},
+                "output0":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120},
+                "output1":{type:"slot",x:720,y:130,bitmap:"slot_empty",size:120},
+                "output2":{type:"slot",x:600,y:250,bitmap:"slot_empty",size:120},
+                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120},
 
                 "textHeat":{type:"text",x:430,y:410}
     		}
@@ -594,9 +594,9 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             ],
             
 			elements:{
-                "input0":{type:"slot",x:280,y:190,bitmap:"slot.empty",size:120},
-                "input1":{type:"slot",x:280,y:310,bitmap:"slot.cell",size:120},
-                "output":{type:"slot",x:600,y:130,bitmap:"slot.empty",size:120}
+                "input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+                "input1":{type:"slot",x:280,y:310,bitmap:"slot_cell",size:120},
+                "output":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120}
 			}
         },
         

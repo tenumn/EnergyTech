@@ -1,16 +1,16 @@
 // [离心机]Centrifuge
 IDRegistry.genBlockID("centrifuge");
 Block.createBlock("centrifuge",[
-    {name:"Centrifuge",texture:[["machine_bottom",0],["centrifuge_top",0],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]],inCreative:true}
+    {name:"Centrifuge",texture:[["machine_bottom",1],["centrifuge_top",0],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]],inCreative:true}
 ],"machine");
-TileRenderer.setStandartModel(BlockID.centrifuge,[["machine_bottom",0],["centrifuge_top",0],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,0,[["machine_bottom",0],["centrifuge_top",0],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,4,[["machine_bottom",0],["centrifuge_top",1],["machine_side",0],["centrifuge",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,8,[["machine_bottom",0],["centrifuge_top",1],["machine_side",0],["centrifuge",1],["machine_side",0],["machine_side",0]]);
+TileRenderer.setStandartModel(BlockID.centrifuge,[["machine_bottom",1],["centrifuge_top",0],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,0,[["machine_bottom",1],["centrifuge_top",0],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,4,[["machine_bottom",1],["centrifuge_top",1],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,8,[["machine_bottom",1],["centrifuge_top",1],["machine_side",1],["centrifuge",1],["machine_side",1],["machine_side",1]]);
 
-Machine.setDrop("centrifuge",BlockID.machineCasing,1);
+Machine.setDrop("centrifuge",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.centrifuge,count:1,data:0},["cec","cdc","aba"],["a",ItemID.wireCopper,0,"b",ItemID.electricMotor,0,"c",ItemID.plateIron,0,"d",BlockID.machineCasing,1,"e",ItemID.circuit,0]);
+	Recipes.addShaped({id:BlockID.centrifuge,count:1,data:0},["cec","cdc","aba"],["a",ItemID.wireCopper,0,"b",ItemID.electricMotor,0,"c",ItemID.plateIron,0,"d",BlockID.machineCasing,2,"e",ItemID.circuit,0]);
 });
 
 var GuiCentrifuge = new UI.StandartWindow({
@@ -28,19 +28,19 @@ var GuiCentrifuge = new UI.StandartWindow({
     ],
     
     elements:{
-        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:200,bitmap:"slot.empty",scale:GUI_SCALE},
+        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:200,bitmap:"slot_empty",scale:GUI_SCALE},
         "scaleArrow":{type:"scale",x:600,y:200 + GUI_SCALE * 2,direction:0,value:0.5,bitmap:"arrow_scale",scale:GUI_SCALE},
-        "slotOutput0":{type:"slot",x:720,y:175,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput1":{type:"slot",x:780,y:175,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput2":{type:"slot",x:720,y:235,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
-        "slotOutput3":{type:"slot",x:780,y:235,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput0":{type:"slot",x:720,y:175,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput1":{type:"slot",x:780,y:175,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput2":{type:"slot",x:720,y:235,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput3":{type:"slot",x:780,y:235,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade}
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade}
     }
 });
 
@@ -74,11 +74,10 @@ Machine.registerMachine(BlockID.centrifuge,{
                 this.data.progress += 1 / this.data.work_time;
                 this.activate();
                 if(this.data.progress.toFixed(3) >= 1){
-                    var output = recipe.output;
-                    if(output[0]) this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);
-                    if(output[1]) this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);
-                    if(output[2]) this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);
-                    if(output[3]) this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);
+                    if(recipe[0]) this.setOutput("slotOutput0",recipe[0].id,recipe[0].count,recipe[0].data);
+                    if(recipe[1]) this.setOutput("slotOutput1",recipe[1].id,recipe[1].count,recipe[1].data);
+                    if(recipe[2]) this.setOutput("slotOutput2",recipe[2].id,recipe[2].count,recipe[2].data);
+                    if(recipe[3]) this.setOutput("slotOutput3",recipe[3].id,recipe[3].count,recipe[3].data);
                     input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;
@@ -91,7 +90,7 @@ Machine.registerMachine(BlockID.centrifuge,{
             this.deactive();
         }
         
-        this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
+        this.container.setScale("scaleEnergy",Math.round(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },

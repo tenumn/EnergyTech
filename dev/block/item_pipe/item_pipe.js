@@ -166,7 +166,7 @@ var ItemPipe = {
 
     pipes:{},
 
-    registerTile:function(id,proto){
+    register:function(id,proto){
         if(!proto){
             proto = {friction:0}
         } else {
@@ -250,14 +250,13 @@ var ItemPipe = {
     }
 }
 
-PIPE_PLACE = function(coords,item){
-    var block = World.getBlock(coords.x,coords.y,coords.z),place = coords;
-    Game.prevent();
-
+PIPE_PLACE = function(coords,item,block){
+    var place = coords;
     if(!canTileBeReplaced(block.id,block.data)){
         place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
         if(!canTileBeReplaced(block.id,block.data)) return;
     }
+    
     World.setBlock(place.x,place.y,place.z,item.id,1);
     World.addTileEntity(place.x,place.y,place.z);
     Player.decreaseCarriedItem(1);

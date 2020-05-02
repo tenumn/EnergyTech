@@ -2,6 +2,10 @@ IDRegistry.genItemID("cellEmpty");
 Item.createItem("cellEmpty","Liquid Cell (Empty)",{name:"empty_cell"});
 Item.setLiquidClip(ItemID.cellEmpty,true);
 
+IDRegistry.genItemID("cellSteam");
+Item.createItem("cellSteam","Liquid Cell (Steam)",{name:"steam_cell"});
+Liquid.registerItem("steam",ItemID.cellEmpty,ItemID.cellSteam,1000);
+
 IDRegistry.genItemID("cellWater");
 Item.createItem("cellWater","Liquid Cell (Water)",{name:"water_cell"});
 Liquid.registerItem("water",ItemID.cellEmpty,ItemID.cellWater,1000);
@@ -9,6 +13,10 @@ Liquid.registerItem("water",ItemID.cellEmpty,ItemID.cellWater,1000);
 IDRegistry.genItemID("cellLava");
 Item.createItem("cellLava","Liquid Cell (Lava)",{name:"lava_cell"});
 Liquid.registerItem("lava",ItemID.cellEmpty,ItemID.cellLava,1000);
+
+IDRegistry.genItemID("cellUranium");
+Item.createItem("cellUranium","Liquid Cell (Uranium)",{name:"uranium_cell"});
+Liquid.registerItem("uranium",ItemID.cellEmpty,ItemID.cellUranium,1000);
 
 IDRegistry.genItemID("cellUranium235");
 Item.createItem("cellUranium235","Liquid Cell (Uranium-235)",{name:"uranium235_cell"});

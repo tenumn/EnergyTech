@@ -15,8 +15,6 @@ Translation.addTranslation("Dust",{zh:"尘土"});
 Translation.addTranslation("Concrete Block",{zh:"混凝土块"});
 Translation.addTranslation("Clear Glass",{zh:"通透玻璃"});
 Translation.addTranslation("Polished Marble",{zh:"磨制大理石"});
-Translation.addTranslation("Basic Machine Casing",{zh:"基础机器外壳",ru:"Базовая обшивка механизма"});
-Translation.addTranslation("Advanced Machine Casing",{zh:"高级机器外壳",ru:"Улучшенная обшивка механизма"});
 Translation.addTranslation("Lithium-6",{zh:"锂-6",ru:"Литий-6"});
 Translation.addTranslation("Lithium-7",{zh:"锂-7",ru:"Литий-7"});
 Translation.addTranslation("Uranium-235",{zh:"铀-235",ru:"Уран-235"});
@@ -25,6 +23,8 @@ Translation.addTranslation("Small Pile of Lithium-6",{zh:"小堆锂-6",ru:"Не�
 Translation.addTranslation("Small Pile of Lithium-7",{zh:"小堆锂-7",ru:"Небольшая кучка Лития-7"});
 Translation.addTranslation("Small Pile of Uranium-235",{zh:"小堆铀-235",ru:"Небольшая кучка Урана-235"});
 Translation.addTranslation("Small Pile of Uranium-238",{zh:"小堆铀-238",ru:"Небольшая кучка Урана-238"});
+
+Translation.addTranslation("Bronze Boiler",{zh:"青铜锅炉"});
 
 // Item Pipe
 Translation.addTranslation("Item Pipe (Input)",{zh:"物品管道 (输入)"});
@@ -388,6 +388,17 @@ Translation.addTranslation("Tungsten Shovel",{zh:"钨铲",ru:"Вольфрамо
 Translation.addTranslation("Tungsten Pickaxe",{zh:"钨镐",ru:"Вольфрамовая кирка"});
 Translation.addTranslation("Tungsten Axe",{zh:"钨斧",ru:"Вольфрамовый топор"});
 Translation.addTranslation("Tungsten Hoe",{zh:"钨锄",ru:"Вольфрамовая мотыга"});
+Translation.addTranslation("Bronze Sword",{zh:"青铜剑"});
+Translation.addTranslation("Bronze Shovel",{zh:"青铜铲"});
+Translation.addTranslation("Bronze Pickaxe",{zh:"青铜镐"});
+Translation.addTranslation("Bronze Axe",{zh:"青铜斧"});
+Translation.addTranslation("Bronze Hoe",{zh:"青铜锄"});
+Translation.addTranslation("Bronze Wrench",{zh:"青铜扳手"});
+Translation.addTranslation("Bronze Hammer",{zh:"青铜锤"});
+Translation.addTranslation("Bronze Cutter",{zh:"青铜剪线钳"});
+Translation.addTranslation("Bronze Mortar",{zh:"青铜研钵"});
+Translation.addTranslation("Bronze File",{zh:"青铜锉刀"});
+Translation.addTranslation("Bronze Lighter",{zh:"青铜火机"});
 
 // Machine
 Translation.addTranslation("Auto Sieve",{zh:"自动筛子"});

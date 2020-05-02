@@ -1,16 +1,16 @@
 // [火力发电机]Fire Generator
 IDRegistry.genBlockID("fireGenerator");
 Block.createBlock("fireGenerator",[
-	{name:"Fire Generator",texture:[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]],inCreative:true}
+	{name:"Fire Generator",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["fire_generator",0],["machine_side",1],["machine_side",1]],inCreative:true}
 ],"machine");
 
-TileRenderer.setStandartModel(BlockID.fireGenerator,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.fireGenerator,0,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.fireGenerator,4,[["machine_bottom",0],["machine_top",0],["machine_side",0],["fire_generator",1],["machine_side",0],["machine_side",0]]);
+TileRenderer.setStandartModel(BlockID.fireGenerator,[["machine_bottom",1],["machine_top",1],["machine_side",1],["fire_generator",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.fireGenerator,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["fire_generator",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.fireGenerator,4,[["machine_bottom",1],["machine_top",1],["machine_side",1],["fire_generator",1],["machine_side",1],["machine_side",1]]);
 
-Machine.setDrop("fireGenerator",BlockID.machineCasing);
+Machine.setDrop("fireGenerator",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},["dad","dbd","ece"],["a",ItemID.lithiumBattery,-1,"b",BlockID.machineCasing,0,"c",61,0,"d",ItemID.stickIron,0,"e",ItemID.partIron,0]);
+	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},["dad","dbd","ece"],["a",ItemID.lithiumBattery,-1,"b",BlockID.machineCasing,1,"c",BlockID.bronzeBoiler,0,"d",ItemID.stickIron,0,"e",ItemID.partIron,0]);
 });
 
 var GuiFireGenerator = new UI.StandartWindow({
@@ -32,12 +32,12 @@ var GuiFireGenerator = new UI.StandartWindow({
 		"scaleBurn":{type:"scale",x:450 + GUI_SCALE * 3,y:75 + GUI_SCALE * 2,direction:1,value:0.5,bitmap:"fireScale",scale:GUI_SCALE},
 		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Energy Output: ") + "0Eu"},
 		"scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-		"slotFuel":{type:"slot",x:450,y:150,bitmap:"slot.fuel",isValid:function(id,count,data){return Recipes.getFuelBurnDuration(id,data) > 0;}},
+		"slotFuel":{type:"slot",x:450,y:150,bitmap:"slot_fuel",isValid:function(id,count,data){return Recipes.getFuelBurnDuration(id,data) > 0;}},
 
-		"slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade}
+		"slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade}
 	}
 });
 
@@ -83,7 +83,7 @@ Machine.registerGenerator(BlockID.fireGenerator,{
 TileRenderer.setRotationPlaceFunction(BlockID.fireGenerator);
 StorageInterface.createInterface(BlockID.fireGenerator,{
 	slots:{
-		"slot.fuel":{input:true}
+		"slotFuel":{input:true}
 	},
 	isValidInput:function(item){
 		return Recipes.getFuelBurnDuration(item.id,item.data) > 0;

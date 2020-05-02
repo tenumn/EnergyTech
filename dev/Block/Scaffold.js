@@ -36,7 +36,7 @@ Renderer.renderScaffoldModel = function(id,data){
 // 木脚手架
 IDRegistry.genBlockID("scaffoldWood");
 Block.createBlock("scaffoldWood",[
-    {name:"Wood Scaffold",texture:[["scaffold_wood_bottom",0],["scaffold_wood_top",0],["scaffold_wood_side",0]],inCreative:true}
+    {name:"Wood Scaffold",texture:[["wood_scaffold_bottom",0],["wood_scaffold_top",0],["wood_scaffold_side",0]],inCreative:true}
 ],"scaffold");
 Renderer.renderScaffoldModel(BlockID.scaffoldWood,0);
 
@@ -69,7 +69,7 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
 // 铁脚手架
 IDRegistry.genBlockID("scaffoldIron");
 Block.createBlock("scaffoldIron",[
-    {name:"Iron Scaffold",texture:[["scaffold_iron_bottom",0],["scaffold_iron_top",0],["scaffold_iron_side",0]],inCreative:true}
+    {name:"Iron Scaffold",texture:[["iron_scaffold_bottom",0],["iron_scaffold_top",0],["iron_scaffold_side",0]],inCreative:true}
 ],"scaffold");
 Renderer.renderScaffoldModel(BlockID.scaffoldIron,0);
 

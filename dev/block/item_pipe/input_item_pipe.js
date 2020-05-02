@@ -7,7 +7,7 @@ Block.createBlock("itemPipeInput",[
 Tooltip.info(BlockID.itemPipeInput,"Input item into pipeline.");
 ICRender.addGroupFor(BlockID.itemPipeInput,["transport-item-pipe","output-item-pipe"]);
 
-ItemPipe.registerTile(BlockID.itemPipeInput,{});
+ItemPipe.register(BlockID.itemPipeInput,{});
 Machine.setDrop("itemPipeInput",BlockID.itemPipeInput);
 Block.registerPlaceFunction("itemPipeInput",PIPE_PLACE);
 TileRenderer.setupWireModel(BlockID.itemPipeInput,1,0.5,"input-item-pipe",true);

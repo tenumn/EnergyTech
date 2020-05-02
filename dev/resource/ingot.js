@@ -21,6 +21,14 @@ Block.createBlock("blockTin",[
 ToolAPI.registerBlockMaterial(BlockID.blockTin,"stone",1,true);
 Block.setDestroyLevel("blockTin",1);
 
+// 青铜块
+IDRegistry.genBlockID("blockBronze");
+Block.createBlock("blockBronze",[
+    {name:"Bronze Block",texture:[["bronze_block",0]],inCreative:true}
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockBronze,"stone",1,true);
+Block.setDestroyLevel("blockBronze",1);
+
 // 铅块
 IDRegistry.genBlockID("blockLead");
 Block.createBlock("blockLead",[
@@ -113,6 +121,7 @@ Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("block",Translation.translate("Block"),[
         BlockID.blockCopper,
         BlockID.blockTin,
+        BlockID.blockBronze,
         BlockID.blockLead,
         BlockID.blockWroughtIron,
         BlockID.blockSteel,
@@ -125,12 +134,15 @@ Callback.addCallback("PreLoaded",function(){
         BlockID.blockAluminium,
         BlockID.blockLeadAntimony
     ]);
-
+    
     Recipes.addShapeless({id:ItemID.ingotCopper,count:9,data:0},[{id:BlockID.blockCopper,data:0}]);
     Recipes.addShaped({id:BlockID.blockCopper,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotCopper,0]);
 
     Recipes.addShapeless({id:ItemID.ingotTin,count:9,data:0},[{id:BlockID.blockTin,data:0}]);
     Recipes.addShaped({id:BlockID.blockTin,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotTin,0]);
+
+    Recipes.addShapeless({id:ItemID.ingotBronze,count:9,data:0},[{id:BlockID.blockBronze,data:0}]);
+    Recipes.addShaped({id:BlockID.blockBronze,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotBronze,0]);
 
     Recipes.addShapeless({id:ItemID.ingotLead,count:9,data:0},[{id:BlockID.blockLead,data:0}]);
     Recipes.addShaped({id:BlockID.blockLead,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotLead,0]);
@@ -153,6 +165,9 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShapeless({id:ItemID.ingotTungsten,count:9,data:0},[{id:BlockID.blockTungsten,data:0}]);
     Recipes.addShaped({id:BlockID.blockTungsten,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotTungsten,0]);
 
+    Recipes.addShapeless({id:ItemID.ingotUranium,count:9,data:0},[{id:BlockID.blockUranium,data:0}]);
+    Recipes.addShaped({id:BlockID.blockUranium,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotUranium,0]);
+
     Recipes.addShapeless({id:ItemID.ingotSilver,count:9,data:0},[{id:BlockID.blockSilver,data:0}]);
     Recipes.addShaped({id:BlockID.blockSilver,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotSilver,0]);
 
@@ -167,55 +182,59 @@ Callback.addCallback("PreLoaded",function(){
 
 // 铜锭
 IDRegistry.genItemID("ingotCopper");
-Item.createItem("ingotCopper","Copper Ingot",{name:"ingotCopper"});
+Item.createItem("ingotCopper","Copper Ingot",{name:"copper_ingot"});
 
 // 锡锭
 IDRegistry.genItemID("ingotTin");
-Item.createItem("ingotTin","Tin Ingot",{name:"ingotTin"});
+Item.createItem("ingotTin","Tin Ingot",{name:"tin_ingot"});
 
 // 铅锭
 IDRegistry.genItemID("ingotLead");
-Item.createItem("ingotLead","Lead Ingot",{name:"ingotLead"});
+Item.createItem("ingotLead","Lead Ingot",{name:"lead_ingot"});
+
+// 青铜锭
+IDRegistry.genItemID("ingotBronze");
+Item.createItem("ingotBronze","Bronze Ingot",{name:"bronze_ingot"});
 
 // 锻铁锭
 IDRegistry.genItemID("ingotWroughtIron");
-Item.createItem("ingotWroughtIron","Wrought Iron Ingot",{name:"ingotWroughtIron"});
+Item.createItem("ingotWroughtIron","Wrought Iron Ingot",{name:"wrought_iron_ingot"});
 
 // 钢锭
 IDRegistry.genItemID("ingotSteel");
-Item.createItem("ingotSteel","Steel Ingot",{name:"ingotSteel"});
+Item.createItem("ingotSteel","Steel Ingot",{name:"steel_ingot"});
 
 // 锑锭
 IDRegistry.genItemID("ingotAntimony");
-Item.createItem("ingotAntimony","Antimony Ingot",{name:"ingotAntimony"});
+Item.createItem("ingotAntimony","Antimony Ingot",{name:"antimony_ingot"});
 
 // 锂锭
 IDRegistry.genItemID("ingotLithium");
-Item.createItem("ingotLithium","Lithium Ingot",{name:"ingotLithium"});
+Item.createItem("ingotLithium","Lithium Ingot",{name:"lithium_ingot"});
 
 // 钨锭
 IDRegistry.genItemID("ingotTungsten");
-Item.createItem("ingotTungsten","Tungsten Ingot",{name:"ingotTungsten"});
+Item.createItem("ingotTungsten","Tungsten Ingot",{name:"tungsten_ingot"});
 
 // 铀锭
 IDRegistry.genItemID("ingotUranium");
-Item.createItem("ingotUranium","Uranium Ingot",{name:"ingotUranium"});
+Item.createItem("ingotUranium","Uranium Ingot",{name:"uranium_ingot"});
 
 // 银锭
 IDRegistry.genItemID("ingotSilver");
-Item.createItem("ingotSilver","Silver Ingot",{name:"ingotSilver"});
+Item.createItem("ingotSilver","Silver Ingot",{name:"silver_ingot"});
 
 // 铝锭
 IDRegistry.genItemID("ingotAluminium");
-Item.createItem("ingotAluminium","Aluminium Ingot",{name:"ingotAluminium"});
+Item.createItem("ingotAluminium","Aluminium Ingot",{name:"aluminium_ingot"});
 
-// 夏洛特合金锭
+// 恩奈特合金
 IDRegistry.genItemID("ingotEnete");
-Item.createItem("ingotEnete","Enete Alloy Ingot",{name:"ingotEnete"});
+Item.createItem("ingotEnete","Enete Alloy Ingot",{name:"enete_ingot"});
 
 // 铅锑合金锭
 IDRegistry.genItemID("ingotLeadAntimony");
-Item.createItem("ingotLeadAntimony","Lead-Antimony Alloy Ingot",{name:"ingotLeadAntimony"});
+Item.createItem("ingotLeadAntimony","Lead-Antimony Alloy Ingot",{name:"lead_antimony_ingot"});
 
 // 红宝石
 IDRegistry.genItemID("ruby");
@@ -226,6 +245,7 @@ Callback.addCallback("PreLoaded",function(){
         ItemID.ingotCopper,
         ItemID.ingotTin,
         ItemID.ingotLead,
+        ItemID.ingotBronze,
         ItemID.ingotWroughtIron,
         ItemID.ingotSteel,
         ItemID.ingotAntimony,

@@ -37,6 +37,7 @@ item/armor/powered.js
 
 
 item/tool/antimony.js
+item/tool/bronze.js
 item/tool/copper.js
 item/tool/flint.js
 item/tool/iron.js
@@ -46,9 +47,9 @@ item/tool/tin.js
 item/tool/iungsten.js
 
 
+block/bronze_boiler.js
 block/cover.js
 block/crude_blast_furnace.js
-block/glass_tank.js
 block/module.js
 block/ore.js
 block/scaffold.js
@@ -57,6 +58,14 @@ block/stone.js
 
 block/tree/rubber.js
 
+
+block/tank/glass_tank.js
+block/tank/iron_tank.js
+
+
+block/liquid_pipe/liquid_pipe.js
+block/liquid_pipe/input_liquid_pipe.js
+block/liquid_pipe/transport_liquid_pipe.js
 
 block/item_pipe/item_pipe.js
 block/item_pipe/input_item_pipe.js
@@ -86,7 +95,7 @@ machine/wiremill.js
 
 machine/generator/fire_generator.js
 machine/generator/solar_generator.js
-
+machine/generator/steam_turbine.js
 
 machine/generator/fusion_reactor/fusion_reactor.js
 machine/generator/nuclear_reactor/nuclear_reactor.js

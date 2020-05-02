@@ -6,7 +6,7 @@ Block.createBlock("solarGenerator",[
 
 Machine.setDrop("solarGenerator",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.solarGenerator,count:1,data:0},["aaa","bcb","ded"],["a",102,0,"b",ItemID.plateTungsten,0,"c",ItemID.plateCarbon,0,"d",ItemID.circuit,0,"e",BlockID.machineCasing,0]);
+	Recipes.addShaped({id:BlockID.solarGenerator,count:1,data:0},["aaa","bcb","ded"],["a",102,0,"b",ItemID.plateTungsten,0,"c",ItemID.plateCarbon,0,"d",ItemID.circuit,0,"e",BlockID.machineCasing,1]);
 });
 
 var GuiSolarGenerator = new UI.StandartWindow({
@@ -31,11 +31,9 @@ var GuiSolarGenerator = new UI.StandartWindow({
 
 Machine.registerGenerator(BlockID.solarGenerator,{
 	tick:function(){
-		var output = Math.min(random(1,World.getLightLevel(this.x,this.y + 1,this.z) / 4),this.getMaxVoltage());
-		if(World.getThreadTime()%20 == 0){
-			if(GenerationUtils.canSeeSky(this.x,this.y + 1,this.z) && this.data.energy + output < this.getEnergyStorage()){
-				this.data.energy += output;
-			}
+		var output = Math.min(random(1,World.getLightLevel(this.x,this.y + 1,this.z)),this.getMaxVoltage());
+		if(GenerationUtils.canSeeSky(this.x,this.y + 1,this.z) && this.data.energy + output < this.getEnergyStorage()){
+			this.data.energy += output;
 		}
 
 		this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());

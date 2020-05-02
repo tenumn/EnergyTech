@@ -1,33 +1,33 @@
 // 铁制零件
 IDRegistry.genItemID("partIron");
-Item.createItem("partIron","Iron Part",{name:"partIron"});
+Item.createItem("partIron","Iron Part",{name:"iron_part"});
 
 // 锡制零件
 IDRegistry.genItemID("partTin");
-Item.createItem("partTin","Tin Part",{name:"partTin"});
+Item.createItem("partTin","Tin Part",{name:"tin_part"});
 
 // 铜制零件
 IDRegistry.genItemID("partCopper");
-Item.createItem("partCopper","Copper Part",{name:"partCopper"});
+Item.createItem("partCopper","Copper Part",{name:"copper_part"});
 
 // 金制零件
 IDRegistry.genItemID("partGold");
-Item.createItem("partGold","Gold Part",{name:"partGold"});
+Item.createItem("partGold","Gold Part",{name:"gold_part"});
 
 // 钢制零件
 IDRegistry.genItemID("partSteel");
-Item.createItem("partSteel","Steel Part",{name:"partSteel"});
+Item.createItem("partSteel","Steel Part",{name:"steel_part"});
 
 // 恩奈特特制零件
 IDRegistry.genItemID("partEnete");
-Item.createItem("partEnete","Enete Alloy Part",{name:"partEnete"});
+Item.createItem("partEnete","Enete Alloy Part",{name:"enete_part"});
 
 // 铅锑特制零件
 IDRegistry.genItemID("partLeadAntimony");
-Item.createItem("partLeadAntimony","Lead-Antimony Alloy Part",{name:"partLeadAntimony"});
+Item.createItem("partLeadAntimony","Lead-Antimony Alloy Part",{name:"lead_antimony_part"});
 
 Callback.addCallback("PreLoaded",function(){
-    Item.addCreativeGroup("ET-Part",Translation.translate("Part"),[
+    Item.addCreativeGroup("part",Translation.translate("Part"),[
         ItemID.partIron,
         ItemID.partTin,
         ItemID.partCopper,

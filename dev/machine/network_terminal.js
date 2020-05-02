@@ -1,14 +1,14 @@
 // [网络终端]Network Terminal
 IDRegistry.genBlockID("networkTerminal");
 Block.createBlock("networkTerminal",[
-    {name:"Network Terminal",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]],inCreative:true}
+    {name:"Network Terminal",texture:[["machine_bottom",2],["machine_top",2],["machine_side",2],["network_terminal",0],["machine_side",2],["machine_side",2]],inCreative:true}
 ],"machine");
-TileRenderer.setStandartModel(BlockID.networkTerminal,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.networkTerminal,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["network_terminal",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.setStandartModel(BlockID.networkTerminal,[["machine_bottom",2],["machine_top",2],["machine_side",2],["network_terminal",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.networkTerminal,0,[["machine_bottom",2],["machine_top",2],["machine_side",2],["network_terminal",0],["machine_side",2],["machine_side",2]]);
 
-Machine.setDrop("networkTerminal",BlockID.machineCasing,1);
+Machine.setDrop("networkTerminal",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.networkTerminal,count:1,data:0},["aab","cdb","aab"],["a",ItemID.plateIron,0,"b",BlockID.clearGlass,0,"c",ItemID.wireGold,0,"d",BlockID.machineCasing,1]);
+	Recipes.addShaped({id:BlockID.networkTerminal,count:1,data:0},["aab","cdb","aab"],["a",ItemID.plateIron,0,"b",BlockID.clearGlass,0,"c",ItemID.wireGold,0,"d",BlockID.machineCasing,2]);
 });
 
 var GuiNetworkTerminal = new UI.StandartWindow({
@@ -31,7 +31,7 @@ var GuiNetworkTerminal = new UI.StandartWindow({
         "textVoltage":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Voltage: ") + "0"},
 
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slot.card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}}
+        "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slot_card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}}
     }
 });
 
@@ -91,10 +91,9 @@ Machine.registerMachine(BlockID.networkTerminal,{
                 }
             }
     
-            var energy_output = power(this.data.tier);
-            if(this.data.energy >= energy_output && net.energy + energy_output < net.energy_storage){
-                this.data.energy -= energy_output;
-                net.energy += energy_output;
+            if(this.data.energy >= power(this.data.tier) && net.energy + power(this.data.tier) < net.energy_storage){
+                this.data.energy -= power(this.data.tier);
+                net.energy += power(this.data.tier);
             }
     
             if(net.energy < 0) net.energy = 0;
@@ -111,7 +110,7 @@ Machine.registerMachine(BlockID.networkTerminal,{
             this.container.setText("textEnergy",Translation.translate("Energy: ") + "0/0Et");
         }
         
-        this.container.setScale("scaleEnergy",this.data.energy / this.data.energy_storage);
+        this.container.setScale("scaleEnergy",Math.round(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setText("textNetwork",Translation.translate("Network IP: ") + Math.abs(this.x) + "." + Math.abs(this.y) + "." + Math.abs(this.z));
     },
 

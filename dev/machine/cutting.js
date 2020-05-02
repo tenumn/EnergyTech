@@ -1,15 +1,15 @@
 // [切割机]Cutting
 IDRegistry.genBlockID("cutting");
 Block.createBlock("cutting",[
-    {name:"Cutting",texture:[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]],inCreative:true}
+    {name:"Cutting",texture:[["machine_bottom",1],["cutting_top",0],["machine_side",1],["cutting",0],["machine_side",1],["machine_side",1]],inCreative:true}
 ],"machine");
-TileRenderer.setStandartModel(BlockID.cutting,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
-TileRenderer.registerRotationModel(BlockID.cutting,0,[["machine_bottom",0],["cutting_top",0],["machine_side",0],["cutting",0],["machine_side",0],["machine_side",0]]);
-for(let i = 1;i < 6;i++){TileRenderer.registerRotationModel(BlockID.cutting,i * 4,[["machine_bottom",0],["cutting_top",1],["machine_side",0],["cutting",i],["machine_side",0],["machine_side",0]]);}
+TileRenderer.setStandartModel(BlockID.cutting,[["machine_bottom",1],["cutting_top",0],["machine_side",1],["cutting",0],["machine_side",1],["machine_side",1]]);
+TileRenderer.registerRotationModel(BlockID.cutting,0,[["machine_bottom",1],["cutting_top",0],["machine_side",1],["cutting",0],["machine_side",1],["machine_side",1]]);
+for(let i = 1;i < 6;i++){TileRenderer.registerRotationModel(BlockID.cutting,i * 4,[["machine_bottom",1],["cutting_top",1],["machine_side",1],["cutting",i],["machine_side",1],["machine_side",1]]);}
 
-Machine.setDrop("cutting",BlockID.machineCasing);
+Machine.setDrop("cutting",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.cutting,count:1,data:0},["fef","cac","bdb"],["a",BlockID.machineCasing,0,"b",ItemID.electricMotor,0,"c",ItemID.plateIron,0,"d",ItemID.stickIron,0,"e",ItemID.circuit,0,"f",ItemID.partIron,0]);
+	Recipes.addShaped({id:BlockID.cutting,count:1,data:0},["fef","cac","bdb"],["a",BlockID.machineCasing,1,"b",ItemID.electricMotor,0,"c",ItemID.plateIron,0,"d",ItemID.stickIron,0,"e",ItemID.circuit,0,"f",ItemID.partIron,0]);
 });
 
 var GuiCutting = new UI.StandartWindow({
@@ -27,16 +27,16 @@ var GuiCutting = new UI.StandartWindow({
     ],
 
     elements:{
-        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"slot.empty",scale:GUI_SCALE},
+        "slotInput":{type:"slot",x:350 + GUI_SCALE * 43,y:175,bitmap:"slot_empty",scale:GUI_SCALE},
         "scaleArrow":{type:"scale",x:600,y:175 + GUI_SCALE * 2,direction:0,value:0.5,bitmap:"arrow_scale",scale:GUI_SCALE},
-        "slotOutput":{type:"slot",x:720,y:175,bitmap:"slot.empty",scale:GUI_SCALE,isValid:function(){return false;}},
+        "slotOutput":{type:"slot",x:720,y:175,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
 
-        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade},
-        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot.circuit",isValid:Upgrade.isValidUpgrade}
+        "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+		"slotUpgrade3":{type:"slot",x:490,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
+        "slotUpgrade4":{type:"slot",x:550,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade}
     }
 });
 
@@ -81,7 +81,7 @@ Machine.registerMachine(BlockID.cutting,{
             this.deactive();
         }
 
-        this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
+        this.container.setScale("scaleEnergy",Math.round(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },

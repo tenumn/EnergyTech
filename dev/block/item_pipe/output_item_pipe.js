@@ -48,7 +48,8 @@ Block.createBlock("itemPipeOutput",[
 ],"pipe");
 
 Tooltip.info(BlockID.itemPipeOutput,"Output item to specified direction.");
-ItemPipe.registerTile(BlockID.itemPipeOutput);
+
+ItemPipe.register(BlockID.itemPipeOutput);
 Block.registerPlaceFunction("itemPipeOutput",PIPE_PLACE);
 Machine.setDrop("itemPipeOutput",BlockID.itemPipeOutput);
 Block.setBlockShape(BlockID.itemPipeOutput,{x:0.25,y:0.25,z:0},{x:0.75,y:0.75,z:1},0);

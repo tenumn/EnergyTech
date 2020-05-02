@@ -13,9 +13,7 @@ ToolType.drill = {
                     var id = World.getBlock(coords.x - 1 + x,coords.y - 1 + y,coords.z - 1 + z).id;
                     var level = ToolAPI.getBlockDestroyLevel(id);
                     var material = ToolAPI.getBlockMaterialName(id);
-                    if(this.toolMaterial.level >= level && material == "stone"){
-                    damage += 16;
-                    }
+                    if(this.toolMaterial.level >= level && material == "stone") damage += 16;
                 }
             }
         }
