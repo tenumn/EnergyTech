@@ -41,7 +41,7 @@ ToolAPI.setTool(ItemID.shovelBronze,"bronze",ToolType.shovel);
 ToolAPI.setTool(ItemID.pickaxeBronze,"bronze",ToolType.pickaxe);
 ToolAPI.setTool(ItemID.axeBronze,"bronze",ToolType.axe);
 ToolAPI.setTool(ItemID.hoeBronze,"bronze",ToolType.hoe);
-ToolAPI.setTool(ItemID.hammerBronze,"bronze",ToolType.pickaxe);
+ToolAPI.setTool(ItemID.hammerBronze,"bronze",ToolType.hammer);
 ToolAPI.setTool(ItemID.lighterBronze,"bronze",ToolType.lighter);
 
 Item.setMaxDamage(ItemID.wrenchBronze,ToolAPI.getToolMaterial("bronze").durability);

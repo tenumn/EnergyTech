@@ -14,7 +14,11 @@ Item.addTooltip(BlockID.lithiumBatteryBox,Translation.translate("Energy Storage:
 
 Machine.setDrop("lithiumBatteryBox",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.lithiumBatteryBox,count:1,data:0},["aba","bcb","aba"],["a",ItemID.partIron,0,"b",ItemID.lithiumBattery,-1,"c",ItemID.wireTin,0]);
+	Recipes.addShaped({id:BlockID.lithiumBatteryBox,count:1,data:0},[
+        "aba",
+        "bcb",
+        "aba"
+    ],["a",ItemID.partIron,0,"b",ItemID.lithiumBattery,-1,"c",ItemID.wireTin,0]);
 });
 
 var GuiLithiumBatteryBox = new UI.StandartWindow({
@@ -38,7 +42,7 @@ var GuiLithiumBatteryBox = new UI.StandartWindow({
 	}
 });
 
-Machine.registerEnergyStorage(BlockID.lithiumBatteryBox,{
+Machine.registerEUEnergyStorage(BlockID.lithiumBatteryBox,{
     defaultValues:{tier:1,energy_storage:65536},
 
     tick:function(){

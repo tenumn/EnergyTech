@@ -23,12 +23,7 @@ var NuclearReactor = {
 
     registerModule:function(id,module,type){
         if(!this.isModule(id)){
-            this.module[id] = {
-                type:type,
-                data:module
-            };
-
-            Tooltip.moduleType(id,type);
+            this.module[id] = {type:type,data:module};
         }
     }
 }

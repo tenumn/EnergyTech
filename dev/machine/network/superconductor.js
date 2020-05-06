@@ -14,12 +14,16 @@ Block.createBlock("superconductor",[
 ],"superconductor");
 
 Block.setBlockShape(BlockID.superconductor,{x:0.375,y:0.375,z:0},{x:0.625,y:0.625,z:1},0);
-TileRenderer.setupWireModel(BlockID.superconductor,1,0.25,"et-wire",true);
+TileRenderer.setupWireModel(BlockID.superconductor,1,0.25,"eu-wire",true);
 
 Tooltip.info(BlockID.superconductor,"You can use it to connect to the Network Terminal to transmit energy.");
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.superconductor,count:1,data:0},["dcd","aba","dcd"],["a",ItemID.wireTungsten,0,"b",ItemID.circuitTransformer,0,"c",ItemID.plateSteel,0,"d",ItemID.partSteel,0]);
+    Recipes.addShaped({id:BlockID.superconductor,count:1,data:0},[
+        "dcd",
+        "aba",
+        "dcd"
+    ],["a",ItemID.wireTungsten,0,"b",ItemID.circuitTransformer,0,"c",ItemID.plateSteel,0,"d",ItemID.partSteel,0]);
 });
 
 Machine.setDrop("superconductor",BlockID.superconductor);
@@ -58,7 +62,7 @@ var GuiSuperconductorCoil = new UI.StandartWindow({
     }
 });
 
-Machine.registerGenerator(BlockID.superconductor,{
+Machine.registerEUGenerator(BlockID.superconductor,{
     defaultValues:{x:0,y:0,z:0},
 
     destroyMachine:function(){

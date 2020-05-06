@@ -60,50 +60,52 @@ Callback.addCallback("PreLoaded",function(){
     Tool.registerTool(293,"Hoe");
     Tool.registerTool(294,"Hoe");
 
-    Recipes.deleteRecipe({id:256,count:1,data:0});
-    Recipes.deleteRecipe({id:257,count:1,data:0});
-    Recipes.deleteRecipe({id:258,count:1,data:0});
-    Recipes.deleteRecipe({id:267,count:1,data:0});
-    Recipes.deleteRecipe({id:268,count:1,data:0});
-    Recipes.deleteRecipe({id:269,count:1,data:0});
-    Recipes.deleteRecipe({id:270,count:1,data:0});
-    Recipes.deleteRecipe({id:271,count:1,data:0});
-    Recipes.deleteRecipe({id:272,count:1,data:0});
-    Recipes.deleteRecipe({id:273,count:1,data:0});
-    Recipes.deleteRecipe({id:274,count:1,data:0});
-    Recipes.deleteRecipe({id:275,count:1,data:0});
-    Recipes.deleteRecipe({id:276,count:1,data:0});
-    Recipes.deleteRecipe({id:277,count:1,data:0});
-    Recipes.deleteRecipe({id:278,count:1,data:0});
-    Recipes.deleteRecipe({id:279,count:1,data:0});
-    Recipes.deleteRecipe({id:283,count:1,data:0});
-    Recipes.deleteRecipe({id:284,count:1,data:0});
-    Recipes.deleteRecipe({id:285,count:1,data:0});
-    Recipes.deleteRecipe({id:286,count:1,data:0});
-    Recipes.deleteRecipe({id:290,count:1,data:0});
-    Recipes.deleteRecipe({id:292,count:1,data:0});
-    Recipes.deleteRecipe({id:293,count:1,data:0});
-    Recipes.deleteRecipe({id:294,count:1,data:0});
-    Recipes.deleteRecipe({id:302,count:1,data:0});
-    Recipes.deleteRecipe({id:303,count:1,data:0});
-    Recipes.deleteRecipe({id:304,count:1,data:0});
-    Recipes.deleteRecipe({id:305,count:1,data:0});
-    Recipes.deleteRecipe({id:306,count:1,data:0});
-    Recipes.deleteRecipe({id:307,count:1,data:0});
-    Recipes.deleteRecipe({id:308,count:1,data:0});
-    Recipes.deleteRecipe({id:309,count:1,data:0});
-    Recipes.deleteRecipe({id:310,count:1,data:0});
-    Recipes.deleteRecipe({id:311,count:1,data:0});
-    Recipes.deleteRecipe({id:312,count:1,data:0});
-    Recipes.deleteRecipe({id:313,count:1,data:0});
-    Recipes.deleteRecipe({id:314,count:1,data:0});
-    Recipes.deleteRecipe({id:315,count:1,data:0});
-    Recipes.deleteRecipe({id:316,count:1,data:0});
-    Recipes.deleteRecipe({id:317,count:1,data:0});
-    Recipes.deleteRecipe({id:325,count:1,data:0});
-    Recipes.deleteRecipe({id:380,count:1,data:0});
-    Recipes.deleteRecipe({id:410,count:1,data:0});
-    
+    Recipes.deleteRecipeFor([
+        {id:256,count:1,data:0},
+        {id:257,count:1,data:0},
+        {id:258,count:1,data:0},
+        {id:267,count:1,data:0},
+        {id:268,count:1,data:0},
+        {id:269,count:1,data:0},
+        {id:270,count:1,data:0},
+        {id:271,count:1,data:0},
+        {id:272,count:1,data:0},
+        {id:273,count:1,data:0},
+        {id:274,count:1,data:0},
+        {id:275,count:1,data:0},
+        {id:276,count:1,data:0},
+        {id:277,count:1,data:0},
+        {id:278,count:1,data:0},
+        {id:279,count:1,data:0},
+        {id:283,count:1,data:0},
+        {id:284,count:1,data:0},
+        {id:285,count:1,data:0},
+        {id:286,count:1,data:0},
+        {id:290,count:1,data:0},
+        {id:292,count:1,data:0},
+        {id:293,count:1,data:0},
+        {id:294,count:1,data:0},
+        {id:302,count:1,data:0},
+        {id:303,count:1,data:0},
+        {id:304,count:1,data:0},
+        {id:305,count:1,data:0},
+        {id:306,count:1,data:0},
+        {id:307,count:1,data:0},
+        {id:308,count:1,data:0},
+        {id:309,count:1,data:0},
+        {id:310,count:1,data:0},
+        {id:311,count:1,data:0},
+        {id:312,count:1,data:0},
+        {id:313,count:1,data:0},
+        {id:314,count:1,data:0},
+        {id:315,count:1,data:0},
+        {id:316,count:1,data:0},
+        {id:317,count:1,data:0},
+        {id:325,count:1,data:0},
+        {id:380,count:1,data:0},
+        {id:410,count:1,data:0}
+    ]);
+
     Recipes.removeFurnaceRecipe(12);
     Recipes.removeFurnaceRecipe(17);
     Recipes.removeFurnaceRecipe(162);
@@ -116,6 +118,22 @@ Callback.addCallback("PreLoaded",function(){
         Recipe.addShapedRecipe({id:325,count:1,data:0},["   ","aba"," a "],["a",ItemID.plateIron,0,"b",hammer[hi],-1],{4:1});
         Recipe.addShapedRecipe({id:380,count:1,data:0},["a a","aba","aaa"],["a",ItemID.plateIron,0,"b",hammer[hi],-1],{4:1});
         Recipe.addShapedRecipe({id:410,count:1,data:0},["aca","aba"," a "],["a",ItemID.plateIron,0,"b",54,0,"c",hammer[hi],-1],{1:1});
+        
+        Recipe.addShapedRecipe({id:302,count:1,data:0},["aaa","aba","   "],["a",ItemID.ringSteel,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:303,count:1,data:0},["aba","aaa","aaa"],["a",ItemID.ringSteel,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:304,count:1,data:0},["aaa","aba","a a"],["a",ItemID.ringSteel,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:305,count:1,data:0},["aba","a a","   "],["a",ItemID.ringSteel,0,"b",hammer[hi],-1],{1:1});
+
+        Recipe.addShapedRecipe({id:306,count:1,data:0},["aaa","aba","   "],["a",ItemID.plateIron,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:307,count:1,data:0},["aba","aaa","aaa"],["a",ItemID.plateIron,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:308,count:1,data:0},["aaa","aba","a a"],["a",ItemID.plateIron,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:309,count:1,data:0},["aba","a a","   "],["a",ItemID.plateIron,0,"b",hammer[hi],-1],{1:1});
+
+        Recipe.addShapedRecipe({id:314,count:1,data:0},["aaa","aba","   "],["a",ItemID.plateGold,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:315,count:1,data:0},["aba","aaa","aaa"],["a",ItemID.plateGold,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:316,count:1,data:0},["aaa","aba","a a"],["a",ItemID.plateGold,0,"b",hammer[hi],-1],{1:1});
+        Recipe.addShapedRecipe({id:317,count:1,data:0},["aba","a a","   "],["a",ItemID.plateGold,0,"b",hammer[hi],-1],{1:1});
+
         for(let fi = 0;fi < file.length;fi++){
             Recipe.addShapedRecipe({id:256,count:1,data:0},["cad"," b "," b "],["a",ItemID.plateIron,0,"b",280,0,"c",file[fi],-1,"d",hammer[hi],-1],{0:1,2:1});
             Recipe.addShapedRecipe({id:257,count:1,data:0},["aca","dbe"," b "],["a",ItemID.plateIron,0,"b",280,0,"c",265,0,"d",file[fi],-1,"e",hammer[hi],-1],{3:1,5:1});

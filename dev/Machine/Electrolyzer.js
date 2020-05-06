@@ -43,7 +43,7 @@ var GuiElectrolyzer = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.electrolyzer,{
+Machine.registerEUMachine(BlockID.electrolyzer,{
     defaultValues:{
         meta:0,
         tier:3,
@@ -53,7 +53,7 @@ Machine.registerMachine(BlockID.electrolyzer,{
         energy_consumption:4
     },
 
-	initValues: function(){
+	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

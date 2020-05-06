@@ -10,7 +10,11 @@ TileRenderer.registerRotationModel(BlockID.fusionReactor,0,[["fusion_reactor_bot
 
 Machine.setDrop("fusionReactor",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.fusionReactor,count:1,data:0},["bcb","ada","beb"],["a",BlockID.coilCopper,0,"b",ItemID.circuitEnergyStorage,0,"c",BlockID.superconductor,0,"d",BlockID.networkTerminal,0,"e",BlockID.nuclearReactor,0]);
+	Recipes.addShaped({id:BlockID.fusionReactor,count:1,data:0},[
+        "bcb",
+        "ada",
+        "beb"
+    ],["a",BlockID.coilCopper,0,"b",ItemID.circuitEnergyStorage,0,"c",BlockID.superconductor,0,"d",BlockID.networkTerminal,0,"e",BlockID.nuclearReactor,0]);
 });
 
 var GuiFusionReactor = new UI.StandartWindow({
@@ -22,7 +26,6 @@ var GuiFusionReactor = new UI.StandartWindow({
 
     drawing:[
         {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
-        {type:"bitmap",x:350,y:325,bitmap:"heatBackground",scale:GUI_SCALE},
         {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info",scale:GUI_SCALE},
         {type:"bitmap",x:650 - GUI_SCALE * 21,y:75 - GUI_SCALE * 3,bitmap:"info_fusion",scale:GUI_SCALE}
     ],
@@ -38,27 +41,20 @@ var GuiFusionReactor = new UI.StandartWindow({
 
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
 		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Energy Output: ") + "0Eu"},
-        "textHard":{type:"text",font:GUI_TEXT,x:700,y:135,width:300,height:30,text:Translation.translate("Hard Level: ") + "0"},
-        "textHeat":{type:"text",font:GUI_TEXT,x:700,y:165,width:300,height:30,text:Translation.translate("Heat: ") + "0Hu"},
-        "textFuel":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Fuel: ") + "0"},
 
-        "scaleBurn":{type:"scale",x:350 + GUI_SCALE * 4,y:325 + GUI_SCALE * 4,direction:0,value:0.5,bitmap:"heatScale",scale:GUI_SCALE},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE}
     }
 });
 
-Machine.registerMachine(BlockID.fusionReactor,{
+Machine.registerEUMachine(BlockID.fusionReactor,{
     defaultValues:{
         meta:0,
         tier:4,
-        hard:0,
         heat:0,                                                                                           
         fuel:0,
-        coolant:0,
         progress:0,
         work_time:160,
         isActive:false,
-        blast_progress:0,
         energy_storage:1048576,
         energy_consumption:4704 
     },
@@ -70,7 +66,6 @@ Machine.registerMachine(BlockID.fusionReactor,{
 
             for(let side = 0;side < 6;side++){
                 var coords = World.getRelativeCoords(coil.x,coil.y,coil.z,side);
-                
                 var reactor = FusionReactor.getModuleData(World.getBlockID(coords.x,coords.y,coords.z));
                 var coil_tile = World.getTileEntity(coords.x,coords.y,coords.z);
                 if(reactor && coil_tile){
@@ -111,25 +106,10 @@ Machine.registerMachine(BlockID.fusionReactor,{
         return (coil + fusion >= 236)?true:false;
     },
 
-    blast:function(){
-        if(this.data.coolant < this.data.heat){
-            this.data.blast_progress += 1 / 160;
-            if(this.data.blast_progress.toFixed(3) >= 1){
-                World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,Math.max(0.5,Math.floor(this.data.heat + this.data.fuel - (this.data.hard + this.data.coolant))),true);
-            }
-        } else if(this.data.blast_progress > 0){
-            this.data.blast_progress -= 1 / 160;
-        }
-    },
-
     initValues:function(){
-        this.data.tier = this.defaultValues.tier;
-        this.data.hard = this.defaultValues.hard;
         this.data.heat = this.defaultValues.heat;
         this.data.fuel = this.defaultValues.fuel;
-        this.data.coolant = this.defaultValues.coolant;
         this.data.work_time = this.defaultValues.work_time;
-        this.data.energy_consumption = this.defaultValues.energy_consumption;
     },
 
     tick:function(){
@@ -139,11 +119,9 @@ Machine.registerMachine(BlockID.fusionReactor,{
             this.getModuleData();
     
             var input1 = this.container.getSlot("slotInput1"),input2 = this.container.getSlot("slotInput2"),recipe = Recipe.getRecipeResult("FusionReactor",[input1.id,input1.data,input2.id,input2.data]);
-            var heat = this.data.heat - Math.max(0,this.data.coolant - this.data.heat);
-            if(recipe && recipe.heat >= heat/2 && recipe.heat <= heat*2){
-                if(this.data.energy + Math.floor(this.data.heat * this.data.fuel) < this.getEnergyStorage()){
-                    this.data.energy += Math.floor(this.data.heat * this.data.fuel);
-                }
+            if(recipe){
+                var output = Math.floor(this.data.heat * this.data.fuel);
+                if(this.data.energy + output < this.getEnergyStorage()) this.data.energy += output;
                 if(this.data.energy >= this.data.energy_consumption){
                     this.data.energy -= this.data.energy_consumption;
                     this.data.progress += 1 / this.data.work_time;
@@ -162,17 +140,11 @@ Machine.registerMachine(BlockID.fusionReactor,{
                 this.data.progress = 0;
             }
         }
-            
-        this.blast();
 
         // Info
-        this.container.setScale("scaleBurn",this.data.blast_progress);
 		this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
         this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + Math.floor(this.data.heat * this.data.fuel) + "Eu");
-        this.container.setText("textHard",Translation.translate("Hard Level: ") + this.data.hard);
-        this.container.setText("textHeat",Translation.translate("Heat: ") + (this.data.heat - Math.max(0,this.data.coolant - this.data.heat)) + "Hu");
-        this.container.setText("textFuel",Translation.translate("Fuel: ") + this.data.fuel);
     },
 
     energyTick:function(type,src){

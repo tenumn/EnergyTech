@@ -4,9 +4,7 @@ var Recipe = {
             for(let i in field){
                 if(extra[i] >= 1){
                     field[i].data += extra[i];
-                    if(field[i].data >= Item.getMaxDamage(field[i].id)){
-                        field[i].id = field[i].count = field[i].data = 0;
-                    }
+                    if(field[i].data >= Item.getMaxDamage(field[i].id)) field[i].id = field[i].count = field[i].data = 0;
                 } else {
                     api.decreaseFieldSlot(i);
                 }
@@ -20,9 +18,7 @@ var Recipe = {
 			for (var i in field){
 				if(field[i].id == tool){
 					field[i].data++;
-					if (field[i].data >= Item.getMaxDamage(tool)){
-						field[i].id = field[i].count = field[i].data = 0;
-					}
+					if (field[i].data >= Item.getMaxDamage(tool)) field[i].id = field[i].count = field[i].data = 0;
 				} else {
 					api.decreaseFieldSlot(i);
 				}
@@ -40,13 +36,11 @@ var Recipe = {
     getRecipeResult:function(name,data){
 		var recipe = this.getRecipe(name);
 		if(recipe){
-			if(data[2]){
-				return recipe[data[0] + ":" + data[1] + ":" + data[2] + ":" + data[3]] || recipe[data[2] + ":" + data[3] + ":" + data[0] + ":" + data[1]];
-			}
+			if(data[2]) return recipe[data[0] + ":" + data[1] + ":" + data[2] + ":" + data[3]] || recipe[data[2] + ":" + data[3] + ":" + data[0] + ":" + data[1]];
 			return recipe[data[0] + ":" + data[1]];
 		}
 	},
-
+	
 	addMaceratorRecipe:function(input,output){
 		var pecipe = this.getRecipe("Macerator");
 		pecipe[input.id + ":" + input.data] = output;

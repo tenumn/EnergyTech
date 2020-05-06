@@ -43,21 +43,23 @@ var GuiMacerator = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.macerator,{
+Machine.registerEUMachine(BlockID.macerator,{
     defaultValues:{
         meta:0,
         tier:2,
         progress:0,
         work_time:320,
         isActive:false,
+        sound_volume:16,
         energy_consumption:4
     },
 
 	initValues: function(){
-		this.data.tier = this.defaultValues.tier;
+        this.data.tier = this.defaultValues.tier;
+        this.data.work_time = this.defaultValues.work_time;
+        this.data.sound_volume = this.defaultValues.sound_volume;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;
-		this.data.work_time = this.defaultValues.work_time;
 	},
 	
 	tick: function(){

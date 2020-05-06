@@ -125,53 +125,207 @@ Block.registerDropFunction("oreRuby",function(coords,id,data,level,enchant){
     return [];
 },3);
 
-var OVERWORLD_VEIN = [
-    // 煤炭矿脉
-    {name:"Coal",ores:[{id:16,data:0}],minHeight:48,maxHeight:128,size:10},
+var OreVein = {
+    VEIN:{
+        OVERWORLD_VEIN:[
 
-    // 铝土矿脉
-    {name:"Bauxite",ores:[{id:BlockID.oreBauxite,data:0}],minHeight:64,maxHeight:96,size:15},
+        ],
 
-    // 黝铜矿脉
-    {name:"Tetrahedrite",ores:[{id:BlockID.oreTetrahedrite,data:0},{id:BlockID.oreCopper,data:0}],minHeight:64,maxHeight:128,size:19},
+        NETHER_VEIN:[
 
-    // 钻石矿脉
-    {name:"Diamonds",ores:[{id:56,data:0},{id:16,data:0},{id:BlockID.oreGraphite,data:0}],minHeight:4,maxHeight:16,size:14},
+        ],
+        
+        ENDER_VEIN:[
 
-    // 铀矿脉
-    {name:"Uranium",ores:[{id:BlockID.oreUranium,data:0}],minHeight:8,maxHeight:32,size:13},
+        ]
+    },
 
-    // 锡石矿脉
-    {name:"Cassiterite",ores:[{id:BlockID.oreCassiterite,data:0},{id:BlockID.oreTungsten,data:0}],minHeight:32,maxHeight:96,size:11},
+    OVERWORLD_VEIN:[  
 
-    // 铁矿脉
-    {name:"Iron",ores:[{id:15,data:0}],minHeight:16,maxHeight:32,size:18},
+    ],
 
-    // 方铅矿脉
-    {name:"Galena",ores:[{id:BlockID.oreGalena,data:0},{id:BlockID.oreSilver,data:0}],minHeight:32,maxHeight:64,size:14},
+    NETHER_VEIN:[
 
-    // 岩盐矿脉
-    {name:"Salt",ores:[{id:BlockID.oreSalt,data:0},{id:BlockID.oreSpodumene,data:0}],minHeight:48,maxHeight:64,size:12},
+    ],
 
-    // 红石矿脉
-    {name:"Redstone",ores:[{id:73,data:0},{id:BlockID.oreRuby,data:0}],minHeight:16,maxHeight:48,size:14}
-];
+    ENDER_VEIN:[
+
+    ],
+
+    SMALL_STONE:{
+        
+    },
+    
+    registerOreVein:function(name,random,ores,min,max,size,stone){
+        var ore = [];
+        for(let i in ores){
+            var item = ores[i];
+            for(let n = 0;n < Math.min(item.count,100);n++) ore.push({id:item.id,data:item.data});
+        }
+
+        for(let i = 0;i < Math.min(random,100);i++) this.OVERWORLD_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
+
+        if(stone) this.SMALL_STONE[name] = stone;
+
+        this.VEIN.OVERWORLD_VEIN.push({name:name,ore:ores,minHeight:min,maxHeight:max,size:size});
+    },
+
+    registerOreVeinNether:function(name,random,ores,min,max,size,stone){
+        var ore = [];
+        for(let i in ores){
+            var item = ores[i];
+            for(let n = 0;n < Math.min(item.count,100);n++) ore.push({id:item.id,data:item.data});
+        }
+        
+        for(let i = 0;i < Math.min(random,100);i++) this.NETHER_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
+
+        if(stone) this.SMALL_STONE[name] = stone;
+
+        this.VEIN.NETHER_VEIN.push({name:name,ore:ores,minHeight:min,maxHeight:max,size:size});
+    },
+
+    registerOreVeinEnder:function(name,random,ores,min,max,size,stone){
+        var ore = [];
+        for(let i in ores){
+            var item = ores[i];
+            for(let n = 0;n < Math.min(item.count,100);n++) ore.push({id:item.id,data:item.data});
+        }
+
+        for(let i = 0;i < Math.min(random,100);i++) this.ENDER_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
+
+        if(stone) this.SMALL_STONE[name] = stone;
+
+        this.VEIN.ENDER_VEIN.push({name:name,ore:ores,minHeight:min,maxHeight:max,size:size});
+    }
+}
+
+// 煤炭矿脉
+OreVein.registerOreVein("Coal",80,[{id:16,count:64,data:0}],48,80,16,{id:ItemID.tinyCoal,count:1,data:0});
+
+// 铝土矿脉
+OreVein.registerOreVein("Bauxite",80,[{id:BlockID.oreBauxite,count:64,data:0}],48,96,16,{id:ItemID.oreChunkBauxite,count:1,data:0});
+
+// 黝铜矿脉
+OreVein.registerOreVein("Tetrahedrite",150,[{id:BlockID.oreTetrahedrite,count:48,data:0},{id:BlockID.oreCopper,count:24,data:0}],64,128,30,{id:ItemID.oreChunkTetrahedrite,count:1,data:0});
+
+// 钻石矿脉
+OreVein.registerOreVein("Diamonds",60,[{id:56,count:6,data:0},{id:16,count:64,data:0},{id:BlockID.oreGraphite,count:48,data:0}],0,16,12,{id:ItemID.dustSmallDiamond,count:1,data:0});
+
+// 沥青铀矿脉
+OreVein.registerOreVein("Pitchblende",40,[{id:BlockID.oreUranium,count:12,data:0}],8,32,8,{id:ItemID.oreChunkUranium,count:1,data:0});
+
+// 锡石矿脉
+OreVein.registerOreVein("Cassiterite",170,[{id:BlockID.oreCassiterite,count:24,data:0},{id:BlockID.oreTungsten,count:6,data:0}],32,96,35,{id:ItemID.oreChunkUranium,count:1,data:0});
+
+// 铁矿脉
+OreVein.registerOreVein("Iron",120,[{id:15,count:48,data:0}],16,32,24,{id:ItemID.oreChunkIron,count:1,data:0});
+
+// 方铅矿脉
+OreVein.registerOreVein("Galena",40,[{id:BlockID.oreGalena,count:48,data:0},{id:BlockID.oreSilver,count:12,data:0}],32,64,8,{id:ItemID.oreChunkGalena,count:1,data:0});
+
+// 岩盐矿脉
+OreVein.registerOreVein("Salt",30,[{id:BlockID.oreSalt,count:48,data:0},{id:BlockID.oreSpodumene,count:64,data:0}],48,64,8,{id:ItemID.dustSmallSalt,count:1,data:0});
+
+// 红石矿脉
+OreVein.registerOreVein("Redstone",60,[{id:73,count:48,data:0},{id:BlockID.oreRuby,count:6,data:0}],16,48,12,{id:ItemID.dustSmallRedstone,count:1,data:0});
 
 Callback.addCallback("PreLoaded",function(){
     Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
-        var vein = OVERWORLD_VEIN[Math.floor(Math.random() * OVERWORLD_VEIN.length)];
-        var coords = GenerationUtils.randomCoords(chunkX,chunkZ,vein.minHeight,vein.maxHeight);
-        if(World.getBlock(coords.x,coords.y,coords.z).id == 1 && Math.random() < 0.25 && (chunkX + chunkZ)%4 == 0){
-            for(let x = 0;x <= vein.size;x++){for(let y = 0;y <= vein.size;y++){for(let z = 0;z <= vein.size;z++){
-                var pointed = {x:Math.floor(coords.x - vein.size + x),y:Math.floor(coords.y - vein.size + y),z:Math.floor(coords.z - vein.size + z)}
-                if(Math.random() < 0.75 && World.getBlock(pointed.x,pointed.y,pointed.z).id == 1){
-                    var ores = vein.ores[Math.floor(Math.random() * vein.ores.length)];
-                    World.setBlock(pointed.x,pointed.y,pointed.z,ores.id,ores.data);
-                }
-            }}}
+        var vein = OreVein.OVERWORLD_VEIN[Math.floor(Math.random() * OreVein.OVERWORLD_VEIN.length)];
+        if(vein){
+            var coords = {
+                x:chunkX * 16 + (UsefulTool.isNegative(chunkX * 16)?-8:8),
+                y:random(vein.minHeight,vein.maxHeight),
+                z:chunkZ * 16 + (UsefulTool.isNegative(chunkZ * 16)?-8:8)
+            }
 
-            ChunkRegistry.chunk[chunkX + ":" + chunkZ] = vein.name;
-            if(__config__.getBool("debug")) Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);
+            if(chunkX%4 == 0 && chunkZ%4 == 0){
+                for(let x = 0;x < vein.size;x++){
+                    for(let y = 0;y < vein.size;y++){
+                        for(let z = 0;z < vein.size;z++){
+                            var pointed = {
+                                x:Math.floor(coords.x - (vein.size / 2) + x),
+                                y:Math.floor(coords.y - (vein.size / 2) + y),
+                                z:Math.floor(coords.z - (vein.size / 2) + z)
+                            }
+                        
+                            if(Math.random() < 0.5 && World.getBlockID(pointed.x,pointed.y,pointed.z) == 1){
+                                var ore = vein.ore[Math.floor(Math.random() * vein.ore.length)];
+                                World.setBlock(pointed.x,pointed.y,pointed.z,ore.id,ore.data);
+                                ChunkRegistry.chunk["0:" + chunkX + ":" + chunkZ] = vein.name;
+                            }
+                        }
+                    }
+                }
+    
+                if(__config__.getBool("debug")) Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);
+            }
+        }
+    });
+
+    Callback.addCallback("GenerateNetherChunk",function(chunkX,chunkZ){
+        var vein = OreVein.NETHER_VEIN[Math.floor(Math.random() * OreVein.NETHER_VEIN.length)];
+        if(vein){
+            var coords = {
+                x:chunkX * 16 + (UsefulTool.isNegative(chunkX * 16)?-8:8),
+                y:random(vein.minHeight,vein.maxHeight),
+                z:chunkZ * 16 + (UsefulTool.isNegative(chunkZ * 16)?-8:8)
+            }
+
+            if(chunkX%4 == 0 && chunkZ%4 == 0){
+                for(let x = 0;x < vein.size;x++){
+                    for(let y = 0;y < vein.size;y++){
+                        for(let z = 0;z < vein.size;z++){
+                            var pointed = {
+                                x:Math.floor(coords.x - (vein.size / 2) + x),
+                                y:Math.floor(coords.y - (vein.size / 2) + y),
+                                z:Math.floor(coords.z - (vein.size / 2) + z)
+                            }
+
+                            if(Math.random() < 0.75 && World.getBlockID(pointed.x,pointed.y,pointed.z) == 87){
+                                var ore = vein.ore[Math.floor(Math.random() * vein.ore.length)];
+                                World.setBlock(pointed.x,pointed.y,pointed.z,ore.id,ore.data);
+                                ChunkRegistry.chunk["1:" + chunkX + ":" + chunkZ] = vein.name;
+                            }
+                        }
+                    }
+                }
+                
+                if(__config__.getBool("debug")) Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);
+            }
+        }
+    });
+
+    Callback.addCallback("GenerateEndChunk",function(chunkX,chunkZ){
+        var vein = OreVein.ENDER_VEIN[Math.floor(Math.random() * OreVein.ENDER_VEIN.length)];
+        if(vein){
+            var coords = {
+                x:chunkX * 16 + (UsefulTool.isNegative(chunkX * 16)?-8:8),
+                y:random(vein.minHeight,vein.maxHeight),
+                z:chunkZ * 16 + (UsefulTool.isNegative(chunkZ * 16)?-8:8)
+            }
+
+            if(chunkX%4 == 0 && chunkZ%4 == 0){
+                for(let x = 0;x < vein.size;x++){
+                    for(let y = 0;y < vein.size;y++){
+                        for(let z = 0;z < vein.size;z++){
+                            var pointed = {
+                                x:Math.floor(coords.x - (vein.size / 2) + x),
+                                y:Math.floor(coords.y - (vein.size / 2) + y),
+                                z:Math.floor(coords.z - (vein.size / 2) + z)
+                            }
+                        
+                            if(Math.random() < 0.75 && World.getBlockID(pointed.x,pointed.y,pointed.z) == 121){
+                                var ore = vein.ore[Math.floor(Math.random() * vein.ore.length)];
+                                World.setBlock(pointed.x,pointed.y,pointed.z,ore.id,ore.data);
+                                ChunkRegistry.chunk["2:" + chunkX + ":" + chunkZ] = vein.name;
+                            }
+                        }
+                    }
+                }
+
+                if(__config__.getBool("debug")) Debug.message("Ore Vein: " + coords.x + " " + coords.y + " " + coords.z);
+            }
         }
     });
 
@@ -199,15 +353,15 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreBauxite,ItemID.ingotAluminium);
     Recipes.addFurnace(BlockID.oreRuby,ItemID.ruby);
 
-    Tool.setHammerDestroyDrop(BlockID.oreCopper,ItemID.oreChunkCopper,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreTetrahedrite,ItemID.oreChunkTetrahedrite,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreCassiterite,ItemID.oreChunkCassiterite,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreGalena,ItemID.oreChunkGalena,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreSpodumene,ItemID.oreChunkSpodumene,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreTungsten,ItemID.oreChunkTungsten,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreUranium,ItemID.oreChunkUranium,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreSilver,ItemID.oreChunkSilver,4,0,true);
-    Tool.setHammerDestroyDrop(BlockID.oreBauxite,ItemID.oreChunkBauxite,4,0,true);
+    Tool.setHammerDestroyDrop(BlockID.oreCopper,ItemID.oreChunkCopper,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreTetrahedrite,ItemID.oreChunkTetrahedrite,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreCassiterite,ItemID.oreChunkCassiterite,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreGalena,ItemID.oreChunkGalena,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreSpodumene,ItemID.oreChunkSpodumene,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreTungsten,ItemID.oreChunkTungsten,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreUranium,ItemID.oreChunkUranium,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreSilver,ItemID.oreChunkSilver,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreBauxite,ItemID.oreChunkBauxite,4,0);
 
     Recipe.addBlastFurnaceRecipe({id:BlockID.oreTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
 });

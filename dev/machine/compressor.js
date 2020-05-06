@@ -9,7 +9,11 @@ for(var i = 1;i < 4;i++){TileRenderer.registerRotationModel(BlockID.compressor,i
 
 Machine.setDrop("compressor",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.compressor,count:1,data:0},["a a","bdb","aca"],["a",ItemID.plateIron,0,"b",ItemID.electricPiston,0,"c",ItemID.circuit,0,"d",BlockID.machineCasing,1]);
+	Recipes.addShaped({id:BlockID.compressor,count:1,data:0},[
+        "a a",
+        "bdb",
+        "aca"
+    ],["a",ItemID.plateIron,0,"b",ItemID.electricPiston,0,"c",ItemID.circuit,0,"d",BlockID.machineCasing,1]);
 });
 
 var GuiCompressor = new UI.StandartWindow({
@@ -40,20 +44,22 @@ var GuiCompressor = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.compressor,{
+Machine.registerEUMachine(BlockID.compressor,{
     defaultValues:{
         meta:0,
         tier:2,
         progress:0,
         work_time:320,
         isActive:false,
+        sound_volume:16,
         energy_consumption:4
     },
     
 	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
-		this.data.energy_storage = this.defaultValues.energy_storage;
+        this.data.sound_volume = this.defaultValues.sound_volume;
+        this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;
 	},
 

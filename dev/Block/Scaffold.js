@@ -47,9 +47,7 @@ Machine.registerPrototype(BlockID.scaffoldWood,{
 
     tick:function(){
         this.renderer();
-
-        var bot = World.getBlockID(this.x,this.y - 1,this.z);
-        if(bot == 0) World.destroyBlock(this.x,this.y,this.z,true);
+        if(World.isAirBlock(this.x,this.y - 1,this.z)) World.destroyBlock(this.x,this.y,this.z,true);
     },
 
     renderer:function(){
@@ -80,7 +78,7 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
 
     tick:function(){
         this.renderer();
-        if(World.getBlockID(this.x,this.y - 1,this.z) == 0) World.destroyBlock(this.x,this.y,this.z,true);
+        if(World.isAirBlock(this.x,this.y - 1,this.z)) World.destroyBlock(this.x,this.y,this.z,true);
     },
 
     renderer:function(){
@@ -98,6 +96,15 @@ Machine.registerPrototype(BlockID.scaffoldIron,{
 });
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.scaffoldWood,count:16,data:0},["aaa","bbb","aaa"],["a",5,-1,"b",280,0]);
-    Recipes.addShaped({id:BlockID.scaffoldIron,count:16,data:0},["aaa","bbb","aaa"],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0]);
+    Recipes.addShaped({id:BlockID.scaffoldWood,count:8,data:0},[
+        "aaa",
+        "bbb",
+        "aaa"
+    ],["a",5,-1,"b",280,0]);
+    
+    Recipes.addShaped({id:BlockID.scaffoldIron,count:8,data:0},[
+        "aaa",
+        "bbb",
+        "aaa"
+    ],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0]);
 });

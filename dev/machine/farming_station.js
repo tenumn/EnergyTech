@@ -44,7 +44,7 @@ var GuiFarmingStation = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.farmingStation,{
+Machine.registerEUMachine(BlockID.farmingStation,{
     defaultValues:{
         meta:0,
         tier:2,

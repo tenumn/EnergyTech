@@ -31,9 +31,9 @@ Block.createBlock("wireTin",[
 ],"wire");
 
 Tooltip.tier(ItemID.wireTin,1);
-Machine.registerWire(BlockID.wireTin,power(1));
-TileRenderer.setupWireModel(BlockID.wireTin,0,0.25,"et-wire");
-TileRenderer.setupWireModel(BlockID.wireTin,1,0.3125,"et-wire");
+Machine.registerEUWire(BlockID.wireTin,power(1));
+TileRenderer.setupWireModel(BlockID.wireTin,0,0.25,"eu-wire");
+TileRenderer.setupWireModel(BlockID.wireTin,1,0.3125,"eu-wire");
 
 Item.registerUseFunction("wireTin",function(coords,item,block){
     var place = coords;
@@ -62,9 +62,9 @@ Block.createBlock("wireCopper",[
 ],"wire");
 
 Tooltip.tier(ItemID.wireCopper,2);
-Machine.registerWire(BlockID.wireCopper,power(2));
-TileRenderer.setupWireModel(BlockID.wireCopper,0,0.25,"et-wire");
-TileRenderer.setupWireModel(BlockID.wireCopper,1,0.3125,"et-wire");
+Machine.registerEUWire(BlockID.wireCopper,power(2));
+TileRenderer.setupWireModel(BlockID.wireCopper,0,0.25,"eu-wire");
+TileRenderer.setupWireModel(BlockID.wireCopper,1,0.3125,"eu-wire");
 
 Item.registerUseFunction("wireCopper",function(coords,item,block){
     var place = coords;
@@ -93,9 +93,9 @@ Block.createBlock("wireGold",[
 ],"wire");
 
 Tooltip.tier(ItemID.wireGold,3);
-Machine.registerWire(BlockID.wireGold,power(3));
-TileRenderer.setupWireModel(BlockID.wireGold,0,0.375,"et-wire");
-TileRenderer.setupWireModel(BlockID.wireGold,1,0.4375,"et-wire");
+Machine.registerEUWire(BlockID.wireGold,power(3));
+TileRenderer.setupWireModel(BlockID.wireGold,0,0.375,"eu-wire");
+TileRenderer.setupWireModel(BlockID.wireGold,1,0.4375,"eu-wire");
 
 Item.registerUseFunction("wireGold",function(coords,item,block){
     var place = coords;
@@ -124,9 +124,9 @@ Block.createBlock("wireSteel",[
 ],"wire");
 
 Tooltip.tier(ItemID.wireSteel,4);
-Machine.registerWire(BlockID.wireSteel,power(4));
-TileRenderer.setupWireModel(BlockID.wireSteel,0,0.375,"et-wire");
-TileRenderer.setupWireModel(BlockID.wireSteel,1,0.4375,"et-wire");
+Machine.registerEUWire(BlockID.wireSteel,power(4));
+TileRenderer.setupWireModel(BlockID.wireSteel,0,0.375,"eu-wire");
+TileRenderer.setupWireModel(BlockID.wireSteel,1,0.4375,"eu-wire");
 
 Item.registerUseFunction("wireSteel",function(coords,item,block){
     var place = coords;
@@ -155,9 +155,9 @@ Block.createBlock("wireTungsten",[
 ],"wire");
 
 Tooltip.tier(ItemID.wireTungsten,5);
-Machine.registerWire(BlockID.wireTungsten,power(5));
-TileRenderer.setupWireModel(BlockID.wireTungsten,0,0.5,"et-wire");
-TileRenderer.setupWireModel(BlockID.wireTungsten,1,0.5625,"et-wire");
+Machine.registerEUWire(BlockID.wireTungsten,power(5));
+TileRenderer.setupWireModel(BlockID.wireTungsten,0,0.5,"eu-wire");
+TileRenderer.setupWireModel(BlockID.wireTungsten,1,0.5625,"eu-wire");
 
 Item.registerUseFunction("wireTungsten",function(coords,item,block){
     var place = coords;

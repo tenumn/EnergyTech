@@ -70,15 +70,12 @@ Machine.registerPrototype(BlockID.glassTank,{
     tick:function(){
         var stored = this.liquidStorage.getLiquidStored();
         var amount = this.liquidStorage.getAmount(stored);
-        if(amount) {
-            this.liquidStorage.setAmount(stored,parseInt(amount * 1000) / 1000);
-        }
 
         this.data.height += ((amount / 4) * 4 - this.data.height) * 0.1;
         this.data.height = Math.round(this.data.height * 100) / 100;
 
         if(stored){
-            if(World.getBlock(this.x,this.y - 1,this.z).id == this.id){
+            if(World.getBlockID(this.x,this.y - 1,this.z) == this.id){
                 var tile = World.getTileEntity(this.x,this.y - 1,this.z);
                 if(tile){
                     var tile_stored = tile.liquidStorage.getLiquidStored();

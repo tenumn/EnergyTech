@@ -47,9 +47,6 @@ Machine.registerPrototype(BlockID.ironTank,{
     
     tick:function(){
         var stored = this.liquidStorage.getLiquidStored();
-        var amount = this.liquidStorage.getAmount(stored);
-
-        if(amount) this.liquidStorage.setAmount(stored,parseInt(amount * 1000) / 1000);
 
         if(stored){
             if(World.getBlockID(this.x,this.y - 1,this.z) == this.id){

@@ -5,7 +5,7 @@ Translation.addTranslation("Rubber Tree Leaves",{zh:"橡胶树树叶"});
 Translation.addTranslation("Ruby",{zh:"红宝石"});
 Translation.addTranslation("Slag",{zh:"矿渣"});
 Translation.addTranslation("Resin",{zh:"树脂"});
-Translation.addTranslation("Enriched Uranium",{zh:"浓缩铀"});
+
 Translation.addTranslation("Tiny Coal",{zh:"小块煤炭"});
 Translation.addTranslation("Tiny Charcoal",{zh:"小块木炭"});
 Translation.addTranslation("Vacuum Tube",{zh:"真空管",ru:"Вакуумная труба"});
@@ -15,16 +15,22 @@ Translation.addTranslation("Dust",{zh:"尘土"});
 Translation.addTranslation("Concrete Block",{zh:"混凝土块"});
 Translation.addTranslation("Clear Glass",{zh:"通透玻璃"});
 Translation.addTranslation("Polished Marble",{zh:"磨制大理石"});
+Translation.addTranslation("Bronze Boiler",{zh:"青铜锅炉"});
+Translation.addTranslation("Machine Casing",{zh:"机器外壳"});
+
+// Uranium
+Translation.addTranslation("Depleted Enriched Uranium",{zh:"贫化浓缩铀"});
+Translation.addTranslation("Refined Enriched Uranium",{zh:"精炼浓缩铀"});
+
 Translation.addTranslation("Lithium-6",{zh:"锂-6",ru:"Литий-6"});
 Translation.addTranslation("Lithium-7",{zh:"锂-7",ru:"Литий-7"});
 Translation.addTranslation("Uranium-235",{zh:"铀-235",ru:"Уран-235"});
 Translation.addTranslation("Uranium-238",{zh:"铀-238",ru:"Уран-238"});
+
 Translation.addTranslation("Small Pile of Lithium-6",{zh:"小堆锂-6",ru:"Небольшая кучка Лития-6"});
 Translation.addTranslation("Small Pile of Lithium-7",{zh:"小堆锂-7",ru:"Небольшая кучка Лития-7"});
 Translation.addTranslation("Small Pile of Uranium-235",{zh:"小堆铀-235",ru:"Небольшая кучка Урана-235"});
 Translation.addTranslation("Small Pile of Uranium-238",{zh:"小堆铀-238",ru:"Небольшая кучка Урана-238"});
-
-Translation.addTranslation("Bronze Boiler",{zh:"青铜锅炉"});
 
 // Item Pipe
 Translation.addTranslation("Item Pipe (Input)",{zh:"物品管道 (输入)"});
@@ -456,26 +462,6 @@ Translation.addTranslation("Energy Input: ",{zh:"能量输入: ",ru:"Вход э
 Translation.addTranslation("Energy Output: ",{zh:"能量输出: ",ru:"Выход энергии: "});
 Translation.addTranslation("Energy Storage: ",{zh:"储能: ",ru:"Энергохранилище: "});
 Translation.addTranslation("Destroy Tool Type: ",{zh:"破坏工具类型: "});
-
-// Tool Type
-Translation.addTranslation("Wrench",{zh:"扳手"});
-Translation.addTranslation("Cutter",{zh:"剪线钳"});
-Translation.addTranslation("Sword",{zh:"剑"});
-Translation.addTranslation("Shovel",{zh:"铲"});
-Translation.addTranslation("Pickaxe",{zh:"镐"});
-Translation.addTranslation("Axe",{zh:"斧"});
-Translation.addTranslation("Hoe",{zh:"锄"});
-Translation.addTranslation("Hammer",{zh:"锤"});
-Translation.addTranslation("Mortar",{zh:"研钵"});
-Translation.addTranslation("File",{zh:"锉刀"});
-Translation.addTranslation("EnergyCard",{zh:"能源卡"});
-
-// Module Type
-Translation.addTranslation("FuelRod",{zh:"燃料棒"});
-Translation.addTranslation("HeatSink",{zh:"散热器"});
-Translation.addTranslation("Coolant",{zh:"冷却器"});
-Translation.addTranslation("Casing",{zh:"外壳"});
-Translation.addTranslation("Coil",{zh:"线圈"});
 
 // Info
 Translation.addTranslation("You can use it to connect to the Network Terminal to transmit energy.",{zh:"你可以用他连接网络终端来传输能量."});

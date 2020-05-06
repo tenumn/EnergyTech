@@ -360,7 +360,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 		getList:function(id,data,isUsage){
             if(isUsage){
                 let result = Tool.HAMMER_RECIOE[id];
-                return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
+                return result?[{input:[{id:id,count:1,data:data}],output:[{id:result.id,count:result.count[0],data:result.data}]}]:[];
             }
 
             let item,list = [],recipe = Tool.HAMMER_RECIOE;
@@ -370,7 +370,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                     item = key.split(":");
                     list.push({
                         input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],
-                        output:[result]
+                        output:[{id:result.id,count:result.count[0],data:result.data}]
                     });
                 }
             }
@@ -542,9 +542,7 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                 "output0":{type:"slot",x:600,y:130,bitmap:"slot_empty",size:120},
                 "output1":{type:"slot",x:720,y:130,bitmap:"slot_empty",size:120},
                 "output2":{type:"slot",x:600,y:250,bitmap:"slot_empty",size:120},
-                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120},
-
-                "textHeat":{type:"text",x:430,y:410}
+                "output3":{type:"slot",x:720,y:250,bitmap:"slot_empty",size:120}
     		}
     	},
         
@@ -556,11 +554,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                     let item = key.split(":");
                     if(parseInt(item[0]) == id && parseInt(item[1]) == data){
                         let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output,heat:result.heat}]:[];
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output}]:[];
                     }
                     if(parseInt(item[2]) == id && parseInt(item[3]) == data){
                         let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output,heat:result.heat}]:[];
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output}]:[];
                     }
                 }
             }
@@ -570,17 +568,12 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                 if(result.id == id && result.data == data){
                     let item = key.split(":");
                     let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output,heat:result.heat});
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output});
                 }
             }
 
     		return list;
-        },
-        
-		onOpen:function(elements,data){
-			let element = elements.get("textHeat");
-			element.onBindingUpdated("text",data?"Heat: " + data.heat/2 + " ~ " + data.heat*2:"");
-		}
+        }
     });
 
     // [装罐机]Canning Machine

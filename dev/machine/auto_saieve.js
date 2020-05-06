@@ -2,13 +2,7 @@
 IDRegistry.genBlockID("autoSaieve");
 Block.createBlock("autoSaieve",[
     {name:"Auto Sieve",texture:[["auto_sieve_bottom",0],["auto_sieve_top",0],["auto_sieve_side",0]],inCreative:true}
-],{
-    base:1,
-    solid:true,
-    opaque:true,
-    destroytime:5,
-    explosionres:16
-});
+],{base:1,solid:true,opaque:true,destroytime:5,explosionres:16});
 
 var render = new ICRender.Model();
 var model = new BlockRenderer.Model();
@@ -26,7 +20,11 @@ BlockRenderer.enableCoordMapping(BlockID.autoSaieve,-1,render);
 
 Machine.setDrop("autoSaieve",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.autoSaieve,count:1,data:0},["ada","aca","b b"],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0,"c",BlockID.machineCasing,1,"d",ItemID.gearIron,0]);
+    Recipes.addShaped({id:BlockID.autoSaieve,count:1,data:0},[
+        "ada",
+        "aca",
+        "b b"
+    ],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0,"c",ItemID.gearIron,0,"d",BlockID.mesh,0]);
 });
 
 var GuiAutoSaieve = new UI.StandartWindow({
@@ -71,7 +69,7 @@ var GuiAutoSaieve = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.autoSaieve,{
+Machine.registerEUMachine(BlockID.autoSaieve,{
     defaultValues:{
         tier:2,
         progress:0,

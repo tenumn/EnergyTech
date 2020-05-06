@@ -1,12 +1,12 @@
 /*
-
-    ._______. .__. .__. ._______. .______.   .______. .__.   .__. .________. ._______.  .______. .__.  .__.
-    |  .____| |  \ |  | |  .____| |  .__. \ / ._____| |  \   /  | |__.  .__| |  .____| /  .____| |  |__|  |
-    |  |____. |   \|  | |  |____. |  |__| | | | .___   \  \./  /     |  |    |  |____. |  |      |        |
-    |  .____| |  .    | |  .____| |  .____/ | | |_. \   \.   ./      |  |    |  .____| |  |      |  .__.  |
-    |  |____. |  |\   | |  |____. |  |\  \  | |___| |    |   |       |  |    |  |____. |  |____. |  |  |  |
-    |_______| |__| \__| |_______| |__| \__\ \_______/    |___|       |__|    |_______| \_______| |__|  |__|
-
+  
+    ._______.. .__. .__.  ._______.. .______..   .______.. .__.   .__.. .________.. ._______..  .______.. .__.. .__..
+    |  .____|| |  \ |  || |  .____|| |  .__. \\ / ._____|| |  \\  /  || |__.  .__|| |  .____|| /  .____|| |  ||_|  ||
+    |  ||___.. |   \|  || |  ||___.. |  |__| || | | .__..   \  \\/  //     |  ||    |  ||___.. |  ||      |        ||
+    |  .____|| |  .    || |  .____|| |  .____/  | | |_. \\   \.   .//      |  ||    |  .____|| |  ||      |  .__.  ||
+    |  ||___.. |  |\   || |  ||___.. |  |\  \\  | |___| ||    |   ||       |  ||    |  ||___.. |  ||___.  |  || |  ||
+    |_______|| |__| \__|| |_______|| |__||\__\\ \_______//    |___||       |__||    |_______|| \_______|| |__|| |__||
+ 
 */
 
 // lib
@@ -40,9 +40,9 @@ var GUI_TEXT = {size:16,color:android.graphics.Color.parseColor("#96dcdc")}
 var ChunkRegistry = {
     chunk:{},
     
-    getChunk:function(x,z){
-        var chunk = this.chunk[x + ":" + z];
-        if(chunk){return chunk;}
+    getChunk:function(x,z,dimension){
+        var chunk = this.chunk[dimension + ":" + x + ":" + z];
+        if(chunk) return chunk;
         return null;
     }
 },network = {}
@@ -55,18 +55,6 @@ var Tooltip = {
     tier:function(id,tier){
         Item.addTooltip(id,Translation.translate("Power Tier: ") + tier);
         Item.addTooltip(id,Translation.translate("Max Voltage: ") + power(tier) + "Eu");
-    },
-
-    destroyType:function(id,type){
-        Item.addTooltip(id,Translation.translate("Destroy Tool Type: ") + Translation.translate(type));
-    },
-
-    moduleType:function(id,type){
-        Item.addTooltip(id,Translation.translate("Module Type: ") + Translation.translate(type));
-    },
-
-    toolType:function(id,type){
-        Item.addTooltip(id,Translation.translate("Tool Type: ") + Translation.translate(type));
     },
 
     info:function(id,info){

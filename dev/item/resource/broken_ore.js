@@ -48,8 +48,8 @@ function CreateBrokenOre(name,random){
         Recipes.addShaped({id:BlockID["sand" + name],count:1,data:0},["aa","aa"],["a",ItemID["orePiece"+ name],0]);
         Recipes.addShaped({id:BlockID["dust" + name],count:1,data:0},["aa","aa"],["a",ItemID["oreDust" + name],0]);
         
-        Tool.setHammerDestroyDrop(BlockID["gravel"+ name],ItemID["orePiece" + name],4,0,true);
-        Tool.setHammerDestroyDrop(BlockID["sand" + name],ItemID["oreDust" + name],4,0,true);
+        Tool.setHammerDestroyDrop(BlockID["gravel"+ name],ItemID["orePiece" + name],4,0,5);
+        Tool.setHammerDestroyDrop(BlockID["sand" + name],ItemID["oreDust" + name],4,0,5);
     });
 }
 

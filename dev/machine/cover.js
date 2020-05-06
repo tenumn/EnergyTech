@@ -15,7 +15,7 @@ Renderer.registerCoverModel = function(id,data,texture){
 
 Renderer.setCoverRotationPlace = function(id){
     Item.registerUseFunction(id,function(coords,item,block){
-        if(World.getBlock(coords.relative.x,coords.relative.y,coords.relative.z).id == 0){
+        if(World.isAirBlock(coords.relative.x,coords.relative.y,coords.relative.z)){
             var x = coords.relative.x,y = coords.relative.y,z = coords.relative.z;
             World.setBlock(x,y,z,BlockID[id],coords.side);
             var tile = World.addTileEntity(x,y,z);
@@ -56,7 +56,11 @@ for(let i = 0;i <= 10;i++){
 Callback.addCallback("PreLoaded",function(){
     var wrench = Tool.getAllTool("Wrench");
     for(let i = 0;i < wrench.length;i++){
-        Recipe.addShapedRecipe({id:ItemID.coverEnergyDisplay,count:1,data:0},["ea ","dbd"," c "],["a",ItemID.stickIron,0,"b",ItemID.plateAluminium,0,"c",ItemID.circuitEnergyStorage,0,"d",ItemID.wireTin,0,"e",wrench[i],-1],{0:1});
+        Recipe.addShapedRecipe({id:ItemID.coverEnergyDisplay,count:1,data:0},[
+            "ea ",
+            "dbd",
+            " c "
+        ],["a",ItemID.stickIron,0,"b",ItemID.plateAluminium,0,"c",ItemID.circuitEnergyStorage,0,"d",ItemID.wireTin,0,"e",wrench[i],-1],{0:1});
     }
 });
 

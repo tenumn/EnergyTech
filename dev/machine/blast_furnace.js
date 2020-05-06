@@ -9,7 +9,11 @@ TileRenderer.registerRotationModel(BlockID.blastFurnace,4,[["machine_bottom",2],
 
 Machine.setDrop("blastFurnace",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.blastFurnace,count:1,data:0},["dcd","dbd","dad"],["a",BlockID.crudeBlastFurnace,0,"b",BlockID.machineCasing,1,"c",ItemID.circuit,0,"d",ItemID.plateIron,0]);
+    Recipes.addShaped({id:BlockID.blastFurnace,count:1,data:0},[
+        "dcd",
+        "dbd",
+        "dad"
+    ],["a",BlockID.crudeBlastFurnace,0,"b",BlockID.machineCasing,1,"c",ItemID.circuit,0,"d",ItemID.plateIron,0]);
 });
 
 var GuiBlastFurnace = new UI.StandartWindow({
@@ -41,19 +45,21 @@ var GuiBlastFurnace = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.blastFurnace,{
+Machine.registerEUMachine(BlockID.blastFurnace,{
     defaultValues:{
         meta:0,
         tier:2,
         progress:0,
         work_time:320,
         isActive:false,
+        sound_volume:16,
         energy_consumption:4
     },
 
 	initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
+        this.data.sound_volume = this.defaultValues.sound_volume;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;
 	},
@@ -64,18 +70,25 @@ Machine.registerMachine(BlockID.blastFurnace,{
         
         var input = this.container.getSlot("slotInput"),recipe = Recipe.getRecipeResult("BlastFurnace",[input.id,input.data]);
 
-        if(recipe){if(this.data.energy >= this.data.energy_consumption){
-            this.data.energy -= this.data.energy_consumption;
-            this.data.progress += 1 / this.data.work_time;
-            this.activate("machine/blast_furnace.ogg");
-            if(this.data.progress.toFixed(3) >= 1){
-                if(recipe[0]) this.setOutput("slotOutput0",recipe[0].id,recipe[0].count,recipe[0].data);
-                if(recipe[1]) this.setOutput("slotOutput1",recipe[1].id,recipe[1].count,recipe[1].data);
-                input.count--;
-                this.container.validateAll();
-                this.data.progress = 0;
+        if(recipe){
+            if(this.data.energy >= this.data.energy_consumption){
+                this.data.energy -= this.data.energy_consumption;
+                this.data.progress += 1 / this.data.work_time;
+                this.activate("machine/blast_furnace.ogg");
+                if(this.data.progress.toFixed(3) >= 1){
+                    if(recipe[0]) this.setOutput("slotOutput0",recipe[0].id,recipe[0].count,recipe[0].data);
+                    if(recipe[1]) this.setOutput("slotOutput1",recipe[1].id,recipe[1].count,recipe[1].data);
+                    input.count--;
+                    this.container.validateAll();
+                    this.data.progress = 0;
+                }
+            } else {
+                this.deactive();
             }
-        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
+        } else {
+            this.data.progress = 0;
+            this.deactive();
+        }
 
         this.container.setScale("scaleArrow",Math.round(this.data.progress / 1 * 22) / 22);
         this.container.setScale("scaleEnergy",Math.round(this.data.energy / this.getEnergyStorage() * 47) / 47);

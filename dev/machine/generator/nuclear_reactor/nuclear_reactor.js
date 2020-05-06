@@ -6,7 +6,11 @@ Block.createBlock("nuclearReactor",[
 
 Machine.setDrop("nuclearReactor",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.nuclearReactor,count:1,data:0},["aba","cdc","aea"],["a",ItemID.plateLead,0,"b",ItemID.electricPiston,0,"c",ItemID.circuit,0,"d",BlockID.fireGenerator,0,"e",ItemID.plateLapis,0]);
+	Recipes.addShaped({id:BlockID.nuclearReactor,count:1,data:0},[
+        "aba",
+        "cdc",
+        "aea"
+    ],["a",ItemID.plateLead,0,"b",ItemID.electricPiston,0,"c",ItemID.circuit,0,"d",BlockID.fireGenerator,0,"e",ItemID.plateLapis,0]);
 });
 
 var GuiNuclearReactor = new UI.StandartWindow({
@@ -35,7 +39,7 @@ var GuiNuclearReactor = new UI.StandartWindow({
     }
 });
 
-Machine.registerGenerator(BlockID.nuclearReactor,{
+Machine.registerEUGenerator(BlockID.nuclearReactor,{
     defaultValues:{
         tier:3,
         hard:0,

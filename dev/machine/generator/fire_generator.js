@@ -10,7 +10,11 @@ TileRenderer.registerRotationModel(BlockID.fireGenerator,4,[["machine_bottom",1]
 
 Machine.setDrop("fireGenerator",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},["dad","dbd","ece"],["a",ItemID.lithiumBattery,-1,"b",BlockID.machineCasing,1,"c",BlockID.bronzeBoiler,0,"d",ItemID.stickIron,0,"e",ItemID.partIron,0]);
+	Recipes.addShaped({id:BlockID.fireGenerator,count:1,data:0},[
+		"dad",
+		"dbd",
+		"ece"
+	],["a",ItemID.lithiumBattery,-1,"b",BlockID.machineCasing,1,"c",BlockID.bronzeBoiler,0,"d",ItemID.stickIron,0,"e",ItemID.partIron,0]);
 });
 
 var GuiFireGenerator = new UI.StandartWindow({
@@ -41,16 +45,18 @@ var GuiFireGenerator = new UI.StandartWindow({
 	}
 });
 
-Machine.registerGenerator(BlockID.fireGenerator,{
+Machine.registerEUGenerator(BlockID.fireGenerator,{
 	defaultValues:{
 		meta:0,
 		burn:0,
 		burnMax:0,
-		isActive:false
+		isActive:false,
+		sound_volume:16
 	},
 
 	initValues:function(){
 		this.data.tier = this.defaultValues.tier;
+		this.data.sound_volume = this.defaultValues.sound_volume;
 		this.data.energy_storage = this.defaultValues.energy_storage;
 	},
 	

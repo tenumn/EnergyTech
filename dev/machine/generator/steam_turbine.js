@@ -41,7 +41,7 @@ var GuiSteamTurbine = new UI.StandartWindow({
 	}
 });
 
-Machine.registerGenerator(BlockID.steamTurbine,{
+Machine.registerEUGenerator(BlockID.steamTurbine,{
     defaultValues:{
         meta:0,
         isActive:false

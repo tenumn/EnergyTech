@@ -1,73 +1,3 @@
-// 石子
-IDRegistry.genBlockID("smallStone");
-Block.createBlock("smallStone",[
-    {name:"Small Stone",texture:[["small_stone",0]],inCreative:false}
-],{
-    opaque:false,
-    destroytime:0
-});
-
-var shape = new ICRender.CollisionShape();
-shape.addEntry().addBox(1,1,1,0,0,0);
-BlockRenderer.setCustomCollisionShape(BlockID.smallStone,-1,shape);
-Block.setBlockShape(BlockID.smallStone,{x:0.0625,y:0,z:0.0625},{x:0.9375,y:0.0625,z:0.9375},0);
-
-IDRegistry.genItemID("smallStone");
-Item.createItem("smallStone","Small Stone",{name:"small_stone"});
-
-var SMALL_STONE = {
-    // 煤炭矿脉
-    "Coal":{id:ItemID.tinyCoal,count:1,data:0},
-    
-    // 铝土矿脉
-    "Bauxite":{id:ItemID.oreChunkBauxite,count:1,data:0},
-    
-    // 黝铜矿脉
-    "Tetrahedrite":{id:ItemID.oreChunkTetrahedrite,count:1,data:0},
-    
-    // 钻石矿脉
-    "Diamonds":{id:ItemID.dustSmallDiamond,count:1,data:0},
-
-    // 铀矿脉
-    "Uranium":{id:ItemID.oreChunkUranium,count:1,data:0},
-
-    // 锡石矿脉
-    "Cassiterite":{id:ItemID.oreChunkCassiterite,count:1,data:0},
-
-    // 铁矿脉
-    "Iron":{id:ItemID.oreChunkIron,count:1,data:0},
-
-    // 方铅矿脉
-    "Galena":{id:ItemID.oreChunkGalena,count:1,data:0},
-
-    // 岩盐矿脉
-    "Salt":{id:ItemID.dustSmallSalt,count:1,data:0},
-
-    // 红石矿脉
-    "Redstone":{id:ItemID.dustSmallRedstone,count:1,data:0}
-}
-
-Block.registerDropFunction("smallStone",function(coords){
-	var chunk = ChunkRegistry.getChunk(Math.floor(coords.x / 16),Math.floor(coords.z / 16));
-	var stone = SMALL_STONE[chunk];
-	if(stone){return [[stone.id,stone.count,stone.data]];}
-	if(Math.random() < 0.25){return [[318,1,0]];}
-	return [[ItemID.smallStone,1,0]];
-});
-
-Callback.addCallback("PreLoaded",function(){
-    Callback.addCallback("GenerateChunk",function(chunkX,chunkZ){
-		for(let i = 0;i < 64;i++){
-			var coords = GenerationUtils.randomCoords(chunkX,chunkZ,64,128);
-			if(!GenerationUtils.isTransparentBlock(World.getBlock(coords.x,coords.y - 1,coords.z).id)){
-				if(World.getBlock(coords.x,coords.y,coords.z).id == 0){
-					World.setBlock(coords.x,coords.y,coords.z,BlockID.smallStone,0);
-				}
-			}
-		}
-    });
-});
-
 // 矿渣
 IDRegistry.genItemID("slag");
 Item.createItem("slag","Slag",{name:"slag"});
@@ -75,14 +5,6 @@ Item.createItem("slag","Slag",{name:"slag"});
 // 树脂
 IDRegistry.genItemID("resin");
 Item.createItem("resin","Resin",{name:"resin"});
-
-// 浓缩铀
-IDRegistry.genItemID("enrichedUranium");
-Item.createItem("enrichedUranium","Enriched Uranium",{name:"enriched_uranium"});
-
-Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:ItemID.enrichedUranium,count:1,data:0},["aaa","bbb","aaa"],["a",ItemID.uranium238,0,"b",ItemID.smallUranium235,0]);
-});
 
 // 小块煤炭
 IDRegistry.genItemID("tinyCoal");
@@ -162,8 +84,7 @@ Callback.addCallback("PreLoaded",function(){
 Block.createSpecialType({
     base:12,
     solid:true,
-    opaque:true,
-    destroytime:1
+    destroytime:0.25
 },"dust");
 
 // 尘土
@@ -188,11 +109,7 @@ Callback.addCallback("PreLoaded",function(){
 IDRegistry.genBlockID("clearGlass");
 Block.createBlock("clearGlass",[
     {name:"Clear Glass",texture:[["clear_glass",0]],inCreative:true}
-],{
-    base:20,
-    solid:true,
-    destroyTime:0.5
-});
+],{base:20,opaque:true,destroyTime:0.5});
 
 Block.registerDropFunction("clearGlass",function(coords,id,data,level,enchant){
     if(enchant.silk){
@@ -240,4 +157,28 @@ Callback.addCallback("PreLoaded",function(){
 
     Recipe.addCentrifugeRecipe({id:ItemID.dustLithium,data:0},[{id:ItemID.lithium7  ,count:1,data:0},{id:ItemID.smallLithium6  ,count:1,data:0}]);
     Recipe.addCentrifugeRecipe({id:ItemID.dustUranium,data:0},[{id:ItemID.uranium238,count:4,data:0},{id:ItemID.smallUranium235,count:1,data:0}]);
+});
+
+// 贫化浓缩铀
+IDRegistry.genItemID("enrichedUraniumDepleted");
+Item.createItem("enrichedUraniumDepleted","Depleted Enriched Uranium",{name:"enriched_uranium"});
+
+Callback.addCallback("PreLoaded",function(){
+    Recipes.addShaped({id:ItemID.enrichedUraniumDepleted,count:1,data:0},[
+        "aaa",
+        "bbb",
+        "aaa"
+    ],["a",ItemID.uranium238,0,"b",ItemID.smallUranium235,0]);
+});
+
+// 精炼浓缩铀
+IDRegistry.genItemID("enrichedUraniumRefined");
+Item.createItem("enrichedUraniumRefined","Refined Enriched Uranium",{name:"enriched_uranium"});
+
+Callback.addCallback("PreLoaded",function(){
+    Recipes.addShaped({id:ItemID.enrichedUraniumRefined,count:1,data:0},[
+        "aaa",
+        "bbb",
+        "aaa"
+    ],["a",ItemID.smallUranium235,0,"b",ItemID.uranium238,0]);
 });

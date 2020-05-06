@@ -43,7 +43,7 @@ var GuiCrusher = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.crusher,{
+Machine.registerEUMachine(BlockID.crusher,{
     defaultValues:{
         meta:0,
         tier:2,

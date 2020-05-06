@@ -62,5 +62,9 @@ Tooltip.tier(ItemID.drill,1);
 Item.setItemName(ItemID.drill,Tooltip.energyStored);
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:ItemID.drill,count:1,data:Item.getMaxDamage(ItemID.drill)},["bc ","cbc"," ca"],["a",ItemID.electricMotor,0,"b",ItemID.plateIron,0,"c",ItemID.gearIron,0]);
+    Recipes.addShaped({id:ItemID.drill,count:1,data:Item.getMaxDamage(ItemID.drill)},[
+        "bc ",
+        "cbc",
+        " ca"
+    ],["a",ItemID.electricMotor,0,"b",ItemID.plateIron,0,"c",ItemID.gearIron,0]);
 });

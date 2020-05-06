@@ -21,8 +21,8 @@ var ItemPipe = {
 
             this.moveAnimation();
             if(this.item.count < 1) this.destroySelf();
-
-            if(World.getBlockID(x,y,z) == 0){
+            
+            if(World.isAirBlock(x,y,z)){
                 World.drop(this.position.x,this.position.y,this.position.z,this.item.id,this.item.count,this.item.data);
                 this.destroySelf();
             }
@@ -201,7 +201,7 @@ var ItemPipe = {
 
         for(let i in directions){
             var dir = directions[i];
-            if (this.canConnectTo(x + dir.x, y + dir.y, z + dir.z,side)) possible.push(dir);
+            if (this.canConnectTo(x + dir.x,y + dir.y,z + dir.z,side)) possible.push(dir);
         }
 
         return possible
@@ -213,7 +213,7 @@ var ItemPipe = {
 
         for(let i in directions){
             var dir = directions[i];
-            if (!this.isPipe(World.getBlockID(x + dir.x, y + dir.y, z + dir.z)) && this.canConnectTo(x + dir.x,y + dir.y,z + dir.z,side)) possible.push(dir);
+            if (!this.isPipe(World.getBlockID(x + dir.x,y + dir.y,z + dir.z)) && this.canConnectTo(x + dir.x,y + dir.y,z + dir.z,side)) possible.push(dir);
         }
 
         return possible

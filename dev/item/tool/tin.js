@@ -38,7 +38,7 @@ ToolAPI.setTool(ItemID.shovelTin,"tin",ToolType.shovel);
 ToolAPI.setTool(ItemID.pickaxeTin,"tin",ToolType.pickaxe);
 ToolAPI.setTool(ItemID.axeTin,"tin",ToolType.axe);
 ToolAPI.setTool(ItemID.hoeTin,"tin",ToolType.hoe);
-ToolAPI.setTool(ItemID.hammerTin,"tin",ToolType.pickaxe);
+ToolAPI.setTool(ItemID.hammerTin,"tin",ToolType.hammer);
 
 Item.setMaxDamage(ItemID.wrenchTin,ToolAPI.getToolMaterial("tin").durability);
 Item.setMaxDamage(ItemID.cutterTin,ToolAPI.getToolMaterial("tin").durability);

@@ -55,17 +55,17 @@ Machine.registerPrototype(BlockID.bronzeBoiler,{
     tick:function(){
         StorageInterface.checkHoppers(this);
 
-        if(World.getBlock(this.x,this.y + 1,this.z).id == BlockID.ironTank){
+        if(World.getBlockID(this.x,this.y + 1,this.z) == BlockID.ironTank){
             if(this.data.burn <= 0) this.data.burn = this.data.burnMax = this.getFuel("slotFuel");
 
             if(this.data.burn > 0){
                 this.data.burn -= 1;
                 this.activate();
                 if(World.getThreadTime()%20 == 0){
-                    if(this.liquidStorage.getAmount("water") >= 0.008){
-                        this.liquidStorage.getLiquid("water",0.008);
+                    if(this.liquidStorage.getAmount("water") >= (8 / 1000)){
+                        this.liquidStorage.getLiquid("water",8 / 1000);
                         var tile = World.getTileEntity(this.x,this.y + 1,this.z),stored = tile.liquidStorage.getLiquidStored(),amount = tile.liquidStorage.getAmount(stored);
-                        if(tile && (!stored || stored == "steam" && amount < 16)) tile.liquidStorage.addLiquid("steam",0.016);
+                        if(tile && (!stored || stored == "steam" && amount < 16)) tile.liquidStorage.addLiquid("steam",16 / 1000);
                     }
                 }
             } else {
@@ -86,9 +86,6 @@ Machine.registerPrototype(BlockID.bronzeBoiler,{
                 this.container.validateAll();
             }
         }
-
-        var amount = this.liquidStorage.getAmount("water");
-        if(amount) this.liquidStorage.setAmount("water",parseInt(amount * 1000) / 1000);
 
         this.liquidStorage.updateUiScale("scaleLiquid","water");
         this.container.setScale("scaleBurn",Math.round(this.data.burn / this.data.burnMax * 14) / 14 || 0);

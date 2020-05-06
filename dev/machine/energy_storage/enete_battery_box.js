@@ -19,7 +19,11 @@ render.addEntry(model);
 BlockRenderer.enableCoordMapping(BlockID.eneteBatteryBox,-1,render);
 
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.eneteBatteryBox,count:1,data:0},["aba","bcb","aba"],["a",ItemID.partIron,0,"b",ItemID.eneteBattery,-1,"c",ItemID.wireCopper,0]);
+	Recipes.addShaped({id:BlockID.eneteBatteryBox,count:1,data:0},[
+        "aba",
+        "bcb",
+        "aba"
+    ],["a",ItemID.partIron,0,"b",ItemID.eneteBattery,-1,"c",ItemID.wireCopper,0]);
 });
 
 var GuiEneteBatteryBox = new UI.StandartWindow({
@@ -43,7 +47,7 @@ var GuiEneteBatteryBox = new UI.StandartWindow({
 	}
 });
 
-Machine.registerEnergyStorage(BlockID.eneteBatteryBox,{
+Machine.registerEUEnergyStorage(BlockID.eneteBatteryBox,{
     defaultValues:{tier:2,energy_storage:589824},
 
     tick:function(){

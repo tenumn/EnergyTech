@@ -1,16 +1,20 @@
 // [离心机]Centrifuge
 IDRegistry.genBlockID("centrifuge");
 Block.createBlock("centrifuge",[
-    {name:"Centrifuge",texture:[["machine_bottom",1],["centrifuge_top",0],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]],inCreative:true}
+    {name:"Centrifuge",texture:[["machine_bottom",2],["centrifuge_top",0],["machine_side",2],["centrifuge",0],["machine_side",2],["machine_side",2]],inCreative:true}
 ],"machine");
-TileRenderer.setStandartModel(BlockID.centrifuge,[["machine_bottom",1],["centrifuge_top",0],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,0,[["machine_bottom",1],["centrifuge_top",0],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,4,[["machine_bottom",1],["centrifuge_top",1],["machine_side",1],["centrifuge",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.centrifuge,8,[["machine_bottom",1],["centrifuge_top",1],["machine_side",1],["centrifuge",1],["machine_side",1],["machine_side",1]]);
+TileRenderer.setStandartModel(BlockID.centrifuge,[["machine_bottom",2],["centrifuge_top",0],["machine_side",2],["centrifuge",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,0,[["machine_bottom",2],["centrifuge_top",0],["machine_side",2],["centrifuge",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,4,[["machine_bottom",2],["centrifuge_top",1],["machine_side",2],["centrifuge",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.centrifuge,8,[["machine_bottom",2],["centrifuge_top",1],["machine_side",2],["centrifuge",1],["machine_side",2],["machine_side",2]]);
 
 Machine.setDrop("centrifuge",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.centrifuge,count:1,data:0},["cec","cdc","aba"],["a",ItemID.wireCopper,0,"b",ItemID.electricMotor,0,"c",ItemID.plateIron,0,"d",BlockID.machineCasing,2,"e",ItemID.circuit,0]);
+	Recipes.addShaped({id:BlockID.centrifuge,count:1,data:0},[
+        "cec",
+        "cdc",
+        "aba"
+    ],["a",ItemID.wireCopper,0,"b",ItemID.electricMotor,0,"c",ItemID.plateIron,0,"d",BlockID.machineCasing,2,"e",ItemID.circuit,0]);
 });
 
 var GuiCentrifuge = new UI.StandartWindow({
@@ -44,10 +48,10 @@ var GuiCentrifuge = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.centrifuge,{
+Machine.registerEUMachine(BlockID.centrifuge,{
     defaultValues:{
         meta:0,
-        tier:2,
+        tier:3,
         progress:0,
         work_time:320,
         isActive:false,

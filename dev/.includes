@@ -13,27 +13,38 @@ machine/generator/fusion_reactor/reactor_api.js
 machine/generator/nuclear_reactor/reactor_api.js
 
 
-resource/broken_ore.js
-resource/crushed.js
-resource/dust.js
-resource/gear.js
-resource/ingot.js
-resource/material.js
-resource/part.js
-resource/plate.js
-resource/ring.js
-resource/stick.js
-
-
-item/battery.js
 item/cell.js
-item/circuit.js
+
 item/drill.js
-item/energy_card.js
 item/wire.js
 
 
 item/armor/powered.js
+
+
+item/battery/lithium_battery.js
+item/battery/enete_battery.js
+item/battery/energy_crystal.js
+item/battery/lapotron_crystal.js
+
+
+item/circuit/circuit_energy_storage.js
+item/circuit/circuit_muffler.js
+item/circuit/circuit_overclocker.js
+item/circuit/circuit_transformer.js
+item/circuit/circuit.js
+
+
+item/resource/broken_ore.js
+item/resource/crushed.js
+item/resource/dust.js
+item/resource/gear.js
+item/resource/ingot.js
+item/resource/material.js
+item/resource/part.js
+item/resource/plate.js
+item/resource/ring.js
+item/resource/stick.js
 
 
 item/tool/antimony.js
@@ -47,12 +58,10 @@ item/tool/tin.js
 item/tool/iungsten.js
 
 
-block/bronze_boiler.js
-block/cover.js
-block/crude_blast_furnace.js
-block/module.js
+block/mesh.js
 block/ore.js
 block/scaffold.js
+block/small_stone.js
 block/stone.js
 
 
@@ -63,34 +72,54 @@ block/tank/glass_tank.js
 block/tank/iron_tank.js
 
 
-block/liquid_pipe/liquid_pipe.js
-block/liquid_pipe/input_liquid_pipe.js
-block/liquid_pipe/transport_liquid_pipe.js
+block/module/coolant_water.js
+block/module/fuel_rod_uranium_refined.js
+block/module/fuel_rod_uranium.js
+block/module/heat_sink.js
+block/module/neutron_reflector.js
+block/module/reactor_casing.js
+
+block/module/tin_coil.js
+block/module/copper_coil.js
+block/module/gold_coil.js
+block/module/steel_coil.js
 
 block/item_pipe/item_pipe.js
 block/item_pipe/input_item_pipe.js
 block/item_pipe/output_item_pipe.js
 block/item_pipe/transport_item_pipe.js
 
-
+machine/assembly_table.js
 machine/autoclave.js
 machine/auto_saieve.js
 machine/blast_furnace.js
+machine/bronze_boiler.js
 machine/canning_machine.js
 machine/centrifuge.js
 machine/compressor.js
+machine/cover.js
+machine/crude_blast_furnace.js
 machine/crusher.js
 machine/cutting.js
 machine/distillery.js
 machine/electric_furnace.js
 machine/electrolyzer.js
 machine/farming_station.js
+machine/item_terminal.js
 machine/macerator.js
-machine/network_terminal.js
 machine/ore_washer.js
-machine/superconductor.js
-machine/transformer.js
 machine/wiremill.js
+
+
+machine/transformer/LV.js
+machine/transformer/MV.js
+machine/transformer/HV.js
+machine/transformer/EV.js
+
+
+machine/network/energy_card.js
+machine/network/network_terminal.js
+machine/network/superconductor.js
 
 
 machine/generator/fire_generator.js

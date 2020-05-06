@@ -58,7 +58,7 @@ var GuiOreWasher = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.oreWasher,{
+Machine.registerEUMachine(BlockID.oreWasher,{
     defaultValues:{
         meta:0,
         tier:2,

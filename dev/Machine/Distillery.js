@@ -43,7 +43,7 @@ var GuiDistillery = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.distillery,{
+Machine.registerEUMachine(BlockID.distillery,{
     defaultValues:{
         meta:0,
         tier:2,

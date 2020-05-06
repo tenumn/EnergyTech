@@ -19,7 +19,7 @@ Tool.registerTool(ItemID.mortarIron,"Mortar");
 Tool.registerTool(ItemID.fileIron,"File");
 Tool.registerTool(ItemID.lighterIron,"Lighter");
 
-ToolAPI.setTool(ItemID.hammerIron,"iron",ToolType.pickaxe);
+ToolAPI.setTool(ItemID.hammerIron,"iron",ToolType.hammer);
 ToolAPI.setTool(ItemID.lighterIron,"iron",ToolType.lighter);
 
 Item.setMaxDamage(ItemID.wrenchIron,ToolAPI.getToolMaterial("iron").durability);

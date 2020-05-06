@@ -12,7 +12,11 @@ TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,0,[["blast_furnace_
 TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,4,[["blast_furnace_brick",0],["blast_furnace_brick",0],["blast_furnace_brick",0],["crude_blast_furnace",1],["blast_furnace_brick",0],["blast_furnace_brick",0]]);
 
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.crudeBlastFurnace,count:1,data:0},["aba","bcb","aba"],["a",ItemID.plateIron,0,"b",45,0,"c",61,0]);
+	Recipes.addShaped({id:BlockID.crudeBlastFurnace,count:1,data:0},[
+        "aba",
+        "bcb",
+        "aba"
+    ],["a",ItemID.plateIron,0,"b",45,0,"c",61,0]);
 });
 
 var GuiCrudeBlastFurnace = new UI.StandartWindow({
@@ -58,7 +62,7 @@ Machine.registerPrototype(BlockID.crudeBlastFurnace,{
                 this.data.progress += 1 / 640;
                 this.setActive(true);
                 if(this.data.progress.toFixed(3) >= 1){
-                    if(recipe[0]) this.setOutput("slotOutput0",recipe[0].id,recipe[0].count,recipe[0].data);
+                    if(recipe[0]) this.setOutput("slotOutput",recipe[0].id,recipe[0].count,recipe[0].data);
                     input.count--;
                     this.container.validateAll();
                     this.data.progress = 0;

@@ -1,15 +1,19 @@
 // [高压釜]Autoclave
 IDRegistry.genBlockID("autoclave");
 Block.createBlock("autoclave",[
-    {name:"Autoclave",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["autoclave",0],["machine_side",1],["machine_side",1]],inCreative:true}
+    {name:"Autoclave",texture:[["machine_bottom",2],["machine_top",2],["machine_side",2],["autoclave",0],["machine_side",2],["machine_side",2]],inCreative:true}
 ],"machine");
-TileRenderer.setStandartModel(BlockID.autoclave,[["machine_bottom",1],["machine_top",1],["machine_side",1],["autoclave",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.autoclave,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["autoclave",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.autoclave,4,[["machine_bottom",1],["machine_top",1],["machine_side",1],["autoclave",1],["machine_side",1],["machine_side",1]]);
+TileRenderer.setStandartModel(BlockID.autoclave,[["machine_bottom",2],["machine_top",2],["machine_side",2],["autoclave",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.autoclave,0,[["machine_bottom",2],["machine_top",2],["machine_side",2],["autoclave",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.autoclave,4,[["machine_bottom",2],["machine_top",2],["machine_side",2],["autoclave",1],["machine_side",2],["machine_side",2]]);
 
-Machine.setDrop("autoclave",BlockID.machineCasing,1);
+Machine.setDrop("autoclave",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.autoclave,count:1,data:0},["aba","bcb","aba"],["a",ItemID.partIron,0,"b",ItemID.plateIron,0,"c",BlockID.machineCasing,1]);
+	Recipes.addShaped({id:BlockID.autoclave,count:1,data:0},[
+        "aba",
+        "bcb",
+        "aba"
+    ],["a",ItemID.partIron,0,"b",ItemID.plateIron,0,"c",BlockID.machineCasing,1]);
 });
 
 var GuiAutoclave = new UI.StandartWindow({
@@ -40,20 +44,22 @@ var GuiAutoclave = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.autoclave,{
+Machine.registerEUMachine(BlockID.autoclave,{
     defaultValues:{
         meta:0,
-        tier:2,
+        tier:3,
         progress:0,
         work_time:320,
         isActive:false,
+        sound_volume:16,
         energy_consumption:4
     },
 
 	initValues: function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
-		this.data.energy_storage = this.defaultValues.energy_storage;
+        this.data.sound_volume = this.defaultValues.sound_volume;
+        this.data.energy_storage = this.defaultValues.energy_storage;
 		this.data.energy_consumption = this.defaultValues.energy_consumption;
 	},
 	

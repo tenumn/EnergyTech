@@ -8,7 +8,11 @@ TileRenderer.registerRotationModel(BlockID.canningMachine,0,[["machine_bottom",1
 
 Machine.setDrop("canningMachine",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:BlockID.canningMachine,count:1,data:0},["dcd","dcd","aba"],["a",ItemID.circuit,0,"b",BlockID.machineCasing,1,"c",ItemID.cellEmpty,0,"d",ItemID.plateIron,0]);
+    Recipes.addShaped({id:BlockID.canningMachine,count:1,data:0},[
+        "dcd",
+        "dcd",
+        "aba"
+    ],["a",ItemID.circuit,0,"b",BlockID.machineCasing,1,"c",ItemID.cellEmpty,0,"d",ItemID.plateIron,0]);
 });
 
 var GuiCanningMachine = new UI.StandartWindow({
@@ -41,7 +45,7 @@ var GuiCanningMachine = new UI.StandartWindow({
     }
 });
 
-Machine.registerMachine(BlockID.canningMachine,{
+Machine.registerEUMachine(BlockID.canningMachine,{
     defaultValues:{
         meta:0,
         tier:2,
