@@ -37,9 +37,23 @@ IDRegistry.genItemID("vacuumTube");
 Item.createItem("vacuumTube","Vacuum Tube",{name:"vacuum_tube"});
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:ItemID.electricMotor,count:1,data:0},[" ab","aca","da "],["a",ItemID.partTin,0,"b",ItemID.stickIron,0,"c",ItemID.wireCopper,0,"d",ItemID.wireTin,0]);
-    Recipes.addShaped({id:ItemID.electricPiston,count:1,data:0},["eae","aca","bdb"],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0,"c",ItemID.electricMotor,0,"d",ItemID.ringIron,0,"e",ItemID.partIron,0]);
-    Recipes.addShaped({id:ItemID.vacuumTube,count:1,data:0},[" c ","aba"," d "],["a",ItemID.wireCopper,0,"b",ItemID.dustCarbon,0,"c",20,0,"d",331,0]);
+    Recipes.addShaped({id:ItemID.electricMotor,count:1,data:0},[
+        " ab",
+        "aca",
+        "da "
+    ],["a",ItemID.partTin,0,"b",ItemID.stickIron,0,"c",ItemID.wireCopper,0,"d",ItemID.wireTin,0]);
+
+    Recipes.addShaped({id:ItemID.electricPiston,count:1,data:0},[
+        "eae",
+        "aca",
+        "bdb"
+    ],["a",ItemID.plateIron,0,"b",ItemID.stickIron,0,"c",ItemID.electricMotor,0,"d",ItemID.ringIron,0,"e",ItemID.partIron,0]);
+
+    Recipes.addShaped({id:ItemID.vacuumTube,count:1,data:0},[
+        " c ",
+        "aba",
+        " d "
+    ],["a",ItemID.wireCopper,0,"b",ItemID.dustCarbon,0,"c",20,0,"d",331,0]);
 });
 
 Block.createSpecialType({
@@ -155,7 +169,7 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShapeless({id:ItemID.smallUranium238,count:9,data:0},[{id:ItemID.uranium238,data:0}]);
     Recipes.addShaped({id:ItemID.uranium238,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.smallUranium238,0]);
 
-    Recipe.addCentrifugeRecipe({id:ItemID.dustLithium,data:0},[{id:ItemID.lithium7  ,count:1,data:0},{id:ItemID.smallLithium6  ,count:1,data:0}]);
+    Recipe.addCentrifugeRecipe({id:ItemID.dustLithium,data:0},[{id:ItemID.lithium7,count:1,data:0},{id:ItemID.smallLithium6,count:1,data:0}]);
     Recipe.addCentrifugeRecipe({id:ItemID.dustUranium,data:0},[{id:ItemID.uranium238,count:4,data:0},{id:ItemID.smallUranium235,count:1,data:0}]);
 });
 

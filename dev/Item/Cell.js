@@ -120,10 +120,10 @@ Callback.addCallback("PreLoaded",function(){
     Recipe.addCanningMachineRecipe({id:ItemID.uranium238,data:0},{id:ItemID.cellUranium238,count:1,data:0},{id:ItemID.cellEmpty,data:0});
 	Recipe.addCanningMachineRecipe({id:ItemID.enrichedUraniumDepleted,data:0},{id:BlockID.fuelRodUranium,count:1,data:0},{id:ItemID.cellEmpty,data:0});
 
-	Recipe.addFusionReactorRecipe([{id:ItemID.cellHelium3,count:1,data:0},{id:ItemID.cellDeuterium,count:1,data:0}],[{id:ItemID.cellHelium,count:1,data:0}],112);
-	Recipe.addFusionReactorRecipe([{id:ItemID.cellTritium,count:1,data:0},{id:ItemID.cellDeuterium,count:1,data:0}],[{id:ItemID.cellHelium,count:1,data:0}],224);
-	Recipe.addFusionReactorRecipe([{id:ItemID.cellHelium3,count:1,data:0},{id:ItemID.cellLithium6 ,count:1,data:0}],[{id:ItemID.cellHelium,count:1,data:0}],336);
+	Recipe.addFusionReactorRecipe([{id:ItemID.cellHelium3,count:1,data:0},{id:ItemID.cellDeuterium,count:1,data:0}],[{id:ItemID.cellHelium,count:1,data:0}]);
+	Recipe.addFusionReactorRecipe([{id:ItemID.cellTritium,count:1,data:0},{id:ItemID.cellDeuterium,count:1,data:0}],[{id:ItemID.cellHelium,count:1,data:0}]);
+	Recipe.addFusionReactorRecipe([{id:ItemID.cellHelium3,count:1,data:0},{id:ItemID.cellLithium6,count:1,data:0}],[{id:ItemID.cellHelium,count:1,data:0}]);
 
-	Recipe.addElectrolyzerRecipe({id:ItemID.cellHeavyWater,count:40,data:0},[{id:ItemID.cellDeuterium,count:40,data:0},{id:ItemID.cellTritium,count:1 ,data:0}]);
-	Recipe.addElectrolyzerRecipe({id:ItemID.cellDeuterium ,count:50,data:0},[{id:ItemID.cellHelium3,count:20,data:0},{id:ItemID.cellTritium,count:20,data:0}]);
+	Recipe.addElectrolyzerRecipe({id:ItemID.cellHeavyWater,count:40,data:0},[{id:ItemID.cellDeuterium,count:40,data:0},{id:ItemID.cellTritium,count:1,data:0}]);
+	Recipe.addElectrolyzerRecipe({id:ItemID.cellDeuterium,count:50,data:0},[{id:ItemID.cellHelium3,count:20,data:0},{id:ItemID.cellTritium,count:20,data:0}]);
 });

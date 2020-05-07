@@ -82,13 +82,11 @@ Machine.registerPrototype(BlockID.fuelRodUraniumRefined,{
 });
 
 NuclearReactor.registerModule(BlockID.fuelRodUraniumRefined,function(coords,data){
-    let heat = 6,fuel = 2;
+    let heat = 9,fuel = 3;
     for(let side = 0;side < 6;side++){
         var relative = World.getRelativeCoords(coords.x,coords.y,coords.z,side);
         var id = World.getBlockID(relative.x,relative.y,relative.z);
-        if(NuclearReactor.getModuleType(id) == "FuelRod"){
-            heat += 6,fuel += 2;
-        }
+        if(NuclearReactor.getModuleType(id) == "FuelRod") heat += 9,fuel += 3;
     }
     data.heat += heat,data.fuel += fuel;
 },"FuelRod");

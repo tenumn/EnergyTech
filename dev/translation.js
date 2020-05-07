@@ -84,11 +84,6 @@ Translation.addTranslation("Silver Ore",{zh:"银矿石",ru:"Серебряная
 Translation.addTranslation("Bauxite Ore",{zh:"铝土矿石",ru:"Алюминиевая руда"});
 Translation.addTranslation("Ruby Ore",{zh:"红宝石矿石"});
 
-Translation.addTranslation("Fire Generator",{zh:"火力发电机",ru:"Генератор внутреннего сгорания"});
-Translation.addTranslation("Fusion Reactor",{zh:"核聚变反应堆"});
-Translation.addTranslation("Nuclear Reactor",{zh:"核反应堆",ru:"Ядерный реактор"});
-Translation.addTranslation("Solar Generator",{zh:"太阳能发电机",ru:"Солнечный генератор"});
-
 Translation.addTranslation("Heat Sink",{zh:"散热片",ru:"Радиатор"});
 Translation.addTranslation("Reactor Casing",{zh:"反应堆外壳"});
 Translation.addTranslation("Neutron Reflector",{zh:"中子反射板",ru:"Отражатель нейтронов"});
@@ -421,11 +416,20 @@ Translation.addTranslation("Electrolyzer",{zh:"电解机"});
 Translation.addTranslation("Farming Station",{zh:"种植站",ru:"Фермерская станция"});
 Translation.addTranslation("Macerator",{zh:"打粉机",ru:"Измельчитель"});
 Translation.addTranslation("Ore Washer",{zh:"洗矿机",ru:"Рудопромывочный механизм"});
+Translation.addTranslation("Wiremill",{zh:"线缆轧制机",ru:"Автоматический проволочный стан"});
+
+// Generator
+Translation.addTranslation("Fire Generator",{zh:"火力发电机",ru:"Генератор внутреннего сгорания"});
+Translation.addTranslation("Fusion Reactor",{zh:"核聚变反应堆"});
+Translation.addTranslation("Nuclear Reactor",{zh:"核反应堆",ru:"Ядерный реактор"});
+Translation.addTranslation("Solar Generator",{zh:"太阳能发电机",ru:"Солнечный генератор"});
+Translation.addTranslation("Steam Turbine",{zh:"蒸汽轮机"});
+
+// Transformer
 Translation.addTranslation("LV Transformer",{zh:"低压变压器",ru:"Трансформатор НН"});
 Translation.addTranslation("MV Transformer",{zh:"中压变压器",ru:"Трансформатор СН"});
 Translation.addTranslation("HV Transformer",{zh:"高压变压器",ru:"Трансформатор ВН"});
 Translation.addTranslation("EV Transformer",{zh:"超高压变压器",ru:"Трансформатор СВН"});
-Translation.addTranslation("Wiremill",{zh:"线缆轧制机",ru:"Автоматический проволочный стан"});
 
 // Network
 Translation.addTranslation("Energy Card",{zh:"能源卡"});

@@ -21,7 +21,7 @@ var GuiFarmingStation = new UI.StandartWindow({
     
     drawing:[
         {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
-        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:200 + GUI_SCALE,bitmap:"arrow_background",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
@@ -35,7 +35,7 @@ var GuiFarmingStation = new UI.StandartWindow({
         "slotOutput2":{type:"slot",x:720,y:230,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
         "slotOutput3":{type:"slot",x:780,y:230,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
 
         "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
 		"slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},

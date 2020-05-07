@@ -25,8 +25,8 @@ Machine.registerPrototype(BlockID.ironTank,{
         var storage = Liquid.getItemStorage(id,data);
 
         if(liquid){
-            if(!stored || stored == liquid && amount + liquid <= 32){
-                this.liquidStorage.addLiquid(liquid,storage / 1000);
+            if(!stored || stored == liquid && amount + storage <= 32){
+                this.liquidStorage.addLiquid(liquid,storage);
                 Player.decreaseCarriedItem(1);
 
                 var empty = Liquid.getEmptyItem(id,data);
@@ -42,7 +42,7 @@ Machine.registerPrototype(BlockID.ironTank,{
             Player.addItemToInventory(full.id,1,full.data);
         }
 
-        Game.message(LiquidRegistry.getLiquidName(stored) + " - " + amount * 1000 + "mB");
+        Game.message(LiquidRegistry.getLiquidName(stored) + " - " + (amount * 1000) + "mB");
     },
     
     tick:function(){

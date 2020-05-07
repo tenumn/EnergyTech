@@ -29,93 +29,98 @@ var Recipe = {
     recipes:{},
 
     getRecipe:function(name){
-		if(!this.recipes[name]){this.recipes[name] = {}}
+		if(!this.recipes[name]) this.recipes[name] = {};
 		return this.recipes[name];
 	},
 
     getRecipeResult:function(name,data){
 		var recipe = this.getRecipe(name);
 		if(recipe){
-			if(data[2]) return recipe[data[0] + ":" + data[1] + ":" + data[2] + ":" + data[3]] || recipe[data[2] + ":" + data[3] + ":" + data[0] + ":" + data[1]];
-			return recipe[data[0] + ":" + data[1]];
+			if(data[2]) return recipe[data[0] + ":-1:" + data[2] + ":" + data[3]] || recipe[data[2] + ":-1:" + data[0] + ":" + data[1]] || recipe[data[0] + ":" + data[1] + ":" + data[2] + ":-1"] || recipe[data[2] + ":" + data[3] + ":" + data[0] + ":-1"] || recipe[data[0] + ":" + data[1] + ":" + data[2] + ":" + data[3]] || recipe[data[2] + ":" + data[3] + ":" + data[0] + ":" + data[1]]
+			return recipe[data[0] + ":-1"] || recipe[data[0] + ":" + data[1]];
 		}
 	},
-	
+
 	addMaceratorRecipe:function(input,output){
-		var pecipe = this.getRecipe("Macerator");
-		pecipe[input.id + ":" + input.data] = output;
+		var recipe = this.getRecipe("Macerator");
+		recipe[input.id + ":" + input.data] = output;
 	},
 
 	addCompressorRecipe:function(input,output){
-		var pecipe = this.getRecipe("Compressor");
-		pecipe[input.id + ":" + input.data] = output;
+		var recipe = this.getRecipe("Compressor");
+		recipe[input.id + ":" + input.data] = output;
 	},
 
 	addBlastFurnaceRecipe:function(input,output){
-		var pecipe = this.getRecipe("BlastFurnace");
-		pecipe[input.id + ":" + input.data] = output;
+		var recipe = this.getRecipe("BlastFurnace");
+		recipe[input.id + ":" + input.data] = output;
 	},
 
 	addCrusherRecipe:function(input,output){
-		var pecipe = this.getRecipe("Crusher");
-		pecipe[input.id + ":" + input.data] = output;
+		var recipe = this.getRecipe("Crusher");
+		recipe[input.id + ":" + input.data] = output;
 	},
 
 	addCentrifugeRecipe:function(input,output){
-		var pecipe = this.getRecipe("Centrifuge");
-		pecipe[input.id + ":" + input.data] = output;
+		var recipe = this.getRecipe("Centrifuge");
+		recipe[input.id + ":" + input.data] = output;
 	},
 	
 	addCuttingRecipe:function(input,output){
-		var pecipe = this.getRecipe("Cutting");
-		pecipe[input.id + ":" + input.data] = output;
+		var recipe = this.getRecipe("Cutting");
+		recipe[input.id + ":" + input.data] = output;
 	},
 
 	addOreWasherRecipe:function(input,output){
-		var pecipe = this.getRecipe("OreWasher");
-		pecipe[input.id + ":" + input.data] = output;
+		var recipe = this.getRecipe("OreWasher");
+		recipe[input.id + ":" + input.data] = output;
 	},
 
 	addCanningMachineRecipe:function(input,output,cell){
-		var pecipe = this.getRecipe("CanningMachine");
-		pecipe[input.id + ":" + input.data] = {output:output,cell:cell};
+		var recipe = this.getRecipe("CanningMachine");
+		recipe[input.id + ":" + input.data + ":" + cell.id + ":" + cell.data] = output;
 	},
 
 	addFarmingStationRecipe:function(input,output,dirt){
-		var pecipe = this.getRecipe("FarmingStation");
-		pecipe[input.id + ":" + input.data] = {output:output,dirt:dirt};
+		var recipe = this.getRecipe("FarmingStation");
+		recipe[input.id + ":" + input.data] = {output:output,dirt:dirt};
 	},
 
 	addWiremillRecipe:function(input,output){
-		var pecipe = this.getRecipe("Wiremill");
-		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
+		var recipe = this.getRecipe("Wiremill");
+		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 
 	addAutoclaveRecipe:function(input,output){
-		var pecipe = this.getRecipe("Autoclave");
-		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
+		var recipe = this.getRecipe("Autoclave");
+		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 
 	addDistilleryRecipe:function(input,output){
-		var pecipe = this.getRecipe("Distillery");
-		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
+		var recipe = this.getRecipe("Distillery");
+		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 
 	addElectrolyzerRecipe:function(input,output){
-		var pecipe = this.getRecipe("Electrolyzer");
-		pecipe[input.id + ":" + input.data] = {output:output,count:input.count};
+		var recipe = this.getRecipe("Electrolyzer");
+		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 
 	addAutoSaieveRecipe:function(input,output){
-		var pecipe = this.getRecipe("AutoSaieve");
-		if(!pecipe[input.id + ":" + input.data]){pecipe[input.id + ":" + input.data] = [];}
-		for(let key in output){
-			pecipe[input.id + ":" + input.data].push(output[key]);
-		}
+		var recipe = this.getRecipe("AutoSaieve");
+		if(!recipe[input.id + ":" + input.data]) recipe[input.id + ":" + input.data] = [];
+		for(let key in output) recipe[input.id + ":" + input.data].push(output[key]);
 	},
 	
-	addFusionReactorRecipe:function(input,output,heat){
-		if(!heat){heat = 336;}
-		this.getRecipe("FusionReactor")[input[0].id + ":" + input[0].data + ":" + input[1].id + ":" + input[1].data] = {output:output,heat:heat};
+	addFusionReactorRecipe:function(input,output){
+		var recipe = this.getRecipe("FusionReactor");
+		recipe[input[0].id + ":" + input[0].data + ":" + input[1].id + ":" + input[1].data] = output;
+		recipe[input[1].id + ":" + input[1].data + ":" + input[0].id + ":" + input[0].data] = output;
+	},
+
+	addAssemblyTableRecipe:function(input,output){
+		var recipe = this.getRecipe("AssemblyTable");
+		recipe[input[0].id + ":" + input[0].data + ":" + input[1].id + ":" + input[1].data] = output;
+		recipe[input[1].id + ":" + input[1].data + ":" + input[0].id + ":" + input[0].data] = output;
 	}
 }

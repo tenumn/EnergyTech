@@ -25,7 +25,7 @@ var GuiSteamTurbine = new UI.StandartWindow({
     },
 
     drawing:[
-        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
         {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE},
         {type:"bitmap",x:900 - GUI_SCALE * 3,y:175 - GUI_SCALE * 6,bitmap:"liquidBackground",scale:GUI_SCALE}
     ],
@@ -33,7 +33,7 @@ var GuiSteamTurbine = new UI.StandartWindow({
 	elements:{
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
 		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Energy Output: ") + "0Eu"},
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
         
         "scaleLiquid":{type:"scale",x:900 + GUI_SCALE * 3,y:175,direction:1,value:0.5,bitmap:"liquidScale",overlay:"liquidScale",scale:GUI_SCALE},
         "slotLiquid1":{type:"slot",x:720,y:325,bitmap:"slot_cell",isValid:function(id,count,data){return Liquid.getItemLiquid(id,data) == "steam";}},
@@ -56,7 +56,7 @@ Machine.registerEUGenerator(BlockID.steamTurbine,{
         if(World.getThreadTime()%20 == 0){
             if(this.liquidStorage.getAmount("steam") >= 0.014){
                 this.liquidStorage.getLiquid("steam",0.014);
-                this.data.energy += 32;
+                this.data.energy += 16;
                 this.activate();
             } else {
                 this.deactive();
@@ -88,7 +88,7 @@ Machine.registerEUGenerator(BlockID.steamTurbine,{
 
     renderer:function(){
         var count = 2;
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (Math.round(this.data.progress / 1 * count * 10) % count) + 4:0));
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (Math.round(World.getThreadTime() / 1 * count * 10) % count) + 4:0));
     },
     
     energyTick:function(type,src){

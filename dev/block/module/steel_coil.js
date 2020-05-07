@@ -40,7 +40,7 @@ Machine.registerPrototype(BlockID.coilSteel,{
         if(this.data.durability > 0){
             var extra = new ItemExtraData();
             extra.putInt("durability",this.data.durability);
-            World.drop(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
+            World.dropItem(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
         } else {
             World.drop(this.x + 0.5,this.y + 1,this.z + 0.5,0,ItemID.cellEmpty,1,0);
         }

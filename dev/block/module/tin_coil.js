@@ -1,7 +1,7 @@
 // 锡线圈
 IDRegistry.genBlockID("coilTin");
 Block.createBlock("coilTin",[
-    {name:"Tin Coil",texture:[["gold_coil_bottom",0],["gold_coil_top",0],["gold_coil",0]],inCreative:true}
+    {name:"Tin Coil",texture:[["tin_coil_bottom",0],["tin_coil_top",0],["tin_coil",0]],inCreative:true}
 ],"machine");
 
 Callback.addCallback("PreLoaded",function(){
@@ -40,7 +40,7 @@ Machine.registerPrototype(BlockID.coilTin,{
         if(this.data.durability > 0){
             var extra = new ItemExtraData();
             extra.putInt("durability",this.data.durability);
-            World.drop(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
+            World.dropItem(this.x + 0.5,this.y,this.z + 0.5,0,this.id,1,0,extra);
         } else {
             World.drop(this.x + 0.5,this.y + 1,this.z + 0.5,0,ItemID.cellEmpty,1,0);
         }

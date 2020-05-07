@@ -48,7 +48,7 @@ Machine.registerPrototype(BlockID.glassTank,{
 
         if(liquid){
             if(!stored || stored == liquid && amount + storage <= 16){
-                this.liquidStorage.addLiquid(liquid,storage / 1000);
+                this.liquidStorage.addLiquid(liquid,storage);
                 Player.decreaseCarriedItem(1);
 
                 var empty = Liquid.getEmptyItem(id,data);
@@ -64,7 +64,7 @@ Machine.registerPrototype(BlockID.glassTank,{
             Player.addItemToInventory(full.id,1,full.data);
         }
 
-        Game.message(LiquidRegistry.getLiquidName(stored) + " - " + amount * 1000 + "mB");
+        Game.message(LiquidRegistry.getLiquidName(stored) + " - " + (amount * 1000) + "mB");
     },
     
     tick:function(){

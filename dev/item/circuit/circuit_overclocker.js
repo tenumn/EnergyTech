@@ -10,6 +10,6 @@ Upgrade.registerUpgrade(ItemID.circuitOverclocker,"overclocker",function(item,ma
 
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("circuit",Translation.translate("Circuit"),[ItemID.circuitOverclocker]);
-    
-    Recipes.addShaped({id:ItemID.circuitOverclocker,count:1,data:0},[" a ","bcb"],["a",BlockID.coolantWater,0,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
+
+    Recipe.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:BlockID.coolantWater,data:0}],{id:ItemID.circuitOverclocker,count:1,data:0});
 });

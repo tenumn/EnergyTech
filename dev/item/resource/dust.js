@@ -519,6 +519,8 @@ Callback.addCallback("PreLoaded",function(){
 
     Recipe.addBlastFurnaceRecipe({id:ItemID.dustTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0}]);
 
+    Recipe.addElectrolyzerRecipe({id:ItemID.dustDiamond,count:1,data:0},[{id:ItemID.dustCarbon,count:16,data:0}]);
+
     Recipe.addCentrifugeRecipe({id:ItemID.dustFlint,data:0},[{id:ItemID.dustSmallSiliconDioxide,count:3,data:0}]);
     Recipe.addCentrifugeRecipe({id:ItemID.dustTetrahedrite,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallAntimony,count:1,data:0}]);
 });

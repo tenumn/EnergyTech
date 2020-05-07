@@ -8,5 +8,8 @@ Upgrade.registerUpgrade(ItemID.circuitEnergyStorage,"energyStorage",function(ite
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("circuit",Translation.translate("Circuit"),[ItemID.circuitEnergyStorage]);
 
-    Recipes.addShaped({id:ItemID.circuitEnergyStorage,count:1,data:0},[" a ","bcb"],["a",ItemID.lithiumBattery,-1,"b",ItemID.wireCopper,0,"c",ItemID.circuit,0]);
+    Recipe.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.lithiumBattery,data:0}],{id:ItemID.circuitEnergyStorage,count:1,data:0});
+    Recipe.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.eneteBattery,data:0}],{id:ItemID.circuitEnergyStorage,count:2,data:0});
+    Recipe.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.energyCrystal,data:0}],{id:ItemID.circuitEnergyStorage,count:3,data:0});
+    Recipe.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.lapotronCrystal,data:0}],{id:ItemID.circuitEnergyStorage,count:4,data:0});
 });

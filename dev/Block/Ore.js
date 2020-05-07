@@ -11,6 +11,7 @@ Block.createBlock("oreCopper",[
     {name:"Copper Ore",texture:[["copper_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreCopper,"stone",2,true);
+ToolLib.addBlockDropOnExplosion("oreCopper");
 Block.setDestroyLevel("oreCopper",2);
 
 // 黝铜矿石
@@ -19,6 +20,7 @@ Block.createBlock("oreTetrahedrite",[
     {name:"Tetrahedrite Ore",texture:[["tetrahedrite_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreTetrahedrite,"stone",2,true);
+ToolLib.addBlockDropOnExplosion("oreTetrahedrite");
 Block.setDestroyLevel("oreTetrahedrite",2);
 
 // 锡石矿石
@@ -27,6 +29,7 @@ Block.createBlock("oreCassiterite",[
     {name:"Cassiterite Ore",texture:[["cassiterite_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreCassiterite,"stone",2,true);
+ToolLib.addBlockDropOnExplosion("oreCassiterite");
 Block.setDestroyLevel("oreCassiterite",2);
 
 // 方铅矿石
@@ -43,6 +46,7 @@ Block.createBlock("oreSpodumene",[
     {name:"Spodumene Ore",texture:[["spodumene_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreSpodumene,"stone",2,true);
+ToolLib.addBlockDropOnExplosion("oreSpodumene");
 Block.setDestroyLevel("oreSpodumene",2);
 
 // 石墨矿石
@@ -51,6 +55,7 @@ Block.createBlock("oreGraphite",[
     {name:"Graphite Ore",texture:[["graphite_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreGraphite,"stone",2,true);
+ToolLib.addBlockDropOnExplosion("oreGraphite");
 Block.setDestroyLevel("oreGraphite",2);
 
 Block.registerDropFunction("oreGraphite",function(coords,id,data,level,enchant){
@@ -67,6 +72,7 @@ Block.createBlock("oreTungsten",[
     {name:"Tungsten Ore",texture:[["tungsten_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreTungsten,"stone",3,true);
+ToolLib.addBlockDropOnExplosion("oreTungsten");
 Block.setDestroyLevel("oreTungsten",3);
 
 // 铀矿石
@@ -75,6 +81,7 @@ Block.createBlock("oreUranium",[
     {name:"Uranium Ore",texture:[["uranium_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreUranium,"stone",3,true);
+ToolLib.addBlockDropOnExplosion("oreUranium");
 Block.setDestroyLevel("oreUranium",3);
 
 // 银矿石
@@ -83,6 +90,7 @@ Block.createBlock("oreSilver",[
     {name:"Silver Ore",texture:[["silver_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreSilver,"stone",2,true);
+ToolLib.addBlockDropOnExplosion("oreSilver");
 Block.setDestroyLevel("oreSilver",2);
 
 // 铝土矿石
@@ -91,6 +99,7 @@ Block.createBlock("oreBauxite",[
     {name:"Bauxite Ore",texture:[["bauxite_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreBauxite,"stone",2,true);
+ToolLib.addBlockDropOnExplosion("oreBauxite");
 Block.setDestroyLevel("oreBauxite",2);
 
 // 盐矿石
@@ -99,6 +108,7 @@ Block.createBlock("oreSalt",[
     {name:"Salt Ore",texture:[["salt_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreSalt,"stone",1,true);
+ToolLib.addBlockDropOnExplosion("oreSalt");
 Block.setDestroyLevel("oreSalt",1);
 
 Block.registerDropFunction("oreSalt",function(coords,id,data,level,enchant){
@@ -115,6 +125,7 @@ Block.createBlock("oreRuby",[
     {name:"Ruby Ore",texture:[["ruby_ore",0]],inCreative:true}
 ],"ore");
 ToolAPI.registerBlockMaterial(BlockID.oreRuby,"stone",3,true);
+ToolLib.addBlockDropOnExplosion("oreRuby");
 Block.setDestroyLevel("oreRuby",3);
 
 Block.registerDropFunction("oreRuby",function(coords,id,data,level,enchant){
@@ -160,10 +171,10 @@ var OreVein = {
         var ore = [];
         for(let i in ores){
             var item = ores[i];
-            for(let n = 0;n < Math.min(item.count,100);n++) ore.push({id:item.id,data:item.data});
+            for(let n = 0;n < item.count;n++) ore.push({id:item.id,data:item.data});
         }
 
-        for(let i = 0;i < Math.min(random,100);i++) this.OVERWORLD_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
+        for(let i = 0;i < random;i++) this.OVERWORLD_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
 
         if(stone) this.SMALL_STONE[name] = stone;
 
@@ -174,10 +185,10 @@ var OreVein = {
         var ore = [];
         for(let i in ores){
             var item = ores[i];
-            for(let n = 0;n < Math.min(item.count,100);n++) ore.push({id:item.id,data:item.data});
+            for(let n = 0;n < item.count;n++) ore.push({id:item.id,data:item.data});
         }
         
-        for(let i = 0;i < Math.min(random,100);i++) this.NETHER_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
+        for(let i = 0;i < random;i++) this.NETHER_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
 
         if(stone) this.SMALL_STONE[name] = stone;
 
@@ -188,10 +199,10 @@ var OreVein = {
         var ore = [];
         for(let i in ores){
             var item = ores[i];
-            for(let n = 0;n < Math.min(item.count,100);n++) ore.push({id:item.id,data:item.data});
+            for(let n = 0;n < item.count;n++) ore.push({id:item.id,data:item.data});
         }
 
-        for(let i = 0;i < Math.min(random,100);i++) this.ENDER_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
+        for(let i = 0;i < random;i++) this.ENDER_VEIN.push({name:name,ore:ore,minHeight:min,maxHeight:max,size:size});
 
         if(stone) this.SMALL_STONE[name] = stone;
 
@@ -199,37 +210,37 @@ var OreVein = {
     }
 }
 
-// 煤炭矿脉
-OreVein.registerOreVein("Coal",80,[{id:16,count:64,data:0}],48,80,16,{id:ItemID.tinyCoal,count:1,data:0});
-
-// 铝土矿脉
-OreVein.registerOreVein("Bauxite",80,[{id:BlockID.oreBauxite,count:64,data:0}],48,96,16,{id:ItemID.oreChunkBauxite,count:1,data:0});
-
-// 黝铜矿脉
-OreVein.registerOreVein("Tetrahedrite",150,[{id:BlockID.oreTetrahedrite,count:48,data:0},{id:BlockID.oreCopper,count:24,data:0}],64,128,30,{id:ItemID.oreChunkTetrahedrite,count:1,data:0});
-
-// 钻石矿脉
-OreVein.registerOreVein("Diamonds",60,[{id:56,count:6,data:0},{id:16,count:64,data:0},{id:BlockID.oreGraphite,count:48,data:0}],0,16,12,{id:ItemID.dustSmallDiamond,count:1,data:0});
-
-// 沥青铀矿脉
-OreVein.registerOreVein("Pitchblende",40,[{id:BlockID.oreUranium,count:12,data:0}],8,32,8,{id:ItemID.oreChunkUranium,count:1,data:0});
-
-// 锡石矿脉
-OreVein.registerOreVein("Cassiterite",170,[{id:BlockID.oreCassiterite,count:24,data:0},{id:BlockID.oreTungsten,count:6,data:0}],32,96,35,{id:ItemID.oreChunkUranium,count:1,data:0});
-
-// 铁矿脉
-OreVein.registerOreVein("Iron",120,[{id:15,count:48,data:0}],16,32,24,{id:ItemID.oreChunkIron,count:1,data:0});
-
-// 方铅矿脉
-OreVein.registerOreVein("Galena",40,[{id:BlockID.oreGalena,count:48,data:0},{id:BlockID.oreSilver,count:12,data:0}],32,64,8,{id:ItemID.oreChunkGalena,count:1,data:0});
-
-// 岩盐矿脉
-OreVein.registerOreVein("Salt",30,[{id:BlockID.oreSalt,count:48,data:0},{id:BlockID.oreSpodumene,count:64,data:0}],48,64,8,{id:ItemID.dustSmallSalt,count:1,data:0});
-
-// 红石矿脉
-OreVein.registerOreVein("Redstone",60,[{id:73,count:48,data:0},{id:BlockID.oreRuby,count:6,data:0}],16,48,12,{id:ItemID.dustSmallRedstone,count:1,data:0});
-
 Callback.addCallback("PreLoaded",function(){
+    // 煤炭矿脉
+    OreVein.registerOreVein("Coal",80,[{id:16,count:64,data:0}],48,80,16,{id:ItemID.tinyCoal,count:1,data:0});
+    
+    // 铝土矿脉
+    OreVein.registerOreVein("Bauxite",80,[{id:BlockID.oreBauxite,count:64,data:0}],48,96,16,{id:ItemID.oreChunkBauxite,count:1,data:0});
+    
+    // 黝铜矿脉
+    OreVein.registerOreVein("Tetrahedrite",150,[{id:BlockID.oreTetrahedrite,count:48,data:0},{id:BlockID.oreCopper,count:24,data:0}],64,128,30,{id:ItemID.oreChunkTetrahedrite,count:1,data:0});
+    
+    // 钻石矿脉
+    OreVein.registerOreVein("Diamonds",60,[{id:56,count:6,data:0},{id:16,count:64,data:0},{id:BlockID.oreGraphite,count:48,data:0}],0,16,12,{id:ItemID.dustSmallDiamond,count:1,data:0});
+    
+    // 沥青铀矿脉
+    OreVein.registerOreVein("Pitchblende",40,[{id:BlockID.oreUranium,count:12,data:0}],8,32,8,{id:ItemID.oreChunkUranium,count:1,data:0});
+    
+    // 锡石矿脉
+    OreVein.registerOreVein("Cassiterite",170,[{id:BlockID.oreCassiterite,count:24,data:0},{id:BlockID.oreTungsten,count:6,data:0}],32,96,35,{id:ItemID.oreChunkUranium,count:1,data:0});
+    
+    // 铁矿脉
+    OreVein.registerOreVein("Iron",120,[{id:15,count:48,data:0}],16,32,24,{id:ItemID.oreChunkIron,count:1,data:0});
+    
+    // 方铅矿脉
+    OreVein.registerOreVein("Galena",40,[{id:BlockID.oreGalena,count:48,data:0},{id:BlockID.oreSilver,count:12,data:0}],32,64,8,{id:ItemID.oreChunkGalena,count:1,data:0});
+    
+    // 岩盐矿脉
+    OreVein.registerOreVein("Salt",30,[{id:BlockID.oreSalt,count:48,data:0},{id:BlockID.oreSpodumene,count:64,data:0}],48,64,8,{id:ItemID.dustSmallSalt,count:1,data:0});
+    
+    // 红石矿脉
+    OreVein.registerOreVein("Redstone",60,[{id:73,count:48,data:0},{id:BlockID.oreRuby,count:6,data:0}],16,48,12,{id:ItemID.dustSmallRedstone,count:1,data:0});
+
     Callback.addCallback("GenerateChunkUnderground",function(chunkX,chunkZ){
         var vein = OreVein.OVERWORLD_VEIN[Math.floor(Math.random() * OreVein.OVERWORLD_VEIN.length)];
         if(vein){

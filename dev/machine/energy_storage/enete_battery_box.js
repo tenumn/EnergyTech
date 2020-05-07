@@ -35,13 +35,13 @@ var GuiEneteBatteryBox = new UI.StandartWindow({
 
     drawing:[
         {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
-		{type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+		{type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"infoSmall",scale:GUI_SCALE}
     ],
     
 	elements:{
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
         "slotBatteryInput":{type:"slot",x:510,y:300,bitmap:"slot_battery_input",scale:GUI_SCALE,isValid:Machine.isValidEUItem},
         "slotBatteryOutput":{type:"slot",x:450,y:300,bitmap:"slot_battery_output",scale:GUI_SCALE,isValid:Machine.isValidEUStorage}
 	}

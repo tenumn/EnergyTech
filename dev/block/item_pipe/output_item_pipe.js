@@ -60,7 +60,7 @@ Renderer.registerPipeOutputRenderModel(BlockID.itemPipeOutput,1,[["input_item_pi
 ]);
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShapeless({id:BlockID.itemPipeOutput,count:1,data:0},[{id:BlockID.itemPipeTransport,data:0},{id:410,data:0}]);
+	Recipe.addAssemblyTableRecipe([{id:BlockID.itemPipeTransport,data:0},{id:410,data:0}],{id:BlockID.itemPipeOutput,count:1,data:0});
 });
 
 Machine.registerPrototype(BlockID.itemPipeOutput,{

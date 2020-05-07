@@ -170,8 +170,8 @@ var Machine = {
     energyReceive:function(type,amount,voltage){
         var voltage_max = this.getMaxVoltage();
         if(voltage > voltage_max){
-            var voltage_enabled = __config__.getBool("machine.voltage_enabled");
-            if(voltage_enabled){
+            var enabled = __config__.getBool("machine.voltage_enabled");
+            if(enabled){
                 World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,0.5,true);
                 World.setBlock(this.x,this.y,this.z,0);
                 this.selfDestroy();

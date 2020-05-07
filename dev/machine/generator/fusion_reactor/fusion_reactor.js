@@ -25,7 +25,7 @@ var GuiFusionReactor = new UI.StandartWindow({
     },
 
     drawing:[
-        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
         {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info",scale:GUI_SCALE},
         {type:"bitmap",x:650 - GUI_SCALE * 21,y:75 - GUI_SCALE * 3,bitmap:"info_fusion",scale:GUI_SCALE}
     ],
@@ -42,7 +42,7 @@ var GuiFusionReactor = new UI.StandartWindow({
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Eu"},
 		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Energy Output: ") + "0Eu"},
 
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE}
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE}
     }
 });
 
@@ -118,7 +118,10 @@ Machine.registerEUMachine(BlockID.fusionReactor,{
         if(this.data.isActive && this.isCoil()){
             this.getModuleData();
     
-            var input1 = this.container.getSlot("slotInput1"),input2 = this.container.getSlot("slotInput2"),recipe = Recipe.getRecipeResult("FusionReactor",[input1.id,input1.data,input2.id,input2.data]);
+            var input1 = this.container.getSlot("slotInput1");
+            var input2 = this.container.getSlot("slotInput2");
+            var recipe = Recipe.getRecipeResult("FusionReactor",[input1.id,input1.data,input2.id,input2.data]);
+            
             if(recipe){
                 var output = Math.floor(this.data.heat * this.data.fuel);
                 if(this.data.energy + output < this.getEnergyStorage()) this.data.energy += output;
@@ -126,11 +129,10 @@ Machine.registerEUMachine(BlockID.fusionReactor,{
                     this.data.energy -= this.data.energy_consumption;
                     this.data.progress += 1 / this.data.work_time;
                     if(this.data.progress.toFixed(3) >= 1){
-                        var output = recipe.output;
-                        if(output[0]) this.setOutput("slotOutput0",output[0].id,output[0].count,output[0].data);
-                        if(output[1]) this.setOutput("slotOutput1",output[1].id,output[1].count,output[1].data);
-                        if(output[2]) this.setOutput("slotOutput2",output[2].id,output[2].count,output[2].data);
-                        if(output[3]) this.setOutput("slotOutput3",output[3].id,output[3].count,output[3].data);
+                        if(recipe[0]) this.setOutput("slotOutput0",recipe[0].id,recipe[0].count,recipe[0].data);
+                        if(recipe[1]) this.setOutput("slotOutput1",recipe[1].id,recipe[1].count,recipe[1].data);
+                        if(recipe[2]) this.setOutput("slotOutput2",recipe[2].id,recipe[2].count,recipe[2].data);
+                        if(recipe[3]) this.setOutput("slotOutput3",recipe[3].id,recipe[3].count,recipe[3].data);
                         input1.count--,input2.count--;
                         this.container.validateAll();
                         this.data.progress = 0;

@@ -23,21 +23,21 @@ var GuiNetworkTerminal = new UI.StandartWindow({
     },
     
     drawing:[
-        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
-        {type:"bitmap",x:450,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
+        {type:"bitmap",x:450,y:50,bitmap:"energy_background",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info",scale:GUI_SCALE}
     ],
 
     elements:{
         "textNetwork":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Network IP: ") + "0.0.0"},
         "textLoad":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:30,text:Translation.translate("Load: ") + "0/0"},
-        "textEnergy1":{type:"text",font:GUI_TEXT,x:700,y:135,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Et"},
-        "textEnergy2":{type:"text",font:GUI_TEXT,x:700,y:135,width:300,height:30,text:Translation.translate("Energy: ") + "0/0Et"},
-        "textRange":{type:"text",font:GUI_TEXT,x:700,y:165,width:300,height:30,text:Translation.translate("Range: ") + "0"},
-        "textVoltage":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Voltage: ") + "0"},
+        "textEnergy1":{type:"text",font:GUI_TEXT,x:700,y:135,width:300,height:30,text:Translation.translate("Machine Energy: ") + "0/0Et"},
+        "textEnergy2":{type:"text",font:GUI_TEXT,x:700,y:165,width:300,height:30,text:Translation.translate("Network Energy: ") + "0/0Et"},
+        "textRange":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:30,text:Translation.translate("Range: ") + "0"},
+        "textVoltage":{type:"text",font:GUI_TEXT,x:700,y:225,width:300,height:30,text:Translation.translate("Voltage: ") + "0"},
 
-        "scaleEnergy1":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
-        "scaleEnergy2":{type:"scale",x:450 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+        "scaleEnergy1":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
+        "scaleEnergy2":{type:"scale",x:450 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale_network",scale:GUI_SCALE},
         "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:275,bitmap:"slot_card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}}
     }
 });
@@ -124,20 +124,20 @@ Machine.registerEUMachine(BlockID.networkTerminal,{
             this.container.setText("textRange",Translation.translate("Range: ") + net.range);
             this.container.setText("textVoltage",Translation.translate("Voltage: ") + net.voltage);
             this.container.setText("textLoad",Translation.translate("Load: ") + net.load + "/" + net.load_limit);
-            this.container.setText("textEnergy2",Translation.translate("Energy: ") + net.energy + "/" + net.energy_storage + "Eu");
+            this.container.setText("textEnergy2",Translation.translate("Network Energy: ") + net.energy + "/" + net.energy_storage + "Eu");
 
             this.container.setScale("scaleEnergy2",Math.round(net.energy / net.energy_storage * 47) / 47);
         } else {
             this.container.setText("textRange",Translation.translate("Range: ") + "0");
             this.container.setText("textVoltage",Translation.translate("Voltage: ") + "0");
             this.container.setText("textLoad",Translation.translate("Load: ") + "0/0");
-            this.container.setText("textEnergy2",Translation.translate("Energy: ") + "0/0Eu");
+            this.container.setText("textEnergy2",Translation.translate("Network Energy: ") + "0/0Eu");
 
             this.container.setScale("scaleEnergy2",0);
         }
         
         this.container.setScale("scaleEnergy1",Math.round(this.data.energy / this.getEnergyStorage() * 47) / 47);
-        this.container.setText("textEnergy1",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
+        this.container.setText("textEnergy1",Translation.translate("Machine Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
         this.container.setText("textNetwork",Translation.translate("Network IP: ") + Math.abs(this.x) + "." + Math.abs(this.y) + "." + Math.abs(this.z));
     },
 

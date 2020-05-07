@@ -554,21 +554,21 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                     let item = key.split(":");
                     if(parseInt(item[0]) == id && parseInt(item[1]) == data){
                         let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output}]:[];
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result}]:[];
                     }
                     if(parseInt(item[2]) == id && parseInt(item[3]) == data){
                         let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output}]:[];
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result}]:[];
                     }
                 }
             }
 
-            for(let key in recipe.output){
-                result = recipe.output[key];
+            for(let key in recipe){
+                result = recipe[key];
                 if(result.id == id && result.data == data){
                     let item = key.split(":");
                     let result = Recipe.getRecipeResult("FusionReactor",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result.output});
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:result});
                 }
             }
 
@@ -596,21 +596,69 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 		getList:function(id,data,isUsage){
             if(isUsage){
                 let result = Recipe.getRecipeResult("CanningMachine",[id,data]);
-                return result?[{input:[{id:id,count:1,data:data},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:result.output}]:[];
+                return result?[{input:[{id:id,count:1,data:data},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:[result]}]:[];
             }
 
             let item,list = [],recipe = Recipe.getRecipe("CanningMachine");
-            for(let key in recipe.output){
-                result = recipe.output[key];
+            for(let key in recipe){
+                result = recipe[key];
                 for(let i = 0;i <= 4;i++){
                     if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
-                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:result});
+                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:[result]});
                     }
                 }
             }
 
             return list;
 		}
+    });
+
+    // [装配台]Assembly Table
+    Core.registerRecipeType("ET-AssemblyTable",{
+    	contents:{
+    		icon:BlockID.assemblyTable,
+        
+    		drawing:[
+    			{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrow_background"},
+    			{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+    		],
+        
+    		elements:{
+                "input0":{type:"slot",x:240,y:130,bitmap:"slot_empty",size:120},
+                "input1":{type:"slot",x:240,y:250,bitmap:"slot_empty",size:120},
+                
+                "output0":{type:"slot",x:480,y:190,bitmap:"slot_empty",size:120}
+    		}
+    	},
+        
+    	getList:function(id,data,isUsage){
+            let list = [],recipe = Recipe.getRecipe("AssemblyTable");
+            
+            if(isUsage){
+                for(let key in recipe){
+                    let item = key.split(":");
+                    if(parseInt(item[0]) == id && parseInt(item[1]) == data){
+                        let result = Recipe.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[result]}]:[];
+                    }
+                    if(parseInt(item[2]) == id && parseInt(item[3]) == data){
+                        let result = Recipe.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
+                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[result]}]:[];
+                    }
+                }
+            }
+
+            for(let key in recipe){
+                result = recipe[key];
+                if(result.id == id && result.data == data){
+                    let item = key.split(":");
+                    let result = Recipe.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[result]});
+                }
+            }
+
+    		return list;
+        }
     });
 });

@@ -21,7 +21,7 @@ var GuiNuclearReactor = new UI.StandartWindow({
     },
 
     drawing:[
-        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
         {type:"bitmap",x:350,y:325,bitmap:"heatBackground",scale:GUI_SCALE},
 		{type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info",scale:GUI_SCALE}
     ],
@@ -35,7 +35,7 @@ var GuiNuclearReactor = new UI.StandartWindow({
         "textCoolant":{type:"text",font:GUI_TEXT,x:700,y:225,width:300,height:30,text:Translation.translate("Coolant: ") + "0"},
 
         "scaleBurn":{type:"scale",x:350 + GUI_SCALE * 4,y:325 + GUI_SCALE * 4,direction:0,value:0.5,bitmap:"heatScale",scale:GUI_SCALE},
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE}
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE}
     }
 });
 

@@ -14,7 +14,7 @@ TileRenderer.setupWireModel(BlockID.itemPipeInput,1,0.5,"input-item-pipe",true);
 Block.setBlockShape(BlockID.itemPipeInput,{x:0.25,y:0.25,z:0},{x:0.75,y:0.75,z:1},0);
 
 Callback.addCallback("PreLoaded",function(){
-    Recipes.addShapeless({id:BlockID.itemPipeInput,count:1,data:0},[{id:BlockID.itemPipeTransport,data:0},{id:54,data:0}]);
+	Recipe.addAssemblyTableRecipe([{id:BlockID.itemPipeTransport,data:0},{id:54,data:0}],{id:BlockID.itemPipeInput,count:1,data:0});
 });
 
 Machine.registerPrototype(BlockID.itemPipeInput,{

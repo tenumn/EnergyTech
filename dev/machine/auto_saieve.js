@@ -36,7 +36,7 @@ var GuiAutoSaieve = new UI.StandartWindow({
 
     drawing:[
         {type:"bitmap",x:900,y:325,bitmap:"logo",scale:GUI_SCALE},
-        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
         {type:"bitmap",x:600,y:175,bitmap:"arrow_background",scale:GUI_SCALE}
     ],
 
@@ -60,7 +60,7 @@ var GuiAutoSaieve = new UI.StandartWindow({
         "slotOutput15":{type:"slot",x:820,y:255,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
         "slotOutput16":{type:"slot",x:880,y:255,bitmap:"slot_empty",scale:GUI_SCALE,isValid:function(){return false;}},
 
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
 
         "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
         "slotUpgrade2":{type:"slot",x:430,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
@@ -77,7 +77,7 @@ Machine.registerEUMachine(BlockID.autoSaieve,{
         energy_consumption:8
     },
 
-    initValues: function(){
+    initValues:function(){
         this.data.tier = this.defaultValues.tier;
         this.data.work_time = this.defaultValues.work_time;
 		this.data.energy_storage = this.defaultValues.energy_storage;

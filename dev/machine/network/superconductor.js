@@ -28,11 +28,7 @@ Callback.addCallback("PreLoaded",function(){
 
 Machine.setDrop("superconductor",BlockID.superconductor);
 Block.registerPlaceFunction("superconductor",function(coords,item,block){
-    var place = coords;
-    if(!canTileBeReplaced(block.id,block.data)){
-        place = coords.relative,block = World.getBlock(place.x,place.y,place.z);
-        if(!canTileBeReplaced(block.id,block.data)) return;
-    }
+    var place = UsefulTool.getReplacedCoords(coords);
     World.setBlock(place.x,place.y,place.z,item.id,1);
     World.addTileEntity(place.x,place.y,place.z);
     Player.decreaseCarriedItem(1);
@@ -46,13 +42,13 @@ var GuiSuperconductorCoil = new UI.StandartWindow({
     },
 
     drawing:[
-        {type:"bitmap",x:350,y:50,bitmap:"energyBackground",scale:GUI_SCALE},
+        {type:"bitmap",x:350,y:50,bitmap:"energy_background",scale:GUI_SCALE},
         {type:"bitmap",x:700 - GUI_SCALE * 4,y:75 - GUI_SCALE * 4,bitmap:"info",scale:GUI_SCALE}
     ],
 
     elements:{
         "textNetwork":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:30,text:Translation.translate("Network IP: ") + "0.0.0"},
-        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energyScale",scale:GUI_SCALE},
+        "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
         "slotCard":{type:"slot",x:350 + GUI_SCALE * 3 - GUI_SCALE / 2,y:250,bitmap:"slot_card",scale:GUI_SCALE,isValid:function(id){return Tool.isTool(id,"EnergyCard");}},
 
         "slotUpgrade1":{type:"slot",x:370,y:325,bitmap:"slot_circuit",isValid:Upgrade.isValidUpgrade},
