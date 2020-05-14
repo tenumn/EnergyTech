@@ -1,0 +1,11 @@
+{
+	"enabled":true,
+	"debug":false,
+	"text_size":30,
+  	"machine":{
+    	"voltage_enabled":true,
+		"nuclear_reactor_radius":2,
+		"nuclear_reactor_durability":true,
+		"fusion_reactor_durability":false
+  	}
+}
