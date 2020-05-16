@@ -1,9 +1,10 @@
+// [高炉砖]Blast Furnace Brick
 IDRegistry.genBlockID("blastFurnaceBrick");
 Block.createBlock("blastFurnaceBrick",[
     {name:"Blast Furnace Brick",texture:[["blast_furnace_brick",0]],inCreative:true}
 ],"stone");
 
-// 粗制高炉
+// [粗制高炉]Crude Blast Furnace
 IDRegistry.genBlockID("crudeBlastFurnace");
 Block.createBlock("crudeBlastFurnace",[
     {name:"Crude Blast Furnace",texture:[["blast_furnace_brick",0],["blast_furnace_brick",0],["blast_furnace_brick",0],["crude_blast_furnace",0],["blast_furnace_brick",0],["blast_furnace_brick",0]],inCreative:true}
@@ -13,6 +14,12 @@ TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,0,[["blast_furnace_
 TileRenderer.registerRotationModel(BlockID.crudeBlastFurnace,4,[["blast_furnace_brick",0],["blast_furnace_brick",0],["blast_furnace_brick",0],["crude_blast_furnace",1],["blast_furnace_brick",0],["blast_furnace_brick",0]]);
 
 Callback.addCallback("PreLoaded",function(){
+    Recipes.addShaped({id:BlockID.blastFurnaceBrick,count:4,data:0},[
+        "aba",
+        "b b",
+        "aba"
+    ],["a",337,0,"b",45,0]);
+
 	Recipes.addShaped({id:BlockID.crudeBlastFurnace,count:1,data:0},[
         "aba",
         "bcb",

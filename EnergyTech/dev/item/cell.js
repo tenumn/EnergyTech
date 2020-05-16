@@ -120,8 +120,8 @@ Callback.addCallback("PreLoaded",function(){
     RecipeRegistry.addCanningMachineRecipe({id:ItemID.uranium238,data:0},{id:ItemID.cellUranium238,count:1,data:0},{id:ItemID.cellEmpty,data:0});
 	RecipeRegistry.addCanningMachineRecipe({id:ItemID.enrichedUraniumDepleted,data:0},{id:ItemID.fuelRodUranium,count:1,data:0},{id:ItemID.cellEmpty,data:0});
 
-	RecipeRegistry.addFusionReactorRecipe([{liquid:"helium3",mB:125},{liquid:"deuterium",mB:125}],{liquid:"heliumPlasma",mB:125});
-	RecipeRegistry.addFusionReactorRecipe([{liquid:"tritium",mB:125},{liquid:"deuterium",mB:125}],{liquid:"heliumPlasma",mB:125});
+	RecipeRegistry.addFusionReactorRecipe([{liquid:"helium3",mB:125},{liquid:"deuterium",mB:125}],{liquid:"plasmaHelium",mB:125});
+	RecipeRegistry.addFusionReactorRecipe([{liquid:"tritium",mB:125},{liquid:"deuterium",mB:125}],{liquid:"plasmaHelium",mB:125});
 
 	RecipeRegistry.addElectrolyzerRecipe({id:ItemID.cellHeavyWater,count:40,data:0},[{id:ItemID.cellDeuterium,count:40,data:0},{id:ItemID.cellTritium,count:1,data:0}]);
 	RecipeRegistry.addElectrolyzerRecipe({id:ItemID.cellDeuterium,count:50,data:0},[{id:ItemID.cellHelium3,count:20,data:0},{id:ItemID.cellTritium,count:20,data:0}]);

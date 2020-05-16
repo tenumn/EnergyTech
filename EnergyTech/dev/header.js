@@ -6,7 +6,9 @@
     |  .____|| |  ..   || |  .____|| |  .____/  | |||_.\\   \.   .//      |  ||    |  .____|| |  ||      |  .__.  ||
     |  ||___.. |  ||\  || |  ||___.. |  |\  \\  | ||__|||    |   ||       |  ||    |  ||___.. |  ||___.  |  || |  ||
     |_______|| |__|| \_|| |_______|| |__||\__\\ \______//    |___||       |__||    |_______|| \_______|| |__|| |__||
- 
+
+    ================================================== * V3.0.0 * ==================================================
+    
 */
 
 // lib
@@ -39,8 +41,9 @@ World.drop = ModAPI.requireGlobal("Level.dropItem");
 canTileBeReplaced = ModAPI.requireGlobal("canTileBeReplaced");
 Player.setInventorySlot = ModAPI.requireGlobal("Player.setInventorySlot");
 
-var GUI_SCALE = 3.2;
 var EU = EnergyTypeRegistry.assureEnergyType("Eu",1);
+
+var GUI_SCALE = 3.2;
 var TEXT_SIZE = __config__.getNumber("text_size");
 var GUI_TEXT = {size:TEXT_SIZE / 2,color:android.graphics.Color.parseColor("#96dcdc")}
 
@@ -93,7 +96,7 @@ Saver.addSavesScope("EnergyTech",
 
 LiquidRegistry.registerLiquid("steam","Steam",["liquid_steam"]);
 LiquidRegistry.registerLiquid("helium","Helium",["liquid_helium"]);
-LiquidRegistry.registerLiquid("heliumPlasma","Helium Plasma",["helium_plasma"]);
+LiquidRegistry.registerLiquid("plasmaHelium","Plasma Helium",["helium_plasma"]);
 LiquidRegistry.registerLiquid("helium3","Helium-3",["liquid_helium3"]);
 LiquidRegistry.registerLiquid("lithium6","Lithium-6",["liquid_lithium6"]);
 LiquidRegistry.registerLiquid("lithium7","Lithium-7",["liquid_lithium7"]);

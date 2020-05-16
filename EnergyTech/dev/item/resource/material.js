@@ -18,10 +18,10 @@ Recipes.addFurnaceFuel(ItemID.tinyCharcoal,0,200);
 
 Callback.addCallback("PreLoaded",function(){
     Recipes.addShapeless({id:ItemID.tinyCoal,count:9,data:0},[{id:263,data:0}]);
-    Recipes.addShapeless({id:263,count:1,data:0},[{id:ItemID.tinyCoal,data:0},{id:ItemID.tinyCoal,data:0},{id:ItemID.tinyCoal,data:0},{id:ItemID.tinyCoal,data:0},{id:ItemID.tinyCoal,data:0},{id:ItemID.tinyCoal,data:0},{id:ItemID.tinyCoal,data:0},{id:ItemID.tinyCoal,data:0}]);
-
+	Recipes.addShaped({id:263,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.tinyCoal,0]);
+    
     Recipes.addShapeless({id:ItemID.tinyCharcoal,count:9,data:0},[{id:263,data:1}]);
-    Recipes.addShapeless({id:263,count:1,data:1},[{id:ItemID.tinyCharcoal,data:0},{id:ItemID.tinyCharcoal,data:0},{id:ItemID.tinyCharcoal,data:0},{id:ItemID.tinyCharcoal,data:0},{id:ItemID.tinyCharcoal,data:0},{id:ItemID.tinyCharcoal,data:0},{id:ItemID.tinyCharcoal,data:0},{id:ItemID.tinyCharcoal,data:0}]);
+    Recipes.addShaped({id:263,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.tinyCharcoal,0]);
 });
 
 // 电动马达
@@ -102,6 +102,8 @@ Block.createBlock("reactorCasing",[
 ],"machine");
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("reactor",Translation.translate("Reactor"),[BlockID.reactorCasing]);
+
     Recipes.addShaped({id:BlockID.reactorCasing,count:1,data:0},[
         "aa",
         "aa"
@@ -133,6 +135,17 @@ Item.createItem("uranium238","Uranium-238",{name:"uranium238"});
 Item.createItem("smallUranium238","Small Pile of Uranium-238",{name:"small_uranium238"});
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("reactor",Translation.translate("Reactor"),[
+        ItemID.lithium6,
+        ItemID.smallLithium6,
+        ItemID.lithium7,
+        ItemID.smallLithium7,
+        ItemID.uranium235,
+        ItemID.smallUranium235,
+        ItemID.uranium238,
+        ItemID.smallUranium238
+    ]);
+
     Recipes.addShapeless({id:ItemID.smallLithium6,count:9,data:0},[{id:ItemID.lithium6,data:0}]);
     Recipes.addShaped({id:ItemID.lithium6,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.smallLithium6,0]);
 
@@ -145,27 +158,30 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addShapeless({id:ItemID.smallUranium238,count:9,data:0},[{id:ItemID.uranium238,data:0}]);
     Recipes.addShaped({id:ItemID.uranium238,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.smallUranium238,0]);
 
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustLithium,data:0},[{id:ItemID.lithium7,count:1,data:0},{id:ItemID.smallLithium6,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustUranium,data:0},[{id:ItemID.uranium238,count:4,data:0},{id:ItemID.smallUranium235,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustLithium,count:1,data:0},[{id:ItemID.lithium7,count:1,data:0},{id:ItemID.smallLithium6,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustUranium,count:1,data:0},[{id:ItemID.uranium238,count:4,data:0},{id:ItemID.smallUranium235,count:1,data:0}]);
 });
 
-// 浓缩铀
+// 贫化浓缩铀
 IDRegistry.genItemID("enrichedUraniumDepleted");
 Item.createItem("enrichedUraniumDepleted","Depleted Enriched Uranium",{name:"enriched_uranium",meta:0});
-
-Callback.addCallback("PreLoaded",function(){
-    Recipes.addShaped({id:ItemID.enrichedUraniumDepleted,count:1,data:0},[
-        "aaa",
-        "bbb",
-        "aaa"
-    ],["a",ItemID.uranium238,0,"b",ItemID.smallUranium235,0]);
-});
 
 // 精炼浓缩铀
 IDRegistry.genItemID("enrichedUraniumRefined");
 Item.createItem("enrichedUraniumRefined","Refined Enriched Uranium",{name:"enriched_uranium",meta:1});
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("reactor",Translation.translate("Reactor"),[
+        ItemID.enrichedUraniumDepleted,
+        ItemID.enrichedUraniumRefined
+    ]);
+    
+    Recipes.addShaped({id:ItemID.enrichedUraniumDepleted,count:1,data:0},[
+        "aaa",
+        "bbb",
+        "aaa"
+    ],["a",ItemID.uranium238,0,"b",ItemID.smallUranium235,0]);
+
     Recipes.addShaped({id:ItemID.enrichedUraniumRefined,count:1,data:0},[
         "aaa",
         "bbb",

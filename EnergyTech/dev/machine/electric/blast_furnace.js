@@ -67,27 +67,34 @@ MachineRegistry.registerEUMachine(BlockID.blastFurnace,{
 	},
 	
 	tick:function(){
+        StorageInterface.checkHoppers(this);
+        UpgradeRegistry.executeUpgrades(this);
+
         if(StructureRegistry.getStructure("blast_furnace",this.x,this.y,this.z,true)){
-            UpgradeRegistry.executeUpgrades(this);
-            StorageInterface.checkHoppers(this);
             
-            var input = this.container.getSlot("slotInput"),recipe = RecipeRegistry.getRecipeResult("BlastFurnace",[input.id,input.data]);
+            var input = this.container.getSlot("slotInput");
+            var recipe = RecipeRegistry.getRecipeResult("BlastFurnace",[input.id,input.data]);
     
-            if(recipe){if(this.data.energy >= this.data.energy_consumption){
-                this.activate("machine/blast_furnace.ogg");
-                this.data.energy -= this.data.energy_consumption;
-                this.data.progress += 1 / this.data.work_time;
-                
-                if(this.data.progress.toFixed(3) >= 1){
-                    for(let i = 0;i < 2;i++){
-                        if(recipe[i]){
-                            this.setOutputSlot("slotOutput" + i,recipe[i].id,recipe[i].count,recipe[i].data);
-                        }
-                    } input.count--;
-                    this.container.validateAll();
-                    this.data.progress = 0;
+            if(recipe){
+                if(this.data.energy >= this.data.energy_consumption){
+                    this.activate("machine/blast_furnace.ogg");
+                    this.data.energy -= this.data.energy_consumption;
+                    this.data.progress += 1 / this.data.work_time;
+                    
+                    if(this.data.progress.toFixed(3) >= 1){
+                        for(let i = 0;i < 2;i++){
+                            if(recipe[i]) this.setOutputSlot("slotOutput" + i,recipe[i].id,recipe[i].count,recipe[i].data);
+                        } input.count--;
+                        this.container.validateAll();
+                        this.data.progress = 0;
+                    }
+                } else {
+                    this.deactive();
                 }
-            } else {this.deactive();}} else {this.deactive(),this.data.progress = 0;}
+            } else {
+                this.deactive();
+                this.data.progress = 0;
+            }
         }
 
         this.container.setScale("scaleArrow",parseInt(this.data.progress / 1 * 22) / 22);

@@ -76,8 +76,12 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
         return this.data.energy_output;
     },
 
+    getMaxHeat:function(){
+        return this.data.maxHeat;
+    },
+
     getSlotFor4Side:function(x,y){
-        var side = [],pos = [[x + 1,y],[x + 1,y],[x,y - 1],[x,y - 1]];
+        var side = [],pos = [[x + 1,y],[x - 1,y],[x,y + 1],[x,y - 1]];
         for(let i in pos){
             var slot = this.container.getSlot("slot" + pos[i][0] + ":" + pos[i][1]);
             if(slot && slot.id != 0) side.push(slot);
@@ -87,36 +91,41 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
     
     tick:function(){
         if(World.getThreadTime()%20 == 0){
-            this.data.maxHeat = this.defaultValues.maxHeat;
             this.data.energy_output = this.defaultValues.energy_output;
             if(this.data.isEnabled){
                 for(let x = 1;x <= 5;x++){for(let y = 1;y <= 5;y++){
-                    var slot = this.container.getSlot("slot" + x + ":" + y);
-                    var side = this.getSlotFor4Side(x,y);
-        
-                    var reactor = ReactorRegistry.getPrototype(slot.id);
-                    this.data.heat += reactor.getHeat(side);
-                    this.data.energy_output += reactor.getEnergyOutput(side);
-                    this.data.maxHeat += reactor.getHeatLimit(side);
-                    this.data.heat -= reactor.getCooling(side);
-
-                    if(slot.data >= Item.getMaxDamage(slot.id)){
-                        if(reactor.isDestroy){
-                            reactor.destroy(side,slot);
-                            this.container.validateSlot("slot" + x + ":" + y);
+                    var slot = this.container.getSlot("slot" + x + ":" + y),side = this.getSlotFor4Side(x,y);
+                    if(ReactorRegistry.isPrototype(slot.id)){
+                        var reactor = ReactorRegistry.getPrototype(slot.id);
+                        
+                        this.data.heat += reactor.getHeat(side,slot,{x:x,y:y});
+                        this.data.energy_output += reactor.getEnergyOutput(side,slot,{x:x,y:y});
+                        this.data.heat -= reactor.getCooling(side,slot,{x:x,y:y});
+    
+                        if(slot.data >= Item.getMaxDamage(slot.id)){
+                            if(reactor.isDestroy){
+                                reactor.destroy(side,slot,{x:x,y:y});
+                                this.container.validateSlot("slot" + x + ":" + y);
+                            }
+                        } else {
+                            slot.data += reactor.breakDurability(side,slot,{x:x,y:y});
                         }
-                    } else {
-                        slot.data += reactor.breakDurability(side);
                     }
                 }}
 
                 this.data.energy += this.getEnergyOutput();
             } else if(this.data.heat > 0){
-                this.data.heat -= Math.min(this.data.heat,this.data.maxHeat / 1024);
+                this.data.heat -= Math.min(this.data.heat,this.getMaxHeat() / 1024);
             }
         }
 
-        this.container.setScale("scaleBurn",this.data.heat / this.data.maxHeat);
+        if(this.data.heat > this.getMaxHeat()){
+            World.explode(this.x + 0.5,this.y + 0.5,this.z + 0.5,(this.getMaxHeat() / 1000) / 4,true);
+            World.setBlock(this.x,this.y,this.z,0);
+            this.selfDestroy();
+        }
+
+        this.container.setScale("scaleBurn",this.data.heat / this.getMaxHeat());
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
 		this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + this.getEnergyOutput() + "Eu");
     },

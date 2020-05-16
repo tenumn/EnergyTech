@@ -67,12 +67,11 @@ MachineRegistry.registerEUGenerator(BlockID.fireGenerator,{
 	tick:function(){
 		UpgradeRegistry.executeUpgrades(this);
 		StorageInterface.checkHoppers(this);
-		
-		
-		if(this.data.burn <= 0 && this.data.energy + output < this.getEnergyStorage()) this.data.burn = this.data.burnMax = this.getSlotBurnDuration("slotFuel");
 
 		if(World.getThreadTime()%20 == 0){
-			var output = Math.min((this.data.isActive?random(1,this.data.burn / 20):0),this.getMaxVoltage());
+			var output = Math.min(this.data.isActive?random(1,this.data.burn / 20):0,this.getMaxVoltage());
+
+			if(this.data.burn <= 0 && this.data.energy + output < this.getEnergyStorage()) this.data.burn = this.data.burnMax = this.getSlotBurnDuration("slotFuel");
 
 			if(this.data.burn > 0 && this.data.energy + output < this.getEnergyStorage()){
 				this.data.energy += output;
@@ -80,11 +79,7 @@ MachineRegistry.registerEUGenerator(BlockID.fireGenerator,{
 				this.activate("generator/fire_generator.ogg");
 			} else {this.deactive();}
 
-			if(this.data.burn > 0){
-				this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + output + "Eu");
-			} else {
-				this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + "0Eu");
-			}
+			this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + output + "Eu");
 		}
 
 		this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());

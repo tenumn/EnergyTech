@@ -4,8 +4,9 @@ ModAPI.registerAPI("ETech",{
     TileRenderer:TileRenderer,
 
     // api
-    Upgrade:UpgradeRegistry,
     Structure:StructureRegistry,
+    Upgrade:UpgradeRegistry,
+    Reactor:ReactorRegistry,
     Machine:MachineRegistry,
     Recipe:RecipeRegistry,
     Tool:Tool,

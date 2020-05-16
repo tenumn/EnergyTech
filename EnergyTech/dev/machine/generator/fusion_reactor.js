@@ -3,6 +3,8 @@ IDRegistry.genBlockID("fusionReactor");
 Block.createBlock("fusionReactor",[
     {name:"Fusion Reactor",texture:[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",2],["machine_side",2]],inCreative:true}
 ],"machine");
+TileRenderer.setStandartModel(BlockID.fusionReactor,[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.fusionReactor,0,[["fusion_reactor_bottom",0],["fusion_reactor_top",0],["fusion_reactor_behind",0],["fusion_reactor",0],["machine_side",2],["machine_side",2]]);
 
 MachineRegistry.setDrop("fusionReactor",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
@@ -53,7 +55,6 @@ MachineRegistry.registerMachine(BlockID.fusionReactor,{
         tier:4,
         progress:0,
         work_time:1200,
-        isEnabled:false,
         energy_consumption:2048
     },
 
@@ -138,13 +139,10 @@ MachineRegistry.registerMachine(BlockID.fusionReactor,{
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
 
-    redstone:function(params){
-        (this.data.isEnabled = params.power > 0)?true:false;
-    },
-
     getGuiScreen:function(){
         return GuiFusionReactor;
     },
 
     energyReceive:MachineRegistry.energyReceive
 });
+TileRenderer.setRotationPlaceFunction(BlockID.fusionReactor);

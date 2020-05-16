@@ -52,10 +52,12 @@ MachineRegistry.registerEUGenerator(BlockID.steamTurbine,{
     },
 
     tick:function(){
+        this.renderer();
+        
         if(World.getThreadTime()%20 == 0){
-            if(this.liquidStorage.getAmount("steam") >= 0.014){
-                this.liquidStorage.getLiquid("steam",0.014);
-                this.data.energy += 32;
+            if(this.liquidStorage.getAmount("steam") >= (25 / 1000)){
+                this.liquidStorage.getLiquid("steam",(25 / 1000));
+                this.data.energy += 20;
                 this.activate();
             } else {
                 this.deactive();
@@ -75,13 +77,14 @@ MachineRegistry.registerEUGenerator(BlockID.steamTurbine,{
         }
 
         this.liquidStorage.updateUiScale("scaleLiquid","steam");
-        this.container.setScale("scaleEnergy",this.data.energy / this.getEnergyStorage());
-        this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + 32 + "Eu");
+        this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + 20 + "Eu");
+        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
 		this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
 
     renderer:function(){
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (World.getThreadTime()%2):0));
+        var amount = this.liquidStorage.getAmount("steam");
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(amount / Math.ceil(amount) * 2) % 2):0));
     },
     
     energyTick:function(type,src){

@@ -63,7 +63,7 @@ var RecipeRegistry = {
 
 	addCentrifugeRecipe:function(input,output){
 		var recipe = this.getRecipe("Centrifuge");
-		recipe[input.id + ":" + input.data] = output;
+		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 	
 	addCuttingRecipe:function(input,output){
@@ -120,7 +120,7 @@ var RecipeRegistry = {
 
 	addAssemblyTableRecipe:function(input,output){
 		var recipe = this.getRecipe("AssemblyTable");
-		recipe[input[0].id + ":" + input[0].data + ":" + input[1].id + ":" + input[1].data] = output;
-		recipe[input[1].id + ":" + input[1].data + ":" + input[0].id + ":" + input[0].data] = output;
+		recipe[input[0].id + ":" + input[0].data + ":" + input[1].id + ":" + input[1].data] = {output:output,input:[input[0].count,input[1].count]};
+		recipe[input[1].id + ":" + input[1].data + ":" + input[0].id + ":" + input[0].data] = {output:output,input:[input[1].count,input[0].count]};
 	}
 }

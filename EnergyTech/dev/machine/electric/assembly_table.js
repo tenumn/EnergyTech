@@ -85,19 +85,21 @@ MachineRegistry.registerEUMachine(BlockID.assemblyTable,{
         var input2 = this.container.getSlot("slotInput2");    
         var recipe = RecipeRegistry.getRecipeResult("AssemblyTable",[input1.id,input1.data,input2.id,input2.data]);
 
-        if(recipe){if(this.data.energy >= this.data.energy_consumption){
+        if(recipe && input1.count >= recipe.input[0] && input2.count >= recipe.input[1]){if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
                 if(this.data.progress.toFixed(3) >= 1){
-                    this.setOutputSlot("slotOutput",recipe.id,recipe.count,recipe.data),input1.count--,input2.count--;
+                    this.setOutputSlot("slotOutput",recipe.output.id,recipe.output.count,recipe.output.data);
+                    input1.count -= recipe.input[0];
+                    input2.count -= recipe.input[1];
                     this.container.validateAll();
                     this.data.progress = 0;
                 }
             }
         } else {this.data.progress = 0;}
 
-        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setScale("scaleArrow",parseInt(this.data.progress / 1 * 22) / 22);
+        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
 

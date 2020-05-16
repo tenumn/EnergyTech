@@ -228,6 +228,10 @@ Item.createItem("ingotSilver","Silver Ingot",{name:"silver_ingot"});
 IDRegistry.genItemID("ingotAluminium");
 Item.createItem("ingotAluminium","Aluminium Ingot",{name:"aluminium_ingot"});
 
+// 硅锭
+IDRegistry.genItemID("ingotSilicon");
+Item.createItem("ingotSilicon","Silicon Ingot",{name:"silicon_ingot"});
+
 // 恩奈特合金
 IDRegistry.genItemID("ingotEnete");
 Item.createItem("ingotEnete","Enete Alloy Ingot",{name:"enete_ingot"});
@@ -254,6 +258,7 @@ Callback.addCallback("PreLoaded",function(){
         ItemID.ingotUranium,
         ItemID.ingotSilver,
         ItemID.ingotAluminium,
+        ItemID.ingotSilicon,
         ItemID.ingotEnete,
         ItemID.ingotLeadAntimony
     ]);

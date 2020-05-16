@@ -6,7 +6,6 @@ Block.createBlock("transformerEV",[
 TileRenderer.setStandartModel(BlockID.transformerEV,[["transformer_side",3],["transformer_side",3],["transformer_side",3],["transformer",3],["transformer_side",3],["transformer_side",3]]);
 TileRenderer.registerFullRotationModel(BlockID.transformerEV,0,[["transformer_side",3],["transformer_side",3],["transformer_side",3],["transformer",3],["transformer_side",3],["transformer_side",3]]);
 
-Tooltip.tier(BlockID.transformerEV,4);
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("transformer",Translation.translate("Transformer"),[BlockID.transformerEV]);
     Recipes.addShaped({id:BlockID.transformerEV,count:1,data:0},[

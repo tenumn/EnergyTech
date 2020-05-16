@@ -1,15 +1,19 @@
 // [电解机]Electrolyzer
 IDRegistry.genBlockID("electrolyzer");
 Block.createBlock("electrolyzer",[
-    {name:"Electrolyzer",texture:[["machine_bottom",1],["machine_top",1],["machine_side",1],["electrolyzer",0],["machine_side",1],["machine_side",1]],inCreative:true}
+    {name:"Electrolyzer",texture:[["machine_bottom",2],["machine_top",2],["machine_side",2],["electrolyzer",0],["machine_side",2],["machine_side",2]],inCreative:true}
 ],"machine");
-TileRenderer.setStandartModel(BlockID.electrolyzer,[["machine_bottom",1],["machine_top",1],["machine_side",1],["electrolyzer",0],["machine_side",1],["machine_side",1]]);
-TileRenderer.registerRotationModel(BlockID.electrolyzer,0,[["machine_bottom",1],["machine_top",1],["machine_side",1],["electrolyzer",0],["machine_side",1],["machine_side",1]]);
-for(let i = 1;i < 8;i++){TileRenderer.registerRotationModel(BlockID.electrolyzer,i * 4,[["machine_bottom",1],["machine_top",1],["machine_side",1],["electrolyzer",i],["machine_side",1],["machine_side",1]]);}
+TileRenderer.setStandartModel(BlockID.electrolyzer,[["machine_bottom",2],["machine_top",2],["machine_side",2],["electrolyzer",0],["machine_side",2],["machine_side",2]]);
+TileRenderer.registerRotationModel(BlockID.electrolyzer,0,[["machine_bottom",2],["machine_top",2],["machine_side",2],["electrolyzer",0],["machine_side",2],["machine_side",2]]);
+for(let i = 1;i < 8;i++) TileRenderer.registerRotationModel(BlockID.electrolyzer,i * 4,[["machine_bottom",2],["machine_top",2],["machine_side",2],["electrolyzer",i],["machine_side",2],["machine_side",2]]);
 
 MachineRegistry.setDrop("electrolyzer",BlockID.machineCasing,2);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.electrolyzer,count:1,data:0},["aba","aca","ded"],["a",ItemID.wireGold,0,"b",BlockID.glassTank,0,"c",BlockID.machineCasing,2,"d",ItemID.circuit,0,"e",ItemID.wireTin,0]);
+	Recipes.addShaped({id:BlockID.electrolyzer,count:1,data:0},[
+        "aba",
+        "aca",
+        "ded"
+    ],["a",ItemID.wireGold,0,"b",BlockID.glassTank,0,"c",BlockID.machineCasing,2,"d",ItemID.circuit,0,"e",BlockID.coilTin,0]);
 });
 
 var GuiElectrolyzer = new UI.StandartWindow({
@@ -64,27 +68,30 @@ MachineRegistry.registerEUMachine(BlockID.electrolyzer,{
 	
 	tick:function(){
         this.renderer();
-		UpgradeRegistry.executeUpgrades(this);
         StorageInterface.checkHoppers(this);
+		UpgradeRegistry.executeUpgrades(this);
 
         var input = this.container.getSlot("slotInput");
         var recipe = RecipeRegistry.getRecipeResult("Electrolyzer",[input.id,input.data]);
-        if(recipe && input.count >= recipe.count){if(this.data.energy >= this.data.energy_consumption){
-            this.activate();
-            this.data.energy -= this.data.energy_consumption;
-            this.data.progress += 1 / this.data.work_time;
+        if(recipe && input.count >= recipe.count){
+            if(this.data.energy >= this.data.energy_consumption){
+                this.activate();
+                this.data.energy -= this.data.energy_consumption;
+                this.data.progress += 1 / this.data.work_time;
 
-            if(this.data.progress.toFixed(3) >= 1){
-                for(let i = 0;i < 4;i++){
-                    var output = recipe.output[i];
-                    if(output){
-                        this.setOutputSlot("slotOutput" + i,output.id,output.count,output.data);
-                    }
-                } input.count -= recipe.count;
-                this.container.validateAll();
-                this.data.progress = 0;
+                if(this.data.progress.toFixed(3) >= 1){
+                    for(let i = 0;i < 4;i++){
+                        if(recipe.output[i]) this.setOutputSlot("slotOutput" + i,recipe.output[i].id,recipe.output[i].count,recipe.output[i].data);
+                    } input.count -= recipe.count;
+                    this.container.validateAll();
+                    this.data.progress = 0;
+                }
+            } else {
+                this.deactive();
             }
-        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
+        } else {
+            this.data.progress = 0,this.deactive();
+        }
         
         this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setScale("scaleArrow",parseInt(this.data.progress / 1 * 22) / 22);
@@ -95,8 +102,11 @@ MachineRegistry.registerEUMachine(BlockID.electrolyzer,{
         TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(this.data.progress / 1 * 8 * 10) % 8) + 4:0));
     },
 
-    energyReceive:MachineRegistry.energyReceive,
-    getGuiScreen:function(){return GuiElectrolyzer;}
+    getGuiScreen:function(){
+        return GuiElectrolyzer;
+    },
+
+    energyReceive:MachineRegistry.energyReceive
 });
 TileRenderer.setRotationPlaceFunction(BlockID.electrolyzer);
 StorageInterface.createInterface(BlockID.electrolyzer,{

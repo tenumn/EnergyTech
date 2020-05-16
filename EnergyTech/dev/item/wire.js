@@ -186,7 +186,7 @@ Block.registerDropFunction("wireTungsten",function(coords,id,data){
 });
 
 Callback.addCallback("PreLoaded",function(){
-    Item.addCreativeGroup("ET-Wire",Translation.translate("Wire"),[
+    Item.addCreativeGroup("wire",Translation.translate("Wire"),[
         ItemID.wireTin,
         ItemID.wireCopper,
         ItemID.wireGold,

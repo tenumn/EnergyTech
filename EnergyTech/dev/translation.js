@@ -2,7 +2,6 @@
 Translation.addTranslation("Small Stone",{zh:"石子"});
 Translation.addTranslation("Rubber Tree Log",{zh:"橡胶树原木"});
 Translation.addTranslation("Rubber Tree Leaves",{zh:"橡胶树树叶"});
-Translation.addTranslation("Ruby",{zh:"红宝石"});
 Translation.addTranslation("Slag",{zh:"矿渣"});
 Translation.addTranslation("Resin",{zh:"树脂"});
 Translation.addTranslation("String Mesh",{zh:"线网"});
@@ -12,6 +11,7 @@ Translation.addTranslation("Vacuum Tube",{zh:"真空管",ru:"Вакуумная 
 Translation.addTranslation("Electric Motor" ,{zh:"电动马达",ru:"Электромотор"});
 Translation.addTranslation("Electric Piston",{zh:"电动活塞",ru:"Электрический поршень"});
 Translation.addTranslation("Machine Casing",{zh:"机器外壳"});
+Translation.addTranslation("Blast Furnace Brick",{zh:"高炉砖"});
 
 // Reactor
 Translation.addTranslation("Lithium-6",{zh:"锂-6",ru:"Литий-6"});
@@ -28,6 +28,17 @@ Translation.addTranslation("Reactor Casing",{zh:"反应堆外壳"});
 Translation.addTranslation("Heat Sink",{zh:"散热片",ru:"Радиатор"});
 Translation.addTranslation("Neutron Reflector",{zh:"中子反射板",ru:"Отражатель нейтронов"});
 Translation.addTranslation("Fuel Rod(Uranium)",{zh:"燃料棒(铀)",ru:"Топливный стержень(Уран)"});
+Translation.addTranslation("Dual Fuel Rod(Uranium)",{zh:"双联燃料棒(铀)"});
+Translation.addTranslation("Quad Fuel Rod(Uranium)",{zh:"四联燃料棒(铀)"});
+Translation.addTranslation("Fuel Rod(Depleted Uranium)",{zh:"燃料棒(枯竭铀)"});
+Translation.addTranslation("Dual Fuel Rod(Depleted Uranium)",{zh:"双联燃料棒(枯竭铀)"});
+Translation.addTranslation("Quad Fuel Rod(Depleted Uranium)",{zh:"四联燃料棒(枯竭铀)"});
+Translation.addTranslation("Coolant Cell (Water)",{zh:"冷却单元(水)"});
+Translation.addTranslation("Dual Coolant Cell (Water)",{zh:"双联冷却单元(水)"});
+Translation.addTranslation("Quad Coolant Cell (Water)",{zh:"四联冷却单元(水)"});
+Translation.addTranslation("Coolant Cell (Helium)",{zh:"冷却单元(氦)"});
+Translation.addTranslation("Dual Coolant Cell (Helium)",{zh:"双联冷却单元(氦)"});
+Translation.addTranslation("Quad Coolant Cell (Helium)",{zh:"四联冷却单元(氦)"});
 
 // Item Pipe
 Translation.addTranslation("Item Pipe (Input)",{zh:"物品管道 (输入)"});
@@ -138,6 +149,7 @@ Translation.addTranslation("Lead-Antimony Alloy Dust",{zh:"铅锑合金粉",ru:"
 Translation.addTranslation("Salt Dust",{zh:"盐粉"});
 Translation.addTranslation("Energium Dust",{zh:"能量水晶粉"});
 Translation.addTranslation("Ruby Dust",{zh:"红宝石粉"});
+Translation.addTranslation("Silicon Dust",{zh:"硅粉"});
 
 Translation.addTranslation("Small Pile of Flint Dust",{zh:"小堆燧石粉"});
 Translation.addTranslation("Small Pile of Stone Dust",{zh:"小堆石粉",ru:"Небольшая кучка каменной пыли"});
@@ -163,12 +175,14 @@ Translation.addTranslation("Small Pile of Salt Dust",{zh:"小堆盐粉"});
 Translation.addTranslation("Small Pile of Energium Dust",{zh:"小堆能量水晶粉"});
 Translation.addTranslation("Small Pile of Redstone Dust",{zh:"小堆能量红石粉"});
 Translation.addTranslation("Small Pile of Ruby Dust",{zh:"小堆红宝石粉"});
+Translation.addTranslation("Small Pile of Silicon Dust",{zh:"小堆硅粉"});
 
 // Gear
 Translation.addTranslation("Iron Gear",{zh:"铁齿轮",ru:"Железная шестерня"});
 Translation.addTranslation("Steel Gear",{zh:"钢齿轮",ru:"Стальная шестерня"});
 
 // Ingot
+Translation.addTranslation("Ruby",{zh:"红宝石"});
 Translation.addTranslation("Copper Ingot",{zh:"铜锭",ru:"Медная шестерня"});
 Translation.addTranslation("Tin Ingot",{zh:"锡锭",ru:"Оловянная шестерня"});
 Translation.addTranslation("Lead Ingot",{zh:"铅锭",ru:"Свинцовая шестерня"});
@@ -180,6 +194,7 @@ Translation.addTranslation("Tungsten Ingot",{zh:"钨锭",ru:"Вольфрамо�
 Translation.addTranslation("Uranium Ingot",{zh:"铀锭",ru:"Урановый слиток"});
 Translation.addTranslation("Silver Ingot",{zh:"银锭",ru:"Серебряный слиток"});
 Translation.addTranslation("Aluminium Ingot",{zh:"铝锭",ru:"Алюминиевый слиток"});
+Translation.addTranslation("Silicon Ingot",{zh:"硅锭"});
 Translation.addTranslation("Enete Alloy Ingot",{zh:"恩奈特合金锭"});
 Translation.addTranslation("Lead-Antimony Alloy Ingot",{zh:"铅锑合金锭",ru:"Слиток стибий-свинцового сплава"});
 

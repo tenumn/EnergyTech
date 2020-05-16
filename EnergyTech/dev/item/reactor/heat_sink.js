@@ -3,6 +3,8 @@ IDRegistry.genItemID("heatSink");
 Item.createItem("heatSink","Heat Sink",{name:"heat_sink"});
 
 Callback.addCallback("PreLoaded",function(){
+    Item.addCreativeGroup("reactor",Translation.translate("Reactor"),[ItemID.heatSink]);
+
 	Recipes.addShaped({id:ItemID.heatSink,count:1,data:0},[
         "aba",
         "bcb",
@@ -11,10 +13,15 @@ Callback.addCallback("PreLoaded",function(){
 });
 
 ReactorRegistry.registerPrototype(ItemID.heatSink,{
+    getDurability:function(){
+        return 10000;
+    },
+
     breakDurability:function(side){
         var heat = 0;
         for(let i in side){
             if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 5;
+            if(ReactorRegistry.getType(side[i].id) == "coolant-cell") heat += 10;
         }
         return heat;
     },
@@ -23,6 +30,7 @@ ReactorRegistry.registerPrototype(ItemID.heatSink,{
         var heat = 0;
         for(let i in side){
             if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 5;
+            if(ReactorRegistry.getType(side[i].id) == "coolant-cell") heat += 10;
         }
         return heat;
     },

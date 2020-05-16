@@ -215,25 +215,25 @@ Callback.addCallback("PreLoaded",function(){
     OreVein.registerOreVein("Coal",80,[{id:16,count:64,data:0}],48,80,16,{id:ItemID.tinyCoal,count:1,data:0});
     
     // 铝土矿脉
-    OreVein.registerOreVein("Bauxite",80,[{id:BlockID.oreBauxite,count:64,data:0}],48,96,16,{id:ItemID.oreChunkBauxite,count:1,data:0});
+    OreVein.registerOreVein("Bauxite",80,[{id:BlockID.oreBauxite,count:64,data:0}],48,96,16,{id:ItemID.dustSmallAluminium,count:1,data:0});
     
     // 黝铜矿脉
-    OreVein.registerOreVein("Tetrahedrite",150,[{id:BlockID.oreTetrahedrite,count:48,data:0},{id:BlockID.oreCopper,count:24,data:0}],64,128,30,{id:ItemID.oreChunkTetrahedrite,count:1,data:0});
+    OreVein.registerOreVein("Tetrahedrite",150,[{id:BlockID.oreTetrahedrite,count:48,data:0},{id:BlockID.oreCopper,count:24,data:0}],64,128,30,{id:ItemID.dustSmallTetrahedrite,count:1,data:0});
     
     // 钻石矿脉
     OreVein.registerOreVein("Diamonds",60,[{id:56,count:6,data:0},{id:16,count:64,data:0},{id:BlockID.oreGraphite,count:48,data:0}],0,16,12,{id:ItemID.dustSmallDiamond,count:1,data:0});
     
     // 沥青铀矿脉
-    OreVein.registerOreVein("Pitchblende",40,[{id:BlockID.oreUranium,count:12,data:0}],8,32,8,{id:ItemID.oreChunkUranium,count:1,data:0});
+    OreVein.registerOreVein("Pitchblende",40,[{id:BlockID.oreUranium,count:12,data:0}],8,32,8,{id:ItemID.dustSmallUranium,count:1,data:0});
     
     // 锡石矿脉
-    OreVein.registerOreVein("Cassiterite",170,[{id:BlockID.oreCassiterite,count:24,data:0},{id:BlockID.oreTungsten,count:6,data:0}],32,96,34,{id:ItemID.oreChunkUranium,count:1,data:0});
+    OreVein.registerOreVein("Cassiterite",170,[{id:BlockID.oreCassiterite,count:24,data:0},{id:BlockID.oreTungsten,count:6,data:0}],32,96,34,{id:ItemID.dustSmallTin,count:1,data:0});
     
     // 铁矿脉
-    OreVein.registerOreVein("Iron",120,[{id:15,count:48,data:0}],16,32,24,{id:ItemID.oreChunkIron,count:1,data:0});
+    OreVein.registerOreVein("Iron",120,[{id:15,count:48,data:0}],16,32,24,{id:ItemID.dustSmallIron,count:1,data:0});
     
     // 方铅矿脉
-    OreVein.registerOreVein("Galena",40,[{id:BlockID.oreGalena,count:48,data:0},{id:BlockID.oreSilver,count:12,data:0}],32,64,8,{id:ItemID.oreChunkGalena,count:1,data:0});
+    OreVein.registerOreVein("Galena",40,[{id:BlockID.oreGalena,count:48,data:0},{id:BlockID.oreSilver,count:12,data:0}],32,64,8,{id:ItemID.dustSmallLead,count:1,data:0});
     
     // 岩盐矿脉
     OreVein.registerOreVein("Salt",30,[{id:BlockID.oreSalt,count:48,data:0},{id:BlockID.oreSpodumene,count:64,data:0}],48,64,8,{id:ItemID.dustSmallSalt,count:1,data:0});
@@ -364,15 +364,15 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreBauxite,ItemID.ingotAluminium);
     Recipes.addFurnace(BlockID.oreRuby,ItemID.ruby);
 
-    Tool.setHammerDestroyDrop(BlockID.oreCopper,ItemID.oreChunkCopper,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreTetrahedrite,ItemID.oreChunkTetrahedrite,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreCassiterite,ItemID.oreChunkCassiterite,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreGalena,ItemID.oreChunkGalena,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreSpodumene,ItemID.oreChunkSpodumene,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreTungsten,ItemID.oreChunkTungsten,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreUranium,ItemID.oreChunkUranium,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreSilver,ItemID.oreChunkSilver,4,0);
-    Tool.setHammerDestroyDrop(BlockID.oreBauxite,ItemID.oreChunkBauxite,4,0);
+    Tool.setHammerDestroyDrop(BlockID.oreCopper,ItemID.crushedCopper,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreTetrahedrite,ItemID.crushedTetrahedrite,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreCassiterite,ItemID.crushedCassiterite,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreGalena,ItemID.crushedGalena,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreSpodumene,ItemID.crushedSpodumene,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreTungsten,ItemID.crushedTungsten,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreUranium,ItemID.crushedUranium,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreSilver,ItemID.crushedSilver,1,0);
+    Tool.setHammerDestroyDrop(BlockID.oreBauxite,ItemID.crushedBauxite,1,0);
 
     RecipeRegistry.addBlastFurnaceRecipe({id:BlockID.oreTungsten,data:0},[{id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);
 });

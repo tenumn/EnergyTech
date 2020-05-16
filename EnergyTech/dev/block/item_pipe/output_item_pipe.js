@@ -60,7 +60,7 @@ Renderer.registerPipeOutputRenderModel(BlockID.itemPipeOutput,1,[["input_item_pi
 
 MachineRegistry.setDrop("itemPipeOutput",BlockID.itemPipeOutput);
 Callback.addCallback("PreLoaded",function(){
-	RecipeRegistry.addAssemblyTableRecipe([{id:BlockID.itemPipeTransport,data:0},{id:410,data:0}],{id:BlockID.itemPipeOutput,count:1,data:0});
+	RecipeRegistry.addAssemblyTableRecipe([{id:BlockID.itemPipeTransport,count:1,data:0},{id:410,count:1,data:0}],{id:BlockID.itemPipeOutput,count:1,data:0});
 });
 
 Block.registerPlaceFunction("itemPipeOutput",function(coords,item,block){

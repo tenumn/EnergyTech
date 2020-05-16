@@ -242,16 +242,17 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 		getList:function(id,data,isUsage){
             if(isUsage){
                 let result = RecipeRegistry.getRecipeResult("Centrifuge",[id,data]);
-                return result?[{input:[{id:id,count:1,data:data}],output:result}]:[];
+                return result?[{input:[{id:id,count:result.count,data:data}],output:result.output}]:[];
             }
 
             let item,list = [],recipe = RecipeRegistry.getRecipe("Centrifuge");
             for(let key in recipe){
                 result = recipe[key];
                 for(let i = 0;i <= 4;i++){
-                    if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
+                    output = result.output[i];
+                    if(output && output.id == id && (output.data == data || data == -1)){
                         item = key.split(":");
-                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:result});
+                        list.push({input:[{id:parseInt(item[0]),count:recipe.count,data:parseInt(item[1] || 0)}],output:result.output});
                     }
                 }
             }
@@ -548,14 +549,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                 return result?[{input:[{id:id,count:1,data:data},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:[result]}]:[];
             }
 
-            let item,list = [],recipe = RecipeRegistry.getRecipe("CanningMachine");
+            let list = [],recipe = RecipeRegistry.getRecipe("CanningMachine");
             for(let key in recipe){
-                result = recipe[key];
-                for(let i = 0;i <= 4;i++){
-                    if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
-                        item = key.split(":");
-                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:[result]});
-                    }
+                if(recipe[key] && recipe[key].id == id && (recipe[key].data == data || data == -1)){
+                    let item = key.split(":");
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.cell.id,count:1,data:recipe.cell.data}],output:[recipe[key]]});
                 }
             }
 
@@ -587,23 +585,18 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             if(isUsage){
                 for(let key in recipe){
                     let item = key.split(":");
-                    if(parseInt(item[0]) == id && parseInt(item[1]) == data){
+                    if(parseInt(item[0]) == id && parseInt(item[1]) == data || parseInt(item[2]) == id && parseInt(item[3]) == data){
                         let result = RecipeRegistry.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[result]}]:[];
-                    }
-                    if(parseInt(item[2]) == id && parseInt(item[3]) == data){
-                        let result = RecipeRegistry.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                        return result?[{input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[result]}]:[];
+                        return result?[{input:[{id:parseInt(item[0]),count:result.input[0],data:parseInt(item[1])},{id:parseInt(item[2]),count:result.input[1],data:parseInt(item[3])}],output:[result.output]}]:[];
                     }
                 }
             }
 
-            for(let key in recipe){
-                result = recipe[key];
+            for(let key in recipe.output){
+                result = recipe.output[key];
                 if(result.id == id && result.data == data){
                     let item = key.split(":");
-                    let result = RecipeRegistry.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]);
-                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[result]});
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[RecipeRegistry.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]).output]});
                 }
             }
 

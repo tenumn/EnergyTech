@@ -127,17 +127,17 @@ Callback.addCallback("PreLoaded",function(){
         {id:ItemID.crushedBauxite,minCount:1,maxCount:1,data:0,random:16}
     ]);
 
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreCopper,data:0},{id:ItemID.crushedCopper,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreCassiterite,data:0},{id:ItemID.crushedCassiterite,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreGalena,data:0},{id:ItemID.crushedGalena,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:15,data:0},{id:ItemID.crushedIron,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:14,data:0},{id:ItemID.crushedGold,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreSpodumene,data:0},{id:ItemID.crushedSpodumene,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreTungsten,data:0},{id:ItemID.crushedTungsten,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreUranium,data:0},{id:ItemID.crushedUranium,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreSilver,data:0},{id:ItemID.crushedSilver,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreTetrahedrite,data:0},{id:ItemID.crushedTetrahedrite,count:2,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:BlockID.oreBauxite,data:0},{id:ItemID.crushedBauxite,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreCopper,data:0},{id:ItemID.crushedCopper,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreCassiterite,data:0},{id:ItemID.crushedCassiterite,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreGalena,data:0},{id:ItemID.crushedGalena,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:15,data:0},{id:ItemID.crushedIron,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:14,data:0},{id:ItemID.crushedGold,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreSpodumene,data:0},{id:ItemID.crushedSpodumene,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreTungsten,data:0},{id:ItemID.crushedTungsten,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreUranium,data:0},{id:ItemID.crushedUranium,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreSilver,data:0},{id:ItemID.crushedSilver,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreTetrahedrite,data:0},{id:ItemID.crushedTetrahedrite,count:2,data:0});
+    RecipeRegistry.addCrusherRecipe({id:BlockID.oreBauxite,data:0},{id:ItemID.crushedBauxite,count:2,data:0});
 
     var hammer = Tool.getAllTool("Hammer");
     for(let i in hammer){
@@ -169,27 +169,27 @@ Callback.addCallback("PreLoaded",function(){
     RecipeRegistry.addOreWasherRecipe({id:ItemID.crushedTetrahedrite,data:0},[{id:ItemID.crushedPurifiedTetrahedrite,count:1,data:0},{id:ItemID.dustSmallAntimony,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     RecipeRegistry.addOreWasherRecipe({id:ItemID.crushedBauxite,data:0},[{id:ItemID.crushedPurifiedBauxite,count:1,data:0},{id:ItemID.dustSmallAntimony,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedCopper,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedCassiterite,data:0},[{id:ItemID.dustTin,count:1,data:0},{id:ItemID.dustSmallIron,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedGalena,data:0},[{id:ItemID.dustLead,count:1,data:0},{id:ItemID.dustSmallCopper,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedIron,data:0},[{id:ItemID.dustIron,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedGold,data:0},[{id:ItemID.dustGold,count:1,data:0},{id:ItemID.dustSmallSilver,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedSpodumene,data:0},[{id:ItemID.smallLithium6,count:1,data:0},{id:ItemID.lithium7,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedTungsten,data:0},[{id:ItemID.dustTungsten,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedUranium,data:0},[{id:ItemID.smallUranium235,count:1,data:0},{id:ItemID.uranium238,count:4,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedSilver,data:0},[{id:ItemID.dustSilver,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedTetrahedrite,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallAntimony,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedBauxite,data:0},[{id:ItemID.dustAluminium,count:1,data:0},{id:ItemID.dustSmallAluminium,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedCopper,count:1,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedCassiterite,count:1,data:0},[{id:ItemID.dustTin,count:1,data:0},{id:ItemID.dustSmallIron,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedGalena,count:1,data:0},[{id:ItemID.dustLead,count:1,data:0},{id:ItemID.dustSmallCopper,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedIron,count:1,data:0},[{id:ItemID.dustIron,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedGold,count:1,data:0},[{id:ItemID.dustGold,count:1,data:0},{id:ItemID.dustSmallSilver,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedSpodumene,count:1,data:0},[{id:ItemID.smallLithium6,count:1,data:0},{id:ItemID.lithium7,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedTungsten,count:1,data:0},[{id:ItemID.dustTungsten,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedUranium,count:1,data:0},[{id:ItemID.smallUranium235,count:1,data:0},{id:ItemID.uranium238,count:4,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedSilver,count:1,data:0},[{id:ItemID.dustSilver,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedTetrahedrite,count:1,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallAntimony,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedBauxite,count:1,data:0},[{id:ItemID.dustAluminium,count:1,data:0},{id:ItemID.dustSmallAluminium,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
 
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedCopper,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedCassiterite,data:0},[{id:ItemID.dustTin,count:1,data:0},{id:ItemID.dustSmallIron,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedGalena,data:0},[{id:ItemID.dustLead,count:1,data:0},{id:ItemID.dustSmallCopper,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedIron,data:0},[{id:ItemID.dustIron,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedGold,data:0},[{id:ItemID.dustGold,count:1,data:0},{id:ItemID.dustSmallSilver,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedSpodumene,data:0},[{id:ItemID.smallLithium6,count:2,data:0},{id:ItemID.lithium7,count:2,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedTungsten,data:0},[{id:ItemID.dustTungsten,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedUranium,data:0},[{id:ItemID.smallUranium235,count:2,data:0},{id:ItemID.uranium238,count:5,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedSilver,data:0},[{id:ItemID.dustSilver,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedTetrahedrite,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallAntimony ,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedBauxite,data:0},[{id:ItemID.dustAluminium,count:1,data:0},{id:ItemID.dustSmallAluminium,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedCopper,count:1,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedCassiterite,count:1,data:0},[{id:ItemID.dustTin,count:1,data:0},{id:ItemID.dustSmallIron,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedGalena,count:1,data:0},[{id:ItemID.dustLead,count:1,data:0},{id:ItemID.dustSmallCopper,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedIron,count:1,data:0},[{id:ItemID.dustIron,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedGold,count:1,data:0},[{id:ItemID.dustGold,count:1,data:0},{id:ItemID.dustSmallSilver,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedSpodumene,count:1,data:0},[{id:ItemID.smallLithium6,count:2,data:0},{id:ItemID.lithium7,count:2,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedTungsten,count:1,data:0},[{id:ItemID.dustTungsten,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedUranium,count:1,data:0},[{id:ItemID.smallUranium235,count:2,data:0},{id:ItemID.uranium238,count:5,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedSilver,count:1,data:0},[{id:ItemID.dustSilver,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedTetrahedrite,count:1,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallAntimony ,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedBauxite,count:1,data:0},[{id:ItemID.dustAluminium,count:1,data:0},{id:ItemID.dustSmallAluminium,count:1,data:0}]);
 });

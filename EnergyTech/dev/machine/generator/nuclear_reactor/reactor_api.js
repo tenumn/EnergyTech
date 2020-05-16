@@ -1,38 +1,42 @@
+function Reactor(){
+    this.isDestroy = true;
+
+    this.getHeat = function(side,slot,coords){
+        return 0;
+    }
+
+    this.getEnergyOutput = function(side,slot,coords){
+        return 0;
+    }
+    
+    this.getCooling = function(side,slot,coords){
+        return 0;
+    }
+
+    this.getDurability = function(){
+        return 10000;
+    }
+
+    this.breakDurability = function(side,slot,coords){
+        return 1;
+    }
+
+    this.destroy = function(side,slot,coords){
+
+    }
+}
+
 var ReactorRegistry = {
 	prototypes:{},
 
     registerPrototype:function(id,state){
-        state.getHeat = state.getHeat || function(side){
-            return 0;
+        if(!this.isPrototype(id)){
+            var reactor = new Reactor();
+            for(let i in state) reactor[i] = state[i];
+            this.prototypes[id] = reactor;
+            
+            Item.setMaxDamage(id,state.getDurability());
         }
-        
-        state.getEnergyOutput = state.getEnergyOutput || function(side){
-            return 0;
-        }
-
-        state.getHeatLimit = state.getHeatLimit || function(side){
-            return 0;
-        }
-        
-        state.getCooling = state.getCooling || function(side){
-            return 0;
-        }
-
-        // Durability
-        state.getDurability = state.getDurability || function(){
-            return 16384;
-        }
-
-        state.breakDurability = state.breakDurability || function(side){
-            return 1;
-        }
-
-        // Destroy
-        state.isDestroy = state.isDestroy || true;
-        state.destroy = state.destroy || function(side,slot){}
-
-        this.prototypes[id] = state;
-        Item.setMaxDamage(id,state.getDurability());
     },
 
     isPrototype:function(id){
@@ -40,7 +44,7 @@ var ReactorRegistry = {
     },
 
     getPrototype:function(id){
-        return this.isPrototype(id)?this.prototypes[id]:false;
+        if(this.isPrototype(id)) return this.prototypes[id];
     },
 
     isValid:function(id,count,data){

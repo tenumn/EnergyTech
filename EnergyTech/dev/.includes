@@ -70,16 +70,16 @@ item/wire.js
 
 item/armor/powered.js
 
-
 item/battery/lithium_battery.js
 item/battery/enete_battery.js
 item/battery/energy_crystal.js
 item/battery/lapotron_crystal.js
 
-
-item/module/fuel_rod_uranium.js
-item/module/heat_sink.js
-item/module/neutron_reflector.js
+item/reactor/coolant_cell_helium.js
+item/reactor/coolant_cell_water.js
+item/reactor/fuel_rod_uranium.js
+item/reactor/heat_sink.js
+item/reactor/neutron_reflector.js
 
 
 item/resource/crushed.js
@@ -107,7 +107,6 @@ block/coil.js
 block/mesh.js
 block/ore.js
 block/scaffold.js
-block/small_stone.js
 block/stone.js
 
 

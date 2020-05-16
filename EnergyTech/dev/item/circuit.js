@@ -20,10 +20,10 @@ UpgradeRegistry.registerUpgrade(ItemID.circuitEnergyStorage,"energyStorage",func
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("circuit",Translation.translate("Circuit"),[ItemID.circuitEnergyStorage]);
 
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.lithiumBattery,data:0}],{id:ItemID.circuitEnergyStorage,count:1,data:0});
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.eneteBattery,data:0}],{id:ItemID.circuitEnergyStorage,count:2,data:0});
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.energyCrystal,data:0}],{id:ItemID.circuitEnergyStorage,count:3,data:0});
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.lapotronCrystal,data:0}],{id:ItemID.circuitEnergyStorage,count:4,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:ItemID.lithiumBattery,count:1,data:0}],{id:ItemID.circuitEnergyStorage,count:1,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:ItemID.eneteBattery,count:1,data:0}],{id:ItemID.circuitEnergyStorage,count:2,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:ItemID.energyCrystal,count:1,data:0}],{id:ItemID.circuitEnergyStorage,count:3,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:ItemID.lapotronCrystal,count:1,data:0}],{id:ItemID.circuitEnergyStorage,count:4,data:0});
 });
 
 // [电路板(消音升级)]Circuit (Muffler Upgrade)
@@ -37,7 +37,7 @@ UpgradeRegistry.registerUpgrade(ItemID.circuitMuffler,"muffler",function(item,ma
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("circuit",Translation.translate("Circuit"),[ItemID.circuitMuffler]);
     
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:35,data:-1}],{id:ItemID.circuitMuffler,count:1,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:35,count:1,data:-1}],{id:ItemID.circuitMuffler,count:1,data:0});
 });
 
 // [电路板(超频升级)]Circuit(Overclocker Upgrade)
@@ -54,7 +54,7 @@ UpgradeRegistry.registerUpgrade(ItemID.circuitOverclocker,"overclocker",function
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("circuit",Translation.translate("Circuit"),[ItemID.circuitOverclocker]);
 
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:ItemID.cellWater,data:0}],{id:ItemID.circuitOverclocker,count:1,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:ItemID.cellWater,count:1,data:0}],{id:ItemID.circuitOverclocker,count:1,data:0});
 });
 
 // [电路板(高压升级)]Circuit(Transformer Upgrade)
@@ -68,8 +68,8 @@ UpgradeRegistry.registerUpgrade(ItemID.circuitTransformer,"transformer",function
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("circuit",Translation.translate("Circuit"),[ItemID.circuitTransformer  ]);
     
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:BlockID.transformerLV,data:-1}],{id:ItemID.circuitTransformer,count:1,data:0});
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:BlockID.transformerMV,data:-1}],{id:ItemID.circuitTransformer,count:2,data:0});
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:BlockID.transformerHV,data:-1}],{id:ItemID.circuitTransformer,count:3,data:0});
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,data:0},{id:BlockID.transformerEV,data:-1}],{id:ItemID.circuitTransformer,count:4,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:BlockID.transformerLV,count:1,data:-1}],{id:ItemID.circuitTransformer,count:1,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:BlockID.transformerMV,count:1,data:-1}],{id:ItemID.circuitTransformer,count:2,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:BlockID.transformerHV,count:1,data:-1}],{id:ItemID.circuitTransformer,count:3,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:BlockID.transformerEV,count:1,data:-1}],{id:ItemID.circuitTransformer,count:4,data:0});
 });

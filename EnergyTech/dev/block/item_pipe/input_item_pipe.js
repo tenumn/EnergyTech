@@ -17,7 +17,7 @@ ICRender.addGroupFor(BlockID.itemPipeInput,[
 
 MachineRegistry.setDrop("itemPipeInput",BlockID.itemPipeInput);
 Callback.addCallback("PreLoaded",function(){
-	RecipeRegistry.addAssemblyTableRecipe([{id:BlockID.itemPipeTransport,data:0},{id:54,data:0}],{id:BlockID.itemPipeInput,count:1,data:0});
+	RecipeRegistry.addAssemblyTableRecipe([{id:BlockID.itemPipeTransport,count:1,data:0},{id:54,count:1,data:0}],{id:BlockID.itemPipeInput,count:1,data:0});
 });
 
 Block.registerPlaceFunction("itemPipeInput",function(coords,item,block){
