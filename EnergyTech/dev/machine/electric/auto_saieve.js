@@ -95,11 +95,10 @@ MachineRegistry.registerEUMachine(BlockID.autoSaieve,{
             this.data.energy -= this.data.energy_consumption;
             this.data.progress += 1 / this.data.work_time;
             if(this.data.progress.toFixed(3) >= 1){
-                input.count--;
                 var output = recipe[Math.floor(Math.random() * recipe.length)];
                 if(Math.random() * 25 <= output.random){
                     this.setOutputSlot(output.id,random(output.minCount,output.maxCount),output.data);
-                }
+                } input.count--;
                 this.container.validateAll();
                 this.data.progress = 0;
             }

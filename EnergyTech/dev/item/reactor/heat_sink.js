@@ -20,8 +20,8 @@ ReactorRegistry.registerPrototype(ItemID.heatSink,{
     breakDurability:function(side){
         var heat = 0;
         for(let i in side){
-            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 5;
-            if(ReactorRegistry.getType(side[i].id) == "coolant-cell") heat += 10;
+            var type = ReactorRegistry.getType(side[i].id);
+            if(type == "fuel-rod") heat += 5;
         }
         return heat;
     },
@@ -29,8 +29,8 @@ ReactorRegistry.registerPrototype(ItemID.heatSink,{
     getCooling:function(side){
         var heat = 0;
         for(let i in side){
-            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 5;
-            if(ReactorRegistry.getType(side[i].id) == "coolant-cell") heat += 10;
+            var type = ReactorRegistry.getType(side[i].id);
+            if(type == "fuel-rod") heat += 5;
         }
         return heat;
     },

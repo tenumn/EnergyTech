@@ -21,7 +21,7 @@ MachineRegistry.registerPrototype(BlockID.glassTank,{
             var stored = this.liquidStorage.getLiquidStored();
             var render = new Render();
             render.setPart("body",[{type:"box",uv:{x:0,y:0},coords:{x:0,y:-this.data.height / 2,z:0},size:{x:13,y:this.data.height * 0.9375,z:13}}],{});
-            this.anim.describe({skin:"models/liquid/" + stored + ".png",render:render.getID()});
+            this.anim.describe({skin:"models/liquid/" + "liquid_" + stored + ".png",render:render.getID()});
             this.anim.load();
         }
     },

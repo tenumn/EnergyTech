@@ -80,9 +80,8 @@ MachineRegistry.registerEUMachine(BlockID.distillery,{
             
             if(this.data.progress.toFixed(3) >= 1){
                 for(let i = 0;i < 4;i++){
-                    if(recipe.output[i]){
-                        this.setOutputSlot("slotOutput" + i,recipe.output[i].id,recipe.output[i].count,recipe.output[i].data);
-                    }
+                    var output = recipe.output[i];
+                    if(output) this.setOutputSlot("slotOutput" + i,output.id,output.count,output.data);
                 } input.count -= recipe.count;
                 this.container.validateAll();
                 this.data.progress = 0;

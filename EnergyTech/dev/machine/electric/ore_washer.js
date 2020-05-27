@@ -4,19 +4,13 @@ Block.createBlock("oreWasher",[
     {name:"Ore Washer",texture:[["machine_bottom",1],["oreWasherTop",0],["machine_side",1],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]],inCreative:true}
 ],"machine");
 TileRenderer.setStandartModel(BlockID.oreWasher,[["machine_bottom",1],["oreWasherTop",0],["machine_side",1],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,0 ,[["machine_bottom",1],["oreWasherTop",0],["machine_side",1],["oreWasher",0 ],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,4 ,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",0 ],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,8 ,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",1 ],["oreWasherSide",0],["oreWasherSide",0]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,12,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",2 ],["oreWasherSide",1],["oreWasherSide",1]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,16,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",3 ],["oreWasherSide",1],["oreWasherSide",1]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,20,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",4 ],["oreWasherSide",2],["oreWasherSide",2]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,24,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",5 ],["oreWasherSide",2],["oreWasherSide",2]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,28,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",6 ],["oreWasherSide",3],["oreWasherSide",3]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,32,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",7 ],["oreWasherSide",3],["oreWasherSide",3]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,36,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",8 ],["oreWasherSide",4],["oreWasherSide",4]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,40,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",9 ],["oreWasherSide",4],["oreWasherSide",4]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,44,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",10],["oreWasherSide",5],["oreWasherSide",5]]);
-TileRenderer.registerRotationModel(BlockID.oreWasher,48,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",11],["oreWasherSide",5],["oreWasherSide",5]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,0 ,[["machine_bottom",1],["oreWasherTop",0],["machine_side",1],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,4 ,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",0],["oreWasherSide",0],["oreWasherSide",0]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,8 ,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",1],["oreWasherSide",1],["oreWasherSide",0]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,12,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",2],["oreWasherSide",2],["oreWasherSide",1]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,16,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",3],["oreWasherSide",3],["oreWasherSide",1]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,20,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",4],["oreWasherSide",4],["oreWasherSide",2]]);
+TileRenderer.registerRotationModel(BlockID.oreWasher,24,[["machine_bottom",1],["oreWasherTop",1],["machine_side",1],["oreWasher",5],["oreWasherSide",5],["oreWasherSide",2]]);
 
 MachineRegistry.setDrop("oreWasher",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -24,7 +18,7 @@ Callback.addCallback("PreLoaded",function(){
         "aaa",
         "bcb",
         "ded"
-    ],["a",ItemID.plateIron,0,"b",ItemID.cellWater,0,"c",BlockID.machineCasing,1,"d",ItemID.electricMotor,0,"e",ItemID.circuit,0]);
+    ],["a",ItemID.plateIron,0,"b",ItemID.liquidCellWater,0,"c",BlockID.machineCasing,1,"d",ItemID.electricMotor,0,"e",ItemID.circuit,0]);
 });
 
 var GuiOreWasher = new UI.StandartWindow({
@@ -92,17 +86,13 @@ MachineRegistry.registerEUMachine(BlockID.oreWasher,{
         StorageInterface.checkHoppers(this);
         
         var liquid1 = this.container.getSlot("slotLiquid1");
-		var liquid2 = this.container.getSlot("slotLiquid2");
-		var empty = Liquid.getEmptyItem(liquid1.id,liquid1.data);
-		if(empty && empty.liquid == "water"){
-			if(this.liquidStorage.getAmount("water") < 8 && (liquid2.id == empty.id && liquid2.data == empty.data && liquid2.count < Item.getMaxStack(empty.id) || liquid2.id == 0)){
-				this.liquidStorage.addLiquid("water",1);
-				liquid1.count--;
-				liquid2.id = empty.id;
-				liquid2.data = empty.data;
-				liquid2.count++;
-				this.container.validateAll();
-			}
+        var empty = Liquid.getEmptyItem(liquid1.id,liquid1.data);
+        var storage = Liquid.getItemStorage(liquid1.id,liquid1.data);
+
+		if(empty && empty.liquid == "water" && this.liquidStorage.getAmount("water") + storage < 8){
+            this.liquidStorage.addLiquid("water",storage);
+            this.setOutputSlot("slotLiquid2",empty.id,1,empty.data),liquid1.count--;
+            this.container.validateAll();
 		}
 
         var input = this.container.getSlot("slotInput");
@@ -132,7 +122,7 @@ MachineRegistry.registerEUMachine(BlockID.oreWasher,{
     },
 
     renderer:function(){
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (count - parseInt(this.data.progress / 1 * 12 * 10)%12) + 4:0));
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (count - parseInt(this.data.progress / 1 * 6 * 10)%6) + 4:0));
     },
 
     getGuiScreen:function(){

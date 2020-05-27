@@ -9,7 +9,7 @@ Callback.addCallback("PreLoaded",function(){
         " a ",
         "aba",
         " a "
-    ],["a",ItemID.plateTin,0,"b",ItemID.cellWater,0]);
+    ],["a",ItemID.plateTin,0,"b",ItemID.liquidCellWater,0]);
 });
 
 ReactorRegistry.registerPrototype(ItemID.coolantCellWater,{

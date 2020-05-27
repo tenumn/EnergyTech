@@ -41,6 +41,7 @@ machine/energy_storage/enete_battery_box.js
 machine/electric/assembly_table.js
 machine/electric/autoclave.js
 machine/electric/auto_saieve.js
+machine/electric/bending_machine.js
 machine/electric/blast_furnace.js
 machine/electric/canning_machine.js
 machine/electric/centrifuge.js
@@ -65,6 +66,7 @@ machine/cover/cover_progress_display.js
 item/cell.js
 item/circuit.js
 item/drill.js
+item/glass_tube.js
 item/wire.js
 
 
@@ -75,6 +77,7 @@ item/battery/enete_battery.js
 item/battery/energy_crystal.js
 item/battery/lapotron_crystal.js
 
+item/reactor/coolant_cell_ghast_tear.js
 item/reactor/coolant_cell_helium.js
 item/reactor/coolant_cell_water.js
 item/reactor/fuel_rod_uranium.js

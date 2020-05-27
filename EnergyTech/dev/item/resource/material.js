@@ -157,9 +157,6 @@ Callback.addCallback("PreLoaded",function(){
 
     Recipes.addShapeless({id:ItemID.smallUranium238,count:9,data:0},[{id:ItemID.uranium238,data:0}]);
     Recipes.addShaped({id:ItemID.uranium238,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.smallUranium238,0]);
-
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustLithium,count:1,data:0},[{id:ItemID.lithium7,count:1,data:0},{id:ItemID.smallLithium6,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustUranium,count:1,data:0},[{id:ItemID.uranium238,count:4,data:0},{id:ItemID.smallUranium235,count:1,data:0}]);
 });
 
 // 贫化浓缩铀

@@ -88,6 +88,7 @@ MachineRegistry.registerEUMachine(BlockID.assemblyTable,{
         if(recipe && input1.count >= recipe.input[0] && input2.count >= recipe.input[1]){if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
+                
                 if(this.data.progress.toFixed(3) >= 1){
                     this.setOutputSlot("slotOutput",recipe.output.id,recipe.output.count,recipe.output.data);
                     input1.count -= recipe.input[0];

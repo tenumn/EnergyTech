@@ -61,7 +61,8 @@ var MachineRegistry = {
         
         state.setOutputSlot = state.setOutputSlot || function(name,id,count,data){
             var slot = this.container.getSlot(name);
-            if(slot.id == 0 || slot.id == id && slot.data == data && slot.count < 64){
+            
+            if(slot.id == 0 || slot.id == id && slot.data == data && slot.count < Item.getMaxStack(id)){
                 slot.id = id,slot.data = data,slot.count += count; 
                 this.container.validateSlot(name);
             } else {
@@ -236,10 +237,7 @@ var MachineRegistry = {
             for(let key in this.wireMap){
                 var coords = key.split(':'),x = Math.floor(coords[0]),y = Math.floor(coords[1]),z = Math.floor(coords[2]);
                 World.setBlock(x,y,z,0);
-                for(let i = 0;i < 32;i++){
-                    var px = x + Math.random(),pz = z + Math.random(),py = y + Math.random();
-                    Particles.addFarParticle(ParticleType.smoke,px,py,pz,0,0.01,0);
-                }
+                for(let i = 0;i < 32;i++) Particles.addFarParticle(ParticleType.smoke,x + Math.random(),z + Math.random(),y + Math.random(),0,0.01,0);
             }
             EnergyNetBuilder.removeNet(this);
         });

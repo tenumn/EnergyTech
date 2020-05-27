@@ -43,7 +43,10 @@ var GuiLithiumBatteryBox = new UI.StandartWindow({
 });
 
 MachineRegistry.registerEUEnergyStorage(BlockID.lithiumBatteryBox,{
-    defaultValues:{tier:1,energy_storage:65536},
+    defaultValues:{
+        tier:1,
+        energy_storage:65536
+    },
 
     tick:function(){
         this.renderer();
@@ -55,8 +58,19 @@ MachineRegistry.registerEUEnergyStorage(BlockID.lithiumBatteryBox,{
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
     
-    getGuiScreen:function(){return GuiLithiumBatteryBox;},
-    canReceiveEnergy:function(side){return side == BlockSide.UP;},
-    canExtractEnergy:function(side){return side == BlockSide.DOWN;},
-    renderer:function(){TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,parseInt(this.data.energy / this.getEnergyStorage() * 8));}
+    getGuiScreen:function(){
+        return GuiLithiumBatteryBox;
+    },
+
+    canReceiveEnergy:function(side){
+        return side == BlockSide.UP;
+    },
+
+    canExtractEnergy:function(side){
+        return side == BlockSide.DOWN;
+    },
+
+    renderer:function(){
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,parseInt(this.data.energy / this.getEnergyStorage() * 8));
+    }
 });

@@ -93,8 +93,8 @@ MachineRegistry.registerEUMachine(BlockID.electrolyzer,{
             this.data.progress = 0,this.deactive();
         }
         
-        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setScale("scaleArrow",parseInt(this.data.progress / 1 * 22) / 22);
+        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
 

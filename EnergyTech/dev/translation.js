@@ -52,14 +52,11 @@ Translation.addTranslation("Lead Block",{zh:"铅块",ru:"Свинцовый бл
 Translation.addTranslation("Wrought Iron Block",{zh:"锻铁块",ru:"Блок кованого железа"});
 Translation.addTranslation("Steel Block",{zh:"钢块",ru:"Стальной блок"});
 Translation.addTranslation("Antimony Block",{zh:"锑块",ru:"Блок сурьмы"});
-Translation.addTranslation("Lithium Block",{zh:"锂块",ru:"Литиевый блок"});
 Translation.addTranslation("Carbon Block",{zh:"碳块",ru:"Графитовый блок"});
 Translation.addTranslation("Tungsten Block",{zh:"钨块",ru:"Вольфрамовый блок"});
-Translation.addTranslation("Uranium Block",{zh:"铀块",ru:"Урановый блок"});
 Translation.addTranslation("Silver Block",{zh:"银块",ru:"Серебряный блок"});
 Translation.addTranslation("Aluminium Block",{zh:"铝块",ru:"Алюминиевый блок"});
 Translation.addTranslation("Lead-Antimony Alloy Block",{zh:"铅锑合金块",ru:"Блок стибий-свинцового сплава"});
-
 
 // Glass Tank
 Translation.addTranslation("Glass Tank",{zh:"玻璃储罐",ru:"Стеклянный бак"});
@@ -189,9 +186,7 @@ Translation.addTranslation("Lead Ingot",{zh:"铅锭",ru:"Свинцовая ше
 Translation.addTranslation("Wrought Iron Ingot",{zh:"锻铁锭",ru:"Шестерня из кованого железа"});
 Translation.addTranslation("Steel Ingot",{zh:"钢锭",ru:"Стальной слиток"});
 Translation.addTranslation("Antimony Ingot",{zh:"锑锭",ru:"Сурьмяный слиток"});
-Translation.addTranslation("Lithium Ingot",{zh:"锂锭",ru:"Литиевый слиток"});
 Translation.addTranslation("Tungsten Ingot",{zh:"钨锭",ru:"Вольфрамовый слиток"});
-Translation.addTranslation("Uranium Ingot",{zh:"铀锭",ru:"Урановый слиток"});
 Translation.addTranslation("Silver Ingot",{zh:"银锭",ru:"Серебряный слиток"});
 Translation.addTranslation("Aluminium Ingot",{zh:"铝锭",ru:"Алюминиевый слиток"});
 Translation.addTranslation("Silicon Ingot",{zh:"硅锭"});
@@ -264,6 +259,24 @@ Translation.addTranslation("Liquid Cell (Helium)",{zh:"液体单元 (氦)"});
 Translation.addTranslation("Liquid Cell (Helium-3)",{zh:"液体单元 (氦-3)"});
 Translation.addTranslation("Liquid Cell (Heavy Water)",{zh:"液体单元 (重水)"});
 Translation.addTranslation("Liquid Cell (Distilled Water)",{zh:"液体单元 (蒸馏水)"});
+Translation.addTranslation("Liquid Cell (Plasma Helium)",{zh:"液体单元 (等离子氦)"});
+
+// Glass Tube
+Translation.addTranslation("Glass Tube (Empty)",{zh:"试管 (空)"});
+Translation.addTranslation("Glass Tube (Steam)",{zh:"试管 (蒸汽)"});
+Translation.addTranslation("Glass Tube (Water)",{zh:"试管 (水)"});
+Translation.addTranslation("Glass Tube (Lava)",{zh:"试管 (岩浆)"});
+Translation.addTranslation("Glass Tube (Uranium-235)",{zh:"试管 (铀-235)"});
+Translation.addTranslation("Glass Tube (Uranium-238)",{zh:"试管 (铀-238)"});
+Translation.addTranslation("Glass Tube (Lithium-6)",{zh:"试管 (锂-6)"});
+Translation.addTranslation("Glass Tube (Lithium-7)",{zh:"试管 (锂-7)"});
+Translation.addTranslation("Glass Tube (Tritium)",{zh:"试管 (氚)"});
+Translation.addTranslation("Glass Tube (Deuterium)",{zh:"试管 (氘)"});
+Translation.addTranslation("Glass Tube (Helium)",{zh:"试管 (氦)"});
+Translation.addTranslation("Glass Tube (Helium-3)",{zh:"试管 (氦-3)"});
+Translation.addTranslation("Glass Tube (Heavy Water)",{zh:"试管 (重水)"});
+Translation.addTranslation("Glass Tube (Distilled Water)",{zh:"试管 (蒸馏水)"});
+Translation.addTranslation("Glass Tube (Plasma Helium)",{zh:"试管 (等离子氦)"});
 
 // Coil
 Translation.addTranslation("Tin Coil",{zh:"锡线圈",ru:"Оловянная катушка"});

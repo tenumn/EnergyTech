@@ -9,12 +9,20 @@ Callback.addCallback("PreLoaded",function(){
         " a ",
         "aba",
         " a "
-    ],["a",ItemID.plateTin,0,"b",ItemID.cellHelium,0]);
+    ],["a",ItemID.plateTin,0,"b",ItemID.liquidCellHelium,0]);
 });
 
 ReactorRegistry.registerPrototype(ItemID.coolantCellHelium,{
     getDurability:function(){
         return 40000;
+    },
+
+    getHeat:function(side){
+        var heat = 10;
+        for(let i in side){
+            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 10;
+        }
+        return heat;
     },
 
     breakDurability:function(side){
@@ -51,6 +59,14 @@ Callback.addCallback("PreLoaded",function(){
 ReactorRegistry.registerPrototype(ItemID.coolantCellDualHelium,{
     getDurability:function(){
         return 80000;
+    },
+
+    getHeat:function(side){
+        var heat = 20;
+        for(let i in side){
+            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 20;
+        }
+        return heat;
     },
 
     breakDurability:function(side){
@@ -95,6 +111,14 @@ Callback.addCallback("PreLoaded",function(){
 ReactorRegistry.registerPrototype(ItemID.coolantCellQuadHelium,{
     getDurability:function(){
         return 160000;
+    },
+
+    getHeat:function(side){
+        var heat = 40;
+        for(let i in side){
+            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 40;
+        }
+        return heat;
     },
 
     breakDurability:function(side){

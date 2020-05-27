@@ -48,7 +48,10 @@ var GuiEneteBatteryBox = new UI.StandartWindow({
 });
 
 MachineRegistry.registerEUEnergyStorage(BlockID.eneteBatteryBox,{
-    defaultValues:{tier:2,energy_storage:589824},
+    defaultValues:{
+        tier:2,
+        energy_storage:589824
+    },
 
     tick:function(){
         this.data.energy -= ChargeItemRegistry.addEnergyTo(this.container.getSlot("slotBatteryInput"),"Eu",this.data.energy,2);
@@ -58,5 +61,7 @@ MachineRegistry.registerEUEnergyStorage(BlockID.eneteBatteryBox,{
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
     
-    getGuiScreen:function(){return GuiEneteBatteryBox;}
+    getGuiScreen:function(){
+        return GuiEneteBatteryBox;
+    }
 });

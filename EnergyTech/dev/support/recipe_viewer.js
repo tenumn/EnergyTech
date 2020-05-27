@@ -93,15 +93,15 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 		getList:function(id,data,isUsage){
             if(isUsage){
                 let result = RecipeRegistry.getRecipeResult("Compressor",[id,data]);
-                return result?[{input:[{id:id,count:1,data:data}],output:[result]}]:[];
+                return result?[{input:[{id:id,count:result.count,data:data}],output:[result.output]}]:[];
             }
 
             let item,list = [],recipe = RecipeRegistry.getRecipe("Compressor");
             for(let key in recipe){
-                result = recipe[key];
+                result = recipe[key].output;
                 if(result.id == id && (result.data == data || data == -1)){
                     item = key.split(":");
-                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)}],output:[result]});
+                    list.push({input:[{id:parseInt(item[0]),count:recipe[key].count,data:parseInt(item[1] || 0)}],output:[result]});
                 }
             }
 
@@ -247,12 +247,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 
             let item,list = [],recipe = RecipeRegistry.getRecipe("Centrifuge");
             for(let key in recipe){
-                result = recipe[key];
-                for(let i = 0;i <= 4;i++){
-                    output = result.output[i];
-                    if(output && output.id == id && (output.data == data || data == -1)){
+                result = recipe[key].output;
+                for(let i in result){
+                    if(result[i].id == id && (result[i].data == data || data == -1)){
                         item = key.split(":");
-                        list.push({input:[{id:parseInt(item[0]),count:recipe.count,data:parseInt(item[1] || 0)}],output:result.output});
+                        list.push({input:[{id:parseInt(item[0]),count:recipe[key].count,data:parseInt(item[1] || 0)}],output:result});
                     }
                 }
             }
@@ -324,16 +323,16 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
 		getList:function(id,data,isUsage){
             if(isUsage){
                 let result = RecipeRegistry.getRecipeResult("FarmingStation",[id,data]);
-                return result?[{input:[{id:id,count:1,data:data},{id:recipe.dirt.id,count:1,data:recipe.dirt.data}],output:result.output}]:[];
+                return result?[{input:[{id:id,count:1,data:data},{id:result.dirt.id,count:1,data:result.dirt.data}],output:result.output}]:[];
             }
 
-            let item,list = [],recipe = RecipeRegistry.getRecipe("FarmingStation");
-            for(let key in recipe.output){
-                result = recipe.output[key];
-                for(let i = 0;i <= 4;i++){
-                    if(result[i] && result[i].id == id && (result[i].data == data || data == -1)){
-                        item = key.split(":");
-                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe.dirt.id,count:1,data:recipe.dirt.data}],output:result});
+            let list = [],recipe = RecipeRegistry.getRecipe("FarmingStation");
+            for(let key in recipe){
+                result = recipe[key].output;
+                for(let i in result){
+                    if(result[i].id == id && (result[i].data == data || data == -1)){
+                        var item = key.split(":");
+                        list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1] || 0)},{id:recipe[key].dirt.id,count:1,data:recipe[key].dirt.data}],output:result});
                     }
                 }
             }
@@ -403,11 +402,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             }
 
             let item,list = [],recipe = RecipeRegistry.getRecipe("Wiremill");
-            for(let key in recipe.output){
-                result = recipe.output[key];
+            for(let key in recipe){
+                result = recipe[key].output;
                 if(result.id == id && (result.data == data || data == -1)){
                     item = key.split(":");
-                    list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:[result.output]});
+                    list.push({input:[{id:parseInt(item[0]),count:recipe[key].count,data:parseInt(item[1] || 0)}],output:[result]});
                 }
             }
 
@@ -438,11 +437,11 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
             }
 
             let item,list = [],recipe = RecipeRegistry.getRecipe("Autoclave");
-            for(let key in recipe.output){
-                result = recipe.output[key];
+            for(let key in recipe){
+                result = recipe[key].output;
                 if(result.id == id && (result.data == data || data == -1)){
                     item = key.split(":");
-                    list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:[result.output]});
+                    list.push({input:[{id:parseInt(item[0]),count:recipe[key].count,data:parseInt(item[1] || 0)}],output:[result]});
                 }
             }
 
@@ -476,12 +475,14 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     		}
         
     		let item,list = [],recipe = RecipeRegistry.getRecipe("Electrolyzer");
-    		for(let key in recipe.output){
-    			result = recipe.output[key];
-    			if(result.id == id && (result.data == data || data == -1)){
-    				item = key.split(":");
-    				list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:result.output});
-    			}
+    		for(let key in recipe){
+    			result = recipe[key].output;
+    			for(let i in result){
+                    if(result[i].id == id && (result[i].data == data || data == -1)){
+                        item = key.split(":");
+                        list.push({input:[{id:parseInt(item[0]),count:recipe[key].count,data:parseInt(item[1] || 0)}],output:result});
+                    }
+                }
     		}
         
     		return list;
@@ -514,12 +515,14 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
     		}
         
     		let item,list = [],recipe = RecipeRegistry.getRecipe("Distillery");
-    		for(let key in recipe.output){
-    			result = recipe.output[key];
-    			if(result.id == id && (result.data == data || data == -1)){
-    				item = key.split(":");
-    				list.push({input:[{id:parseInt(item[0]),count:result.count,data:parseInt(item[1] || 0)}],output:result.output});
-    			}
+    		for(let key in recipe){
+    			result = recipe[key].output;
+    			for(let i in result){
+                    if(result[i].id == id && (result[i].data == data || data == -1)){
+                        item = key.split(":");
+                        list.push({input:[{id:parseInt(item[0]),count:recipe[key].count,data:parseInt(item[1] || 0)}],output:result});
+                    }
+                }
     		}
         
     		return list;
@@ -592,15 +595,51 @@ ModAPI.addAPICallback("RecipeViewer",function(api){
                 }
             }
 
-            for(let key in recipe.output){
-                result = recipe.output[key];
+            for(let key in recipe){
+                result = recipe[key].output;
                 if(result.id == id && result.data == data){
                     let item = key.split(":");
-                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[RecipeRegistry.getRecipeResult("AssemblyTable",[parseInt(item[0]),parseInt(item[1]),parseInt(item[2]),parseInt(item[3])]).output]});
+                    list.push({input:[{id:parseInt(item[0]),count:1,data:parseInt(item[1])},{id:parseInt(item[2]),count:1,data:parseInt(item[3])}],output:[result]});
                 }
             }
 
     		return list;
         }
+    });
+
+    // [卷板机]Bending Machine
+    Core.registerRecipeType("ET-BendingMachine",{
+		contents:{
+            icon:BlockID.bendingMachine,
+            
+			drawing:[
+				{type:"bitmap",x:430,y:200,scale:6,bitmap:"arrow_background"},
+				{type:"bitmap",x:775,y:450,scale:6,bitmap:"logo"}
+            ],
+            
+			elements:{
+				"input0":{type:"slot",x:280,y:190,bitmap:"slot_empty",size:120},
+				"output0":{type:"slot",x:600,y:190,bitmap:"slot_empty",size:120}
+			}
+        },
+        
+		getList:function(id,data,isUsage){
+            let list = [],recipe = RecipeRegistry.getRecipe("BendingMachine");
+
+            if(isUsage){
+                let result = RecipeRegistry.getRecipeResult("BendingMachine",[id,data]);
+                return result?[{input:[{id:id,count:result.count,data:data}],output:[result.output]}]:[];
+            }
+            
+            for(let key in recipe){
+                result = recipe[key].output;
+                if(result.id == id && (result.data == data || data == -1)){
+                    var item = key.split(":");
+                    list.push({input:[{id:parseInt(item[0]),count:recipe[key].count,data:parseInt(item[1] || 0)}],output:[result]});
+                }
+            }
+
+            return list;
+		}
     });
 });

@@ -48,7 +48,7 @@ var RecipeRegistry = {
 
 	addCompressorRecipe:function(input,output){
 		var recipe = this.getRecipe("Compressor");
-		recipe[input.id + ":" + input.data] = output;
+		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 
 	addBlastFurnaceRecipe:function(input,output){
@@ -106,6 +106,11 @@ var RecipeRegistry = {
 		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
 	},
 
+	addBendingMachineRecipe:function(input,output){
+		var recipe = this.getRecipe("BendingMachine");
+		recipe[input.id + ":" + input.data] = {output:output,count:input.count};
+	},
+
 	addAutoSaieveRecipe:function(input,output){
 		var recipe = this.getRecipe("AutoSaieve");
 		if(!recipe[input.id + ":" + input.data]) recipe[input.id + ":" + input.data] = [];
@@ -114,8 +119,8 @@ var RecipeRegistry = {
 	
 	addFusionReactorRecipe:function(input,output){
 		var recipe = this.getRecipe("FusionReactor");
-		recipe[input[0].liquid + ":" + input[1].liquid] = {input:[input[0].mB,input[1].mB],output:output};
-		recipe[input[1].liquid + ":" + input[0].liquid] = {input:[input[1].mB,input[0].mB],output:output};
+		recipe[input[0].id + ":" + input[0].data + ":" + input[1].id + ":" + input[1].data] = {output:output,input:[input[0].count,input[1].count]};
+		recipe[input[1].id + ":" + input[1].data + ":" + input[0].id + ":" + input[0].data] = {output:output,input:[input[1].count,input[0].count]};
 	},
 
 	addAssemblyTableRecipe:function(input,output){

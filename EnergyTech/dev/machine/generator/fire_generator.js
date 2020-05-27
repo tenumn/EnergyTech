@@ -33,7 +33,7 @@ var GuiFireGenerator = new UI.StandartWindow({
 	
 	elements:{
 		"textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:TEXT_SIZE,text:Translation.translate("Energy: ") + "0/0Eu"},
-		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:TEXT_SIZE,text:Translation.translate("Energy Output: ") + "0Eu"},
+		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE,width:300,height:TEXT_SIZE,text:Translation.translate("Energy Output: ") + "0Eu"},
 
 		"scaleBurn":{type:"scale",x:450 + GUI_SCALE * 3,y:75 + GUI_SCALE * 2,direction:1,value:0.5,bitmap:"fireScale",scale:GUI_SCALE},
 		"scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},

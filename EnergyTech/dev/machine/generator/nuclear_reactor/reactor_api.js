@@ -1,4 +1,6 @@
-function Reactor(){
+function ReactorPrototype(id){
+    this.id = id;
+
     this.isDestroy = true;
 
     this.getHeat = function(side,slot,coords){
@@ -31,7 +33,7 @@ var ReactorRegistry = {
 
     registerPrototype:function(id,state){
         if(!this.isPrototype(id)){
-            var reactor = new Reactor();
+            var reactor = new ReactorPrototype(id);
             for(let i in state) reactor[i] = state[i];
             this.prototypes[id] = reactor;
             

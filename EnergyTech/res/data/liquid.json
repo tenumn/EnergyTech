@@ -1,0 +1,85 @@
+{
+    "steam":{
+        "name":"Steam",
+        "texture":"liquid_steam",
+        "mb":1000
+    },
+    
+    "helium":{
+        "name":"Helium",
+        "texture":"liquid_helium",
+        "mb":1000
+    },
+
+    "tritium":{
+        "name":"Tritium",
+        "texture":"liquid_tritium",
+        "mb":1000
+    },
+
+    "helium3":{
+        "name":"Helium-3",
+        "texture":"liquid_helium3",
+        "mb":1000
+    },
+
+    "lithium":{
+        "name":"Lithium",
+        "texture":"liquid_lithium",
+        "mb":1000
+    },
+
+    "lithium6":{
+        "name":"Lithium-6",
+        "texture":"liquid_lithium6",
+        "mb":1000
+    },
+
+    "lithium7":{
+        "name":"Lithium-7",
+        "texture":"liquid_lithium7",
+        "mb":1000
+    },
+
+    "deuterium":{
+        "name":"Deuterium",
+        "texture":"liquid_deuterium",
+        "mb":1000
+    },
+
+    "ghast_tear":{
+        "name":"Ghast Tear",
+        "texture":"liquid_ghast_tear",
+        "mb":1000
+    },
+
+    "uranium235":{
+        "name":"Uranium-235",
+        "texture":"liquid_uranium235",
+        "mb":1000
+    },
+
+    "uranium238":{
+        "name":"Uranium-238",
+        "texture":"liquid_uranium238",
+        "mb":1000
+    },
+
+    "heavy_water":{
+        "name":"Heavy Water",
+        "texture":"liquid_heavy_water",
+        "mb":1000
+    },
+
+    "plasma_helium":{
+        "name":"Plasma Helium",
+        "texture":"liquid_plasma_helium",
+        "mb":1000
+    },
+
+    "distilled_water":{
+        "name":"Distilled Water",
+        "texture":"liquid_distilled_water",
+        "mb":1000
+    }
+}

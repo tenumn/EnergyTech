@@ -78,18 +78,14 @@ MachineRegistry.registerPrototype(BlockID.bronzeBoiler,{
             } else {this.deactive();}
         }
 
-        var liquid1 = this.container.getSlot("slotLiquid1"),liquid2 = this.container.getSlot("slotLiquid2");
+        var liquid1 = this.container.getSlot("slotLiquid1");
         var empty = Liquid.getEmptyItem(liquid1.id,liquid1.data);
-        if(empty && empty.liquid == "water"){
-            var storage = Liquid.getItemStorage(liquid1.id,liquid1.data);
-            if(this.liquidStorage.getAmount("water") + storage <= 8 && (liquid2.id == empty.id && liquid2.data == empty.data && liquid2.count < Item.getMaxStack(empty.id) || liquid2.id == 0)){
-                this.liquidStorage.addLiquid("water",storage);
-                liquid1.count--;
-                liquid2.id = empty.id;
-                liquid2.data = empty.data;
-                liquid2.count++;
-                this.container.validateAll();
-            }
+        var storage = Liquid.getItemStorage(liquid1.id,liquid1.data);
+        
+        if(empty && empty.liquid == "water" && this.liquidStorage.getAmount("water") + storage <= 8){
+            this.liquidStorage.addLiquid("water",storage);
+            this.setOutputSlot("slotLiquid2",empty.id,1,empty.data),liquid1.count--;
+            this.container.validateAll();
         }
 
         this.liquidStorage.updateUiScale("scaleLiquid","water");

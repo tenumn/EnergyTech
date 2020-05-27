@@ -46,6 +46,10 @@ Item.createItem("plateAluminium","Aluminium Plate",{name:"aluminium_plate"});
 IDRegistry.genItemID("plateAntimony");
 Item.createItem("plateAntimony","Antimony Plate",{name:"antimony_plate"});
 
+// 铱板
+IDRegistry.genItemID("plateIridium");
+Item.createItem("plateIridium","Iridium Plate",{name:"iridium_plate"});
+
 // 恩奈特合金板
 IDRegistry.genItemID("plateEnete");
 Item.createItem("plateEnete","Enete Alloy Plate",{name:"enete_plate"});
@@ -62,6 +66,10 @@ Item.createItem("plateCircuit","Circuit Plate",{name:"circuit_plate"});
 IDRegistry.genItemID("platePlastic");
 Item.createItem("platePlastic","Plastic Plate",{name:"plastic_plate"});
 
+// 地狱板
+IDRegistry.genItemID("plateNether");
+Item.createItem("plateNether","Nether Plate",{name:"nether_plate"});
+
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("plate",Translation.translate("Plate"),[
         ItemID.plateCopper,
@@ -76,27 +84,30 @@ Callback.addCallback("PreLoaded",function(){
         ItemID.plateLead,
         ItemID.plateAluminium,
         ItemID.plateAntimony,
+        ItemID.plateIridium,
         ItemID.plateEnete,
         ItemID.plateLeadAntimony,
         ItemID.plateCircuit,
-        ItemID.platePlastic
+        ItemID.platePlastic,
+        ItemID.plateNether
     ]);
 
     Recipes.addFurnace(ItemID.resin,ItemID.platePlastic);
 
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotCopper,data:0},{id:ItemID.plateCopper,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotTin,data:0},{id:ItemID.plateTin,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotBronze,data:0},{id:ItemID.plateBronze,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:265,data:0},{id:ItemID.plateIron,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotSteel,data:0},{id:ItemID.plateSteel,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:266,data:0},{id:ItemID.plateGold,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.dustCarbon,data:0},{id:ItemID.plateCarbon,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotTungsten,data:0},{id:ItemID.plateTungsten,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:351,data:4},{id:ItemID.plateLapis,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotLead,data:0},{id:ItemID.plateLead,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotAluminium,data:0},{id:ItemID.plateAluminium,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotLeadAntimony,data:0},{id:ItemID.plateLeadAntimony,count:1,data:0});
-    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotAntimony,data:0},{id:ItemID.plateAntimony,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotCopper,count:1,data:0},{id:ItemID.plateCopper,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotTin,count:1,data:0},{id:ItemID.plateTin,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotBronze,count:1,data:0},{id:ItemID.plateBronze,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:265,count:1,data:0},{id:ItemID.plateIron,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotSteel,count:1,data:0},{id:ItemID.plateSteel,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:266,count:1,data:0},{id:ItemID.plateGold,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.dustCarbon,count:1,data:0},{id:ItemID.plateCarbon,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotTungsten,count:1,data:0},{id:ItemID.plateTungsten,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:351,count:1,data:4},{id:ItemID.plateLapis,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotLead,count:1,data:0},{id:ItemID.plateLead,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotAluminium,count:1,data:0},{id:ItemID.plateAluminium,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotLeadAntimony,count:1,data:0},{id:ItemID.plateLeadAntimony,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:ItemID.ingotAntimony,count:1,data:0},{id:ItemID.plateAntimony,count:1,data:0});
+    RecipeRegistry.addBendingMachineRecipe({id:405,count:1,data:0},{id:ItemID.plateNether,count:1,data:0});
 
     var hammer = Tool.getAllTool("Hammer");
     for(let i in hammer){
@@ -115,5 +126,6 @@ Callback.addCallback("PreLoaded",function(){
         RecipeRegistry.addShapeless({id:ItemID.plateAntimony,count:1,data:0},[{id:ItemID.ingotAntimony,data:0},{id:ItemID.ingotAntimony,data:0}],hammer[i]);
         RecipeRegistry.addShapeless({id:ItemID.plateEnete,count:1,data:0},[{id:ItemID.ingotEnete,data:0},{id:ItemID.ingotEnete,data:0}],hammer[i]);
         RecipeRegistry.addShapeless({id:ItemID.plateCircuit,count:1,data:0},[{id:ItemID.platePlastic,data:0},{id:ItemID.dustSiliconDioxide,data:0}],hammer[i]);
+        RecipeRegistry.addShapeless({id:ItemID.plateNether,count:1,data:0},[{id:405,data:0},{id:405,data:0}],hammer[i]);
     }
 });

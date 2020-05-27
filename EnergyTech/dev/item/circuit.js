@@ -54,7 +54,7 @@ UpgradeRegistry.registerUpgrade(ItemID.circuitOverclocker,"overclocker",function
 Callback.addCallback("PreLoaded",function(){
     Item.addCreativeGroup("circuit",Translation.translate("Circuit"),[ItemID.circuitOverclocker]);
 
-    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:ItemID.cellWater,count:1,data:0}],{id:ItemID.circuitOverclocker,count:1,data:0});
+    RecipeRegistry.addAssemblyTableRecipe([{id:ItemID.circuit,count:1,data:0},{id:ItemID.liquidCellWater,count:1,data:0}],{id:ItemID.circuitOverclocker,count:1,data:0});
 });
 
 // [电路板(高压升级)]Circuit(Transformer Upgrade)

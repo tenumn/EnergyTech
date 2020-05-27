@@ -31,7 +31,7 @@ var GuiSteamTurbine = new UI.StandartWindow({
     
 	elements:{
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:TEXT_SIZE,text:Translation.translate("Energy: ") + "0/0Eu"},
-		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:TEXT_SIZE,text:Translation.translate("Energy Output: ") + "0Eu"},
+		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE,width:300,height:TEXT_SIZE,text:Translation.translate("Energy Output: ") + "0Eu"},
         "scaleEnergy":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
         
         "scaleLiquid":{type:"scale",x:900 + GUI_SCALE * 3,y:175,direction:1,value:0.5,bitmap:"liquidScale",overlay:"liquidScale",scale:GUI_SCALE},
@@ -65,15 +65,13 @@ MachineRegistry.registerEUGenerator(BlockID.steamTurbine,{
         }
 
         var liquid1 = this.container.getSlot("slotLiquid1");
-        var liquid2 = this.container.getSlot("slotLiquid2");
         var empty = Liquid.getEmptyItem(liquid1.id,liquid1.data);
-        if(empty && empty.liquid == "steam"){
-            var storage = Liquid.getItemStorage(liquid1.id,liquid1.data);
-            if(this.liquidStorage.getAmount("steam") + storage <= 4 && (liquid2.id == empty.id && liquid2.data == empty.data && liquid2.count < Item.getMaxStack(empty.id) || liquid2.id == 0)){
-                this.liquidStorage.addLiquid("steam",storage),liquid1.count--;
-                liquid2.id = empty.id,liquid2.data = empty.data,liquid2.count++;
-                this.container.validateAll();
-            }
+        var storage = Liquid.getItemStorage(liquid1.id,liquid1.data);
+
+        if(empty && empty.liquid == "steam" && this.liquidStorage.getAmount("steam") + storage <= 4){
+            this.liquidStorage.addLiquid("steam",storage);
+            this.setOutputSlot("slotLiquid2",empty.id,1,empty.data),liquid1.count--;
+            this.container.validateAll();
         }
 
         this.liquidStorage.updateUiScale("scaleLiquid","steam");

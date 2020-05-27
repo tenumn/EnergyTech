@@ -76,7 +76,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.dustImpureGalena,ItemID.ingotLead);
     Recipes.addFurnace(ItemID.dustImpureIron,265);
     Recipes.addFurnace(ItemID.dustImpureGold,266);
-    Recipes.addFurnace(ItemID.dustImpureUranium,ItemID.ingotUranium);
     Recipes.addFurnace(ItemID.dustImpureSilver,ItemID.ingotSilver);
     Recipes.addFurnace(ItemID.dustImpureTetrahedrite,ItemID.ingotCopper);
     Recipes.addFurnace(ItemID.dustImpureBauxite,ItemID.ingotAluminium);
@@ -462,9 +461,7 @@ Callback.addCallback("PreLoaded",function(){
         RecipeRegistry.addShapeless({id:ItemID.dustIron,count:1,data:0},[{id:265,count:1,data:0}],mortar[i]);
         RecipeRegistry.addShapeless({id:ItemID.dustGold,count:1,data:0},[{id:266,count:1,data:0}],mortar[i]);
         RecipeRegistry.addShapeless({id:ItemID.dustAntimony,count:1,data:0},[{id:ItemID.ingotAntimony,count:1,data:0}],mortar[i]);
-        RecipeRegistry.addShapeless({id:ItemID.dustLithium,count:1,data:0},[{id:ItemID.ingotLithium,count:1,data:0}],mortar[i]);
         RecipeRegistry.addShapeless({id:ItemID.dustTungsten,count:1,data:0},[{id:ItemID.ingotTungsten,count:1,data:0}],mortar[i]);
-        RecipeRegistry.addShapeless({id:ItemID.dustUranium,count:1,data:0},[{id:ItemID.ingotUranium,count:1,data:0}],mortar[i]);
         RecipeRegistry.addShapeless({id:ItemID.dustSilver,count:1,data:0},[{id:ItemID.ingotSilver,count:1,data:0}],mortar[i]);
         RecipeRegistry.addShapeless({id:ItemID.dustAluminium,count:1,data:0},[{id:ItemID.ingotAluminium,count:1,data:0}],mortar[i]);
         RecipeRegistry.addShapeless({id:ItemID.dustRuby,count:1,data:0},[{id:ItemID.ruby,count:1,data:0}],mortar[i]);
@@ -479,14 +476,12 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.dustIron,265);
     Recipes.addFurnace(ItemID.dustGold,266);
     Recipes.addFurnace(ItemID.dustAntimony,ItemID.ingotAntimony);
-    Recipes.addFurnace(ItemID.dustLithium,ItemID.ingotLithium);
-    Recipes.addFurnace(ItemID.dustUranium,ItemID.ingotUranium);
     Recipes.addFurnace(ItemID.dustSilver,ItemID.ingotSilver);
     Recipes.addFurnace(ItemID.dustAluminium,ItemID.ingotAluminium);
     Recipes.addFurnace(ItemID.dustEnete,ItemID.ingotEnete);
     Recipes.addFurnace(ItemID.dustLeadAntimony,ItemID.ingotLeadAntimony);
     Recipes.addFurnace(ItemID.dustSiliconDioxide,20);
-    
+
     RecipeRegistry.addMaceratorRecipe({id:318,data:0},{id:ItemID.dustFlint,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:368,data:0},{id:ItemID.dustEnder,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:264,data:0},{id:ItemID.dustDiamond,count:1,data:0});
@@ -498,9 +493,7 @@ Callback.addCallback("PreLoaded",function(){
     RecipeRegistry.addMaceratorRecipe({id:ItemID.ingotSteel,data:0},{id:ItemID.dustSteel,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:266,data:0},{id:ItemID.dustGold,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:ItemID.ingotAntimony,data:0},{id:ItemID.dustAntimony,count:1,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:ItemID.ingotLithium,data:0},{id:ItemID.dustLithium,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:ItemID.ingotTungsten,data:0},{id:ItemID.dustTungsten,count:1,data:0});
-    RecipeRegistry.addMaceratorRecipe({id:ItemID.ingotUranium,data:0},{id:ItemID.dustUranium,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:ItemID.ingotSilver,data:0},{id:ItemID.dustSilver,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:ItemID.ingotAluminium,data:0},{id:ItemID.dustAluminium,count:1,data:0});
     RecipeRegistry.addMaceratorRecipe({id:ItemID.energyCrystal,data:0},{id:ItemID.dustEnergium,count:9,data:0});
@@ -525,4 +518,6 @@ Callback.addCallback("PreLoaded",function(){
 
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustFlint,data:0},[{id:ItemID.dustSmallSiliconDioxide,count:3,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustTetrahedrite,data:0},[{id:ItemID.dustCopper,count:1,data:0},{id:ItemID.dustSmallAntimony,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustLithium,count:1,data:0},[{id:ItemID.lithium7,count:2,data:0},{id:ItemID.smallLithium6,count:9,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.dustUranium,count:1,data:0},[{id:ItemID.uranium238,count:4,data:0},{id:ItemID.smallUranium235,count:1,data:0}]);
 });

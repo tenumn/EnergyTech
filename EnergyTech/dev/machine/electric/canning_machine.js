@@ -12,7 +12,7 @@ Callback.addCallback("PreLoaded",function(){
         "dcd",
         "dcd",
         "aba"
-    ],["a",ItemID.circuit,0,"b",BlockID.machineCasing,1,"c",ItemID.cellEmpty,0,"d",ItemID.plateIron,0]);
+    ],["a",ItemID.circuit,0,"b",BlockID.machineCasing,1,"c",ItemID.liquidCellEmpty,0,"d",ItemID.plateIron,0]);
 });
 
 var GuiCanningMachine = new UI.StandartWindow({

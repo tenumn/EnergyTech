@@ -59,7 +59,9 @@ var GuiNuclearReactor = new UI.StandartWindow({
         "scaleBurn":{type:"scale",x:330 + GUI_SCALE * 4,y:330 + GUI_SCALE * 4,direction:0,value:0.5,bitmap:"heatScale",scale:GUI_SCALE},
 
         "textEnergy":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:TEXT_SIZE,text:Translation.translate("Energy: ") + "0/0Eu"},
-		"textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:TEXT_SIZE,text:Translation.translate("Energy Output: ") + "0Eu"}
+        "textEnergyOutput":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 1,width:300,height:TEXT_SIZE,text:Translation.translate("Energy Output: ") + "0Eu"},
+        "textCooling":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 2,width:300,height:TEXT_SIZE,text:Translation.translate("Cooling: ") + "0"},
+        "textHeat":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 3,width:300,height:TEXT_SIZE,text:Translation.translate("Heat: ") + "0Hu"}
     }
 });
 
@@ -67,6 +69,7 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
     defaultValues:{
         tier:3,
         heat:0,
+        cooling:0,
         maxHeat:10000,
         isEnabled:false,
         energy_output:0
@@ -76,8 +79,16 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
         return this.data.energy_output;
     },
 
+    getHeat:function(){
+        return this.data.heat;
+    },
+
     getMaxHeat:function(){
         return this.data.maxHeat;
+    },
+
+    getCooling:function(){
+        return this.data.cooling;
     },
 
     getSlotFor4Side:function(x,y){
@@ -89,9 +100,14 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
         return side;
     },
     
+    initValues:function(){
+        this.data.cooling = this.defaultValues.cooling;
+        this.data.energy_output = this.defaultValues.energy_output;
+	},
+
     tick:function(){
         if(World.getThreadTime()%20 == 0){
-            this.data.energy_output = this.defaultValues.energy_output;
+            this.initValues();
             if(this.data.isEnabled){
                 for(let x = 1;x <= 5;x++){for(let y = 1;y <= 5;y++){
                     var slot = this.container.getSlot("slot" + x + ":" + y),side = this.getSlotFor4Side(x,y);
@@ -99,9 +115,10 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
                         var reactor = ReactorRegistry.getPrototype(slot.id);
                         
                         this.data.heat += reactor.getHeat(side,slot,{x:x,y:y});
+                        if(this.data.heat > 0) this.data.heat -= Math.min(reactor.getCooling(side,slot,{x:x,y:y}),this.getHeat());
+                        this.data.cooling += reactor.getCooling(side,slot,{x:x,y:y});
                         this.data.energy_output += reactor.getEnergyOutput(side,slot,{x:x,y:y});
-                        this.data.heat -= reactor.getCooling(side,slot,{x:x,y:y});
-    
+
                         if(slot.data >= Item.getMaxDamage(slot.id)){
                             if(reactor.isDestroy){
                                 reactor.destroy(side,slot,{x:x,y:y});
@@ -115,7 +132,7 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
 
                 this.data.energy += this.getEnergyOutput();
             } else if(this.data.heat > 0){
-                this.data.heat -= Math.min(this.data.heat,this.getMaxHeat() / 1024);
+                this.data.heat -= Math.min(this.data.heat,this.getMaxHeat() / 1000);
             }
         }
 
@@ -127,7 +144,9 @@ MachineRegistry.registerEUGenerator(BlockID.nuclearReactor,{
 
         this.container.setScale("scaleBurn",this.data.heat / this.getMaxHeat());
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
-		this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + this.getEnergyOutput() + "Eu");
+        this.container.setText("textEnergyOutput",Translation.translate("Energy Output: ") + this.getEnergyOutput() + "Eu");
+        this.container.setText("textCooling",Translation.translate("Cooling: ") + this.data.cooling);
+        this.container.setText("textHeat",Translation.translate("Heat: ") + this.data.heat + "Hu");
     },
 
     redstone:function(params){

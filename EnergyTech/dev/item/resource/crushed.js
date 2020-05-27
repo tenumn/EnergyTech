@@ -98,7 +98,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.crushedGalena,ItemID.ingotLead);
     Recipes.addFurnace(ItemID.crushedIron,265);
     Recipes.addFurnace(ItemID.crushedGold,266);
-    Recipes.addFurnace(ItemID.crushedUranium,ItemID.ingotUranium);
     Recipes.addFurnace(ItemID.crushedSilver,ItemID.ingotSilver);
     Recipes.addFurnace(ItemID.crushedTetrahedrite,ItemID.ingotCopper);
     Recipes.addFurnace(ItemID.crushedBauxite,ItemID.ingotAluminium);
@@ -108,7 +107,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(ItemID.crushedPurifiedGalena,ItemID.ingotLead);
     Recipes.addFurnace(ItemID.crushedPurifiedIron,265);
     Recipes.addFurnace(ItemID.crushedPurifiedGold,266);
-    Recipes.addFurnace(ItemID.crushedPurifiedUranium,ItemID.ingotUranium);
     Recipes.addFurnace(ItemID.crushedPurifiedSilver,ItemID.ingotSilver);
     Recipes.addFurnace(ItemID.crushedPurifiedTetrahedrite,ItemID.ingotCopper);
     Recipes.addFurnace(ItemID.crushedPurifiedBauxite,ItemID.ingotAluminium);
@@ -174,7 +172,7 @@ Callback.addCallback("PreLoaded",function(){
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedGalena,count:1,data:0},[{id:ItemID.dustLead,count:1,data:0},{id:ItemID.dustSmallCopper,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedIron,count:1,data:0},[{id:ItemID.dustIron,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedGold,count:1,data:0},[{id:ItemID.dustGold,count:1,data:0},{id:ItemID.dustSmallSilver,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedSpodumene,count:1,data:0},[{id:ItemID.smallLithium6,count:1,data:0},{id:ItemID.lithium7,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedSpodumene,count:1,data:0},[{id:ItemID.smallLithium6,count:6,data:0},{id:ItemID.lithium7,count:2,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedTungsten,count:1,data:0},[{id:ItemID.dustTungsten,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedUranium,count:1,data:0},[{id:ItemID.smallUranium235,count:1,data:0},{id:ItemID.uranium238,count:4,data:0},{id:ItemID.dustStone,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedSilver,count:1,data:0},[{id:ItemID.dustSilver,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0},{id:ItemID.dustStone,count:1,data:0}]);
@@ -186,7 +184,7 @@ Callback.addCallback("PreLoaded",function(){
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedGalena,count:1,data:0},[{id:ItemID.dustLead,count:1,data:0},{id:ItemID.dustSmallCopper,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedIron,count:1,data:0},[{id:ItemID.dustIron,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedGold,count:1,data:0},[{id:ItemID.dustGold,count:1,data:0},{id:ItemID.dustSmallSilver,count:1,data:0}]);
-    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedSpodumene,count:1,data:0},[{id:ItemID.smallLithium6,count:2,data:0},{id:ItemID.lithium7,count:2,data:0}]);
+    RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedSpodumene,count:1,data:0},[{id:ItemID.smallLithium6,count:9,data:0},{id:ItemID.lithium7,count:2,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedTungsten,count:1,data:0},[{id:ItemID.dustTungsten,count:1,data:0},{id:ItemID.dustSmallTin,count:1,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedUranium,count:1,data:0},[{id:ItemID.smallUranium235,count:2,data:0},{id:ItemID.uranium238,count:5,data:0}]);
     RecipeRegistry.addCentrifugeRecipe({id:ItemID.crushedPurifiedSilver,count:1,data:0},[{id:ItemID.dustSilver,count:1,data:0},{id:ItemID.dustSmallGold,count:1,data:0}]);

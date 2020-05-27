@@ -101,7 +101,7 @@ var ChargeItemRegistry = {
 			if(item.extra){
 				return item.extra.getInt("energy");
 			}
-			return parseInt((27 - (item.data || 1)) / 26 * data.maxCharge);
+			return Math.round((27 - (item.data || 1)) / 26 * data.maxCharge);
 		}
 		return Math.min(data.maxDamage - item.data, data.maxCharge);
 	},
@@ -122,7 +122,7 @@ var ChargeItemRegistry = {
 		}
 		item.extra.putInt("energy", amount);
 		if(data.showScale){
-			item.data = parseInt((data.maxCharge - amount)/data.maxCharge*26 + 1);
+			item.data = Math.round((data.maxCharge - amount)/data.maxCharge*26 + 1);
 		}
 	},
 	
@@ -200,7 +200,7 @@ var ChargeItemRegistry = {
 	transferEnergy: function(api, field, result){
 		var data = ChargeItemRegistry.getItemData(result.id);
 		var amount = 0;
-		for(let i in field){
+		for(var i in field){
 			if(!ChargeItemRegistry.isFlashStorage(field[i].id)){
 				amount += ChargeItemRegistry.getEnergyStored(field[i], data.energy);
 			}

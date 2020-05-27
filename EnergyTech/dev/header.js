@@ -20,26 +20,11 @@ IMPORT("TileRender");
 IMPORT("UsefulTool");
 IMPORT("StorageInterface");
 
-if(getCoreAPILevel() < 10){
-    Item.addCreativeGroup = function(uid,name,item){
-        
-    }
-
-    Item.addRepairItemIds = function(id,item){
-
-    }
-
-    ToolAPI.addBlockDropOnExplosion = function(uid){
-
-    }
-} else {
-    ToolAPI.addBlockDropOnExplosion = ToolLib.addBlockDropOnExplosion;
-}
-
 // API
 World.drop = ModAPI.requireGlobal("Level.dropItem");
 canTileBeReplaced = ModAPI.requireGlobal("canTileBeReplaced");
 Player.setInventorySlot = ModAPI.requireGlobal("Player.setInventorySlot");
+ToolAPI.addBlockDropOnExplosion = ToolLib.addBlockDropOnExplosion;
 
 var EU = EnergyTypeRegistry.assureEnergyType("Eu",1);
 
@@ -69,6 +54,18 @@ var Tooltip = {
 
     info:function(id,info){
         Item.addTooltip(id,Translation.translate("Info: ") + Translation.translate(info));
+    },
+
+    liquidStored:function(item,name,tooltip){
+		return name + tooltip + "\n§7" + (Item.getMaxDamage(item.id) - item.data) + "mB";
+    },
+    
+    energyCard:function(item,name,tooltip){
+        if(item.extra){
+            var x = Math.abs(item.extra.getInt("x")),y = Math.abs(item.extra.getInt("y")),z = Math.abs(item.extra.getInt("z"));
+            return name + tooltip + "\n§7" + Translation.translate("Network IP: ") + x + "." + y + "." + z;
+        }
+        return name + tooltip;
     }
 }
 
@@ -94,15 +91,8 @@ Saver.addSavesScope("EnergyTech",
     }
 );
 
-LiquidRegistry.registerLiquid("steam","Steam",["liquid_steam"]);
-LiquidRegistry.registerLiquid("helium","Helium",["liquid_helium"]);
-LiquidRegistry.registerLiquid("plasmaHelium","Plasma Helium",["helium_plasma"]);
-LiquidRegistry.registerLiquid("helium3","Helium-3",["liquid_helium3"]);
-LiquidRegistry.registerLiquid("lithium6","Lithium-6",["liquid_lithium6"]);
-LiquidRegistry.registerLiquid("lithium7","Lithium-7",["liquid_lithium7"]);
-LiquidRegistry.registerLiquid("uranium235","Uranium-235",["liquid_uranium235"]);
-LiquidRegistry.registerLiquid("uranium238","Uranium-238",["liquid_uranium238"]);
-LiquidRegistry.registerLiquid("tritium","Tritium",["liquid_tritium"]);
-LiquidRegistry.registerLiquid("deuterium","Deuterium",["liquid_deuterium"]);
-LiquidRegistry.registerLiquid("heavyWater","Heavy Water",["liquid_heavy_water"]);
-LiquidRegistry.registerLiquid("distilledWater","Distilled Water",["liquid_distilled_water"]);
+var JSON_LIQUID = FileTools.ReadJSON(__dir__ + "res/data/liquid.json");
+for(let i in JSON_LIQUID){
+    var liquid = JSON_LIQUID[i];
+    LiquidRegistry.registerLiquid(i,liquid.name,["liquid." + liquid.texture]);
+}

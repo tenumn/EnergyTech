@@ -82,32 +82,33 @@ MachineRegistry.registerEUMachine(BlockID.autoclave,{
         var amount = this.liquidStorage.getAmount("steam");
         var recipe = RecipeRegistry.getRecipeResult("Autoclave",[input.id,input.data]);
         
-        if(recipe && input.count >= recipe.count && amount >= 1){if(this.data.energy >= this.data.energy_consumption){
-            this.activate("machine/autoclave.ogg");
-            this.data.energy -= this.data.energy_consumption;
-            this.data.progress += 1 / this.data.work_time;
-            
-            if(this.data.progress.toFixed(3) >= 1){
-                this.setOutputSlot("slotOutput",recipe.output.id,recipe.output.count,recipe.output.data);
-                this.liquidStorage.getLiquid("steam",0.014),input.count -= recipe.count;
-                this.container.validateAll();
-                this.data.progress = 0;
+        if(recipe && input.count >= recipe.count && amount >= 1){
+            if(this.data.energy >= this.data.energy_consumption){
+                this.activate("machine/autoclave.ogg");
+                this.data.energy -= this.data.energy_consumption;
+                this.data.progress += 1 / this.data.work_time;
+                
+                if(this.data.progress.toFixed(3) >= 1){
+                    this.setOutputSlot("slotOutput",recipe.output.id,recipe.output.count,recipe.output.data);
+                    this.liquidStorage.getLiquid("steam",0.014),input.count -= recipe.count;
+                    this.container.validateAll();
+                    this.data.progress = 0;
+                }
+            } else {
+                this.deactive();
             }
-        } else {this.deactive();}} else {this.deactive(),this.data.progress = 0;}
+        } else {
+            this.deactive();
+            this.data.progress = 0;
+        }
         
         var liquid1 = this.container.getSlot("slotLiquid1");
-        var liquid2 = this.container.getSlot("slotLiquid2");
         var empty = Liquid.getEmptyItem(liquid1.id,liquid1.data);
-        if(empty && empty.liquid == "steam"){
-            var storage = Liquid.getItemStorage(liquid1.id,liquid1.data);
-            if(this.liquidStorage.getAmount("steam") + storage <= 4 && (liquid2.id == empty.id && liquid2.data == empty.data && liquid2.count < Item.getMaxStack(empty.id) || liquid2.id == 0)){
-                this.liquidStorage.addLiquid("steam",storage);
-                liquid1.count--;
-                liquid2.id = empty.id;
-                liquid2.data = empty.data;
-                liquid2.count++;
-                this.container.validateAll();
-            }
+        var storage = Liquid.getItemStorage(liquid1.id,liquid1.data);
+        if(empty && empty.liquid == "steam" && this.liquidStorage.getAmount("steam") + storage <= 4){
+            this.liquidStorage.addLiquid("steam",storage);
+            this.setOutputSlot("slotLiquid2",empty.id,1,empty.data),liquid1.count--;
+            this.container.validateAll();
         }
 
         this.liquidStorage.updateUiScale("scaleLiquid","steam");

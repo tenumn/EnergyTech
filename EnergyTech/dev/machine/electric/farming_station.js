@@ -9,7 +9,7 @@ for(let i = 1;i < 9;i++){TileRenderer.registerRotationModel(BlockID.farmingStati
 
 MachineRegistry.setDrop("farmingStation",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
-	Recipes.addShaped({id:BlockID.farmingStation,count:1,data:0},["ada","beb","cfc"],["a",ItemID.partIron,0,"b",ItemID.plateIron,0,"c",ItemID.cellWater,0,"d",292,0,"e",BlockID.machineCasing,1,"f",ItemID.circuit,0]);
+	Recipes.addShaped({id:BlockID.farmingStation,count:1,data:0},["ada","beb","cfc"],["a",ItemID.partIron,0,"b",ItemID.plateIron,0,"c",ItemID.liquidCellWater,0,"d",292,0,"e",BlockID.machineCasing,1,"f",ItemID.circuit,0]);
 });
 
 var GuiFarmingStation = new UI.StandartWindow({
@@ -71,26 +71,29 @@ MachineRegistry.registerEUMachine(BlockID.farmingStation,{
         var input = this.container.getSlot("slotInput");
         var recipe = RecipeRegistry.getRecipeResult("FarmingStation",[input.id,input.data]),dirt = this.container.getSlot("slotDirt");
         
-        if(recipe && (recipe.dirt.id == -1 || recipe.dirt.id == dirt.id) && (recipe.dirt.data == -1 || recipe.dirt.data == dirt.data)){if(this.data.energy >= this.data.energy_consumption){
-            this.activate();
-            this.data.energy -= this.data.energy_consumption;
-            this.data.progress += 1 / this.data.work_time;
-            
-            if(this.data.progress.toFixed(3) >= 1){
-                if(Math.random() <= 0.25) dirt.count--;
-                for(let i = 0;i < 4;i++){
-                    var output = recipe.output[i];
-                    if(output && Math.random() <= 1.00 / i){
-                        this.setOutputSlot("slotOutput" + i,output.id,output.count,output.data);
-                    }
-                } input.count--;
-                this.container.validateAll();
-                this.data.progress = 0;
-            }
-        } else {this.deactive();}} else {this.data.progress = 0,this.deactive();}
+        if(recipe && (recipe.dirt.id == -1 || recipe.dirt.id == dirt.id) && (recipe.dirt.data == -1 || recipe.dirt.data == dirt.data)){
+            if(this.data.energy >= this.data.energy_consumption){
+                this.activate();
+                this.data.energy -= this.data.energy_consumption;
+                this.data.progress += 1 / this.data.work_time;
+                
+                if(this.data.progress.toFixed(3) >= 1){
+                    if(Math.random() <= 0.25) dirt.count--;
+                    for(let i = 0;i < 4;i++){
+                        var output = recipe.output[i];
+                        if(output && Math.random() <= 1.00 / i) this.setOutputSlot("slotOutput" + i,output.id,output.count,output.data);
+                    } input.count--;
+                    this.container.validateAll();
+                    this.data.progress = 0;
+                }
+            } else this.deactive();
+        } else {
+            this.data.progress = 0;
+            this.deactive();
+        }
 
-        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setScale("scaleArrow",parseInt(this.data.progress / 1 * 22) / 22);
+        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
 

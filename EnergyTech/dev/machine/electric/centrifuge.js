@@ -97,8 +97,7 @@ MachineRegistry.registerEUMachine(BlockID.centrifuge,{
     },
 
     renderer:function(){
-        var count = 2;
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(this.data.progress / 1 * count * 10) % count) + 4:0));
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(this.data.progress / 1 * 2 * 10)%2) + 4:0));
     },
 
     energyReceive:MachineRegistry.energyReceive,

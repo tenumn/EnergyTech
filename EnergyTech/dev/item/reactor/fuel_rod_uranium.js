@@ -12,19 +12,19 @@ ReactorRegistry.registerPrototype(ItemID.fuelRodUranium,{
     },
 
     getHeat:function(side){
-        var heat = 5,pulse = 1;
+        var heat = 5;
         for(let i in side){
-            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") pulse++;
+            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 5;
         }
-        return heat * pulse;
+        return heat;
     },
 
     getEnergyOutput:function(side){
-        var output = 5,pulse = 1;
+        var output = 5;
         for(let i in side){
-            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") pulse++;
+            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") output += 5;
         }
-        return output * pulse;
+        return output;
     },
 
     destroy:function(side,slot){
@@ -52,19 +52,19 @@ ReactorRegistry.registerPrototype(ItemID.fuelRodDualUranium,{
     },
 
     getHeat:function(side){
-        var heat = 10,pulse = 1;
+        var heat = 10;
         for(let i in side){
-            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") pulse++;
+            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") heat += 10;
         }
-        return heat * pulse;
+        return heat;
     },
 
     getEnergyOutput:function(side){
-        var output = 10,pulse = 1;
+        var output = 10;
         for(let i in side){
-            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") pulse++;
+            if(ReactorRegistry.getType(side[i].id) == "fuel-rod") output += 10;
         }
-        return output * pulse;
+        return output;
     },
 
     destroy:function(side,slot){

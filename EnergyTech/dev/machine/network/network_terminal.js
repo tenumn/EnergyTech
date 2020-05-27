@@ -30,11 +30,11 @@ var GuiNetworkTerminal = new UI.StandartWindow({
 
     elements:{
         "textNetwork":{type:"text",font:GUI_TEXT,x:700,y:75,width:300,height:TEXT_SIZE,text:Translation.translate("Network IP: ") + "0.0.0"},
-        "textLoad":{type:"text",font:GUI_TEXT,x:700,y:105,width:300,height:TEXT_SIZE,text:Translation.translate("Load: ") + "0/0"},
-        "textEnergy1":{type:"text",font:GUI_TEXT,x:700,y:135,width:300,height:TEXT_SIZE,text:Translation.translate("Machine Energy: ") + "0/0Et"},
-        "textEnergy2":{type:"text",font:GUI_TEXT,x:700,y:165,width:300,height:TEXT_SIZE,text:Translation.translate("Network Energy: ") + "0/0Et"},
-        "textRange":{type:"text",font:GUI_TEXT,x:700,y:195,width:300,height:TEXT_SIZE,text:Translation.translate("Range: ") + "0"},
-        "textVoltage":{type:"text",font:GUI_TEXT,x:700,y:225,width:300,height:TEXT_SIZE,text:Translation.translate("Voltage: ") + "0"},
+        "textLoad":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 1,width:300,height:TEXT_SIZE,text:Translation.translate("Load: ") + "0/0"},
+        "textEnergy1":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 2,width:300,height:TEXT_SIZE,text:Translation.translate("Machine Energy: ") + "0/0Et"},
+        "textEnergy2":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 3,width:300,height:TEXT_SIZE,text:Translation.translate("Network Energy: ") + "0/0Et"},
+        "textRange":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 4,width:300,height:TEXT_SIZE,text:Translation.translate("Range: ") + "0"},
+        "textVoltage":{type:"text",font:GUI_TEXT,x:700,y:75 + TEXT_SIZE * 5,width:300,height:TEXT_SIZE,text:Translation.translate("Voltage: ") + "0"},
 
         "scaleEnergy1":{type:"scale",x:350 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale",scale:GUI_SCALE},
         "scaleEnergy2":{type:"scale",x:450 + GUI_SCALE * 6,y:50 + GUI_SCALE * 6,direction:1,value:0.5,bitmap:"energy_scale_network",scale:GUI_SCALE},

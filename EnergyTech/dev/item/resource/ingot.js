@@ -109,6 +109,22 @@ Block.createBlock("blockAluminium",[
 ToolAPI.registerBlockMaterial(BlockID.blockAluminium,"stone",1,true);
 Block.setDestroyLevel("blockAluminium",1);
 
+// 铱块
+IDRegistry.genBlockID("blockIridium");
+Block.createBlock("blockIridium",[
+    {name:"Iridium Block",texture:[["iridium_block",0]],inCreative:true}
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockIridium,"stone",1,true);
+Block.setDestroyLevel("blockIridium",1);
+
+// 恩奈特合金块
+IDRegistry.genBlockID("blockEnete");
+Block.createBlock("blockEnete",[
+    {name:"Enete Block",texture:[["enete_ingot",0]],inCreative:true}
+],"block");
+ToolAPI.registerBlockMaterial(BlockID.blockEnete,"stone",1,true);
+Block.setDestroyLevel("blockEnete",1);
+
 // 铅锑合金块
 IDRegistry.genBlockID("blockLeadAntimony");
 Block.createBlock("blockLeadAntimony",[
@@ -131,51 +147,41 @@ Callback.addCallback("PreLoaded",function(){
         BlockID.blockTungsten,
         BlockID.blockUranium,
         BlockID.blockSilver,
+        BlockID.blockIridium,
+        BlockID.blockEnete,
         BlockID.blockAluminium,
         BlockID.blockLeadAntimony
     ]);
+
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockCopper,data:0},{id:ItemID.ingotCopper,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockTin,data:0},{id:ItemID.ingotTin,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockBronze,data:0},{id:ItemID.ingotBronze,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockLead,data:0},{id:ItemID.ingotLead,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockWroughtIron,data:0},{id:ItemID.ingotWroughtIron,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockSteel,data:0},{id:ItemID.ingotSteel,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockAntimony,data:0},{id:ItemID.ingotAntimony,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockCarbon,data:0},{id:ItemID.dustCarbon,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockLithium,data:0},{id:ItemID.ingotLithium,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockTungsten,data:0},{id:ItemID.ingotTungsten,count:9,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotUranium,count:9,data:0},{id:BlockID.blockUranium,count:1,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockSilver,data:0},{id:ItemID.ingotSilver,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockAluminium,data:0},{id:ItemID.ingotAluminium,count:9,data:0});
+    RecipeRegistry.addCuttingRecipe({id:BlockID.blockLeadAntimony,data:0},{id:ItemID.ingotLeadAntimony,count:9,data:0});
     
-    Recipes.addShapeless({id:ItemID.ingotCopper,count:9,data:0},[{id:BlockID.blockCopper,data:0}]);
-    Recipes.addShaped({id:BlockID.blockCopper,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotCopper,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotTin,count:9,data:0},[{id:BlockID.blockTin,data:0}]);
-    Recipes.addShaped({id:BlockID.blockTin,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotTin,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotBronze,count:9,data:0},[{id:BlockID.blockBronze,data:0}]);
-    Recipes.addShaped({id:BlockID.blockBronze,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotBronze,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotLead,count:9,data:0},[{id:BlockID.blockLead,data:0}]);
-    Recipes.addShaped({id:BlockID.blockLead,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotLead,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotWroughtIron,count:9,data:0},[{id:BlockID.blockWroughtIron,data:0}]);
-    Recipes.addShaped({id:BlockID.blockWroughtIron,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotWroughtIron,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotSteel,count:9,data:0},[{id:BlockID.blockSteel,data:0}]);
-    Recipes.addShaped({id:BlockID.blockSteel,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotSteel,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotAntimony,count:9,data:0},[{id:BlockID.blockAntimony,data:0}]);
-    Recipes.addShaped({id:BlockID.blockAntimony,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotAntimony,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotLithium,count:9,data:0},[{id:BlockID.blockLithium,data:0}]);
-    Recipes.addShaped({id:BlockID.blockLithium,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotLithium,0]);
-
-    Recipes.addShapeless({id:ItemID.dustCarbon,count:9,data:0},[{id:BlockID.blockCarbon,data:0}]);
-    Recipes.addShaped({id:BlockID.blockCarbon,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.dustCarbon,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotTungsten,count:9,data:0},[{id:BlockID.blockTungsten,data:0}]);
-    Recipes.addShaped({id:BlockID.blockTungsten,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotTungsten,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotUranium,count:9,data:0},[{id:BlockID.blockUranium,data:0}]);
-    Recipes.addShaped({id:BlockID.blockUranium,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotUranium,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotSilver,count:9,data:0},[{id:BlockID.blockSilver,data:0}]);
-    Recipes.addShaped({id:BlockID.blockSilver,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotSilver,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotAluminium,count:9,data:0},[{id:BlockID.blockAluminium,data:0}]);
-    Recipes.addShaped({id:BlockID.blockAluminium,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotAluminium,0]);
-
-    Recipes.addShapeless({id:ItemID.ingotLeadAntimony,count:9,data:0},[{id:BlockID.blockLeadAntimony,data:0}]);
-    Recipes.addShaped({id:BlockID.blockLeadAntimony,count:1,data:0},["aaa","aaa","aaa"],["a",ItemID.ingotLeadAntimony,0]);
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotCopper,count:9,data:0},{id:BlockID.blockCopper,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotTin,count:9,data:0},{id:BlockID.blockTin,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotBronze,count:9,data:0},{id:BlockID.blockBronze,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotLead,count:9,data:0},{id:BlockID.blockLead,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotWroughtIron,count:9,data:0},{id:BlockID.blockWroughtIron,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotSteel,count:9,data:0},{id:BlockID.blockSteel,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotAntimony,count:9,data:0},{id:BlockID.blockAntimony,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.dustCarbon,count:9,data:0},{id:BlockID.blockCarbon,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotLithium,count:9,data:0},{id:BlockID.blockLithium,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotTungsten,count:9,data:0},{id:BlockID.blockTungsten,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotUranium,count:9,data:0},{id:BlockID.blockUranium,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotSilver,count:9,data:0},{id:BlockID.blockSilver,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotAluminium,count:9,data:0},{id:BlockID.blockAluminium,count:1,data:0});
+    RecipeRegistry.addCompressorRecipe({id:ItemID.ingotLeadAntimony,count:9,data:0},{id:BlockID.blockLeadAntimony,count:1,data:0});
 });
 
 // ==================================================================================================== //
@@ -232,7 +238,11 @@ Item.createItem("ingotAluminium","Aluminium Ingot",{name:"aluminium_ingot"});
 IDRegistry.genItemID("ingotSilicon");
 Item.createItem("ingotSilicon","Silicon Ingot",{name:"silicon_ingot"});
 
-// 恩奈特合金
+// 铱锭
+IDRegistry.genItemID("ingotIridium");
+Item.createItem("ingotIridium","Iridium Ingot",{name:"iridium_ingot"});
+
+// 恩奈特合金锭
 IDRegistry.genItemID("ingotEnete");
 Item.createItem("ingotEnete","Enete Alloy Ingot",{name:"enete_ingot"});
 
@@ -253,14 +263,17 @@ Callback.addCallback("PreLoaded",function(){
         ItemID.ingotWroughtIron,
         ItemID.ingotSteel,
         ItemID.ingotAntimony,
-        ItemID.ingotLithium,
         ItemID.ingotTungsten,
-        ItemID.ingotUranium,
         ItemID.ingotSilver,
         ItemID.ingotAluminium,
         ItemID.ingotSilicon,
+        ItemID.ingotIridium,
         ItemID.ingotEnete,
         ItemID.ingotLeadAntimony
+    ]);
+
+    Item.addCreativeGroup("gemstone",Translation.translate("Gemstone"),[
+        ItemID.ruby
     ]);
 
     RecipeRegistry.addBlastFurnaceRecipe({id:265,data:0},[{id:ItemID.ingotWroughtIron,count:1,data:0},{id:ItemID.slag,count:1,data:0}]);

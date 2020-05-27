@@ -47,7 +47,7 @@ var GuiCompressor = new UI.StandartWindow({
 MachineRegistry.registerEUMachine(BlockID.compressor,{
     defaultValues:{
         meta:0,
-        tier:2,
+        tier:1,
         progress:0,
         work_time:320,
         isActive:false,
@@ -73,32 +73,30 @@ MachineRegistry.registerEUMachine(BlockID.compressor,{
         var input = this.container.getSlot("slotInput");
         var recipe = RecipeRegistry.getRecipeResult("Compressor",[input.id,input.data]);
         
-        if(recipe){
+        if(recipe && input.count >= recipe.count){
             if(this.data.energy >= this.data.energy_consumption){
                 this.data.energy -= this.data.energy_consumption;
                 this.data.progress += 1 / this.data.work_time;
                 this.activate("machine/compressor.ogg");
                 if(this.data.progress.toFixed(3) >= 1){
-                    this.setOutputSlot("slotOutput",recipe.id,recipe.count,recipe.data),input.count--;
+                    var output = recipe.output;
+                    this.setOutputSlot("slotOutput",output.id,output.count,output.data),input.count -= recipe.count;
                     this.container.validateAll();
                     this.data.progress = 0;
                 }
-            } else {
-                this.deactive();
-            }
+            } else this.deactive();
         } else {
             this.data.progress = 0;
             this.deactive();
         }
         
-        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setScale("scaleArrow",parseInt(this.data.progress / 1 * 22) / 22);
+        this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
         this.container.setText("textEnergy",Translation.translate("Energy: ") + this.data.energy + "/" + this.getEnergyStorage() + "Eu");
     },
 
     renderer:function(){
-        var count = 4;
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(this.data.progress / 1 * count * 10) % count) + 4:0));
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(this.data.progress / 1 * 4 * 10)%4) + 4:0));
     },
 
     getGuiScreen:function(){

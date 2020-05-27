@@ -33,7 +33,7 @@ Renderer.renderScaffoldModel = function(id,data){
     Item.addCreativeGroup("scaffold",Translation.translate("Scaffold"),[id]);
 }
 
-// 木脚手架
+// [木脚手架]Wood Scaffold
 IDRegistry.genBlockID("scaffoldWood");
 Block.createBlock("scaffoldWood",[
     {name:"Wood Scaffold",texture:[["wood_scaffold_bottom",0],["wood_scaffold_top",0],["wood_scaffold_side",0]],inCreative:true}
@@ -47,15 +47,19 @@ MachineRegistry.registerPrototype(BlockID.scaffoldWood,{
 
     tick:function(){
         this.renderer();
-        if(World.isAirBlock(this.x,this.y - 1,this.z)) World.destroyBlock(this.x,this.y,this.z,true);
-    },
 
-    renderer:function(){
-        var top = World.getBlockID(this.x,this.y + 1,this.z),bot = World.getBlockID(this.x,this.y - 1,this.z);
+        var top = World.getBlockID(this.x,this.y + 1,this.z);
+        var bot = World.getBlockID(this.x,this.y - 1,this.z);
+
         if(top != this.id && bot != this.id) this.data.meta = 0;
         if(top != this.id && bot == this.id) this.data.meta = 1;
         if(top == this.id && bot == this.id) this.data.meta = 2;
         if(top == this.id && bot != this.id) this.data.meta = 3;
+
+        if(World.isAirBlock(this.x,this.y - 1,this.z)) World.destroyBlock(this.x,this.y,this.z,true);
+    },
+
+    renderer:function(){
         Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 
@@ -64,7 +68,7 @@ MachineRegistry.registerPrototype(BlockID.scaffoldWood,{
     }
 });
 
-// 铁脚手架
+// [铁脚手架]Iron Scaffold
 IDRegistry.genBlockID("scaffoldIron");
 Block.createBlock("scaffoldIron",[
     {name:"Iron Scaffold",texture:[["iron_scaffold_bottom",0],["iron_scaffold_top",0],["iron_scaffold_side",0]],inCreative:true}
@@ -78,15 +82,19 @@ MachineRegistry.registerPrototype(BlockID.scaffoldIron,{
 
     tick:function(){
         this.renderer();
-        if(World.isAirBlock(this.x,this.y - 1,this.z)) World.destroyBlock(this.x,this.y,this.z,true);
-    },
 
-    renderer:function(){
-        var top = World.getBlockID(this.x,this.y + 1,this.z),bot = World.getBlockID(this.x,this.y - 1,this.z);
+        var top = World.getBlockID(this.x,this.y + 1,this.z);
+        var bot = World.getBlockID(this.x,this.y - 1,this.z);
+
         if(top != this.id && bot != this.id) this.data.meta = 0;
         if(top != this.id && bot == this.id) this.data.meta = 1;
         if(top == this.id && bot == this.id) this.data.meta = 2;
         if(top == this.id && bot != this.id) this.data.meta = 3;
+
+        if(World.isAirBlock(this.x,this.y - 1,this.z)) World.destroyBlock(this.x,this.y,this.z,true);
+    },
+
+    renderer:function(){
         Renderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta);
     },
 

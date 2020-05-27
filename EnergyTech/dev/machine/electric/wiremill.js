@@ -5,7 +5,7 @@ Block.createBlock("wiremill",[
 ],"machine");
 TileRenderer.setStandartModel(BlockID.wiremill,[["machine_bottom",1],["wiremill_top",0],["machine_side",1],["wiremill",0],["machine_side",1],["machine_side",1]]);
 TileRenderer.registerRotationModel(BlockID.wiremill,0,[["machine_bottom",1],["wiremill_top",0],["machine_side",1],["wiremill",0],["machine_side",1],["machine_side",1]]);
-for(let i = 1;i < 22;i++){TileRenderer.registerRotationModel(BlockID.wiremill,i * 4,[["machine_bottom",1],["wiremill_top",1],["machine_side",1],["wiremill",i],["machine_side",1],["machine_side",1]]);}
+for(let i = 1;i <= 10;i++){TileRenderer.registerRotationModel(BlockID.wiremill,i * 4,[["machine_bottom",1],["wiremill_top",1],["machine_side",1],["wiremill",i],["machine_side",1],["machine_side",1]]);}
 
 MachineRegistry.setDrop("wiremill",BlockID.machineCasing,1);
 Callback.addCallback("PreLoaded",function(){
@@ -69,17 +69,22 @@ MachineRegistry.registerEUMachine(BlockID.wiremill,{
         var input = this.container.getSlot("slotInput");
         var recipe = RecipeRegistry.getRecipeResult("Wiremill",[input.id,input.data]);
         
-        if(recipe && input.count >= recipe.count){if(this.data.energy >= this.data.energy_consumption){
-            this.activate("machine/wiremill.ogg");
-            this.data.energy -= this.data.energy_consumption;
-            this.data.progress += 1 / this.data.work_time;
-
-            if(this.data.progress.toFixed(3) >= 1){
-                this.setOutputSlot("slotOutput",recipe.output.id,recipe.output.count,recipe.output.data),input.count -= recipe.count;
-                this.container.validateAll();
-                this.data.progress = 0;
-            }
-        } else {this.deactive();}} else {this.deactive(),this.data.progress = 0;}
+        if(recipe && input.count >= recipe.count){
+            if(this.data.energy >= this.data.energy_consumption){
+                this.activate("machine/wiremill.ogg");
+                this.data.energy -= this.data.energy_consumption;
+                this.data.progress += 1 / this.data.work_time;
+                
+                if(this.data.progress.toFixed(3) >= 1){
+                    this.setOutputSlot("slotOutput",recipe.output.id,recipe.output.count,recipe.output.data),input.count -= recipe.count;
+                    this.container.validateAll();
+                    this.data.progress = 0;
+                }
+            } else this.deactive();
+        } else {
+            this.deactive();
+            this.data.progress = 0;
+        }
         
         this.container.setScale("scaleArrow",parseInt(this.data.progress / 1 * 22) / 22);
         this.container.setScale("scaleEnergy",parseInt(this.data.energy / this.getEnergyStorage() * 47) / 47);
@@ -87,7 +92,7 @@ MachineRegistry.registerEUMachine(BlockID.wiremill,{
     },
 
     renderer:function(){
-        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(this.data.progress / 1 * 22 * 10)%22) + 4:0));
+        TileRenderer.mapAtCoords(this.x,this.y,this.z,this.id,this.data.meta + (this.data.isActive?4 * (parseInt(this.data.progress / 1 * 10 * 10)%10) + 4:0));
     },
 
     getGuiScreen:function(){

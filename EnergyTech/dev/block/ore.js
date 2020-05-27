@@ -359,7 +359,6 @@ Callback.addCallback("PreLoaded",function(){
     Recipes.addFurnace(BlockID.oreTetrahedrite,ItemID.ingotCopper);
     Recipes.addFurnace(BlockID.oreGalena,ItemID.ingotLead);
     Recipes.addFurnace(BlockID.oreGraphite,ItemID.dustCarbon);
-    Recipes.addFurnace(BlockID.oreUranium,ItemID.ingotUranium);
     Recipes.addFurnace(BlockID.oreSilver,ItemID.ingotSilver);
     Recipes.addFurnace(BlockID.oreBauxite,ItemID.ingotAluminium);
     Recipes.addFurnace(BlockID.oreRuby,ItemID.ruby);
