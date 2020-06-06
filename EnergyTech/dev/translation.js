@@ -295,16 +295,16 @@ Translation.addTranslation("Powered Boots",{zh_CN:"动力装甲靴子"});
 
 Translation.addTranslation("Antimony Sword",{zh:"锑剑",ru:"Сурьмяный меч"});
 Translation.addTranslation("Antimony Shovel",{zh:"锑铲",ru:"Сурьмяная лопата"});
-Translation.addTranslation("Antimony Pickaxe",{zh:"锑镐",ru:"Сурьмяная кирка"});
+Translation.addTranslation("Antimony Pickaxe",{zh:"锑锹",ru:"Сурьмяная кирка"});
 Translation.addTranslation("Antimony Axe",{zh:"锑斧",ru:"Сурьмяный топор"});
 Translation.addTranslation("Antimony Hoe",{zh:"锑锄",ru:"Сурьмяная мотыга"});
 Translation.addTranslation("Copper Sword",{zh:"铜剑",ru:"Медный меч"});
-Translation.addTranslation("Copper Shovel",{zh:"铜铲",ru:"Медная лопата"});
+Translation.addTranslation("Copper Shovel",{zh:"铜锹",ru:"Медная лопата"});
 Translation.addTranslation("Copper Pickaxe",{zh:"铜镐",ru:"Медная кирка"});
 Translation.addTranslation("Copper Axe",{zh:"铜斧",ru:"Медный топор"});
 Translation.addTranslation("Copper Hoe",{zh:"铜锄",ru:"Медная мотыга"});
 Translation.addTranslation("Flint Sword",{zh:"燧石剑"});
-Translation.addTranslation("Flint Shovel",{zh:"燧石铲"});
+Translation.addTranslation("Flint Shovel",{zh:"燧石锹"});
 Translation.addTranslation("Flint Pickaxe",{zh:"燧石镐"});
 Translation.addTranslation("Flint Axe",{zh:"燧石斧"});
 Translation.addTranslation("Flint Hoe",{zh:"燧石锄"});
@@ -315,12 +315,12 @@ Translation.addTranslation("Iron Mortar",{zh:"铁研钵",ru:"Пестик и с�
 Translation.addTranslation("Iron File",{zh:"铁锉刀",ru:"Железная пилочка"});
 Translation.addTranslation("Iron Lighter",{zh:"铁火机"});
 Translation.addTranslation("Lead Sword",{zh:"铅剑",ru:"Свинцовый меч"});
-Translation.addTranslation("Lead Shovel",{zh:"铅铲",ru:"Свинцовая лопата"});
+Translation.addTranslation("Lead Shovel",{zh:"铅锹",ru:"Свинцовая лопата"});
 Translation.addTranslation("Lead Pickaxe",{zh:"铅镐",ru:"Свинцовая кирка"});
 Translation.addTranslation("Lead Axe",{zh:"铅斧",ru:"Свинцовый топор"});
 Translation.addTranslation("Lead Hoe",{zh:"铅锄",ru:"Свинцовая мотыга"});
 Translation.addTranslation("Steel Sword",{zh:"钢剑",ru:"Стальной меч"});
-Translation.addTranslation("Steel Shovel",{zh:"钢铲",ru:"Стальная лопата"});
+Translation.addTranslation("Steel Shovel",{zh:"钢锹",ru:"Стальная лопата"});
 Translation.addTranslation("Steel Pickaxe",{zh:"钢镐",ru:"Стальная кирка"});
 Translation.addTranslation("Steel Axe",{zh:"钢斧",ru:"Стальной топор"});
 Translation.addTranslation("Steel Hoe",{zh:"钢锄",ru:"Стальная мотыга"});
@@ -331,7 +331,7 @@ Translation.addTranslation("Steel Mortar",{zh:"钢研钵",ru:"Пестик и с
 Translation.addTranslation("Steel File",{zh:"钢锉刀",ru:"Стальная пилочка"});
 Translation.addTranslation("Steel Lighter",{zh:"钢火机"});
 Translation.addTranslation("Tin Sword",{zh:"锡剑",ru:"Оловянный меч"});
-Translation.addTranslation("Tin Shovel",{zh:"锡铲",ru:"Оловянная лопата"});
+Translation.addTranslation("Tin Shovel",{zh:"锡锹",ru:"Оловянная лопата"});
 Translation.addTranslation("Tin Pickaxe",{zh:"锡镐",ru:"Оловянная кирка"});
 Translation.addTranslation("Tin Axe",{zh:"锡斧",ru:"Оловянный топор"});
 Translation.addTranslation("Tin Hoe",{zh:"锡锄",ru:"Оловянная мотыга"});
@@ -341,12 +341,12 @@ Translation.addTranslation("Tin Cutter",{zh:"锡剪线钳",ru:"Оловянны�
 Translation.addTranslation("Tin Mortar",{zh:"锡研钵",ru:"Пестик и ступка из олова"});
 Translation.addTranslation("Tin File",{zh:"锡锉刀",ru:"Оловянная пилочка"});
 Translation.addTranslation("Tungsten Sword",{zh:"钨剑",ru:"Вольфрамовый меч"});
-Translation.addTranslation("Tungsten Shovel",{zh:"钨铲",ru:"Вольфрамовая лопата"});
+Translation.addTranslation("Tungsten Shovel",{zh:"钨锹",ru:"Вольфрамовая лопата"});
 Translation.addTranslation("Tungsten Pickaxe",{zh:"钨镐",ru:"Вольфрамовая кирка"});
 Translation.addTranslation("Tungsten Axe",{zh:"钨斧",ru:"Вольфрамовый топор"});
 Translation.addTranslation("Tungsten Hoe",{zh:"钨锄",ru:"Вольфрамовая мотыга"});
 Translation.addTranslation("Bronze Sword",{zh:"青铜剑"});
-Translation.addTranslation("Bronze Shovel",{zh:"青铜铲"});
+Translation.addTranslation("Bronze Shovel",{zh:"青铜锹"});
 Translation.addTranslation("Bronze Pickaxe",{zh:"青铜镐"});
 Translation.addTranslation("Bronze Axe",{zh:"青铜斧"});
 Translation.addTranslation("Bronze Hoe",{zh:"青铜锄"});
@@ -431,4 +431,4 @@ Translation.addTranslation("Network Energy: ",{zh:"网络能量: "});
 Translation.addTranslation("Destroy Tool Type: ",{zh:"破坏工具类型: "});
 
 // Info
-Translation.addTranslation("You can use it to connect to the Network Terminal to transmit energy.",{zh:"你可以用他连接网络终端来传输能量."});
+Translation.addTranslation("You can use it to connect to the Network Terminal to transmit energy.",{zh:"你可以用它连接网络终端来传输能量。"});
